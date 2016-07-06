@@ -1,0 +1,21 @@
+    D . L _ & | = !  "  Q >  <
+0   1 X 3 3 4 6 8 10 12 X 14 16
+1 F 1 2 X X X X X X  X  X X  X NUME
+2 F 2 X X X X X X X  X  X X  X DOUB
+3 F 3 X 3 3 X X X X  X  X X  X IDEN
+4 F X X X X 5 X X X  X  X X  X BIT_&
+5 F X X X X X X X X  X  X X  X AND
+6 F X X X X X 7 X X  X  X X  X BIT_|
+7 F X X X X X X X X  X  X X  X OR
+8 F X X X X X X 9 X  X  X X  X ATTR
+9 F X X X X X X X X  X  X X  X EQUALS
+
+     D  .  L  _  &  |  =  !  "  Q  >  <
+10 F X  X  X  X  X  X  11 X  X  X  X  X NOT
+11 F X  X  X  X  X  X  X  X  X  X  X  X NOTEQUALS
+12   12 12 12 12 12 12 12 12 13 12 12 12
+13 F X  X  X  X  X  X  X  X  X  X  X  X STRING_CONST
+14 F X  X  X  X  X  X  15 X  X  X  X  X GT
+15 F X  X  X  X  X  X  X  X  X  X  X  X GE
+16 F X  X  X  X  X  X  17 X  X  X  X  X LT
+17 F X  X  X  X  X  X  X  X  X  X  X  X LE
