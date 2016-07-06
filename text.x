@@ -1,7 +1,7 @@
 int a=2;     "test"
 int double kappa 125
 (){},;;+-*/,s
-13.23
+-13.23
 .
 kappa
 keeepo
@@ -14,4 +14,4 @@ keppo
 _this_is_a_var
 "ninguem liga para essa string mesmo"
 
-"testando 1 2 3"
+"testando 1 2 3

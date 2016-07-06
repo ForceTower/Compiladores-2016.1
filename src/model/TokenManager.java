@@ -211,6 +211,8 @@ public class TokenManager implements LexicalConstants {
 				input = 10;
 			else if (c == '<')
 				input = 11;
+			else if (c == '-')
+				input = 12;
 			else if (Character.isDigit(c))
 				input = 0;
 			else if (c == '\"')
