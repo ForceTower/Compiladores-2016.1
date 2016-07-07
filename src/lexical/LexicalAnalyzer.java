@@ -72,15 +72,19 @@ public class LexicalAnalyzer {
 						validToken = false;
 					}
 					
-					Debug.println("Block Comment at line: " + currentLine + " starting at: " + position);
-					String substr = str.substring(position);
-					if (substr.contains("*/")) {
-						position = substr.indexOf("*/") + 2;
+					Debug.println("Block Comment at line: " + currentLine + " starting at: " + position);;
+					String substr = line.substring(line.indexOf("/*") + 2); //creates a substring that excludes the block commentary begin
+
+					if (substr.contains("*/")) { //checks if the end of the block comment is in the same line, if so
+						position = substr.indexOf("*/") + 2; //the position is updated
+						line = substr; //the line is also updated
+						lineLen = substr.length(); //And of couse, the lengh of it
 						Debug.println("-> Block Comment finished at line: " + currentLine + " at position: " + position);
+						str = ""; //The Analyzed String gets updated as well
 						continue;
-					} else {
+					} else { //If it's not in the same line
 						while (true) {
-							line = reader.readLine();
+							line = reader.readLine(); //We read a new line 
 							currentLine++;
 							
 							if (line == null) { //If we reached the EOF but the block comment didn't had an end we throw a Lexical Error
@@ -116,7 +120,7 @@ public class LexicalAnalyzer {
 							validToken = false;
 						}
 					} else {
-						if (str.trim().length() > 0)
+						if (str.trim().length() > 0) //If it was not valid before, right now it wont be for sure.
 							throw new LexicalErrorException(str + " is not a valid lexem.\n At line: " + currentLine + " position: " + position);
 					}
 					str = ""; //We set the analyzed string to empty
@@ -154,7 +158,7 @@ public class LexicalAnalyzer {
 				Debug.println("Created token with Lexem: " + hold.getLexem());
 				validToken = false;
 			} else if (!str.trim().isEmpty()) { //If in the end it's not empty and it's invalid
-				throw new LexicalErrorException("Expected knowledge. You have none\n" + str + " is invalid\nAt line: " + currentLine + ", position: " + position);
+				throw new LexicalErrorException("Expected knowledge. You don't have it.\n" + str + " is invalid\nAt line: " + currentLine + ", position: " + position);
 			}
 				
 		} //End of Lines
