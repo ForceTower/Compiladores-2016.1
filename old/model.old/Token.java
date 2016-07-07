@@ -1,6 +1,6 @@
 package model;
 
-public class Token {
+public class Token extends ConfirmedToken{
 	private String lexem;
 	private int id;
 	
@@ -39,6 +39,11 @@ public class Token {
 	
 	public String toString() {
 		return "\nTOKEN:\n\tID: " + id + "\n\tLEXEM: " + lexem;
+	}
+
+	@Override
+	public void confirm() {
+		instances.add(this);
 	}
 
 }

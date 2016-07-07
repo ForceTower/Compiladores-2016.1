@@ -1,4 +1,4 @@
-    D . L _ & | = !  "  Q >  < -
+    D . L _ & | = !  "  Q >  <  -
 0   1 X 3 3 4 6 8 10 12 X 14 16 18
 1 F 1 2 X X X X X X  X  X X  X  X NUME
 2 F 2 X X X X X X X  X  X X  X 	X DOUB
