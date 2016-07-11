@@ -116,6 +116,8 @@ public class TokenFactory implements LexicalConstants{
 				input = 11;
 			else if (c == '-')
 				input = 12;
+			else if (c == '\'')
+				input = 13;
 			else if (Character.isDigit(c))
 				input = 0;
 			else if (c == '\"')
@@ -163,6 +165,8 @@ public class TokenFactory implements LexicalConstants{
 			k = new Token(LOWERTHAN, lexem);
 		else if (state == 17)
 			k = new Token(LOWEREQUALS, lexem);
+		else if (state == 21)
+			k = new Token(CHAR_CONSTANT,lexem);
 		
 		return k;
 	}

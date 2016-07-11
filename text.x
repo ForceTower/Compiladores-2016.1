@@ -19,6 +19,8 @@ Ka/*	Block
 */
 hehe
 "kappa"
-
+==
+char l = 't';
+'k';
 hahahah
-.23
+'kappa'
