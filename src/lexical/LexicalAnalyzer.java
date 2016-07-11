@@ -158,7 +158,7 @@ public class LexicalAnalyzer {
 				Debug.println("Created token with Lexem: " + hold.getLexem());
 				validToken = false;
 			} else if (!str.trim().isEmpty()) { //If in the end it's not empty and it's invalid
-				throw new LexicalErrorException("Expected knowledge. You don't have it.\n" + str + " is invalid\nAt line: " + currentLine + ", position: " + position);
+				throw new LexicalErrorException("Expected knowledge. You don't have it.\nAt line: " + currentLine + ", position: " + position + "  - " + str + " is invalid");
 			}
 				
 		} //End of Lines

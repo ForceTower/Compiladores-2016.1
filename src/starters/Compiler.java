@@ -38,7 +38,7 @@ public class Compiler {
 		} catch (IOErrorException | IOException e) {
 			e.printStackTrace();
 		} catch (LexicalErrorException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 	}
 
