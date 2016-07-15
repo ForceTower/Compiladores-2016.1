@@ -51,7 +51,8 @@ public class Compiller {
 	
 	public void completeAnalysis(File arq) {
 		Debug.println("Currently Analyzing: " + arq.getName());
-		File result = new File(directory.getAbsolutePath() + "\\rLex_" + arq.getName());
+		File result = new File(arq.getParentFile() + "\\rLex_" + arq.getName());
+		//Debug.println(arq.getPath() + "\\rLex_" + arq.getName());
 		//List<Token> allTokens;
 		try {
 			result.createNewFile();

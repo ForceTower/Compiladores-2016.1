@@ -100,7 +100,7 @@ public class LexicalAnalyzer{
 							}
 							
 							currentLine++;
-							writer.newLine();
+							//writer.newLine();
 							lastSave = null;
 							if (!line.contains("}")) {
 								Debug.println("Skipping line...");
@@ -116,7 +116,7 @@ public class LexicalAnalyzer{
 					}
 				}
 				
-				if (c == ' ') {
+				if (c == ' ' || c == '\t') {
 					if (!str.isEmpty()) {
 						if (validToken == 1)
 							validate(hold, hold.getLine(), hold.getPosition());
@@ -228,7 +228,7 @@ public class LexicalAnalyzer{
 					
 			}
 			lastSave = null;
-			writer.newLine();
+			//writer.newLine();
 		}
 		writer.flush();
 		writer.close();
@@ -260,6 +260,7 @@ public class LexicalAnalyzer{
 		if (t.getId() == TokenFactory.LEX_ERROR_MALFORM_NUM && t.getLexem().startsWith("-") && lastSave != null && ( lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST) ) {
 			Token a = TokenFactory.findToken("-");
 			Token b = TokenFactory.findToken(t.getLexem().substring(1));
+			b.errorToken(true);
 			a.showDetails(false);
 			b.showDetails(true);
 			tokenAuthenticator(a, currentLine, position - t.getLexem().length()-1);
@@ -273,6 +274,7 @@ public class LexicalAnalyzer{
 			lexicalErrors++;
 			return;
 		}
+		t.errorToken(true);
 		tokenAuthenticator(t, currentLine, position);
 		System.out.println("Invalid Token: " + t);
 		allInvalidTokens.add(t);

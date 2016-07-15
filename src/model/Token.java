@@ -8,6 +8,7 @@ public class Token {
 	private int position;
 	private boolean detailed;
 	private boolean malformed;
+	private boolean errorToken;
 	
 	public Token() {
 		this(-1, "");
@@ -82,17 +83,25 @@ public class Token {
 	}
 	
 	public String detailedToString() {
+		if (errorToken)
+			return "<- TOKEN_ERR // ID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + "\tLine: " + line + "\tPosition: " + position + " ->";
 		return "<- TOKEN // ID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + "\tLine: " + line + "\tPosition: " + position + " ->";
 	}
 	
 	public String toString() {
 		if (detailed)
 			return detailedToString();
+		if (errorToken)
+			return "<- TOKEN_ERR // ID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
 		return "<- TOKEN // ID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
 	}
 
 	public void showDetails(boolean b) {
 		detailed = b;
+	}
+
+	public void errorToken(boolean b) {
+		errorToken = b;
 	}
 
 }

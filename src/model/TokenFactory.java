@@ -3,6 +3,7 @@ package model;
 import debug.Debug;
 
 public class TokenFactory implements TokenConstants{
+	public static String all_reserved_words_string = "";
 	private static boolean init = false;
 	
 	public static Token findToken(String lexem) {
@@ -40,45 +41,45 @@ public class TokenFactory implements TokenConstants{
 		return k;
 	}
 
-	private static void init() {
-		addReservedWord("programa", "Reserved Word");
-		addReservedWord("const", "Reserved Word");
-		addReservedWord("var", "Reserved Word");
-		addReservedWord("funcao", "Reserved Word");
-		addReservedWord("inicio", "Reserved Word");
-		addReservedWord("fim", "Reserved Word");
-		addReservedWord("se", "Reserved Word");
-		addReservedWord("entao", "Reserved Word");
-		addReservedWord("senao", "Reserved Word");
-		addReservedWord("enquanto", "Reserved Word");
-		addReservedWord("faca", "Reserved Word");
-		addReservedWord("leia", "Reserved Word");
-		addReservedWord("escreva", "Reserved Word");
-		addReservedWord("inteiro", "Reserved Word");
-		addReservedWord("real", "Reserved Word");
-		addReservedWord("booleano", "Reserved Word");
-		addReservedWord("verdadeiro", "Reserved Word");
-		addReservedWord("falso", "Reserved Word");
-		addReservedWord("cadeia", "Reserved Word");
-		addReservedWord("caractere", "Reserved Word");
+	public static void init() {
+		addReservedWord("programa", "Reserved Word", 0);
+		addReservedWord("const", "Reserved Word", 0);
+		addReservedWord("var", "Reserved Word", 0);
+		addReservedWord("funcao", "Reserved Word", 0);
+		addReservedWord("inicio", "Reserved Word", 0);
+		addReservedWord("fim", "Reserved Word", 0);
+		addReservedWord("se", "Reserved Word", 0);
+		addReservedWord("entao", "Reserved Word", 0);
+		addReservedWord("senao", "Reserved Word", 0);
+		addReservedWord("enquanto", "Reserved Word", 0);
+		addReservedWord("faca", "Reserved Word", 0);
+		addReservedWord("leia", "Reserved Word", 0);
+		addReservedWord("escreva", "Reserved Word", 0);
+		addReservedWord("inteiro", "Reserved Word", 0);
+		addReservedWord("real", "Reserved Word", 0);
+		addReservedWord("booleano", "Reserved Word", 0);
+		addReservedWord("verdadeiro", "Reserved Word", 0);
+		addReservedWord("falso", "Reserved Word", 0);
+		addReservedWord("cadeia", "Reserved Word", 0);
+		addReservedWord("caractere", "Reserved Word", 0);
 		
-		addReservedWord("+", "Arithmetic Symbol");
-		addReservedWord("-", "Arithmetic Symbol");
-		addReservedWord("*", "Arithmetic Symbol");
-		addReservedWord("/", "Arithmetic Symbol");
-		addReservedWord("<>", "Different"); //WHATTT?????
-		addReservedWord("=", "Attribution");
-		addReservedWord("<", "Lower Than");
-		addReservedWord("<=", "Lower Equals");
-		addReservedWord(">", "Greater Than");
-		addReservedWord(">=", "Greater Equals");
-		addReservedWord("nao", "Not");
-		addReservedWord("e", "And");
-		addReservedWord("ou", "Or");
-		addReservedWord(";", "Semicolon");
-		addReservedWord(",", "Comma");
-		addReservedWord("(", "Left Parenthesis");
-		addReservedWord(")", "Right Parenthesis");
+		addReservedWord("+", "Arithmetic Symbol", 1);
+		addReservedWord("-", "Arithmetic Symbol", 1);
+		addReservedWord("*", "Arithmetic Symbol", 1);
+		addReservedWord("/", "Arithmetic Symbol", 1);
+		addReservedWord("<>", "Different", 2); //WHATTT?????
+		addReservedWord("=", "Attribution", 2);
+		addReservedWord("<", "Lower Than", 2);
+		addReservedWord("<=", "Lower Equals", 2);
+		addReservedWord(">", "Greater Than", 2);
+		addReservedWord(">=", "Greater Equals", 2);
+		addReservedWord("nao", "Not", 3);
+		addReservedWord("e", "And", 3);
+		addReservedWord("ou", "Or", 3);
+		addReservedWord(";", "Semicolon", 4);
+		addReservedWord(",", "Comma", 4);
+		addReservedWord("(", "Left Parenthesis", 4);
+		addReservedWord(")", "Right Parenthesis", 4);
 		
 		addMeaning(IDENT, "Identifier");
 		addMeaning(NUM_CONST, "Number Constant");
@@ -99,9 +100,16 @@ public class TokenFactory implements TokenConstants{
 		meaning_messages.put(i, string);
 	}
 
-	private static void addReservedWord(String string, String meaning_message) {
+	private static void addReservedWord(String string, String meaning_message, int type) {
 		reserved_words.add(string);
 		meaning_messages.put(reserved_words.size()-1, meaning_message);
+		
+		if (type == 0) {
+			if (!all_reserved_words_string.isEmpty())
+				all_reserved_words_string = all_reserved_words_string + "|" + string;
+			else
+				all_reserved_words_string = all_reserved_words_string + string;
+		}
 	}
 
 }
