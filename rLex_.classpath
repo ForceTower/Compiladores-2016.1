@@ -1,0 +1,82 @@
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 143 // Lexem: ? // L: 1 // P: 2 ->
+<- TOKEN // ID: 70 // Lexem: xml ->
+<- TOKEN // ID: 70 // Lexem: version ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 141 // Lexem: "1.0" // L: 1 // P: 19 ->
+<- TOKEN // ID: 70 // Lexem: encoding ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 141 // Lexem: "UTF-8" // L: 1 // P: 36 ->
+<- TOKEN // ID: 141 // Lexem: " // L: 1 // P: 30 ->
+<- TOKEN // ID: 143 // Lexem: ? // L: 1 // P: 37 ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 70 // Lexem: classpath ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 143 // Lexem: 	 // L: 3 // P: 1 ->
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 70 // Lexem: classpathentry ->
+<- TOKEN // ID: 70 // Lexem: kind ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "src" ->
+<- TOKEN // ID: 70 // Lexem: path ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "src" ->
+<- TOKEN // ID: 23 // Lexem: / ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 143 // Lexem: 	 // L: 4 // P: 1 ->
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 70 // Lexem: classpathentry ->
+<- TOKEN // ID: 70 // Lexem: kind ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "src" ->
+<- TOKEN // ID: 70 // Lexem: path ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "tests" ->
+<- TOKEN // ID: 23 // Lexem: / ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 143 // Lexem: 	 // L: 5 // P: 1 ->
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 70 // Lexem: classpathentry ->
+<- TOKEN // ID: 70 // Lexem: kind ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "con" ->
+<- TOKEN // ID: 70 // Lexem: path ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 141 // Lexem: "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8" // L: 5 // P: 143 ->
+<- TOKEN // ID: 23 // Lexem: / ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 143 // Lexem: 	 // L: 6 // P: 1 ->
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 70 // Lexem: classpathentry ->
+<- TOKEN // ID: 70 // Lexem: kind ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "con" ->
+<- TOKEN // ID: 70 // Lexem: path ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 141 // Lexem: "org.eclipse.jdt.junit.JUNIT_CONTAINER/4" // L: 6 // P: 74 ->
+<- TOKEN // ID: 23 // Lexem: / ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 143 // Lexem: 	 // L: 7 // P: 1 ->
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 70 // Lexem: classpathentry ->
+<- TOKEN // ID: 70 // Lexem: kind ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "output" ->
+<- TOKEN // ID: 70 // Lexem: path ->
+<- TOKEN // ID: 25 // Lexem: = ->
+<- TOKEN // ID: 73 // Lexem: "bin" ->
+<- TOKEN // ID: 23 // Lexem: / ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
+<- TOKEN // ID: 26 // Lexem: < ->
+<- TOKEN // ID: 23 // Lexem: / ->
+<- TOKEN // ID: 70 // Lexem: classpath ->
+<- TOKEN // ID: 28 // Lexem: > ->
+
