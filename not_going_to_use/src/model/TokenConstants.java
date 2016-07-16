@@ -27,8 +27,8 @@ public interface TokenConstants {
 	public int LEX_ERROR_INVALID_SYM = 143;
 	public int LEX_ERROR_COMMENT_END = 144;
 	
-	public Pattern malform_number 			= Pattern.compile("-?" + digit + "+[.]");
-	public Pattern malform_string			= Pattern.compile("\"");
+	public Pattern malform_number 		= Pattern.compile("-?" + digit + "+[.]");
+	public Pattern malform_string		= Pattern.compile("\"");
 	public Pattern malform_char 			= Pattern.compile("\'");
 
 }

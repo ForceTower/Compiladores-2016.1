@@ -12,7 +12,7 @@ import model.Token;
 
 public class Compiller {
 	private File directory;
-	private LexicalAnalyzer lexicalAnalyzer;
+	private LexicalAnalyzer la;
 	
 	public Compiller () {
 		
@@ -64,9 +64,15 @@ public class Compiller {
 	}
 
 	public List<Token> startLexical(File arq, File result) throws IOErrorException, IOException, LexicalErrorException {
-		lexicalAnalyzer = new LexicalAnalyzer(arq, result);
-		lexicalAnalyzer.startAnalysis();
-		return lexicalAnalyzer.getAllTokens();
+		la = new LexicalAnalyzer(arq, result);
+		la.startAnalysis();
+		return la.getAllTokens();
+	}
+	
+	public int getCurrentlyAnalyzedLine() {
+		if (la == null)
+			return 0;
+		return la.current_line;
 	}
 
 }

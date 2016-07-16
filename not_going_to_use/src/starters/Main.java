@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		try {
 			Compiller c = new Compiller();
-			c.setDirectory(".\\file_tests\\");
+			c.setDirectory(".\\files\\");
 			c.analysisAll();
 		} catch (IOErrorException e) {
 			e.printStackTrace();

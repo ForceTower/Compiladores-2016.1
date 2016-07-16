@@ -3,6 +3,7 @@ package model;
 import debug.Debug;
 
 public class TokenFactory implements TokenConstants{
+	public static String all_reserved_words_string = "";
 	private static boolean init = false;
 	
 	public static Token findToken(String lexem) {
@@ -12,8 +13,12 @@ public class TokenFactory implements TokenConstants{
 		if (lexem.isEmpty())
 			return null;
 		
-		if (reserved_words.contains(lexem))
+		Debug.println("Lexeme: " + lexem);
+		
+		if (reserved_words.contains(lexem)) {
+			Debug.println("Reserved word");
 			return new Token(reserved_words.indexOf(lexem), lexem);
+		}
 		
 		Token k = null;
 		if (lexem.matches(identifier.pattern()))
@@ -30,6 +35,8 @@ public class TokenFactory implements TokenConstants{
 			k = new Token(LEX_ERROR_MALFORM_STR, lexem, true);
 		else if(lexem.matches(malform_char.pattern()))
 			k = new Token(LEX_ERROR_MALFORM_CHR,lexem,true);
+		
+		Debug.println("K: " + k);
 			
 		return k;
 	}
@@ -60,7 +67,7 @@ public class TokenFactory implements TokenConstants{
 		addReservedWord("-", "Arithmetic Symbol", 1);
 		addReservedWord("*", "Arithmetic Symbol", 1);
 		addReservedWord("/", "Arithmetic Symbol", 1);
-		addReservedWord("<>", "Different", 2);
+		addReservedWord("<>", "Different", 2); //WHATTT?????
 		addReservedWord("=", "Attribution", 2);
 		addReservedWord("<", "Lower Than", 2);
 		addReservedWord("<=", "Lower Equals", 2);
@@ -83,7 +90,7 @@ public class TokenFactory implements TokenConstants{
 		addMeaning(LEX_ERROR_MALFORM_STR, "Malformed String");
 		addMeaning(LEX_ERROR_MALFORM_CHR, "Malformed Character");
 		addMeaning(LEX_ERROR_INVALID_SYM, "Unknown Symbol");
-		addMeaning(LEX_ERROR_COMMENT_END, "Unexpected end of file. Commentary doesn't have an end");
+		addMeaning(LEX_ERROR_COMMENT_END, "Unexpected end of File");
 		
 		Debug.println("Lexical is Ready");
 		init = true;
@@ -95,7 +102,14 @@ public class TokenFactory implements TokenConstants{
 
 	private static void addReservedWord(String string, String meaning_message, int type) {
 		reserved_words.add(string);
-		meaning_messages.put(reserved_words.size() - 1, meaning_message);
+		meaning_messages.put(reserved_words.size()-1, meaning_message);
+		
+		if (type == 0) {
+			if (!all_reserved_words_string.isEmpty())
+				all_reserved_words_string = all_reserved_words_string + "|" + string;
+			else
+				all_reserved_words_string = all_reserved_words_string + string;
+		}
 	}
 
 }
