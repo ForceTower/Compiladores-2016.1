@@ -239,7 +239,7 @@ public class LexicalAnalyzer{
 	}
 
 	private void validate(Token t, int currentLine, int position) throws IOException {
-		if (t.getId() == TokenFactory.NUM_CONST && t.getLexem().startsWith("-") && lastSave != null && ( lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST) ) {
+		if (t.getId() == TokenFactory.NUM_CONST && t.getLexem().startsWith("-") && lastSave != null && negativeSpecialCases() ) {
 			Token a = TokenFactory.findToken("-");
 			Token b = TokenFactory.findToken(t.getLexem().substring(1));
 			tokenAuthenticator(a, currentLine, position - t.getLexem().length()-1);
@@ -259,9 +259,13 @@ public class LexicalAnalyzer{
 		lastSave = t;
 	}
 
+	private boolean negativeSpecialCases() {
+		return ( lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST || lastSave.getId() == TokenFactory.reserved_words.indexOf(")"));
+	}
+
 	private void invalidate(Token t, int currentLine, int position) throws IOException {
 		t.showDetails(true);
-		if (t.getId() == TokenFactory.LEX_ERROR_MALFORM_NUM && t.getLexem().startsWith("-") && lastSave != null && ( lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST) ) {
+		if (t.getId() == TokenFactory.LEX_ERROR_MALFORM_NUM && t.getLexem().startsWith("-") && lastSave != null && negativeSpecialCases() ) {
 			Token a = TokenFactory.findToken("-");
 			Token b = TokenFactory.findToken(t.getLexem().substring(1));
 			b.errorToken(true);
