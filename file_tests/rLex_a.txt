@@ -1,0 +1,22 @@
+<- TOKEN	ID: 70	Lexem: jdfoisjdgiod	INFO: Identifier ->
+
+<- TOKEN_ERR	ID: 141	Lexem: "1 malformed"	INFO: Malformed String	Line: 2	Position: 13 ->
+
+<- TOKEN	ID: 70	Lexem: teste	INFO: Identifier ->
+
+<- TOKEN	ID: 0	Lexem: programa	INFO: Reserved Word ->
+<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexem: kappa	INFO: Identifier ->
+<- TOKEN	ID: 70	Lexem: pride	INFO: Identifier ->
+<- TOKEN	ID: 70	Lexem: teste	INFO: Identifier ->
+<- TOKEN	ID: 71	Lexem: 12.3	INFO: Number Constant ->
+
+<- TOKEN_ERR	ID: 140	Lexem: 12.	INFO: Malformed Number	Line: 5	Position: 3 ->
+<- TOKEN_ERR	ID: 140	Lexem: 12.	INFO: Malformed Number	Line: 5	Position: 3 ->
+<- TOKEN_ERR	ID: 143	Lexem: #@	INFO: Unknown Symbol	Line: 5	Position: 6 ->
+
+<- TOKEN_ERR	ID: 142	Lexem: 'tetete'	INFO: Malformed Character	Line: 6	Position: 8 ->
+
+<- TOKEN	ID: 72	Lexem: 't'	INFO: Character Constant ->
+

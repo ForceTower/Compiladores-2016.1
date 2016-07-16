@@ -24,6 +24,7 @@ public class LexicalAnalyzer{
 	public List<Token> allInvalidTokens;
 	public int lexicalErrors;
 	private Token lastSave = null;
+	public int current_line;
 
 	public LexicalAnalyzer(File arq, File result) throws IOErrorException {
 		if (arq != null && arq.canRead() && result != null && result.canWrite()) {
@@ -38,6 +39,7 @@ public class LexicalAnalyzer{
 		allValidTokens = new ArrayList<>();
 		allInvalidTokens = new ArrayList<>();
 		lexicalErrors = 0;
+		current_line = 0;
 	}
 
 	private void createStreams() throws IOErrorException {
@@ -56,6 +58,7 @@ public class LexicalAnalyzer{
 		
 		while ((line = reader.readLine()) != null) {
 			currentLine++;
+			current_line = currentLine;
 			Character c = null;
 			int position = 0;
 			int lineLen = line.length();
@@ -95,19 +98,14 @@ public class LexicalAnalyzer{
 							
 							if (line == null) {
 								Debug.println("-> Block Commentary doesn't have an end");
-								//fileStringWriter("Unexpected File End. Block Commentary doesn't have an end. At line: " + currentLine);
-								Token inv_eof = new Token(TokenFactory.LEX_ERROR_COMMENT_END, "~~COMMENTARY~~", currentLine, position);
-								invalidate(inv_eof, currentLine, position);
-								lineLen = 0;
-								break;
-								//throw new LexicalErrorException("Unexpected File End. Block Commentary doesn't have an end. At line: " + currentLine);
+								fileStringWriter("Unexpected File End. Block Commentary doesn't have an end. At line: " + currentLine);
+								throw new LexicalErrorException("Unexpected File End. Block Commentary doesn't have an end. At line: " + currentLine);
 							}
-	
+							
 							currentLine++;
-							writer.newLine();
-							
+							current_line = currentLine;
+							//writer.newLine();
 							lastSave = null;
-							
 							if (!line.contains("}")) {
 								Debug.println("Skipping line...");
 								continue;
@@ -139,6 +137,7 @@ public class LexicalAnalyzer{
 				}
 				
 				str = str + c;
+			//	System.out.println(str);
 				
 				Token charOnly = TokenFactory.findToken(c.toString());
 				
@@ -150,8 +149,8 @@ public class LexicalAnalyzer{
 					validToken = temp.isMalformed() ? 0 : 1;
 				} else {
 					if (validToken == 1) {
-						validate(hold, hold.getLine(), hold.getPosition()); //Valids the previous value
-						str = c.toString(); //Gets ready to verify the remaining fragment
+						validate(hold, hold.getLine(), hold.getPosition()); //valida o anterior
+						str = c.toString(); //Prepara para verificar o fragmento restante
 						if (charOnly != null) {
 							charOnly.setLine(currentLine);
 							charOnly.setPosition(position);
@@ -163,7 +162,7 @@ public class LexicalAnalyzer{
 						}
 					} else if (validToken == 0) {
 						invalidate(hold, hold.getLine(), hold.getPosition());
-						str = c.toString();
+						str = c.toString(); //Prepara para verificar o fragmento restante
 						if (charOnly != null) {
 							charOnly.setLine(currentLine);
 							charOnly.setPosition(position);
@@ -232,9 +231,8 @@ public class LexicalAnalyzer{
 				}
 					
 			}
-			
 			lastSave = null;
-			writer.newLine();
+			//writer.newLine();
 		}
 		writer.flush();
 		writer.close();
@@ -259,6 +257,10 @@ public class LexicalAnalyzer{
 		Debug.println("Valid Token: " + t);
 		allValidTokens.add(t);
 		lastSave = t;
+	}
+
+	private boolean negativeSpecialCases() {
+		return ( lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST || lastSave.getId() == TokenFactory.reserved_words.indexOf(")"));
 	}
 
 	private void invalidate(Token t, int currentLine, int position) throws IOException {
@@ -287,12 +289,8 @@ public class LexicalAnalyzer{
 		lexicalErrors++;
 		lastSave = t;
 	}
-	
-	private boolean negativeSpecialCases() {
-		return (lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST || lastSave.getId() == TokenFactory.reserved_words.indexOf(")"));
-	}
 
-	public void fileStringWriter(String string) throws IOException {
+	private void fileStringWriter(String string) throws IOException {
 		writer.write(string);
 		writer.flush();
 	}
