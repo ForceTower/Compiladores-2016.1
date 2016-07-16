@@ -24,6 +24,7 @@ public class LexicalAnalyzer{
 	public List<Token> allInvalidTokens;
 	public int lexicalErrors;
 	private Token lastSave = null;
+	public int current_line;
 
 	public LexicalAnalyzer(File arq, File result) throws IOErrorException {
 		if (arq != null && arq.canRead() && result != null && result.canWrite()) {
@@ -38,6 +39,7 @@ public class LexicalAnalyzer{
 		allValidTokens = new ArrayList<>();
 		allInvalidTokens = new ArrayList<>();
 		lexicalErrors = 0;
+		current_line = 0;
 	}
 
 	private void createStreams() throws IOErrorException {
@@ -56,6 +58,7 @@ public class LexicalAnalyzer{
 		
 		while ((line = reader.readLine()) != null) {
 			currentLine++;
+			current_line = currentLine;
 			Character c = null;
 			int position = 0;
 			int lineLen = line.length();
@@ -100,6 +103,7 @@ public class LexicalAnalyzer{
 							}
 							
 							currentLine++;
+							current_line = currentLine;
 							//writer.newLine();
 							lastSave = null;
 							if (!line.contains("}")) {
@@ -243,14 +247,14 @@ public class LexicalAnalyzer{
 			
 			allValidTokens.add(a);
 			allValidTokens.add(b);
-			System.out.println("Valid Token: " + a);
-			System.out.println("Valid Token: " + b);
+			Debug.println("Valid Token: " + a);
+			Debug.println("Valid Token: " + b);
 			lastSave = b;
 			
 			return;
 		}
 		tokenAuthenticator(t, currentLine, position);
-		System.out.println("Valid Token: " + t);
+		Debug.println("Valid Token: " + t);
 		allValidTokens.add(t);
 		lastSave = t;
 	}
@@ -268,15 +272,15 @@ public class LexicalAnalyzer{
 			
 			allValidTokens.add(a);
 			allInvalidTokens.add(b);
-			System.out.println("Valid Token: " + a);
-			System.out.println("Invalid Token: " + b);
+			Debug.println("Valid Token: " + a);
+			Debug.println("Invalid Token: " + b);
 			lastSave = b;
 			lexicalErrors++;
 			return;
 		}
 		t.errorToken(true);
 		tokenAuthenticator(t, currentLine, position);
-		System.out.println("Invalid Token: " + t);
+		Debug.println("Invalid Token: " + t);
 		allInvalidTokens.add(t);
 		lexicalErrors++;
 		lastSave = t;
