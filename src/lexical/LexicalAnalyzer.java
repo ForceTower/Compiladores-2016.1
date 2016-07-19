@@ -98,12 +98,10 @@ public class LexicalAnalyzer{
 							
 							if (line == null) {
 								Debug.println("-> Block Commentary doesn't have an end");
-								//fileStringWriter("Unexpected File End. Block Commentary doesn't have an end. At line: " + currentLine);
 								Token inv_eof = new Token(TokenFactory.LEX_ERROR_COMMENT_END, "~~COMMENTARY~~", currentLine, position);
 								invalidate(inv_eof, currentLine, position);
 								lineLen = 0;
 								break;
-								//throw new LexicalErrorException("Unexpected File End. Block Commentary doesn't have an end. At line: " + currentLine);
 							}
 	
 							currentLine++;
