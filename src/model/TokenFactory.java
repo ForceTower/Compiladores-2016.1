@@ -26,6 +26,8 @@ public class TokenFactory implements TokenConstants{
 			k = new Token(STRING_CONST, lexem);
 		else if (lexem.matches(malform_number.pattern()))
 			k = new Token(LEX_ERROR_MALFORM_NUM, lexem, true);
+		else if (lexem.matches(malform_number_2.pattern()))
+			k = new Token(LEX_ERROR_MALFORM_NUM, lexem, true);
 		else if (lexem.matches(malform_string.pattern()))
 			k = new Token(LEX_ERROR_MALFORM_STR, lexem, true);
 		else if(lexem.matches(malform_char.pattern()))
@@ -82,7 +84,7 @@ public class TokenFactory implements TokenConstants{
 		addMeaning(LEX_ERROR_MALFORM_NUM, "Malformed Number");
 		addMeaning(LEX_ERROR_MALFORM_STR, "Malformed String");
 		addMeaning(LEX_ERROR_MALFORM_CHR, "Malformed Character");
-		addMeaning(LEX_ERROR_INVALID_SYM, "Unknown Symbol");
+		addMeaning(LEX_ERROR_INVALID_SYM, "Unknown Symbol(s)");
 		addMeaning(LEX_ERROR_COMMENT_END, "Unexpected end of file. Commentary doesn't have an end");
 		
 		Debug.println("Lexical is Ready");

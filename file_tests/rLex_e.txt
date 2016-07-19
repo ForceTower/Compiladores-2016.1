@@ -14,7 +14,7 @@
 <- TOKEN	ID: 70	Lexem: a	INFO: Identifier ->
 <- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
 <- TOKEN_ERR	ID: 140	Lexem: 10.	INFO: Malformed Number	Line: 7	Position: 5 ->
-<- TOKEN_ERR	ID: 143	Lexem: #@	INFO: Unknown Symbol	Line: 7	Position: 7 ->
+<- TOKEN_ERR	ID: 143	Lexem: #@	INFO: Unknown Symbol(s)	Line: 7	Position: 7 ->
 <- TOKEN	ID: 71	Lexem: -90	INFO: Number Constant ->
 <- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
 <- TOKEN	ID: 71	Lexem: 4	INFO: Number Constant ->
@@ -65,7 +65,7 @@
 <- TOKEN	ID: 72	Lexem: 'd'	INFO: Character Constant ->
 <- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
 <- TOKEN	ID: 71	Lexem: 31.14	INFO: Number Constant ->
-<- TOKEN_ERR	ID: 143	Lexem: @#	INFO: Unknown Symbol	Line: 16	Position: 27 ->
+<- TOKEN_ERR	ID: 143	Lexem: @#	INFO: Unknown Symbol(s)	Line: 16	Position: 27 ->
 <- TOKEN	ID: 70	Lexem: ttt	INFO: Identifier ->
 
 <- TOKEN	ID: 10	Lexem: faca	INFO: Reserved Word ->

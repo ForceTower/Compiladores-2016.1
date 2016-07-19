@@ -13,10 +13,27 @@
 <- TOKEN	ID: 71	Lexem: 12.3	INFO: Number Constant ->
 
 <- TOKEN_ERR	ID: 140	Lexem: 12.	INFO: Malformed Number	Line: 5	Position: 3 ->
-<- TOKEN_ERR	ID: 140	Lexem: 12.	INFO: Malformed Number	Line: 5	Position: 3 ->
-<- TOKEN_ERR	ID: 143	Lexem: #@	INFO: Unknown Symbol	Line: 5	Position: 6 ->
+<- TOKEN_ERR	ID: 143	Lexem: #@	INFO: Unknown Symbol(s)	Line: 5	Position: 6 ->
 
-<- TOKEN_ERR	ID: 142	Lexem: 'tetete'	INFO: Malformed Character	Line: 6	Position: 8 ->
+<- TOKEN_ERR	ID: 140	Lexem: 44.	INFO: Malformed Number	Line: 6	Position: 3 ->
+<- TOKEN_ERR	ID: 143	Lexem: #$	INFO: Unknown Symbol(s)	Line: 6	Position: 6 ->
+
+<- TOKEN_ERR	ID: 140	Lexem: .20	INFO: Malformed Number	Line: 7	Position: 3 ->
+<- TOKEN	ID: 70	Lexem: abc	INFO: Identifier ->
+
+<- TOKEN	ID: 71	Lexem: 12.23	INFO: Number Constant ->
+<- TOKEN_ERR	ID: 140	Lexem: .24	INFO: Malformed Number	Line: 8	Position: 8 ->
+<- TOKEN_ERR	ID: 140	Lexem: .25	INFO: Malformed Number	Line: 8	Position: 11 ->
+
+<- TOKEN_ERR	ID: 140	Lexem: .78	INFO: Malformed Number	Line: 9	Position: 3 ->
+<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN_ERR	ID: 140	Lexem: .44	INFO: Malformed Number	Line: 9	Position: 7 ->
+
+<- TOKEN_ERR	ID: 142	Lexem: 'tetete'	INFO: Malformed Character	Line: 10	Position: 8 ->
 
 <- TOKEN	ID: 72	Lexem: 't'	INFO: Character Constant ->
+
+<- TOKEN_ERR	ID: 143	Lexem: .	INFO: Unknown Symbol(s)	Line: 12	Position: 2 ->
+<- TOKEN	ID: 70	Lexem: and	INFO: Identifier ->
+<- TOKEN	ID: 70	Lexem: only	INFO: Identifier ->
 

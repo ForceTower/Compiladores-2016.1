@@ -76,6 +76,9 @@ public class LexicalAnalyzer{
 							Token t = new Token(TokenFactory.LEX_ERROR_INVALID_SYM, str);
 							invalidate(t, currentLine, position);
 						}
+						
+						hold = null;
+						validToken = -1;
 							
 					}
 					
@@ -134,6 +137,8 @@ public class LexicalAnalyzer{
 						}
 							
 					}
+					hold = null;
+					validToken = -1;
 					str = "";
 					continue;
 				}
@@ -230,6 +235,9 @@ public class LexicalAnalyzer{
 					Token t = new Token(TokenFactory.LEX_ERROR_INVALID_SYM, str);
 					invalidate(t, currentLine, position);
 				}
+				
+				hold = null;
+				validToken = -1;
 					
 			}
 			
