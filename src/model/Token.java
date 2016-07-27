@@ -84,16 +84,16 @@ public class Token {
 	
 	public String detailedToString() {
 		if (errorToken)
-			return "<- TOKEN_ERR\tID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + "\tLine: " + line + "\tPosition: " + position + " ->";
-		return "<- TOKEN\tID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + "\tLine: " + line + "\tPosition: " + position + " ->";
+			return "<- TOKEN_ERR\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + "\tLine: " + line + "\tPosition: " + position + " ->";
+		return "<- TOKEN\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + "\tLine: " + line + "\tPosition: " + position + " ->";
 	}
 	
 	public String toString() {
 		if (detailed)
 			return detailedToString();
 		if (errorToken)
-			return "<-TOKEN_ERR\tID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
-		return "<- TOKEN\tID: " + id + "\tLexem: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
+			return "<-TOKEN_ERR\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
+		return "<- TOKEN\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
 	}
 
 	public void showDetails(boolean b) {
