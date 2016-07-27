@@ -1,214 +1,169 @@
-<- TOKEN	ID: 0	Lexem: programa	INFO: Reserved Word ->
+<- TOKEN	ID: 0	Lexeme: programa	INFO: Reserved Word ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 14	Lexeme: real	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: quantidade	INFO: Identifier ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 18	Lexeme: cadeia	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: nome	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 70	Lexeme: produto	INFO: Identifier ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 11	Lexeme: leia	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 9	Lexeme: enquanto	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 28	Lexeme: >	INFO: Operator/Greater Than ->
+<- TOKEN	ID: 71	Lexeme: -20	INFO: Number Constant ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 11	Lexeme: leia	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: nome	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 70	Lexeme: produto	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 70	Lexeme: quantidade	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 70	Lexeme: estoque	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 70	Lexeme: quantidade	INFO: Identifier ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 71	Lexeme: 12	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: para	INFO: Identifier ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 71	Lexeme: -8	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 27	Lexeme: <=	INFO: Operator/Lower Equals ->
+<- TOKEN	ID: 71	Lexeme: 23	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 71	Lexeme: 1	INFO: Number Constant ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 12	Lexeme: escreva	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: quantidade	INFO: Identifier ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 70	Lexeme: valor	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 14	Lexeme: real	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: media_menos_60	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 70	Lexeme: calcular_media	INFO: Identifier ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: a	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 70	Lexeme: b	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 70	Lexeme: c	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 70	Lexeme: d	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 71	Lexeme: 60	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 3	Lexeme: funcao	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: calcular_media	INFO: Identifier ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: a	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: b	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 15	Lexeme: booleano	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: c	INFO: Identifier ->
+<- TOKEN	ID: 34	Lexeme: ,	INFO: Delimiter/Comma ->
+<- TOKEN	ID: 14	Lexeme: real	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: d	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 6	Lexeme: se	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 30	Lexeme: nao	INFO: Operator/Not ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: c	INFO: Identifier ->
+<- TOKEN	ID: 24	Lexeme: <>	INFO: Operator/Different ->
+<- TOKEN	ID: 16	Lexeme: verdadeiro	INFO: Reserved Word ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 7	Lexeme: entao	INFO: Reserved Word ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 2	Lexeme: var	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: variavel	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 73	Lexeme: "Isso eh interessante"	INFO: String Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 8	Lexeme: senao	INFO: Reserved Word ->
+<- TOKEN	ID: 7	Lexeme: entao	INFO: Reserved Word ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 2	Lexeme: var	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: variavel	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 73	Lexeme: "hu3hu3hu3 brbrbr"	INFO: String Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 70	Lexeme: variavel	INFO: Identifier ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 71	Lexeme: 30	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 14	Lexeme: real	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: keepo	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 71	Lexeme: -30	INFO: Number Constant ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 71	Lexeme: 30	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 1	Lexeme: const	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: pqp	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 70	Lexeme: constante	INFO: Identifier ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 9	Lexeme: enquanto	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 16	Lexeme: verdadeiro	INFO: Reserved Word ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 9	Lexeme: enquanto	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 16	Lexeme: verdadeiro	INFO: Reserved Word ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: INICIO	INFO: Identifier ->
+<- TOKEN	ID: 70	Lexeme: FIM	INFO: Identifier ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 19	Lexeme: caractere	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: opa	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 70	Lexeme: opa	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 72	Lexeme: 'o'	INFO: Character Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
 
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 13	Lexem: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 14	Lexem: real	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: quantidade	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 18	Lexem: cadeia	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: nome	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 70	Lexem: produto	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 11	Lexem: leia	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 9	Lexem: enquanto	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 28	Lexem: >	INFO: Greater Than ->
-<- TOKEN	ID: 71	Lexem: -20	INFO: Number Constant ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 11	Lexem: leia	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: nome	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 70	Lexem: produto	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 70	Lexem: quantidade	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 70	Lexem: estoque	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 70	Lexem: quantidade	INFO: Identifier ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 71	Lexem: 12	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-
-<- TOKEN	ID: 70	Lexem: para	INFO: Identifier ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 71	Lexem: -8	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 27	Lexem: <=	INFO: Lower Equals ->
-<- TOKEN	ID: 71	Lexem: 23	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 71	Lexem: 1	INFO: Number Constant ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 12	Lexem: escreva	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: quantidade	INFO: Identifier ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 70	Lexem: valor	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-
-<- TOKEN	ID: 14	Lexem: real	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: media_menos_60	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 70	Lexem: calcular_media	INFO: Identifier ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: a	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 70	Lexem: b	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 70	Lexem: c	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 70	Lexem: d	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 71	Lexem: 60	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-
-<- TOKEN	ID: 3	Lexem: funcao	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: calcular_media	INFO: Identifier ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 13	Lexem: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: a	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 13	Lexem: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: b	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 15	Lexem: booleano	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: c	INFO: Identifier ->
-<- TOKEN	ID: 34	Lexem: ,	INFO: Comma ->
-<- TOKEN	ID: 14	Lexem: real	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: d	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 6	Lexem: se	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 30	Lexem: nao	INFO: Not ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: c	INFO: Identifier ->
-<- TOKEN	ID: 24	Lexem: <>	INFO: Different ->
-<- TOKEN	ID: 16	Lexem: verdadeiro	INFO: Reserved Word ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 7	Lexem: entao	INFO: Reserved Word ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 2	Lexem: var	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: variavel	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 73	Lexem: "Isso eh interessante"	INFO: String Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-
-<- TOKEN	ID: 8	Lexem: senao	INFO: Reserved Word ->
-<- TOKEN	ID: 7	Lexem: entao	INFO: Reserved Word ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 2	Lexem: var	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: variavel	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 73	Lexem: "hu3hu3hu3 brbrbr"	INFO: String Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 13	Lexem: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: kappa	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 70	Lexem: variavel	INFO: Identifier ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 71	Lexem: 30	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 14	Lexem: real	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: keepo	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 71	Lexem: -30	INFO: Number Constant ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 71	Lexem: 30	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 1	Lexem: const	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: pqp	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 70	Lexem: constante	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 9	Lexem: enquanto	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 16	Lexem: verdadeiro	INFO: Reserved Word ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 9	Lexem: enquanto	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 16	Lexem: verdadeiro	INFO: Reserved Word ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 70	Lexem: INICIO	INFO: Identifier ->
-
-<- TOKEN	ID: 70	Lexem: FIM	INFO: Identifier ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
-
-<- TOKEN	ID: 19	Lexem: caractere	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: opa	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN_ERR	ID: 142	Lexem: 'opa'	INFO: Malformed Character	Line: 44	Position: 22 ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 70	Lexem: opa	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 72	Lexem: 'o'	INFO: Character Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
-
+<- TOKEN_ERR	ID: 142	Lexeme: 'opa'	INFO: Malformed Character	Line: 44	Position: 22 ->

@@ -105,7 +105,7 @@ public class LexicalAnalyzer{
 							}
 	
 							currentLine++;
-							writer.newLine();
+							//writer.newLine();
 							
 							lastSave = null;
 							
@@ -240,10 +240,22 @@ public class LexicalAnalyzer{
 			}
 			
 			lastSave = null;
-			writer.newLine();
+			//writer.newLine();
 		}
+		
+		createResultFile();
 		writer.flush();
 		writer.close();
+	}
+
+	private void createResultFile() throws IOException {
+		for (Token t : allValidTokens)
+			fileTokenWriter(t);
+		
+		writer.newLine();
+		
+		for (Token t : allInvalidTokens)
+			fileTokenWriter(t);
 	}
 
 	private void validate(Token t, int currentLine, int position) throws IOException {
@@ -307,7 +319,7 @@ public class LexicalAnalyzer{
 		t.setLine(currentLine);
 		t.setPosition(position);
 		
-		fileTokenWriter(t);
+		//fileTokenWriter(t);
 	}
 
 	public void fileTokenWriter(Token token) throws IOException {

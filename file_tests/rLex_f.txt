@@ -1,48 +1,39 @@
-<- TOKEN	ID: 0	Lexem: programa	INFO: Reserved Word ->
-
-<- TOKEN	ID: 4	Lexem: inicio	INFO: Reserved Word ->
-
-<- TOKEN	ID: 12	Lexem: escreva	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 73	Lexem: "Hello World"	INFO: String Constant ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 13	Lexem: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: alfa	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexem: =	INFO: Attribution ->
-<- TOKEN	ID: 71	Lexem: 12	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 13	Lexem: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: beta	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 14	Lexem: real	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexem: kappa	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 11	Lexem: leia	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: beta	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 11	Lexem: leia	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: kappa	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 12	Lexem: escreva	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexem: (	INFO: Left Parenthesis ->
-<- TOKEN	ID: 70	Lexem: alfa	INFO: Identifier ->
-<- TOKEN	ID: 20	Lexem: +	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 70	Lexem: beta	INFO: Identifier ->
-<- TOKEN	ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
-<- TOKEN	ID: 70	Lexem: kappa	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexem: )	INFO: Right Parenthesis ->
-<- TOKEN	ID: 33	Lexem: ;	INFO: Semicolon ->
-
-<- TOKEN	ID: 5	Lexem: fim	INFO: Reserved Word ->
+<- TOKEN	ID: 0	Lexeme: programa	INFO: Reserved Word ->
+<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
+<- TOKEN	ID: 12	Lexeme: escreva	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 73	Lexeme: "Hello World"	INFO: String Constant ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: alfa	INFO: Identifier ->
+<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
+<- TOKEN	ID: 71	Lexeme: 12	INFO: Number Constant ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: beta	INFO: Identifier ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 14	Lexeme: real	INFO: Reserved Word ->
+<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 11	Lexeme: leia	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: beta	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 11	Lexeme: leia	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 12	Lexeme: escreva	INFO: Reserved Word ->
+<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
+<- TOKEN	ID: 70	Lexeme: alfa	INFO: Identifier ->
+<- TOKEN	ID: 20	Lexeme: +	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 70	Lexeme: beta	INFO: Identifier ->
+<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
+<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
+<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
+<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
+<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
 
