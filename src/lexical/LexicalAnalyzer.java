@@ -187,6 +187,12 @@ public class LexicalAnalyzer{
 							charOnly.setPosition(position);
 							hold = charOnly;
 							validToken = charOnly.isMalformed() ? 0 : 1;
+						} else {
+							Token t = new Token(TokenFactory.LEX_ERROR_INVALID_SYM, c.toString());
+							invalidate(t, currentLine, position);
+							validToken = -1;
+							hold = null;
+							str = "";
 						}
 					}
 				}
@@ -259,7 +265,7 @@ public class LexicalAnalyzer{
 	}
 
 	private void validate(Token t, int currentLine, int position) throws IOException {
-		if (t.getId() == TokenFactory.NUM_CONST && t.getLexem().startsWith("-") && lastSave != null && negativeSpecialCases() ) {
+		/*if (t.getId() == TokenFactory.NUM_CONST && t.getLexem().startsWith("-") && lastSave != null && negativeSpecialCases() ) {
 			Token a = TokenFactory.findToken("-");
 			Token b = TokenFactory.findToken(t.getLexem().substring(1));
 			tokenAuthenticator(a, currentLine, position - t.getLexem().length()-1);
@@ -272,7 +278,7 @@ public class LexicalAnalyzer{
 			lastSave = b;
 			
 			return;
-		}
+		}*/
 		tokenAuthenticator(t, currentLine, position);
 		Debug.println("Valid Token: " + t);
 		allValidTokens.add(t);
@@ -280,7 +286,7 @@ public class LexicalAnalyzer{
 	}
 
 	private void invalidate(Token t, int currentLine, int position) throws IOException {
-		t.showDetails(true);
+		/*t.showDetails(true);
 		if (t.getId() == TokenFactory.LEX_ERROR_MALFORM_NUM && t.getLexem().startsWith("-") && lastSave != null && negativeSpecialCases() ) {
 			Token a = TokenFactory.findToken("-");
 			Token b = TokenFactory.findToken(t.getLexem().substring(1));
@@ -297,7 +303,7 @@ public class LexicalAnalyzer{
 			lastSave = b;
 			lexicalErrors++;
 			return;
-		}
+		}*/
 		t.errorToken(true);
 		tokenAuthenticator(t, currentLine, position);
 		Debug.println("Invalid Token: " + t);
@@ -306,7 +312,7 @@ public class LexicalAnalyzer{
 		lastSave = t;
 	}
 	
-	private boolean negativeSpecialCases() {
+	public boolean negativeSpecialCases() {
 		return (lastSave.getId() == TokenFactory.IDENT || lastSave.getId() == TokenFactory.NUM_CONST || lastSave.getId() == TokenFactory.reserved_words.indexOf(")"));
 	}
 

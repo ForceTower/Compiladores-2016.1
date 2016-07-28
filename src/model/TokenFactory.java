@@ -26,8 +26,6 @@ public class TokenFactory implements TokenConstants{
 			k = new Token(STRING_CONST, lexem);
 		else if (lexem.matches(malform_number.pattern()))
 			k = new Token(LEX_ERROR_MALFORM_NUM, lexem, true);
-		else if (lexem.matches(malform_number_2.pattern()))
-			k = new Token(LEX_ERROR_MALFORM_NUM, lexem, true);
 		else if (lexem.matches(malform_string.pattern()))
 			k = new Token(LEX_ERROR_MALFORM_STR, lexem, true);
 		else if(lexem.matches(malform_char.pattern()))
@@ -37,55 +35,55 @@ public class TokenFactory implements TokenConstants{
 	}
 
 	public static void init() {
-		addReservedWord("programa", "Reserved Word", 0);
-		addReservedWord("const", "Reserved Word", 0);
-		addReservedWord("var", "Reserved Word", 0);
-		addReservedWord("funcao", "Reserved Word", 0);
-		addReservedWord("inicio", "Reserved Word", 0);
-		addReservedWord("fim", "Reserved Word", 0);
-		addReservedWord("se", "Reserved Word", 0);
-		addReservedWord("entao", "Reserved Word", 0);
-		addReservedWord("senao", "Reserved Word", 0);
-		addReservedWord("enquanto", "Reserved Word", 0);
-		addReservedWord("faca", "Reserved Word", 0);
-		addReservedWord("leia", "Reserved Word", 0);
-		addReservedWord("escreva", "Reserved Word", 0);
-		addReservedWord("inteiro", "Reserved Word", 0);
-		addReservedWord("real", "Reserved Word", 0);
-		addReservedWord("booleano", "Reserved Word", 0);
-		addReservedWord("verdadeiro", "Reserved Word", 0);
-		addReservedWord("falso", "Reserved Word", 0);
-		addReservedWord("cadeia", "Reserved Word", 0);
-		addReservedWord("caractere", "Reserved Word", 0);
+		addReservedWord("programa", "palavra_reservada", 0);
+		addReservedWord("const", "palavra_reservada", 0);
+		addReservedWord("var", "palavra_reservada", 0);
+		addReservedWord("funcao", "palavra_reservada", 0);
+		addReservedWord("inicio", "palavra_reservada", 0);
+		addReservedWord("fim", "palavra_reservada", 0);
+		addReservedWord("se", "palavra_reservada", 0);
+		addReservedWord("entao", "palavra_reservada", 0);
+		addReservedWord("senao", "palavra_reservada", 0);
+		addReservedWord("enquanto", "palavra_reservada", 0);
+		addReservedWord("faca", "palavra_reservada", 0);
+		addReservedWord("leia", "palavra_reservada", 0);
+		addReservedWord("escreva", "palavra_reservada", 0);
+		addReservedWord("inteiro", "palavra_reservada", 0);
+		addReservedWord("real", "palavra_reservada", 0);
+		addReservedWord("booleano", "palavra_reservada", 0);
+		addReservedWord("verdadeiro", "palavra_reservada", 0);
+		addReservedWord("falso", "palavra_reservada", 0);
+		addReservedWord("cadeia", "palavra_reservada", 0);
+		addReservedWord("caractere", "palavra_reservada", 0);
 		
-		addReservedWord("+", "Operator/Arithmetic Symbol", 1);
-		addReservedWord("-", "Operator/Arithmetic Symbol", 1);
-		addReservedWord("*", "Operator/Arithmetic Symbol", 1);
-		addReservedWord("/", "Operator/Arithmetic Symbol", 1);
-		addReservedWord("<>", "Operator/Different", 2);
-		addReservedWord("=", "Operator/Attribution", 2);
-		addReservedWord("<", "Operator/Lower Than", 2);
-		addReservedWord("<=", "Operator/Lower Equals", 2);
-		addReservedWord(">", "Operator/Greater Than", 2);
-		addReservedWord(">=", "Operator/Greater Equals", 2);
-		addReservedWord("nao", "Operator/Not", 3);
-		addReservedWord("e", "Operator/And", 3);
-		addReservedWord("ou", "Operator/Or", 3);
-		addReservedWord(";", "Delimiter/Semicolon", 4);
-		addReservedWord(",", "Delimiter/Comma", 4);
-		addReservedWord("(", "Delimiter/Left Parenthesis", 4);
-		addReservedWord(")", "Delimiter/Right Parenthesis", 4);
+		addReservedWord("+", "operador", 1);
+		addReservedWord("-", "operador", 1);
+		addReservedWord("*", "operador", 1);
+		addReservedWord("/", "operador", 1);
+		addReservedWord("<>", "operador", 2);
+		addReservedWord("=", "operador", 2);
+		addReservedWord("<", "operador", 2);
+		addReservedWord("<=", "operador", 2);
+		addReservedWord(">", "operador", 2);
+		addReservedWord(">=", "operador", 2);
+		addReservedWord("nao", "operador", 3);
+		addReservedWord("e", "operador", 3);
+		addReservedWord("ou", "operador", 3);
+		addReservedWord(";", "delimitador", 4);
+		addReservedWord(",", "delimitador", 4);
+		addReservedWord("(", "delimitador", 4);
+		addReservedWord(")", "delimitador", 4);
 		
-		addMeaning(IDENT, "Identifier");
-		addMeaning(NUM_CONST, "Number Constant");
-		addMeaning(CHAR_CONST, "Character Constant");
-		addMeaning(STRING_CONST, "String Constant");
+		addMeaning(IDENT, "id");
+		addMeaning(NUM_CONST, "nro");
+		addMeaning(CHAR_CONST, "caractere");
+		addMeaning(STRING_CONST, "cadeia_de_caracteres");
 		
-		addMeaning(LEX_ERROR_MALFORM_NUM, "Malformed Number");
-		addMeaning(LEX_ERROR_MALFORM_STR, "Malformed String");
-		addMeaning(LEX_ERROR_MALFORM_CHR, "Malformed Character");
-		addMeaning(LEX_ERROR_INVALID_SYM, "Unknown Symbol(s)");
-		addMeaning(LEX_ERROR_COMMENT_END, "Unexpected end of file. Commentary doesn't have an end");
+		addMeaning(LEX_ERROR_MALFORM_NUM, "nro_mal_formado");
+		addMeaning(LEX_ERROR_MALFORM_STR, "cadeia_mal_formada");
+		addMeaning(LEX_ERROR_MALFORM_CHR, "caractere_mal_formado");
+		addMeaning(LEX_ERROR_INVALID_SYM, "simbolo_invalido");
+		addMeaning(LEX_ERROR_COMMENT_END, "comentario_mal_formado");
 		
 		Debug.println("Lexical is Ready");
 		init = true;

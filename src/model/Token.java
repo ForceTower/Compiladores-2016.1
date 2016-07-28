@@ -6,6 +6,7 @@ public class Token {
 	private int id;
 	private int line;
 	private int position;
+	@SuppressWarnings("unused")
 	private boolean detailed;
 	private boolean malformed;
 	private boolean errorToken;
@@ -89,11 +90,12 @@ public class Token {
 	}
 	
 	public String toString() {
-		if (detailed)
+		/*if (detailed)
 			return detailedToString();
 		if (errorToken)
 			return "<-TOKEN_ERR\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
-		return "<- TOKEN\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";
+		return "<- TOKEN\tID: " + id + "\tLexeme: " + lexem + "\tINFO: " + TokenFactory.meaning_messages.get(id) + " ->";*/
+		return line + " " + lexem + " " + TokenFactory.meaning_messages.get(id);
 	}
 
 	public void showDetails(boolean b) {

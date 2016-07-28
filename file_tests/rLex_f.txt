@@ -1,39 +1,39 @@
-<- TOKEN	ID: 0	Lexeme: programa	INFO: Reserved Word ->
-<- TOKEN	ID: 4	Lexeme: inicio	INFO: Reserved Word ->
-<- TOKEN	ID: 12	Lexeme: escreva	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
-<- TOKEN	ID: 73	Lexeme: "Hello World"	INFO: String Constant ->
-<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexeme: alfa	INFO: Identifier ->
-<- TOKEN	ID: 25	Lexeme: =	INFO: Operator/Attribution ->
-<- TOKEN	ID: 71	Lexeme: 12	INFO: Number Constant ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 13	Lexeme: inteiro	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexeme: beta	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 14	Lexeme: real	INFO: Reserved Word ->
-<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 11	Lexeme: leia	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
-<- TOKEN	ID: 70	Lexeme: beta	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 11	Lexeme: leia	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
-<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 12	Lexeme: escreva	INFO: Reserved Word ->
-<- TOKEN	ID: 35	Lexeme: (	INFO: Delimiter/Left Parenthesis ->
-<- TOKEN	ID: 70	Lexeme: alfa	INFO: Identifier ->
-<- TOKEN	ID: 20	Lexeme: +	INFO: Operator/Arithmetic Symbol ->
-<- TOKEN	ID: 70	Lexeme: beta	INFO: Identifier ->
-<- TOKEN	ID: 21	Lexeme: -	INFO: Operator/Arithmetic Symbol ->
-<- TOKEN	ID: 70	Lexeme: kappa	INFO: Identifier ->
-<- TOKEN	ID: 36	Lexeme: )	INFO: Delimiter/Right Parenthesis ->
-<- TOKEN	ID: 33	Lexeme: ;	INFO: Delimiter/Semicolon ->
-<- TOKEN	ID: 5	Lexeme: fim	INFO: Reserved Word ->
+1 programa palavra_reservada
+2 inicio palavra_reservada
+3 escreva palavra_reservada
+3 ( delimitador
+3 "Hello World" cadeia_de_caracteres
+3 ) delimitador
+3 ; delimitador
+4 inteiro palavra_reservada
+4 alfa id
+4 = operador
+4 12 nro
+4 ; delimitador
+5 inteiro palavra_reservada
+5 beta id
+5 ; delimitador
+6 real palavra_reservada
+6 kappa id
+6 ; delimitador
+7 leia palavra_reservada
+7 ( delimitador
+7 beta id
+7 ) delimitador
+7 ; delimitador
+8 leia palavra_reservada
+8 ( delimitador
+8 kappa id
+8 ) delimitador
+8 ; delimitador
+9 escreva palavra_reservada
+9 ( delimitador
+9 alfa id
+9 + operador
+9 beta id
+9 - operador
+9 kappa id
+9 ) delimitador
+9 ; delimitador
+10 fim palavra_reservada
 

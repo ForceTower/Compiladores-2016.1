@@ -11,7 +11,7 @@ public interface TokenConstants {
 	
 	public Pattern digit 		= Pattern.compile("[0-9]");
 	public Pattern letter 		= Pattern.compile("[a-zA-Z]");
-	public Pattern number 		= Pattern.compile("-?" + digit + "+(." + digit +"+)?");
+	public Pattern number 		= Pattern.compile(digit + "+(." + digit +"+)?");
 	public Pattern identifier	= Pattern.compile(letter + "[" + letter + digit + "_]*");
 	public Pattern charactere 	= Pattern.compile("'[" + letter + digit + "]'");
 	public Pattern string 		= Pattern.compile("\"" + letter + "([" + letter + digit + " ])*\"");
@@ -27,8 +27,7 @@ public interface TokenConstants {
 	public int LEX_ERROR_INVALID_SYM = 143;
 	public int LEX_ERROR_COMMENT_END = 144;
 	
-	public Pattern malform_number 			= Pattern.compile("-?" + digit + "+[.]");
-	public Pattern malform_number_2 		= Pattern.compile("[.]" + digit + "+");
+	public Pattern malform_number 			= Pattern.compile(digit + "+[.]");
 	public Pattern malform_string			= Pattern.compile("\"");
 	public Pattern malform_char 			= Pattern.compile("\'");
 
