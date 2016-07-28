@@ -56,9 +56,11 @@
 19 "well formed string 123" cadeia_de_caracteres
 
 7 10. nro_mal_formado
+7 # simbolo_invalido
 7 @ simbolo_invalido
 11 'jajajajajjajaj!"jajajaj' caractere_mal_formado
 15 12. nro_mal_formado
+16 @ simbolo_invalido
 16 # simbolo_invalido
 18 "1 malformed string" cadeia_mal_formada
 20 ~~COMMENTARY~~ comentario_mal_formado

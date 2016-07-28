@@ -20,18 +20,24 @@
 
 2 "1 malformed" cadeia_mal_formada
 5 12. nro_mal_formado
+5  simbolo_invalido
 5 # simbolo_invalido
 5 @ simbolo_invalido
 6 44. nro_mal_formado
+6  simbolo_invalido
 6 # simbolo_invalido
 6 $ simbolo_invalido
+7  simbolo_invalido
 7 . simbolo_invalido
 8 . simbolo_invalido
+9  simbolo_invalido
 9 . simbolo_invalido
 9 @ simbolo_invalido
 9 # simbolo_invalido
 9 $ simbolo_invalido
+10  simbolo_invalido
 10 . simbolo_invalido
 10 . simbolo_invalido
 11 'tetete' caractere_mal_formado
+13  simbolo_invalido
 13 . simbolo_invalido

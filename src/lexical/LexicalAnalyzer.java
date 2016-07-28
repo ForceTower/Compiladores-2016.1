@@ -188,11 +188,14 @@ public class LexicalAnalyzer{
 							hold = charOnly;
 							validToken = charOnly.isMalformed() ? 0 : 1;
 						} else {
-							Token t = new Token(TokenFactory.LEX_ERROR_INVALID_SYM, c.toString());
+							String prevLexeme = str.substring(0, str.length() - 1);
+							Token t = new Token(TokenFactory.LEX_ERROR_INVALID_SYM, prevLexeme);
+							str = c.toString();
+							//Token t = new Token(TokenFactory.LEX_ERROR_INVALID_SYM, c.toString());
 							invalidate(t, currentLine, position);
 							validToken = -1;
 							hold = null;
-							str = "";
+							//str = "";
 						}
 					}
 				}
