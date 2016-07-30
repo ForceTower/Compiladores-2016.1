@@ -1,0 +1,66 @@
+<- TOKEN // ID: 13	Lexem: inteiro	INFO: Reserved Word ->
+<- TOKEN // ID: 70	Lexem: c	INFO: Identifier ->
+<- TOKEN // ID: 25	Lexem: =	INFO: Attribution ->
+<- TOKEN // ID: 71	Lexem: 90	INFO: Number Constant ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 4	INFO: Number Constant ->
+<- TOKEN // ID: 33	Lexem: ;	INFO: Semicolon ->
+<- TOKEN // ID: 70	Lexem: a	INFO: Identifier ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN_ERR // ID: 140	Lexem: 10.	INFO: Malformed Number	Line: 7	Position: 5 ->
+<- TOKEN_ERR // ID: 143	Lexem: #@	INFO: Unknown Symbol	Line: 7	Position: 7 ->
+<- TOKEN // ID: 71	Lexem: -90	INFO: Number Constant ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 4	INFO: Number Constant ->
+<- TOKEN // ID: 13	Lexem: inteiro	INFO: Reserved Word ->
+<- TOKEN // ID: 70	Lexem: a	INFO: Identifier ->
+<- TOKEN // ID: 25	Lexem: =	INFO: Attribution ->
+<- TOKEN // ID: 70	Lexem: tt	INFO: Identifier ->
+<- TOKEN // ID: 35	Lexem: (	INFO: Left Parenthesis ->
+<- TOKEN // ID: 36	Lexem: )	INFO: Right Parenthesis ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 10	INFO: Number Constant ->
+<- TOKEN // ID: 71	Lexem: -10	INFO: Number Constant ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 4	INFO: Number Constant ->
+<- TOKEN // ID: 20	Lexem: +	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 3	INFO: Number Constant ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 2	INFO: Number Constant ->
+<- TOKEN // ID: 20	Lexem: +	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 1	INFO: Number Constant ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 2	INFO: Number Constant ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 1	INFO: Number Constant ->
+<- TOKEN // ID: 70	Lexem: a	INFO: Identifier ->
+<- TOKEN // ID: 21	Lexem: -	INFO: Arithmetic Symbol ->
+<- TOKEN // ID: 71	Lexem: 4	INFO: Number Constant ->
+<- TOKEN // ID: 0	Lexem: programa	INFO: Reserved Word ->
+<- TOKEN // ID: 71	Lexem: -4	INFO: Number Constant ->
+<- TOKEN // ID: 72	Lexem: 'j'	INFO: Character Constant ->
+<- TOKEN // ID: 72	Lexem: 'a'	INFO: Character Constant ->
+<- TOKEN_ERR // ID: 142	Lexem: 'jajajajajjajaj!"jajajaj'	INFO: Malformed Character	Line: 12	Position: 31 ->
+<- TOKEN // ID: 70	Lexem: kappa	INFO: Identifier ->
+<- TOKEN // ID: 0	Lexem: programa	INFO: Reserved Word ->
+<- TOKEN // ID: 70	Lexem: teste	INFO: Identifier ->
+<- TOKEN // ID: 73	Lexem: "f uehjhdjf123"	INFO: String Constant ->
+<- TOKEN // ID: 70	Lexem: kappa	INFO: Identifier ->
+<- TOKEN // ID: 70	Lexem: pride	INFO: Identifier ->
+<- TOKEN // ID: 72	Lexem: 'a'	INFO: Character Constant ->
+<- TOKEN // ID: 71	Lexem: -123	INFO: Number Constant ->
+<- TOKEN // ID: 71	Lexem: 12.34	INFO: Number Constant ->
+<- TOKEN_ERR // ID: 140	Lexem: 12.	INFO: Malformed Number	Line: 16	Position: 17 ->
+<- TOKEN // ID: 71	Lexem: 1	INFO: Number Constant ->
+<- TOKEN // ID: 70	Lexem: abc	INFO: Identifier ->
+<- TOKEN // ID: 73	Lexem: "teste"	INFO: String Constant ->
+<- TOKEN // ID: 70	Lexem: kappa	INFO: Identifier ->
+<- TOKEN // ID: 72	Lexem: 'd'	INFO: Character Constant ->
+<- TOKEN // ID: 25	Lexem: =	INFO: Attribution ->
+<- TOKEN // ID: 71	Lexem: 31.14	INFO: Number Constant ->
+<- TOKEN_ERR // ID: 143	Lexem: @#	INFO: Unknown Symbol	Line: 17	Position: 27 ->
+<- TOKEN // ID: 70	Lexem: ttt	INFO: Identifier ->
+<- TOKEN // ID: 10	Lexem: faca	INFO: Reserved Word ->
+<- TOKEN // ID: 4	Lexem: inicio	INFO: Reserved Word ->
+<- TOKEN_ERR // ID: 141	Lexem: "1 malformed string"	INFO: Malformed String	Line: 19	Position: 20 ->
+<- TOKEN // ID: 73	Lexem: "well formed string 123"	INFO: String Constant ->
