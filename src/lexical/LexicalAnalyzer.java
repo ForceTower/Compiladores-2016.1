@@ -111,7 +111,6 @@ public class LexicalAnalyzer{
 							line = reader.readLine();
 							
 							if (line == null) {
-								currentLine--;
 								Debug.println("-> Block Commentary doesn't have an end");
 								Token inv_eof = new Token(TokenFactory.LEX_ERROR_COMMENT_END, "~~COMMENTARY~~", currentLine, position);
 								invalidate(inv_eof, currentLine, position);
