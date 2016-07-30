@@ -278,10 +278,15 @@ public class LexicalAnalyzer{
 		for (Token t : allValidTokens)
 			fileTokenWriter(t);
 		
-		writer.newLine();
-		
-		for (Token t : allInvalidTokens)
-			fileTokenWriter(t);
+		if (allInvalidTokens.size() == 0) {
+			fileStringWriter("Sucesso!");
+			Debug.println("Sucesso!");
+		} else {
+			writer.newLine();
+			
+			for (Token t : allInvalidTokens)
+				fileTokenWriter(t);
+		}
 	}
 
 	private void validate(Token t, int currentLine, int position) throws IOException {
@@ -338,6 +343,7 @@ public class LexicalAnalyzer{
 
 	public void fileStringWriter(String string) throws IOException {
 		writer.write(string);
+		writer.newLine();
 		writer.flush();
 	}
 
