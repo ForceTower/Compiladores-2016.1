@@ -84,7 +84,21 @@ public class LexicalAnalyzer{
 					
 					Debug.println("Comment started. Line: " + currentLine + ". Position: " + position);
 					str = "";
-					String subline = line.substring(line.indexOf('{'));
+					
+					boolean comment = false;
+					while (position < lineLen) {
+						if (line.charAt(position) == '}') {
+							comment = true;
+							Debug.println("Comment finished. Line: " + currentLine);
+							position++;
+							break;
+						}
+						position++;
+					}
+					
+					if (comment)
+						continue;
+					/*String subline = line.substring(line.indexOf('{'));
 					
 					if (subline.contains("}")) {
 						position = subline.indexOf('}') + 1;
@@ -92,7 +106,7 @@ public class LexicalAnalyzer{
 						lineLen = subline.length();
 						Debug.println("Comment finished. Line: " + currentLine);
 						continue;
-					} else {
+					} */else {
 						while (true) {
 							line = reader.readLine();
 							
