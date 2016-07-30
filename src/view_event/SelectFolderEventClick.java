@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import view.Window;
+import view_gui.MainWindowGUI;
 
 public class SelectFolderEventClick implements ActionListener{
 
@@ -17,7 +17,7 @@ public class SelectFolderEventClick implements ActionListener{
 		JFileChooser f_chooser = new JFileChooser();
 		f_chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		f_chooser.setDialogTitle("Select a Folder");
-		int ret_val = f_chooser.showOpenDialog(Window.INSTANCE);
+		int ret_val = f_chooser.showOpenDialog(MainWindowGUI.INSTANCE);
 		
 		if (ret_val == JFileChooser.APPROVE_OPTION) {
 			for (File file : f_chooser.getSelectedFile().listFiles())
@@ -33,7 +33,7 @@ public class SelectFolderEventClick implements ActionListener{
 			try {
 				result.createNewFile();
 			} catch (IOException ex) {
-				JOptionPane.showMessageDialog(Window.INSTANCE, "Can't create the result file: " + result.getName() + "\nMessage: " + ex.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(MainWindowGUI.INSTANCE, "Can't create the result file: " + result.getName() + "\nMessage: " + ex.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 		}

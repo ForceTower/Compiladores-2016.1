@@ -1,4 +1,4 @@
-package view;
+package view_gui;
 
 import java.awt.BorderLayout;
 import java.io.BufferedWriter;
@@ -65,7 +65,7 @@ public class CodeEditInterface extends JDialog {
 			JFileChooser chooser = new JFileChooser();
 			chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			chooser.setDialogTitle("Save File");
-			int sel = chooser.showSaveDialog(Window.INSTANCE);
+			int sel = chooser.showSaveDialog(MainWindowGUI.INSTANCE);
 			if (sel == JFileChooser.APPROVE_OPTION)
 				saving_file = chooser.getSelectedFile();
 			else

@@ -1,4 +1,4 @@
-package view;
+package view_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -18,11 +18,11 @@ import view_event.CreateNewFileEventClick;
 import view_event.SelectFileEventClick;
 import view_event.SelectFolderEventClick;
 
-public class Window extends JFrame{
+public class MainWindowGUI extends JFrame{
 	private static final long serialVersionUID = -3739008754324139579L;
-	public static Window INSTANCE;
+	public static MainWindowGUI INSTANCE;
 	
-	public Window() {
+	public MainWindowGUI() {
 		super();
 		INSTANCE = this;
 		lookAndFeel("Windows");
@@ -90,18 +90,18 @@ public class Window extends JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainWindowGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainWindowGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainWindowGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainWindowGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 	}
 
 	public static void main(String[] args) {
-		new Window();
+		new MainWindowGUI();
 	}
 
 }

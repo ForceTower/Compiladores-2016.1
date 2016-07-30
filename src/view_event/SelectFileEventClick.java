@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import controller.Compiller;
 import exception.IOErrorException;
 import exception.LexicalErrorException;
-import view.LexResultInterface;
-import view.Window;
+import view_gui.LexResultInterface;
+import view_gui.MainWindowGUI;
 
 public class SelectFileEventClick implements ActionListener{
 
@@ -21,7 +21,7 @@ public class SelectFileEventClick implements ActionListener{
 		JFileChooser f_chooser = new JFileChooser();
 		f_chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		f_chooser.setDialogTitle("Select a File");
-		int ret_val = f_chooser.showOpenDialog(Window.INSTANCE);
+		int ret_val = f_chooser.showOpenDialog(MainWindowGUI.INSTANCE);
 		
 		if (ret_val == JFileChooser.APPROVE_OPTION) {
 			File arq = f_chooser.getSelectedFile();
@@ -30,7 +30,7 @@ public class SelectFileEventClick implements ActionListener{
 				try {
 					result.createNewFile();
 				} catch (IOException ex) {
-					JOptionPane.showMessageDialog(Window.INSTANCE, "Can't create the result file: " + result.getName() + "\nMessage: " + ex.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(MainWindowGUI.INSTANCE, "Can't create the result file: " + result.getName() + "\nMessage: " + ex.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
@@ -46,7 +46,7 @@ public class SelectFileEventClick implements ActionListener{
 					compiler.startLexical(arq, result);
 					new LexResultInterface(result);
 				} catch (IOErrorException | IOException | LexicalErrorException e) {
-					JOptionPane.showMessageDialog(Window.INSTANCE, "Error in file: " + arq.getName() + "\nMessage: " + e.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(MainWindowGUI.INSTANCE, "Error in file: " + arq.getName() + "\nMessage: " + e.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
 					e.printStackTrace();
 				}
 			}

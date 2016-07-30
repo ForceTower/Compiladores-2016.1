@@ -1,4 +1,4 @@
-package starters;
+package view_command_line;
 
 import java.io.IOException;
 

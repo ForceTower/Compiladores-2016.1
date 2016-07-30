@@ -3,7 +3,7 @@ package view_event;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.CodeEditInterface;
+import view_gui.CodeEditInterface;
 
 public class CreateNewFileEventClick implements ActionListener{
 
