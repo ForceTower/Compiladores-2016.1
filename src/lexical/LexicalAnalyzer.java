@@ -219,6 +219,8 @@ public class LexicalAnalyzer{
 				
 				
 				if (str.equals("'") || str.equals("\"")) {//We begin a char or string
+					hold = null;
+					validToken = -1;
 					int convType = str.equals("'") ? 0 : 1;
 					boolean broke = false;
 					while (position < lineLen) {
