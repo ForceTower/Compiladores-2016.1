@@ -41,6 +41,6 @@ inicio
 		fim
 	fim
 
-	caractere opa = 'opa';
+	caractere opa = 'o';
 	opa = 'o';
 fim

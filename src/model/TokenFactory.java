@@ -2,6 +2,11 @@ package model;
 
 import debug.Debug;
 
+/**
+ * 
+ * @author João Paulo e Marcelo
+ *
+ */
 public class TokenFactory implements TokenConstants{
 	private static boolean init = false;
 	

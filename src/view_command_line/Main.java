@@ -4,7 +4,11 @@ import java.io.IOException;
 
 import controller.Compiller;
 import exception.IOErrorException;
-
+/**
+ * 
+ * @author João Paulo e Marcelo
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) throws IOException {

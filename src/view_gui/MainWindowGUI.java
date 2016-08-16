@@ -18,6 +18,11 @@ import view_event.CreateNewFileEventClick;
 import view_event.SelectFileEventClick;
 import view_event.SelectFolderEventClick;
 
+/**
+ * 
+ * @author João Paulo e Marcelo
+ *
+ */
 public class MainWindowGUI extends JFrame{
 	private static final long serialVersionUID = -3739008754324139579L;
 	public static MainWindowGUI INSTANCE;
