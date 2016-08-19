@@ -33,13 +33,16 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	}
 	
 	public void prepareTable() {
+		//INICIO GRAMATICA KAPPA
 		syntacticTable[START][getTokenId("const")]		= INICIO_CONST_K_FUNC;
 		syntacticTable[START][getTokenId("var")] 		= INICIO_VAR_FUNC;
 		syntacticTable[START][getTokenId("funcao")] 	= INICIO_FUNC;
 		syntacticTable[START][getTokenId("programa")] 	= INICIO_FUNC;
 		
-		syntacticTable[DECL_CONST][getTokenId("const")] = DECL_CONST;
-		
+		//INICIO GRAMATICA DECL_CONST
+		fillRow(DECL_CONST, DECL_CONST);
+		//syntacticTable[DECL_CONST][getTokenId("const")] = DECL_CONST;
+		//fillRow(DECL_CONST, EPSILON);
 		syntacticTable[DECL_CONST_I][getTokenId(",")] 	= DECL_CONST_I;
 		syntacticTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
@@ -51,18 +54,31 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[DECL_CONST_II][getTokenId("fim")] 	= EPSILON;
 		
 		fillRow(DECL_CONST_CONTINUO, DECL_CONST_CONTINUO);
-		
 		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= _CONST_VAR_FUNC;
 		
+		
+		//INICIO GRAMATICA DECL_VAR
+		fillRow(DECL_VAR, DECL_VAR);
+		fillRow(DECL_VAR_CONTINUO, DECL_VAR_CONTINUO);
+		
+		fillRow(DECL_VAR_I, EPSILON);
+		syntacticTable[DECL_VAR_I][getTokenId(",")] = DECL_VAR_I;
+		fillRow(DECL_VAR_II, EPSILON);
+		syntacticTable[DECL_VAR_II][getTokenId("inteiro")] 	= DECL_VAR_II;//Correto é tipo
+		syntacticTable[DECL_VAR_II][getTokenId("real")] 	= DECL_VAR_II;
+		syntacticTable[DECL_VAR_II][getTokenId("caractere")] 	= DECL_VAR_II;
+		syntacticTable[DECL_VAR_II][getTokenId("cadeia")] 	= DECL_VAR_II;
+		syntacticTable[DECL_VAR_II][getTokenId("booleano")] 	= DECL_VAR_II;
+		
+		
+		//INICIO DA GRAMATICA DE VALOR
 		fillRow(VALOR, VALOR);
 		
 		fillRow(EXPRESSAO_CONJUNTA, EXPRESSAO_CONJUNTA);
-		
 		fillRow(EXPRESSAO_CONJUNTA_I, EPSILON);
 		syntacticTable[EXPRESSAO_CONJUNTA_I][getTokenId("ou")] = EXPRESSAO_CONJUNTA_I;
 		
 		fillRow(EXPRESSAO_RELACIONAL, EXPRESSAO_RELACIONAL);
-		
 		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
 		syntacticTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
 		
@@ -82,6 +98,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(NOT_OPC, EPSILON);
 		syntacticTable[NOT_OPC][getTokenId("nao")] = NOT_OPC;
 		
+		
+		//INICIO DA GRAMATICA DE EXPR_SIMPLES
 		fillRow(EXPR_SIMPLES, EXPR_SIMPLES);
 		fillRow(OPERADOR_MAIS_MENOS, EPSILON);
 		syntacticTable[OPERADOR_MAIS_MENOS][getTokenId("+")] = PLUS_CONSUME;
@@ -127,6 +145,9 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(PASSA_PARAM_I, EPSILON);
 		syntacticTable[PASSA_PARAM_I][getTokenId(",")] = PASSA_PARAM_I;
 		
+		fillRow(ARRAY, EPSILON);
+		syntacticTable[ARRAY][getTokenId("<")] = ARRAY;
+		
 		fillRow(ARRAY_I, EPSILON);
 		syntacticTable[ARRAY_I][getTokenId(",")] = ARRAY_I;
 		
@@ -136,8 +157,9 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[TYPE][getTokenId("cadeia")] 		= STRING_CONSUME;
 		syntacticTable[TYPE][getTokenId("booleano")] 	= BOOL_CONSUME;
 		
-		syntacticTable[INICIO_CONST_K_FUNC][getTokenId("funcao")]	= DECL_FUNC;
-		syntacticTable[INICIO_CONST_K_FUNC][getTokenId("var")] 		= DECL_VAR;
+		//fillRow(DECL_CONST_VAR_DERIVA, EPSILON);
+		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("funcao")]	= DECL_FUNC;
+		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= INICIO_VAR_FUNC;
 	}
 	
 	public void fillRow(int row, int value) {
@@ -189,8 +211,14 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			_Decl_Const();
 		else if (production == DECL_CONST_CONTINUO)
 			_Decl_Const_Continuo();
-		else if (production == DECL_CONST_VAR_DERIVA)
-			_Decl_Const_Var_Deriva();
+		else if (production == DECL_VAR)
+			_Decl_Var();
+		else if (production == DECL_VAR_CONTINUO)
+			_Decl_Var_Continuo();
+		else if (production == DECL_VAR_I)
+			_Decl_Var_I();
+		else if (production == DECL_VAR_II)
+			_Decl_Var_II();
 		else if (production == _CONST_VAR_FUNC)
 			_Const_Var_Func();
 		else if (production == DECL_CONST_I)
@@ -221,6 +249,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			_Passa_Param();
 		else if (production == PASSA_PARAM_I)
 			_Passa_Param_I();
+		else if (production == ARRAY)
+			_Array();
 		else if (production == ARRAY_I)
 			_Array_I();
 		else if (production == FATOR_I)
@@ -312,11 +342,6 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(TYPE); //TODO Correto é tipo, mas para testes, será int
 	}
 	
-	private void _Decl_Const_Var_Deriva() {
-		Debug.println("Not Implemented Yet");
-		System.exit(0);
-	}
-	
 	private void _Decl_Const_I() {
 		stack.push(DECL_CONST_I);
 		stack.push(VALOR); //TODO correto é valor, para testes, numero 
@@ -326,13 +351,13 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	}
 	
 	private void _Decl_Const_II() {
-		stack.push(DECL_CONST_II); //TODO Somente para testes
+		stack.push(DECL_CONST_II);
 		stack.push(getTokenId(";"));
-		stack.push(DECL_CONST_I); //TODO Somente para testes
-		stack.push(VALOR); //TODO correto é valor, para testes, numero 
+		stack.push(DECL_CONST_I);
+		stack.push(VALOR);
 		stack.push(getTokenId("="));
 		stack.push(TokenFactory.IDENT);
-		stack.push(TYPE); //TODO Correto é tipo, mas para testes, será int
+		stack.push(TYPE);
 	}
 	
 	private void _Const_Var_Func() {
@@ -341,11 +366,39 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(DECL_VAR);
 	}
 	
-	/*private void _Valor() {
-		stack.push(EXP_RELACIONAL_BOOLEANA);
-	}*/
+	private void _Decl_Var() {
+		stack.push(getTokenId("fim"));
+		stack.push(DECL_VAR_CONTINUO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId("var"));
+	}
 	
-	private void _Valor() { //Simplification of state Value ::= Expr_Rel_Booleana
+	private void _Decl_Var_Continuo() {
+		stack.push(DECL_VAR_II);
+		stack.push(getTokenId(";"));
+		stack.push(DECL_VAR_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY);
+		stack.push(TYPE);
+	}
+	
+	private void _Decl_Var_I() {
+		stack.push(DECL_VAR_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY);
+		stack.push(getTokenId(","));
+	}
+	
+	private void _Decl_Var_II() {
+		stack.push(DECL_VAR_II);
+		stack.push(getTokenId(";"));
+		stack.push(DECL_VAR_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY);
+		stack.push(TYPE);
+	}
+	
+	private void _Valor() {
 		stack.push(EXPRESSAO_CONJUNTA_I);
 		stack.push(EXPRESSAO_CONJUNTA);
 	}
@@ -425,6 +478,15 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	
 	private void __Array_Identificador() {
 		stack.push(TokenFactory.IDENT);
+		stack.push(getTokenId(">"));
+		stack.push(getTokenId(">"));
+		stack.push(ARRAY_I);
+		stack.push(EXPR_SIMPLES);
+		stack.push(getTokenId("<"));
+		stack.push(getTokenId("<"));
+	}
+	
+	private void _Array() {
 		stack.push(getTokenId(">"));
 		stack.push(getTokenId(">"));
 		stack.push(ARRAY_I);
