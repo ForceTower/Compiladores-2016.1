@@ -9,10 +9,12 @@ import exception.IOErrorException;
 import exception.LexicalErrorException;
 import lexical.LexicalAnalyzer;
 import model.Token;
+import syntactic.SyntacticAnalizer;
 
 public class Compiller {
 	private File directory;
 	private LexicalAnalyzer lexicalAnalyzer;
+	private SyntacticAnalizer syntacticAnalyzer;
 	
 	public Compiller () {
 		
@@ -58,6 +60,7 @@ public class Compiller {
 		try {
 			result.createNewFile();
 			startLexical(arq, result);
+			startSyntactic(lexicalAnalyzer.allValidTokens);
 		} catch (IOErrorException | IOException | LexicalErrorException e) {
 			e.printStackTrace();
 		}
@@ -67,6 +70,15 @@ public class Compiller {
 		lexicalAnalyzer = new LexicalAnalyzer(arq, result);
 		lexicalAnalyzer.startAnalysis();
 		return lexicalAnalyzer.getAllTokens();
+	}
+	
+	public void startSyntactic(List<Token> allValidTokens) {
+		if (lexicalAnalyzer.lexicalErrors == 0) {
+			syntacticAnalyzer = new SyntacticAnalizer(allValidTokens);
+			syntacticAnalyzer.startAnalysis();
+		} else {
+			Debug.println("Has lex erros");
+		}
 	}
 
 }

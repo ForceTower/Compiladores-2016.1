@@ -1,1 +1,6 @@
 /lexical/
+/syntactic/
+/syntactic_model/
+/syntactic_util/
+/controller/
+/view_command_line/

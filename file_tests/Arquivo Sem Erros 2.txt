@@ -1,3 +1,8 @@
+const
+inicio
+	inteiro a = 6;
+fim
+
 programa
 inicio
 	escreva("Hello World");
