@@ -1,6 +1,7 @@
 const
 inicio
-    inteiro a = 2;
+    inteiro a = 2, a = 4, b = 5;
+    inteiro kappa = 2;
 fim
 
 var

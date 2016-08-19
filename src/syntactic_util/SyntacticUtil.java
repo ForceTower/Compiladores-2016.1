@@ -17,6 +17,9 @@ public class SyntacticUtil {
 				DECL_MAIN = 210,
 				DECL_CONST_CONTINUO = 211,
 				_CONST_VAR_FUNC = 212,
+				DECL_CONST_I = 213,
+				DECL_CONST_II = 214,
+				EPSILON = 399,
 				END = 400;
 	
 	public static int getTokenId(String lexeme) {
