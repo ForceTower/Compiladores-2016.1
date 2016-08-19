@@ -3,7 +3,7 @@
 3 inteiro palavra_reservada
 3 a id
 3 = operador
-3 2 nro
+3 a id
 3 , delimitador
 3 a id
 3 = operador
