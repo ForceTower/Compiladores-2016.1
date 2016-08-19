@@ -73,12 +73,12 @@ public class Compiller {
 	}
 	
 	public void startSyntactic(List<Token> allValidTokens) {
-		if (lexicalAnalyzer.lexicalErrors == 0) {
+		//if (lexicalAnalyzer.lexicalErrors == 0) {
 			syntacticAnalyzer = new SyntacticAnalizer(allValidTokens);
 			syntacticAnalyzer.startAnalysis();
-		} else {
-			Debug.println("Has lex erros");
-		}
+		//} else {
+			//Debug.println("Has lex erros");
+		//}
 	}
 
 }

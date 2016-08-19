@@ -58,6 +58,12 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		
 		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= _CONST_VAR_FUNC;
 		
+		syntacticTable[TYPE][getTokenId("inteiro")] 	= INTEGER_CONSUME;
+		syntacticTable[TYPE][getTokenId("real")] 		= FLOAT_CONSUME;
+		syntacticTable[TYPE][getTokenId("caractere")]	= CHAR_CONSUME;
+		syntacticTable[TYPE][getTokenId("cadeia")] 		= STRING_CONSUME;
+		syntacticTable[TYPE][getTokenId("booleano")] 	= BOOL_CONSUME;
+		
 		syntacticTable[INICIO_CONST_K_FUNC][getTokenId("funcao")]	= DECL_FUNC;
 		syntacticTable[INICIO_CONST_K_FUNC][getTokenId("var")] 		= DECL_VAR;
 	}
@@ -115,8 +121,18 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		else if (production == DECL_CONST_II)
 			_Decl_Const_II();
 		
-		if (production == EPSILON)
+		else if (production == EPSILON)
 			_Epsilon();
+		else if (production == INTEGER_CONSUME)
+			__Integer_Consume();
+		else if (production == FLOAT_CONSUME)
+			__Float_Consume();
+		else if (production == CHAR_CONSUME)
+			__Char_Consume();
+		else if (production == STRING_CONSUME)
+			__String_Consume();
+		else if (production == BOOL_CONSUME)
+			__Bool_Consume();
 		
 		return true;
 	}
@@ -151,7 +167,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(TokenFactory.NUM_CONST); //TODO correto é valor, para testes, numero 
 		stack.push(getTokenId("="));
 		stack.push(TokenFactory.IDENT);
-		stack.push(getTokenId("inteiro")); //TODO Correto é tipo, mas para testes, será int
+		stack.push(TYPE); //TODO Correto é tipo, mas para testes, será int
 	}
 	
 	private void _Decl_Const_Var_Deriva() {
@@ -173,13 +189,34 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(TokenFactory.NUM_CONST); //TODO correto é valor, para testes, numero 
 		stack.push(getTokenId("="));
 		stack.push(TokenFactory.IDENT);
-		stack.push(getTokenId("inteiro")); //TODO Correto é tipo, mas para testes, será int
+		stack.push(TYPE); //TODO Correto é tipo, mas para testes, será int
 	}
 	
 	private void _Const_Var_Func() {
 		stack.push(DECL_MAIN);
 		stack.push(DECL_FUNC);
 		stack.push(DECL_VAR);
+	}
+	
+	
+	private void __Integer_Consume() {
+		stack.push(getTokenId("inteiro"));
+	}
+	
+	private void __Float_Consume() {
+		stack.push(getTokenId("real"));
+	}
+	
+	private void __Char_Consume() {
+		stack.push(getTokenId("caractere"));
+	}
+	
+	private void __String_Consume() {
+		stack.push(getTokenId("cadeia"));
+	}
+	
+	private void __Bool_Consume() {
+		stack.push(getTokenId("booleano"));
 	}
 	
 	private void _Epsilon() {

@@ -1,7 +1,8 @@
 const
 inicio
     inteiro a = 2, a = 4, b = 5;
-    inteiro kappa = 2;
+    real kappa = 2;
+    cadeia infinita = 34;
 fim
 
 var

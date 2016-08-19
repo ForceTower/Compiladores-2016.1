@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public interface TokenConstants {
 	public List<String> reserved_words = new ArrayList<>();
 	public HashMap<Integer, String> meaning_messages = new HashMap<>();
+	public HashMap<String, Integer> types = new HashMap<>();
 	
 	public Pattern digit 		= Pattern.compile("[0-9]");
 	public Pattern letter 		= Pattern.compile("[a-zA-Z]");

@@ -35,7 +35,10 @@ public class TokenFactory implements TokenConstants{
 			k = new Token(LEX_ERROR_MALFORM_STR, lexem, true);
 		else if(lexem.matches(malform_char.pattern()))
 			k = new Token(LEX_ERROR_MALFORM_CHR,lexem,true);
-			
+		
+		if (k != null && k.getId() < 70) 
+			k.setType(types.get(k.getLexem()));
+		
 		return k;
 	}
 
@@ -53,31 +56,31 @@ public class TokenFactory implements TokenConstants{
 		addReservedWord("faca", "palavra_reservada", 0);
 		addReservedWord("leia", "palavra_reservada", 0);
 		addReservedWord("escreva", "palavra_reservada", 0);
-		addReservedWord("inteiro", "palavra_reservada", 0);
-		addReservedWord("real", "palavra_reservada", 0);
-		addReservedWord("booleano", "palavra_reservada", 0);
+		addReservedWord("inteiro", "palavra_reservada", 1);
+		addReservedWord("real", "palavra_reservada", 1);
+		addReservedWord("booleano", "palavra_reservada", 1);
 		addReservedWord("verdadeiro", "palavra_reservada", 0);
 		addReservedWord("falso", "palavra_reservada", 0);
 		addReservedWord("cadeia", "palavra_reservada", 0);
 		addReservedWord("caractere", "palavra_reservada", 0);
 		
-		addReservedWord("+", "operador", 1);
-		addReservedWord("-", "operador", 1);
-		addReservedWord("*", "operador", 1);
-		addReservedWord("/", "operador", 1);
-		addReservedWord("<>", "operador", 2);
-		addReservedWord("=", "operador", 2);
-		addReservedWord("<", "operador", 2);
-		addReservedWord("<=", "operador", 2);
-		addReservedWord(">", "operador", 2);
-		addReservedWord(">=", "operador", 2);
-		addReservedWord("nao", "operador", 3);
-		addReservedWord("e", "operador", 3);
-		addReservedWord("ou", "operador", 3);
-		addReservedWord(";", "delimitador", 4);
-		addReservedWord(",", "delimitador", 4);
-		addReservedWord("(", "delimitador", 4);
-		addReservedWord(")", "delimitador", 4);
+		addReservedWord("+", "operador", 2);
+		addReservedWord("-", "operador", 2);
+		addReservedWord("*", "operador", 2);
+		addReservedWord("/", "operador", 2);
+		addReservedWord("<>", "operador", 3);
+		addReservedWord("=", "operador", 3);
+		addReservedWord("<", "operador", 3);
+		addReservedWord("<=", "operador", 3);
+		addReservedWord(">", "operador", 3);
+		addReservedWord(">=", "operador", 3);
+		addReservedWord("nao", "operador", 4);
+		addReservedWord("e", "operador", 4);
+		addReservedWord("ou", "operador", 4);
+		addReservedWord(";", "delimitador", 5);
+		addReservedWord(",", "delimitador", 5);
+		addReservedWord("(", "delimitador", 5);
+		addReservedWord(")", "delimitador", 5);
 		
 		addMeaning(IDENT, "id");
 		addMeaning(NUM_CONST, "nro");
@@ -96,11 +99,13 @@ public class TokenFactory implements TokenConstants{
 
 	private static void addMeaning(int i, String string) {
 		meaning_messages.put(i, string);
+		types.put(string, i);
 	}
 
 	private static void addReservedWord(String string, String meaning_message, int type) {
 		reserved_words.add(string);
 		meaning_messages.put(reserved_words.size() - 1, meaning_message);
+		types.put(string, type);
 	}
 
 }

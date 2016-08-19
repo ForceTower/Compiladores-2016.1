@@ -19,12 +19,26 @@ public class SyntacticUtil {
 				_CONST_VAR_FUNC = 212,
 				DECL_CONST_I = 213,
 				DECL_CONST_II = 214,
+				INTEGER_CONSUME = 393,
+				FLOAT_CONSUME = 394,
+				CHAR_CONSUME = 395,
+				STRING_CONSUME = 396,
+				BOOL_CONSUME = 397,
+				TYPE = 398,
 				EPSILON = 399,
 				END = 400;
 	
 	public static int getTokenId(String lexeme) {
 		Token t = TokenFactory.findToken(lexeme);
 		return t != null ? t.getId() : -1;
+	}
+	
+	public static int getTokenType(String param) {
+		if (param.equalsIgnoreCase("primitive_types"))
+			return 1;
+		
+		return -1;
+		
 	}
 	
 
