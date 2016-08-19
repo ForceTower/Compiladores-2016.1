@@ -51,31 +51,33 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[DECL_CONST_II][getTokenId("fim")] 	= EPSILON;
 		
 		fillRow(DECL_CONST_CONTINUO, DECL_CONST_CONTINUO);
-		//syntacticTable[DECL_CONST_CONTINUO][getTokenId("inteiro")] 	= DECL_CONST_CONTINUO; //Correto é tipo
-		//syntacticTable[DECL_CONST_CONTINUO][getTokenId("real")] 	= DECL_CONST_CONTINUO;
-		//syntacticTable[DECL_CONST_CONTINUO][getTokenId("caractere")] 	= DECL_CONST_CONTINUO;
-		//syntacticTable[DECL_CONST_CONTINUO][getTokenId("cadeia")] 	= DECL_CONST_CONTINUO;
-		//syntacticTable[DECL_CONST_CONTINUO][getTokenId("booleano")] 	= DECL_CONST_CONTINUO;
 		
 		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= _CONST_VAR_FUNC;
 		
-		//nao, '-', '(', '+', '<', Cadeia, Caractere, False, Identificador, Num, True
 		fillRow(VALOR, VALOR);
-		//syntacticTable[VALOR][getTokenId("+")] = VALOR;
-		//syntacticTable[VALOR][getTokenId("-")] = VALOR;
-		//syntacticTable[VALOR][getTokenId("(")] = VALOR;
-		//syntacticTable[VALOR][getTokenId("nao")] = VALOR;
-		//syntacticTable[VALOR][getTokenId("<")] = VALOR;
-		//syntacticTable[VALOR][getTokenId("verdadeiro")] = VALOR;
-		//syntacticTable[VALOR][getTokenId("falso")] = VALOR;
-		//syntacticTable[VALOR][TokenFactory.IDENT] = VALOR;
-		//syntacticTable[VALOR][TokenFactory.CHAR_CONST] = VALOR;
-		//syntacticTable[VALOR][TokenFactory.NUM_CONST] = VALOR;
-		//syntacticTable[VALOR][TokenFactory.STRING_CONST] = VALOR;
 		
 		fillRow(EXPRESSAO_CONJUNTA, EXPRESSAO_CONJUNTA);
 		
+		fillRow(EXPRESSAO_CONJUNTA_I, EPSILON);
+		syntacticTable[EXPRESSAO_CONJUNTA_I][getTokenId("ou")] = EXPRESSAO_CONJUNTA_I;
+		
 		fillRow(EXPRESSAO_RELACIONAL, EXPRESSAO_RELACIONAL);
+		
+		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
+		syntacticTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
+		
+		fillRow(OPERAR_RELACIONALMENTE, EPSILON);
+		syntacticTable[OPERAR_RELACIONALMENTE][getTokenId(">")] = OPERAR_RELACIONALMENTE;
+		syntacticTable[OPERAR_RELACIONALMENTE][getTokenId(">=")] = OPERAR_RELACIONALMENTE;
+		syntacticTable[OPERAR_RELACIONALMENTE][getTokenId("<")] = OPERAR_RELACIONALMENTE;
+		syntacticTable[OPERAR_RELACIONALMENTE][getTokenId("<=")] = OPERAR_RELACIONALMENTE;
+		syntacticTable[OPERAR_RELACIONALMENTE][getTokenId("<>")] = OPERAR_RELACIONALMENTE;
+		
+		syntacticTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId(">")] = CONSUME_GT;
+		syntacticTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId(">=")] = CONSUME_GE;
+		syntacticTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId("<")] = CONSUME_LT;
+		syntacticTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId("<=")] = CONSUME_LE;
+		syntacticTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId("<>")] = CONSUME_DIF;
 		
 		fillRow(NOT_OPC, EPSILON);
 		syntacticTable[NOT_OPC][getTokenId("nao")] = NOT_OPC;
@@ -87,6 +89,10 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		
 		fillRow(TERMO, TERMO);
 		
+		fillRow(TERMO_I, EPSILON);
+		syntacticTable[TERMO_I][getTokenId("+")] = TERMO_I;
+		syntacticTable[TERMO_I][getTokenId("-")] = TERMO_I;
+		
 		syntacticTable[FATOR][TokenFactory.IDENT] 	= IDENTIFICADOR_FUNCAO;
 		syntacticTable[FATOR][getTokenId("<")] 		= ARRAY_IDENTIFICADOR;
 		syntacticTable[FATOR][TokenFactory.NUM_CONST] = CONSUME_NUM_CONST;
@@ -96,8 +102,33 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[FATOR][TokenFactory.STRING_CONST] = CONSUME_STRING_CONST;
 		syntacticTable[FATOR][getTokenId("(")] = PAR_VALOR_PAR; 
 		
+		fillRow(FATOR_I, EPSILON);
+		syntacticTable[FATOR_I][getTokenId("*")] = FATOR_I;
+		syntacticTable[FATOR_I][getTokenId("/")] = FATOR_I;
+		syntacticTable[FATOR_I_MD][getTokenId("*")] = CONSUME_MULT;
+		syntacticTable[FATOR_I_MD][getTokenId("/")] = CONSUME_DIV;
+		
 		fillRow(POSSIBLE_FUNC, EPSILON);
 		syntacticTable[POSSIBLE_FUNC][getTokenId("(")] = POSSIBLE_FUNC;
+		
+		fillRow(PASSA_PARAM, EPSILON);
+		syntacticTable[PASSA_PARAM][getTokenId("+")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][getTokenId("-")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][getTokenId("(")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][getTokenId("nao")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][getTokenId("<")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][getTokenId("verdadeiro")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][getTokenId("falso")] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][TokenFactory.IDENT] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][TokenFactory.CHAR_CONST] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][TokenFactory.NUM_CONST] = PASSA_PARAM;
+		syntacticTable[PASSA_PARAM][TokenFactory.STRING_CONST] = PASSA_PARAM;
+		
+		fillRow(PASSA_PARAM_I, EPSILON);
+		syntacticTable[PASSA_PARAM_I][getTokenId(",")] = PASSA_PARAM_I;
+		
+		fillRow(ARRAY_I, EPSILON);
+		syntacticTable[ARRAY_I][getTokenId(",")] = ARRAY_I;
 		
 		syntacticTable[TYPE][getTokenId("inteiro")] 	= INTEGER_CONSUME;
 		syntacticTable[TYPE][getTokenId("real")] 		= FLOAT_CONSUME;
@@ -130,7 +161,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 				token = currentToken();
 			} else {
 				int production = syntacticTable[stack.peek()][token.getId()];
-				Debug.println("Shift-> Generates production: " + production);
+				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
 					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
@@ -186,6 +217,22 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			__Par_Valor_Par();
 		else if (production == POSSIBLE_FUNC)
 			_Possible_Func();
+		else if (production == PASSA_PARAM)
+			_Passa_Param();
+		else if (production == PASSA_PARAM_I)
+			_Passa_Param_I();
+		else if (production == ARRAY_I)
+			_Array_I();
+		else if (production == FATOR_I)
+			_Fator_I();
+		else if (production == TERMO_I)
+			_Termo_I();
+		else if (production == OPERAR_RELACIONALMENTE)
+			_Operar_Relacionalmente();
+		else if (production == EXPRESSAO_RELACIONAL_I)
+			_Expressao_Relacional_I();
+		else if (production == EXPRESSAO_CONJUNTA_I)
+			_Expressao_Conjunta_I();
 		
 		
 		else if (production == EPSILON)
@@ -214,6 +261,20 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			__True_Consume();
 		else if (production == CONSUME_FALSE)
 			__False_Consume();
+		else if (production == CONSUME_MULT)
+			__Consume_Mult();
+		else if (production == CONSUME_DIV)
+			__Consume_Div();
+		else if (production == CONSUME_GT)
+			__Consume_GreaterThan();
+		else if (production == CONSUME_GE)
+			__Consume_GreaterEquals();
+		else if (production == CONSUME_LT)
+			__Consume_LowerThan();
+		else if (production == CONSUME_LE)
+			__Consume_LowerEquals();
+		else if (production == CONSUME_DIF)
+			__Consume_Different();
 		
 		return true;
 	}
@@ -294,10 +355,28 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(EXPRESSAO_RELACIONAL);
 	}
 	
+	private void _Expressao_Conjunta_I() {
+		stack.push(EXPRESSAO_CONJUNTA_I);
+		stack.push(EXPRESSAO_CONJUNTA);
+		stack.push(getTokenId("ou"));
+	}
+	
 	private void _Expressao_Relacional() {
 		stack.push(OPERAR_RELACIONALMENTE);
 		stack.push(EXPR_SIMPLES);
 		stack.push(NOT_OPC);
+	}
+	
+	private void _Expressao_Relacional_I() {
+		stack.push(EXPRESSAO_RELACIONAL_I);
+		stack.push(EXPRESSAO_RELACIONAL);
+		stack.push(getTokenId("e"));
+	}
+	
+	private void _Operar_Relacionalmente() {
+		stack.push(EXPR_SIMPLES);
+		stack.push(NOT_OPC);
+		stack.push(OPERAR_RELACIONALMENTE_CONSUME);
 	}
 	
 	private void _Not_Opc() {
@@ -316,6 +395,12 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(FATOR);
 	}
 	
+	private void _Termo_I() {
+		stack.push(TERMO_I);
+		stack.push(TERMO);
+		stack.push(OPERADOR_MAIS_MENOS);
+	}
+	
 	private void __Identificador_Funcao() {
 		stack.push(POSSIBLE_FUNC);
 		stack.push(TokenFactory.IDENT);
@@ -327,19 +412,43 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(getTokenId("("));
 	}
 	
+	private void _Passa_Param() {
+		stack.push(PASSA_PARAM_I);
+		stack.push(VALOR);
+	}
+	
+	private void _Passa_Param_I() {
+		stack.push(PASSA_PARAM_I);
+		stack.push(VALOR);
+		stack.push(getTokenId(","));
+	}
+	
 	private void __Array_Identificador() {
+		stack.push(TokenFactory.IDENT);
 		stack.push(getTokenId(">"));
 		stack.push(getTokenId(">"));
 		stack.push(ARRAY_I);
-		stack.push(ARRAY_INDEXES);
+		stack.push(EXPR_SIMPLES);
 		stack.push(getTokenId("<"));
 		stack.push(getTokenId("<"));
+	}
+	
+	private void _Array_I() {
+		stack.push(ARRAY_I);
+		stack.push(EXPR_SIMPLES);
+		stack.push(getTokenId(","));
 	}
 	
 	private void __Par_Valor_Par() {
 		stack.push(getTokenId(")"));
 		stack.push(VALOR);
 		stack.push(getTokenId("("));
+	}
+	
+	private void _Fator_I() {
+		stack.push(FATOR_I);
+		stack.push(FATOR);
+		stack.push(FATOR_I_MD);
 	}
 	
 	private void __Integer_Consume() {
@@ -390,8 +499,35 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(getTokenId("falso"));
 	}
 	
+	private void __Consume_Mult() {
+		stack.push(getTokenId("*"));
+	}
+	
+	private void __Consume_Div() {
+		stack.push(getTokenId("/"));
+	}
+	
+	private void __Consume_GreaterThan() {
+		stack.push(getTokenId(">"));
+	}
+	
+	private void __Consume_GreaterEquals() {
+		stack.push(getTokenId(">="));
+	}
+	
+	private void __Consume_LowerThan() {
+		stack.push(getTokenId("<"));
+	}
+	
+	private void __Consume_LowerEquals() {
+		stack.push(getTokenId("<="));
+	}
+	
+	private void __Consume_Different() {
+		stack.push(getTokenId("<>"));
+	}
+	
 	private void _Epsilon() {
-		//stack.pop();
 		Debug.println("Reduce");
 	}
 

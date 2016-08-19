@@ -1,6 +1,6 @@
 const
 inicio
-    inteiro a = a, a = 4, b = 5;
+    inteiro a = a(<<2 + (4 + 4*5)>>k, b), a = 4, b = 5;
     real kappa = 2;
     cadeia infinita = 34;
 fim
