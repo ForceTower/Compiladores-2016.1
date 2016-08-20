@@ -258,7 +258,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 					return;
 				}
@@ -533,7 +532,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void __Decl_Func_I_Void() {
 		stack.push(getTokenId("fim"));
-		stack.push(CORPO); //TODO Corpo
+		stack.push(CORPO);
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
 		stack.push(PARAMETROS);
@@ -544,7 +543,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private void __Decl_Func_I_Retr() {
 		stack.push(getTokenId("fim"));
 		stack.push(RETORNO_FUNC);
-		stack.push(CORPO); //TODO Corpo
+		stack.push(CORPO);
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
 		stack.push(PARAMETROS);
