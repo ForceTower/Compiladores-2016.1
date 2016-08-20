@@ -96,7 +96,8 @@ public class SyntaxUtil {
 				BOOL_CONSUME = 397,
 				TYPE = 398,
 				EPSILON = 399,
-				END = 400;
+				END = 400,
+				FATHER_RETURN = 401;
 	
 	public static int getTokenId(String lexeme) {
 		Token t = TokenFactory.findToken(lexeme);

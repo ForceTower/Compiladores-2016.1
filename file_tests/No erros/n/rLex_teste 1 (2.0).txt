@@ -31,336 +31,328 @@
 5 ( Abre Parenteses
 5 ) Fecha Parenteses
 5 ; Ponto-e-Virgula (;)
-6 real real - tipo
-6 d Identificador
-6 = Atribuicao (=)
-6 kappa Identificador
-6 ; Ponto-e-Virgula (;)
-7 fim fim - palavra_reservada
-9 var var - palavra_reservada
-10 inicio inicio - palavra_reservada
-11 inteiro inteiro - tipo
-11 < Operador Logico (<)
-11 < Operador Logico (<)
-11 12 Numero
-11 > Operador Logico (>)
-11 > Operador Logico (>)
-11 a Identificador
-11 , Virgula(,)
-11 < Operador Logico (<)
-11 < Operador Logico (<)
-11 56 Numero
-11 , Virgula(,)
-11 67 Numero
-11 , Virgula(,)
-11 > Operador Logico (>)
-11 > Operador Logico (>)
-11 b Identificador
-11 ; Ponto-e-Virgula (;)
-12 fim fim - palavra_reservada
-14 funcao funcao - palavra_reservada
-14 inteiro inteiro - tipo
-14 zuera Identificador
-14 ( Abre Parenteses
-14 inteiro inteiro - tipo
-14 a Identificador
-14 , Virgula(,)
-14 inteiro inteiro - tipo
-14 b Identificador
-14 , Virgula(,)
-14 caractere caractere - palavra_reservada
-14 c Identificador
-14 ) Fecha Parenteses
+6 fim fim - palavra_reservada
+8 var var - palavra_reservada
+9 inicio inicio - palavra_reservada
+10 inteiro inteiro - tipo
+10 < Operador Logico (<)
+10 < Operador Logico (<)
+10 12 Numero
+10 > Operador Logico (>)
+10 > Operador Logico (>)
+10 a Identificador
+10 , Virgula(,)
+10 < Operador Logico (<)
+10 < Operador Logico (<)
+10 56 Numero
+10 , Virgula(,)
+10 67 Numero
+10 , Virgula(,)
+10 87 Numero
+10 > Operador Logico (>)
+10 > Operador Logico (>)
+10 b Identificador
+10 , Virgula(,)
+10 c Identificador
+10 ; Ponto-e-Virgula (;)
+11 fim fim - palavra_reservada
+13 funcao funcao - palavra_reservada
+13 inteiro inteiro - tipo
+13 zuera Identificador
+13 ( Abre Parenteses
+13 inteiro inteiro - tipo
+13 a Identificador
+13 , Virgula(,)
+13 inteiro inteiro - tipo
+13 b Identificador
+13 , Virgula(,)
+13 caractere caractere - palavra_reservada
+13 c Identificador
+13 ) Fecha Parenteses
+14 inicio inicio - palavra_reservada
+15 var var - palavra_reservada
 15 inicio inicio - palavra_reservada
-16 var var - palavra_reservada
-16 inicio inicio - palavra_reservada
-17 inteiro inteiro - tipo
-17 a Identificador
+16 inteiro inteiro - tipo
+16 a Identificador
+16 , Virgula(,)
+16 b Identificador
+16 , Virgula(,)
+16 c Identificador
+16 ; Ponto-e-Virgula (;)
+17 real real - tipo
+17 < Operador Logico (<)
+17 < Operador Logico (<)
+17 3 Numero
 17 , Virgula(,)
-17 b Identificador
+17 4 Numero
 17 , Virgula(,)
-17 c Identificador
+17 3 Numero
+17 , Virgula(,)
+17 3 Numero
+17 > Operador Logico (>)
+17 > Operador Logico (>)
+17 isolado Identificador
 17 ; Ponto-e-Virgula (;)
-18 real real - tipo
-18 < Operador Logico (<)
-18 < Operador Logico (<)
-18 3 Numero
-18 , Virgula(,)
-18 4 Numero
-18 , Virgula(,)
-18 3 Numero
-18 , Virgula(,)
-18 > Operador Logico (>)
-18 > Operador Logico (>)
-18 isolado Identificador
-18 ; Ponto-e-Virgula (;)
-19 inteiro inteiro - tipo
-19 a Identificador
-19 , Virgula(,)
+18 fim fim - palavra_reservada
 19 b Identificador
+19 = Atribuicao (=)
+19 b Identificador
+19 * Operador Aritmetico (*)
+19 b Identificador
+19 - Operador Aritmetico (-)
+19 c Identificador
+19 + Operador Aritmetico (+)
+19 a Identificador
 19 ; Ponto-e-Virgula (;)
-20 caractere caractere - palavra_reservada
-20 k Identificador
+20 leia leia - palavra_reservada
+20 ( Abre Parenteses
+20 b Identificador
+20 ) Fecha Parenteses
 20 ; Ponto-e-Virgula (;)
-21 fim fim - palavra_reservada
-22 b Identificador
-22 = Atribuicao (=)
-22 b Identificador
-22 * Operador Aritmetico (*)
-22 b Identificador
-22 - Operador Aritmetico (-)
-22 c Identificador
-22 + Operador Aritmetico (+)
+21 leia leia - palavra_reservada
+21 ( Abre Parenteses
+21 c Identificador
+21 ) Fecha Parenteses
+21 ; Ponto-e-Virgula (;)
 22 a Identificador
+22 = Atribuicao (=)
+22 ( Abre Parenteses
+22 b Identificador
+22 + Operador Aritmetico (+)
+22 c Identificador
+22 ) Fecha Parenteses
 22 ; Ponto-e-Virgula (;)
-23 leia leia - palavra_reservada
-23 ( Abre Parenteses
-23 b Identificador
-23 ) Fecha Parenteses
-23 ; Ponto-e-Virgula (;)
-24 leia leia - palavra_reservada
-24 ( Abre Parenteses
-24 c Identificador
-24 ) Fecha Parenteses
+23 inicio inicio - palavra_reservada
+24 i Identificador
+24 = Atribuicao (=)
+24 i Identificador
+24 - Operador Aritmetico (-)
+24 4 Numero
 24 ; Ponto-e-Virgula (;)
-25 a Identificador
-25 = Atribuicao (=)
-25 ( Abre Parenteses
-25 b Identificador
-25 + Operador Aritmetico (+)
-25 c Identificador
-25 ) Fecha Parenteses
-25 ; Ponto-e-Virgula (;)
-26 inicio inicio - palavra_reservada
-27 i Identificador
-27 = Atribuicao (=)
-27 i Identificador
-27 - Operador Aritmetico (-)
-27 4 Numero
-27 ; Ponto-e-Virgula (;)
-28 fim fim - palavra_reservada
-29 = Atribuicao (=)
-29 > Operador Logico (>)
-29 algo Identificador
+25 fim fim - palavra_reservada
+26 = Atribuicao (=)
+26 > Operador Logico (>)
+26 algo Identificador
+26 ( Abre Parenteses
+26 1 Numero
+26 , Virgula(,)
+26 2 Numero
+26 , Virgula(,)
+26 3 Numero
+26 , Virgula(,)
+26 4 Numero
+26 ) Fecha Parenteses
+26 = Atribuicao (=)
+26 > Operador Logico (>)
+26 ; Ponto-e-Virgula (;)
+27 fim fim - palavra_reservada
+29 funcao funcao - palavra_reservada
+29 zuera2 Identificador
 29 ( Abre Parenteses
-29 1 Numero
+29 inteiro inteiro - tipo
+29 a Identificador
 29 , Virgula(,)
-29 2 Numero
+29 inteiro inteiro - tipo
+29 b Identificador
 29 , Virgula(,)
-29 3 Numero
-29 , Virgula(,)
-29 4 Numero
+29 caractere caractere - palavra_reservada
+29 c Identificador
 29 ) Fecha Parenteses
-29 = Atribuicao (=)
-29 > Operador Logico (>)
-29 ; Ponto-e-Virgula (;)
-32 funcao funcao - palavra_reservada
-32 zuera2 Identificador
-32 ( Abre Parenteses
-32 inteiro inteiro - tipo
-32 a Identificador
-32 , Virgula(,)
-32 inteiro inteiro - tipo
-32 b Identificador
-32 , Virgula(,)
-32 caractere caractere - palavra_reservada
-32 c Identificador
-32 ) Fecha Parenteses
-33 inicio inicio - palavra_reservada
-34 b Identificador
-34 = Atribuicao (=)
-34 b Identificador
-34 + Operador Aritmetico (+)
-34 3 Numero
-34 ; Ponto-e-Virgula (;)
-35 fim fim - palavra_reservada
-38 programa programa - palavra_reservada
+30 inicio inicio - palavra_reservada
+31 b Identificador
+31 = Atribuicao (=)
+31 b Identificador
+31 + Operador Aritmetico (+)
+31 3 Numero
+31 ; Ponto-e-Virgula (;)
+32 fim fim - palavra_reservada
+34 programa programa - palavra_reservada
+35 inicio inicio - palavra_reservada
+36 z Identificador
+36 = Atribuicao (=)
+36 zuera2 Identificador
+36 ( Abre Parenteses
+36 ) Fecha Parenteses
+36 ; Ponto-e-Virgula (;)
+37 b Identificador
+37 = Atribuicao (=)
+37 a Identificador
+37 > Operador Logico (>)
+37 kappa Identificador
+37 ( Abre Parenteses
+37 1 Numero
+37 , Virgula(,)
+37 2 Numero
+37 , Virgula(,)
+37 3 Numero
+37 ) Fecha Parenteses
+37 e Operador Logico
+37 c Identificador
+37 <> Operador Logico (<>)
+37 t Identificador
+37 ; Ponto-e-Virgula (;)
+38 enquanto enquanto - palavra_reservada
+38 ( Abre Parenteses
+38 2 Numero
+38 > Operador Logico (>)
+38 3 Numero
+38 ) Fecha Parenteses
+38 faca faca - palavra_reservada
 39 inicio inicio - palavra_reservada
-40 z Identificador
+40 kappa Identificador
 40 = Atribuicao (=)
-40 zuera2 Identificador
-40 ( Abre Parenteses
-40 ) Fecha Parenteses
+40 2 Numero
 40 ; Ponto-e-Virgula (;)
-41 b Identificador
-41 = Atribuicao (=)
-41 a Identificador
-41 > Operador Logico (>)
-41 kappa Identificador
+41 se se - palavra_reservada
 41 ( Abre Parenteses
-41 1 Numero
-41 , Virgula(,)
-41 2 Numero
-41 , Virgula(,)
+41 kappa Identificador
+41 <> Operador Logico (<>)
 41 3 Numero
 41 ) Fecha Parenteses
-41 e Operador Logico
-41 c Identificador
-41 <> Operador Logico (<>)
-41 t Identificador
-41 ; Ponto-e-Virgula (;)
-42 enquanto enquanto - palavra_reservada
-42 ( Abre Parenteses
-42 2 Numero
-42 > Operador Logico (>)
-42 3 Numero
-42 ) Fecha Parenteses
-42 faca faca - palavra_reservada
-43 inicio inicio - palavra_reservada
-44 kappa Identificador
-44 = Atribuicao (=)
-44 2 Numero
+41 entao entao - palavra_reservada
+42 inicio inicio - palavra_reservada
+43 escreva escreva - palavra_reservada
+43 ( Abre Parenteses
+43 "nao ligo" Constante Cadeia de Caracteres
+43 ) Fecha Parenteses
+43 ; Ponto-e-Virgula (;)
+44 leia leia - palavra_reservada
+44 ( Abre Parenteses
+44 ue Identificador
+44 ) Fecha Parenteses
 44 ; Ponto-e-Virgula (;)
-45 se se - palavra_reservada
-45 ( Abre Parenteses
-45 kappa Identificador
-45 <> Operador Logico (<>)
-45 3 Numero
-45 ) Fecha Parenteses
-45 entao entao - palavra_reservada
-46 inicio inicio - palavra_reservada
-47 escreva escreva - palavra_reservada
+45 fim fim - palavra_reservada
+47 se se - palavra_reservada
 47 ( Abre Parenteses
-47 "nao ligo" Constante Cadeia de Caracteres
+47 j Identificador
+47 < Operador Logico (<)
+47 5 Numero
+47 ou Operador Logico
+47 j Identificador
+47 > Operador Logico (>)
+47 10 Numero
 47 ) Fecha Parenteses
-47 ; Ponto-e-Virgula (;)
-48 leia leia - palavra_reservada
-48 ( Abre Parenteses
-48 ue Identificador
-48 ) Fecha Parenteses
-48 ; Ponto-e-Virgula (;)
-49 fim fim - palavra_reservada
-51 se se - palavra_reservada
-51 ( Abre Parenteses
-51 j Identificador
-51 < Operador Logico (<)
-51 5 Numero
-51 ou Operador Logico
-51 j Identificador
-51 > Operador Logico (>)
-51 10 Numero
-51 ) Fecha Parenteses
-51 entao entao - palavra_reservada
-52 inicio inicio - palavra_reservada
-53 escreva escreva - palavra_reservada
-53 ( Abre Parenteses
-53 "Valor muito alto " Constante Cadeia de Caracteres
-53 , Virgula(,)
-53 j Identificador
-53 , Virgula(,)
-53 "Menos please" Constante Cadeia de Caracteres
-53 ) Fecha Parenteses
-53 ; Ponto-e-Virgula (;)
-54 fim fim - palavra_reservada
-56 senao senao - palavra_reservada
-57 inicio inicio - palavra_reservada
-58 se se - palavra_reservada
-58 ( Abre Parenteses
-58 k Identificador
-58 <> Operador Logico (<>)
-58 3 Numero
-58 ) Fecha Parenteses
-58 entao entao - palavra_reservada
-59 inicio inicio - palavra_reservada
-60 k Identificador
-60 = Atribuicao (=)
-60 45 Numero
-60 ; Ponto-e-Virgula (;)
-61 fim fim - palavra_reservada
-63 senao senao - palavra_reservada
-64 inicio inicio - palavra_reservada
-65 var var - palavra_reservada
-66 inicio inicio - palavra_reservada
-67 inteiro inteiro - tipo
-67 < Operador Logico (<)
-67 < Operador Logico (<)
-67 4 Numero
-67 , Virgula(,)
-67 4 Numero
-67 > Operador Logico (>)
-67 > Operador Logico (>)
-67 kappa Identificador
-67 , Virgula(,)
+47 entao entao - palavra_reservada
+48 inicio inicio - palavra_reservada
+49 escreva escreva - palavra_reservada
+49 ( Abre Parenteses
+49 "Valor muito alto " Constante Cadeia de Caracteres
+49 , Virgula(,)
+49 j Identificador
+49 , Virgula(,)
+49 "Menos please" Constante Cadeia de Caracteres
+49 ) Fecha Parenteses
+49 ; Ponto-e-Virgula (;)
+50 fim fim - palavra_reservada
+52 senao senao - palavra_reservada
+53 inicio inicio - palavra_reservada
+54 se se - palavra_reservada
+54 ( Abre Parenteses
+54 k Identificador
+54 <> Operador Logico (<>)
+54 3 Numero
+54 ) Fecha Parenteses
+54 entao entao - palavra_reservada
+55 inicio inicio - palavra_reservada
+56 k Identificador
+56 = Atribuicao (=)
+56 45 Numero
+56 ; Ponto-e-Virgula (;)
+57 fim fim - palavra_reservada
+59 senao senao - palavra_reservada
+60 inicio inicio - palavra_reservada
+61 var var - palavra_reservada
+62 inicio inicio - palavra_reservada
+63 inteiro inteiro - tipo
+63 < Operador Logico (<)
+63 < Operador Logico (<)
+63 4 Numero
+63 , Virgula(,)
+63 4 Numero
+63 > Operador Logico (>)
+63 > Operador Logico (>)
+63 kappa Identificador
+63 , Virgula(,)
+63 i Identificador
+63 , Virgula(,)
+63 j Identificador
+63 ; Ponto-e-Virgula (;)
+64 fim fim - palavra_reservada
+65 j Identificador
+65 = Atribuicao (=)
+65 0 Numero
+65 ; Ponto-e-Virgula (;)
+66 i Identificador
+66 = Atribuicao (=)
+66 j Identificador
+66 ; Ponto-e-Virgula (;)
+67 enquanto enquanto - palavra_reservada
+67 ( Abre Parenteses
 67 i Identificador
-67 , Virgula(,)
-67 j Identificador
-67 ; Ponto-e-Virgula (;)
-68 fim fim - palavra_reservada
+67 < Operador Logico (<)
+67 4 Numero
+67 ) Fecha Parenteses
+67 faca faca - palavra_reservada
+68 inicio inicio - palavra_reservada
+69 enquanto enquanto - palavra_reservada
+69 ( Abre Parenteses
 69 j Identificador
-69 = Atribuicao (=)
-69 0 Numero
-69 ; Ponto-e-Virgula (;)
-70 i Identificador
-70 = Atribuicao (=)
-70 j Identificador
-70 ; Ponto-e-Virgula (;)
-71 enquanto enquanto - palavra_reservada
-71 ( Abre Parenteses
-71 i Identificador
+69 < Operador Logico (<)
+69 4 Numero
+69 ) Fecha Parenteses
+69 faca faca - palavra_reservada
+70 inicio inicio - palavra_reservada
 71 < Operador Logico (<)
-71 4 Numero
-71 ) Fecha Parenteses
-71 faca faca - palavra_reservada
-72 inicio inicio - palavra_reservada
-73 enquanto enquanto - palavra_reservada
-73 ( Abre Parenteses
-73 j Identificador
-73 < Operador Logico (<)
-73 4 Numero
-73 ) Fecha Parenteses
-73 faca faca - palavra_reservada
-74 inicio inicio - palavra_reservada
-75 < Operador Logico (<)
-75 < Operador Logico (<)
-75 i Identificador
-75 , Virgula(,)
-75 j Identificador
-75 > Operador Logico (>)
-75 > Operador Logico (>)
-75 kappa Identificador
-75 = Atribuicao (=)
-75 0 Numero
-75 ; Ponto-e-Virgula (;)
-76 j Identificador
-76 = Atribuicao (=)
-76 j Identificador
-76 + Operador Aritmetico (+)
-76 1 Numero
-76 ; Ponto-e-Virgula (;)
-77 fim fim - palavra_reservada
-78 i Identificador
-78 = Atribuicao (=)
-78 i Identificador
-78 + Operador Aritmetico (+)
-78 1 Numero
+71 < Operador Logico (<)
+71 i Identificador
+71 , Virgula(,)
+71 j Identificador
+71 > Operador Logico (>)
+71 > Operador Logico (>)
+71 kappa Identificador
+71 = Atribuicao (=)
+71 0 Numero
+71 ; Ponto-e-Virgula (;)
+72 j Identificador
+72 = Atribuicao (=)
+72 j Identificador
+72 + Operador Aritmetico (+)
+72 1 Numero
+72 ; Ponto-e-Virgula (;)
+73 fim fim - palavra_reservada
+74 i Identificador
+74 = Atribuicao (=)
+74 i Identificador
+74 + Operador Aritmetico (+)
+74 1 Numero
+74 ; Ponto-e-Virgula (;)
+75 fim fim - palavra_reservada
+77 escreva escreva - palavra_reservada
+77 ( Abre Parenteses
+77 "HEHEHEHE" Constante Cadeia de Caracteres
+77 ) Fecha Parenteses
+77 ; Ponto-e-Virgula (;)
+78 escreva escreva - palavra_reservada
+78 ( Abre Parenteses
+78 "N Enquantos maior que todos" Constante Cadeia de Caracteres
+78 ) Fecha Parenteses
 78 ; Ponto-e-Virgula (;)
 79 fim fim - palavra_reservada
-81 escreva escreva - palavra_reservada
-81 ( Abre Parenteses
-81 "HEHEHEHE" Constante Cadeia de Caracteres
-81 ) Fecha Parenteses
-81 ; Ponto-e-Virgula (;)
+80 fim fim - palavra_reservada
+81 fim fim - palavra_reservada
 82 escreva escreva - palavra_reservada
 82 ( Abre Parenteses
-82 "N Enquantos maior que todos" Constante Cadeia de Caracteres
+82 teste Identificador
+82 , Virgula(,)
+82 "teste" Constante Cadeia de Caracteres
+82 , Virgula(,)
+82 hehehe Identificador
 82 ) Fecha Parenteses
 82 ; Ponto-e-Virgula (;)
-83 fim fim - palavra_reservada
+83 leia leia - palavra_reservada
+83 ( Abre Parenteses
+83 itsreal Identificador
+83 ) Fecha Parenteses
+83 ; Ponto-e-Virgula (;)
 84 fim fim - palavra_reservada
-85 fim fim - palavra_reservada
-86 escreva escreva - palavra_reservada
-86 ( Abre Parenteses
-86 teste Identificador
-86 , Virgula(,)
-86 "teste" Constante Cadeia de Caracteres
-86 , Virgula(,)
-86 hehehe Identificador
-86 ) Fecha Parenteses
-86 ; Ponto-e-Virgula (;)
-87 leia leia - palavra_reservada
-87 ( Abre Parenteses
-87 itsreal Identificador
-87 ) Fecha Parenteses
-87 ; Ponto-e-Virgula (;)
-88 fim fim - palavra_reservada
 Sucesso!

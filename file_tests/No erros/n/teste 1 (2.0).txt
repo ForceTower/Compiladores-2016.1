@@ -1,23 +1,20 @@
 const
 inicio
     inteiro a = k, b = 2 * 3 + 7 * 5;
-    caractere c = 'k', b = hehe; 
+    caractere c = 'k', b = hehe;
     inteiro d = kappa();
-    real d = kappa;
 fim
 
 var
 inicio
-    inteiro <<12>>a, <<56, 67, >>b;
+    inteiro <<12>>a, <<56, 67, 87>>b, c;
 fim
 
 funcao inteiro zuera (inteiro a, inteiro b, caractere c)
 inicio
     var inicio
         inteiro a, b, c;
-        real <<3,4,3,>> isolado;
-        inteiro a, b;
-        caractere k;
+        real <<3,4,3,3>> isolado;
     fim
     b = b * b - c + a;
     leia(b);
@@ -27,13 +24,12 @@ inicio
         i = i - 4;
     fim
     => algo(1,2,3,4) =>;
-
+fim
 
 funcao zuera2 (inteiro a, inteiro b, caractere c)
 inicio
     b = b + 3;
 fim
-
 
 programa
 inicio
@@ -86,5 +82,3 @@ inicio
     escreva(teste, "teste", hehehe);
     leia(itsreal);
 fim
-
-
