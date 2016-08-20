@@ -47,15 +47,15 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		//INICIO GRAMATICA DECL_CONST
 		fillRow(DECL_CONST, DECL_CONST);
+		fillRow(DECL_CONST_I, EPSILON);
 		syntaxTable[DECL_CONST_I][getTokenId(",")] 	= DECL_CONST_I;
-		syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
+		fillRow(DECL_CONST_II, EPSILON);
 		syntaxTable[DECL_CONST_II][getTokenId("inteiro")] 	= DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("real")] 	= DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("caractere")] 	= DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("cadeia")] 	= DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("booleano")] 	= DECL_CONST_II;
-		syntaxTable[DECL_CONST_II][getTokenId("fim")] 	= EPSILON;
 		
 		fillRow(DECL_CONST_CONTINUO, DECL_CONST_CONTINUO);
 		
