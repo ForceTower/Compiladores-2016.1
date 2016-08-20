@@ -34,15 +34,17 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	
 	public void prepareTable() {
 		//INICIO GRAMATICA
+		fillRow(START, INICIO_FUNC);
 		syntacticTable[START][getTokenId("const")]		= INICIO_CONST_K_FUNC;
 		syntacticTable[START][getTokenId("var")] 		= INICIO_VAR_FUNC;
 		syntacticTable[START][getTokenId("funcao")] 	= INICIO_FUNC;
-		syntacticTable[START][getTokenId("programa")] 	= INICIO_FUNC;
+		
+		fillRow(DECL_CONST_VAR_DERIVA, INICIO_FUNC);
+		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("funcao")]	= INICIO_FUNC;
+		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= INICIO_VAR_FUNC;
 		
 		//INICIO GRAMATICA DECL_CONST
 		fillRow(DECL_CONST, DECL_CONST);
-		//syntacticTable[DECL_CONST][getTokenId("const")] = DECL_CONST;
-		//fillRow(DECL_CONST, EPSILON);
 		syntacticTable[DECL_CONST_I][getTokenId(",")] 	= DECL_CONST_I;
 		syntacticTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
@@ -54,7 +56,6 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[DECL_CONST_II][getTokenId("fim")] 	= EPSILON;
 		
 		fillRow(DECL_CONST_CONTINUO, DECL_CONST_CONTINUO);
-		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= _CONST_VAR_FUNC;
 		
 		
 		//INICIO GRAMATICA DECL_VAR
@@ -83,7 +84,9 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(RETORNO_FUNC, RETORNO_FUNC);
 		
 		//INICIO DECL_MAIN
-		fillRow(DECL_MAIN, DECL_MAIN);
+		fillRow(DECL_MAIN, EPSILON);
+		syntacticTable[DECL_MAIN][getTokenId("programa")] = DECL_MAIN;
+		
 		
 		//GRAMATICA PARAMETROS
 		fillRow(PARAMETROS, EPSILON);
@@ -202,8 +205,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[TYPE][getTokenId("booleano")] 	= BOOL_CONSUME;
 		
 		//fillRow(DECL_CONST_VAR_DERIVA, EPSILON);
-		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("funcao")]	= DECL_FUNC;
-		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= INICIO_VAR_FUNC;
+		
 	}
 	
 	public void fillRow(int row, int value) {
@@ -219,14 +221,16 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	public void startAnalysis() {
 		Token token = currentToken();
 		while (!stack.isEmpty()) {
+			System.out.println("Stack: " + stack);
 			if (token.getId() == stack.peek()) {
 				Debug.println("Token consumed: " + token.getLexem());
 				stack.pop();
 				currentToken++;
 				token = currentToken();
 			} else {
+				
 				int production = syntacticTable[stack.peek()][token.getId()];
-				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
+				//Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
 					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
@@ -732,7 +736,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	}
 	
 	private void _Epsilon() {
-		Debug.println("Reduce");
+		//Debug.println("Reduce");
 	}
 
 	public Integer currentTokenId() {
