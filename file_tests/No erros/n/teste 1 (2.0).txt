@@ -8,10 +8,10 @@ inicio
 
 var
 inicio
-    inteiro <<12>>a, <<56, 67, 87>>b, c;
+    inteiro <<12>>a, <<56, 67, 87>>b, c
 fim
 
-funcao inteiro zuera (inteiro a, inteiro b, caractere c)
+funcao inteiro zuera inteiro a, inteiro b, caractere c)
 inicio
     var inicio
         inteiro a, b, c;
@@ -27,7 +27,7 @@ inicio
         i = i - 4;
     fim
     => algo(1,2,3,4) =>;
-fim
+
 
 funcao zuera2 (inteiro a, inteiro b, caractere c)
 inicio
@@ -35,7 +35,7 @@ inicio
 fim
 
 programa
-inicio
+
     z = zuera2();
     b = a > kappa(1, 2, 3) e c <> t;
     enquanto (2 > 3) faca

@@ -57,12 +57,10 @@
 11 b id
 11 , delimitador
 11 c id
-11 ; delimitador
 12 fim palavra_reservada
 14 funcao palavra_reservada
 14 inteiro palavra_reservada
 14 zuera id
-14 ( delimitador
 14 inteiro palavra_reservada
 14 a id
 14 , delimitador
@@ -156,7 +154,6 @@
 29 = operador
 29 > operador
 29 ; delimitador
-30 fim palavra_reservada
 32 funcao palavra_reservada
 32 zuera2 id
 32 ( delimitador
@@ -178,7 +175,6 @@
 34 ; delimitador
 35 fim palavra_reservada
 37 programa palavra_reservada
-38 inicio palavra_reservada
 39 z id
 39 = operador
 39 zuera2 id

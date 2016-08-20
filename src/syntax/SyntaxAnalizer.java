@@ -11,7 +11,7 @@ import syntax_util.SyntaxUtil;
 
 public class SyntaxAnalizer extends SyntaxUtil {
 	private List<Token> tokens;
-	private List<Integer> syncSymbols;
+	private List<Integer> syncTokens;
 	private Stack<Integer> stack;
 	int[][] syntaxTable;
 	private int currentToken;
@@ -20,7 +20,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		super();
 		this.tokens = tokens;
 		this.stack = new Stack<>();
-		this.syncSymbols = new ArrayList<>();
+		this.syncTokens = new ArrayList<>();
 		syntaxTable = new int[800][800];
 		currentToken = 0;
 		
@@ -31,12 +31,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	public void initializeSyncSymbols() {
-		syncSymbols.add(getTokenId(";"));
-		//syncSymbols.add(getTokenId(","));
-		syncSymbols.add(getTokenId("("));
-		syncSymbols.add(getTokenId(")"));
-		syncSymbols.add(getTokenId("inicio"));
-		syncSymbols.add(getTokenId("fim"));
+		syncTokens.add(getTokenId(";"));
+		syncTokens.add(END);
+		syncTokens.add(getTokenId("("));
+		syncTokens.add(getTokenId(")"));
+		syncTokens.add(getTokenId("inicio"));
+		syncTokens.add(getTokenId("fim"));
 	}
 
 	public void initializeTable() {
@@ -272,14 +272,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				//Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
+					if (stack.peek() == 400)
+						System.out.println("Expected: \"End-Of-File\" but was: " + token.getLexem() + " on line: " + token.getLine());
+					else
+						System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
+					
 					errorRecovery();
-					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					//return;
 				}
 					
@@ -288,25 +286,24 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		System.out.println("Success!");
 	}
 
-	private Token errorRecovery() {
-		//TODO Fazer calculos para descobrir qual o melhor token de fill neste caso...
-		int idRec = advanceToSyncToken();
-		System.out.println("Returned from error: " + idRec);
-		tokens.add(currentToken, new Token(idRec, "RECOVERY"));
-		return new Token(idRec, "RECOVERY");
-	}
-
-	private Integer advanceToSyncToken() {
-		currentToken++;
+	private void errorRecovery() {
+		//Pop things off te stack until a sync token is found
+		
 		while (currentTokenId() != 400) {
-			for (Integer a : syncSymbols)
-				if (currentTokenId() == a){
-					currentToken++;
-					return a;
-				}
+			if (stack.peek() == currentTokenId())
+				return;
 			currentToken++;
 		}
-		return 400;
+		
+		while (stack.peek() != 400) {
+			for (Integer i : syncTokens)
+				if (i == stack.peek())
+					break;
+			stack.pop();
+		}
+		System.out.println("Stack peek: " + stack.peek());
+		
+		
 	}
 
 	private boolean generateProduction(int production) {
