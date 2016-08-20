@@ -32,7 +32,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 
 	public void initializeSyncSymbols() {
 		syncSymbols.add(getTokenId(";"));
-		syncSymbols.add(getTokenId(","));
+		//syncSymbols.add(getTokenId(","));
 		syncSymbols.add(getTokenId("("));
 		syncSymbols.add(getTokenId(")"));
 		syncSymbols.add(getTokenId("inicio"));
@@ -60,9 +60,11 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		//INICIO GRAMATICA DECL_CONST
 		fillRow(DECL_CONST, DECL_CONST);
+		fillRow(DECL_CONST_I, EPSILON);
 		syntaxTable[DECL_CONST_I][getTokenId(",")] 	= DECL_CONST_I;
-		syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
+		//syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
+		fillRow(DECL_CONST_II, EPSILON);
 		syntaxTable[DECL_CONST_II][getTokenId("inteiro")] 	= DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("real")] 	= DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("caractere")] 	= DECL_CONST_II;
@@ -267,12 +269,17 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				token = currentToken();
 			} else {
 				int production = syntaxTable[stack.peek()][token.getId()];
-				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
+				//Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
 					System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
-					token = errorRecovery();
-					
+					errorRecovery();
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					//return;
 				}
 					
@@ -283,9 +290,23 @@ public class SyntaxAnalizer extends SyntaxUtil {
 
 	private Token errorRecovery() {
 		//TODO Fazer calculos para descobrir qual o melhor token de fill neste caso...
-		System.out.println("Returned from error: " + syncSymbols.get(0));
-		tokens.add(currentToken, new Token(syncSymbols.get(0)));
-		return new Token(syncSymbols.get(0));
+		int idRec = advanceToSyncToken();
+		System.out.println("Returned from error: " + idRec);
+		tokens.add(currentToken, new Token(idRec, "RECOVERY"));
+		return new Token(idRec, "RECOVERY");
+	}
+
+	private Integer advanceToSyncToken() {
+		currentToken++;
+		while (currentTokenId() != 400) {
+			for (Integer a : syncSymbols)
+				if (currentTokenId() == a){
+					currentToken++;
+					return a;
+				}
+			currentToken++;
+		}
+		return 400;
 	}
 
 	private boolean generateProduction(int production) {
