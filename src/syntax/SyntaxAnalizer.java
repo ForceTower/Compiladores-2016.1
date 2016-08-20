@@ -124,7 +124,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(NOT_OPC, EPSILON);
 		syntaxTable[NOT_OPC][getTokenId("nao")] = NOT_OPC;
 		
-		
 		//INICIO DA GRAMATICA DE EXPR_SIMPLES
 		fillRow(EXPR_SIMPLES, EXPR_SIMPLES);
 		fillRow(OPERADOR_MAIS_MENOS, EPSILON);
@@ -198,7 +197,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[ARRAY_PARAM_I][getTokenId(",")] = ARRAY_PARAM_I;
 		
 		
-		
 		//INICIO CORPO
 		fillRow(CORPO, EPSILON);
 		syntaxTable[CORPO][getTokenId("leia")] = CMD_LEIA;
@@ -247,25 +245,24 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		Token token = currentToken();
 		while (!stack.isEmpty()) {
 			//System.out.println("Stack: " + stack);
+			//System.out.println("Token is: " + token.getId());
 			if (token.getId() == stack.peek()) {
 				Debug.println("Token consumed: " + token.getLexem());
 				stack.pop();
 				currentToken++;
 				token = currentToken();
 			} else {
-				
 				int production = syntaxTable[stack.peek()][token.getId()];
 				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
+					System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 					return;
 				}
 					
 			}
 		}
 		System.out.println("Success!");
-		Debug.println("Success!");
 	}
 
 	private boolean generateProduction(int production) {

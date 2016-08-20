@@ -15,6 +15,8 @@ inicio
     var inicio
         inteiro a, b, c;
         real <<3,4,3,3>> isolado;
+        inteiro a, b;
+        caractere k;
     fim
     b = b * b - c + a;
     leia(b);
