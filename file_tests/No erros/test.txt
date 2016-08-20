@@ -8,14 +8,9 @@ inicio
     inteiro <<12>>a, <<56, 67, 87>>b, c;
 fim
 
-{funcao inteiro zuera (inteiro a, inteiro b, caractere c)
+funcao inteiro zuera (inteiro a, inteiro b, caractere c)
 inicio
     => algo(1,2,3,4) =>;
-fim}
-
-funcao zuera2 (inteiro a, inteiro b, caractere c)
-inicio
-    
 fim
 
 programa

@@ -43,6 +43,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("funcao")]	= INICIO_FUNC;
 		syntacticTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] 	= INICIO_VAR_FUNC;
 		
+		
+		
 		//INICIO GRAMATICA DECL_CONST
 		fillRow(DECL_CONST, DECL_CONST);
 		syntacticTable[DECL_CONST_I][getTokenId(",")] 	= DECL_CONST_I;
@@ -84,7 +86,6 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(RETORNO_FUNC, RETORNO_FUNC);
 		
 		//INICIO DECL_MAIN
-		fillRow(DECL_MAIN, EPSILON);
 		syntacticTable[DECL_MAIN][getTokenId("programa")] = DECL_MAIN;
 		
 		
