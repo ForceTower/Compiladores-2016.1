@@ -198,6 +198,30 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[ARRAY_PARAM_I][getTokenId(",")] = ARRAY_PARAM_I;
 		
 		
+		
+		//INICIO CORPO
+		fillRow(CORPO, EPSILON);
+		syntaxTable[CORPO][getTokenId("leia")] = CMD_LEIA;
+		syntaxTable[CORPO][getTokenId("escreva")] = CMD_ESCREVA;
+		syntaxTable[CORPO][getTokenId("se")] = CMD_SE;
+		syntaxTable[CORPO][getTokenId("enquanto")] = CMD_ENQUANTO;
+		syntaxTable[CORPO][TokenFactory.IDENT] = CMD_ATTRIB_CHAMA_IDEN;
+		syntaxTable[CORPO][getTokenId("<")] = CMD_ATTRIB_CHAMA_MATRIZ;
+		syntaxTable[CORPO][getTokenId("var")] = CMD_VAR;
+		syntaxTable[CORPO][getTokenId("inicio")] = CMD_ESCOPO;
+		
+		fillRow(LEITURA_I, EPSILON);
+		syntaxTable[LEITURA_I][getTokenId(",")] = LEITURA_I;
+		
+		fillRow(ESCREVIVEL_I, EPSILON);
+		syntaxTable[ESCREVIVEL_I][getTokenId(",")] = ESCREVIVEL_I;
+		
+		fillRow(ELSE_OPC, EPSILON);
+		syntaxTable[ELSE_OPC][getTokenId("senao")] = ELSE_OPC;
+		
+		syntaxTable[WHOS_NEXT][getTokenId("=")] = WHOS_NEXT_ATTRIB;
+		syntaxTable[WHOS_NEXT][getTokenId("(")] = WHOS_NEXT_FUNC;
+		
 		//TYPE GRAMAR
 		syntaxTable[TYPE][getTokenId("inteiro")] 	= INTEGER_CONSUME;
 		syntaxTable[TYPE][getTokenId("real")] 		= FLOAT_CONSUME;
@@ -205,7 +229,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[TYPE][getTokenId("cadeia")] 		= STRING_CONSUME;
 		syntaxTable[TYPE][getTokenId("booleano")] 	= BOOL_CONSUME;
 		
-		//fillRow(DECL_CONST_VAR_DERIVA, EPSILON);
+		
 		
 	}
 	
@@ -222,7 +246,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	public void startAnalysis() {
 		Token token = currentToken();
 		while (!stack.isEmpty()) {
-			System.out.println("Stack: " + stack);
+			//System.out.println("Stack: " + stack);
 			if (token.getId() == stack.peek()) {
 				Debug.println("Token consumed: " + token.getLexem());
 				stack.pop();
@@ -231,16 +255,17 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			} else {
 				
 				int production = syntaxTable[stack.peek()][token.getId()];
-				//Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
+				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
+					System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
+					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 					return;
 				}
 					
 			}
 		}
-		
+		System.out.println("Success!");
 		Debug.println("Success!");
 	}
 
@@ -332,6 +357,32 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			_Expressao_Relacional_I();
 		else if (production == EXPRESSAO_CONJUNTA_I)
 			_Expressao_Conjunta_I();
+		else if (production == CMD_LEIA)
+			_Comando_Leia();
+		else if (production == LEITURA_I)
+			_Leitura_I();
+		else if (production == CMD_ESCREVA)
+			_Comando_Escreva();
+		else if (production == ESCREVIVEL_I)
+			_Escrevivel_I();
+		else if (production == CMD_SE)
+			_Comando_Se();
+		else if (production == ELSE_OPC)
+			_Else_Opc();
+		else if (production == CMD_ENQUANTO)
+			_Comando_Enquanto();
+		else if (production == CMD_VAR)
+			_Comando_Var();
+		else if (production == CMD_ESCOPO)
+			_Comando_Novo_Escopo();
+		else if (production == CMD_ATTRIB_CHAMA_IDEN)
+			_Comando_Attri_To_Ident();
+		else if (production == WHOS_NEXT_ATTRIB)
+			_Whos_Next_Attrib();
+		else if (production == WHOS_NEXT_FUNC)
+			_Whos_Next_Func();
+		else if (production == CMD_ATTRIB_CHAMA_MATRIZ)
+			_Comando_Attri_To_Vect();
 		
 		
 		else if (production == EPSILON)
@@ -396,7 +447,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Decl_Main() {
 		stack.push(getTokenId("fim"));
-		//stack.push(CORPO);
+		stack.push(CORPO);
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId("programa"));
 	}
@@ -482,7 +533,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void __Decl_Func_I_Void() {
 		stack.push(getTokenId("fim"));
-		//stack.push(CORPO); //TODO Corpo
+		stack.push(CORPO); //TODO Corpo
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
 		stack.push(PARAMETROS);
@@ -493,7 +544,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private void __Decl_Func_I_Retr() {
 		stack.push(getTokenId("fim"));
 		stack.push(RETORNO_FUNC);
-		//stack.push(CORPO); //TODO Corpo
+		stack.push(CORPO); //TODO Corpo
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
 		stack.push(PARAMETROS);
@@ -658,6 +709,117 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		stack.push(FATOR_I);
 		stack.push(FATOR);
 		stack.push(FATOR_I_MD);
+	}
+	
+	private void _Comando_Leia() {
+		stack.push(CORPO);
+		stack.push(getTokenId(";"));
+		stack.push(getTokenId(")"));
+		stack.push(LEITURA_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY);
+		stack.push(getTokenId("("));
+		stack.push(getTokenId("leia"));
+	}
+	
+	private void _Leitura_I() {
+		stack.push(LEITURA_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY);
+		stack.push(getTokenId(","));
+	}
+	
+	private void _Comando_Escreva() {
+		stack.push(CORPO);
+		stack.push(getTokenId(";"));
+		stack.push(getTokenId(")"));
+		stack.push(ESCREVIVEL_I);
+		stack.push(VALOR);
+		stack.push(getTokenId("("));
+		stack.push(getTokenId("escreva"));
+	}
+	
+	private void _Escrevivel_I() {
+		stack.push(ESCREVIVEL_I);
+		stack.push(VALOR);
+		stack.push(getTokenId(","));
+	}
+	
+	private void _Comando_Se() {
+		stack.push(CORPO);
+		stack.push(ELSE_OPC);
+		stack.push(getTokenId("fim"));
+		stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId("entao"));
+		stack.push(getTokenId(")"));
+		stack.push(VALOR);
+		stack.push(getTokenId("("));
+		stack.push(getTokenId("se"));
+	}
+	
+	private void _Else_Opc() {
+		stack.push(getTokenId("fim"));
+		stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId("senao"));
+	}
+	
+	private void _Comando_Enquanto() {
+		stack.push(CORPO);
+		stack.push(getTokenId("fim"));
+		stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId("faca"));
+		stack.push(getTokenId(")"));
+		stack.push(VALOR);
+		stack.push(getTokenId("("));
+		stack.push(getTokenId("enquanto"));
+	}
+	
+	private void _Comando_Var() {
+		stack.push(CORPO);
+		stack.push(DECL_VAR);
+	}
+	
+	private void _Comando_Novo_Escopo() {
+		stack.push(CORPO);
+		stack.push(getTokenId("fim"));
+		stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+	}
+	
+	private void _Comando_Attri_To_Ident() {
+		stack.push(CORPO);
+		stack.push(WHOS_NEXT);
+		stack.push(TokenFactory.IDENT);
+	}
+	
+	private void _Whos_Next_Attrib() {
+		stack.push(getTokenId(";"));
+		stack.push(VALOR);
+		stack.push(getTokenId("="));
+	}
+	
+	private void _Whos_Next_Func() {
+		stack.push(getTokenId(";"));
+		stack.push(getTokenId(")"));
+		stack.push(PASSA_PARAM);
+		stack.push(getTokenId("("));
+	}
+	
+	private void _Comando_Attri_To_Vect() {
+		stack.push(CORPO);
+		stack.push(getTokenId(";"));
+		stack.push(VALOR);
+		stack.push(getTokenId("="));
+		stack.push(TokenFactory.IDENT);
+		stack.push(getTokenId(">"));
+		stack.push(getTokenId(">"));
+		stack.push(ARRAY_I);
+		stack.push(EXPR_SIMPLES);
+		stack.push(getTokenId("<"));
+		stack.push(getTokenId("<"));
 	}
 	
 	private void __Integer_Consume() {
