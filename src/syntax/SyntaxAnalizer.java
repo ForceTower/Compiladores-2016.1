@@ -291,6 +291,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		//Pop things off te stack until a sync token is found
 		
 		while (currentTokenId() != 400) {
+			if (stack.peek() == 229 && (currentTokenId() == 70 || currentTokenId() == 71 || currentTokenId() == 72 || currentTokenId() == 73 || currentTokenId() == getTokenId("verdadeiro") || currentTokenId() == getTokenId("falso") || currentTokenId() == getTokenId("<")))
+				return;
+				
 			if (stack.peek() == currentTokenId())
 				return;
 			currentToken++;
