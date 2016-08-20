@@ -1,4 +1,4 @@
-package syntactic;
+package syntax;
 
 import java.util.List;
 import java.util.Stack;
@@ -6,15 +6,15 @@ import java.util.Stack;
 import debug.Debug;
 import model.Token;
 import model.TokenFactory;
-import syntactic_util.SyntacticUtil;
+import syntax_util.SyntaxUtil;
 
-public class SyntacticAnalizer extends SyntacticUtil {
+public class SyntaxAnalizer extends SyntaxUtil {
 	private List<Token> tokens;
 	private Stack<Integer> stack;
 	int[][] syntacticTable;
 	private int currentToken;
 	
-	public SyntacticAnalizer(List<Token> tokens) {
+	public SyntaxAnalizer(List<Token> tokens) {
 		super();
 		this.tokens = tokens;
 		this.stack = new Stack<>();

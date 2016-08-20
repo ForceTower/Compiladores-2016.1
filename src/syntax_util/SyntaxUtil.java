@@ -1,9 +1,9 @@
-package syntactic_util;
+package syntax_util;
 
 import model.Token;
 import model.TokenFactory;
 
-public class SyntacticUtil {
+public class SyntaxUtil {
 	public int 	START = 200,
 				INICIO_CONST_K_FUNC = 201,
 				DECL_CONST_VAR_DERIVA = 202,

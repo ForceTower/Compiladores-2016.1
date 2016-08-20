@@ -5,3 +5,5 @@
 /controller/
 /view_command_line/
 /model/
+/syntax/
+/syntax_util/

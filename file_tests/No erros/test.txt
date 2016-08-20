@@ -1,5 +1,6 @@
 const
 inicio
+	
     real kappa = 2;
 fim
 
@@ -10,7 +11,7 @@ fim
 
 funcao inteiro zuera (inteiro a, inteiro b, caractere c)
 inicio
-    => algo(1,2,3,4) =>;
+    => algo(nao nao nao nao nao nao nao nao nao nao nao nao natrue + 2 + kappa(pride) - <<tetete>>huhu * wtf (please-3) e kappa,2,3,4) =>;
 fim
 
 programa

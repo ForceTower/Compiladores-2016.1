@@ -9,12 +9,12 @@ import exception.IOErrorException;
 import exception.LexicalErrorException;
 import lexical.LexicalAnalyzer;
 import model.Token;
-import syntactic.SyntacticAnalizer;
+import syntax.SyntaxAnalizer;
 
 public class Compiller {
 	private File directory;
 	private LexicalAnalyzer lexicalAnalyzer;
-	private SyntacticAnalizer syntacticAnalyzer;
+	private SyntaxAnalizer syntacticAnalyzer;
 	
 	public Compiller () {
 		
@@ -74,7 +74,7 @@ public class Compiller {
 	
 	public void startSyntactic(List<Token> allValidTokens) {
 		//if (lexicalAnalyzer.lexicalErrors == 0) {
-			syntacticAnalyzer = new SyntacticAnalizer(allValidTokens);
+			syntacticAnalyzer = new SyntaxAnalizer(allValidTokens);
 			syntacticAnalyzer.startAnalysis();
 		//} else {
 			//Debug.println("Has lex erros");
