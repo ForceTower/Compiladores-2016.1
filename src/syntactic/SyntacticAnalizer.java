@@ -70,6 +70,23 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[DECL_VAR_II][getTokenId("cadeia")] 	= DECL_VAR_II;
 		syntacticTable[DECL_VAR_II][getTokenId("booleano")] 	= DECL_VAR_II;
 		
+		//INICIO GRAMATIC DECL_FUNC
+		fillRow(DECL_FUNC, EPSILON);
+		syntacticTable[DECL_FUNC][getTokenId("funcao")]	= DECL_FUNC;
+		
+		fillRow(DECL_FUNC_I, DECL_FUNC_I_R);
+		syntacticTable[DECL_FUNC_I][TokenFactory.IDENT] = DECL_FUNC_I_V;
+		
+		fillRow(PARAMETROS_I, EPSILON);
+		syntacticTable[PARAMETROS_I][getTokenId(",")] = PARAMETROS_I;
+		
+		//GRAMATICA PARAMETROS
+		fillRow(PARAMETROS, EPSILON);
+		syntacticTable[PARAMETROS][getTokenId("inteiro")] 	= PARAMETROS;//Correto é tipo
+		syntacticTable[PARAMETROS][getTokenId("real")] 		= PARAMETROS;
+		syntacticTable[PARAMETROS][getTokenId("caractere")] = PARAMETROS;
+		syntacticTable[PARAMETROS][getTokenId("cadeia")] 	= PARAMETROS;
+		syntacticTable[PARAMETROS][getTokenId("booleano")] 	= PARAMETROS;
 		
 		//INICIO DA GRAMATICA DE VALOR
 		fillRow(VALOR, VALOR);
@@ -151,6 +168,28 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(ARRAY_I, EPSILON);
 		syntacticTable[ARRAY_I][getTokenId(",")] = ARRAY_I;
 		
+		//ARRAY_PARAM
+		fillRow(ARRAY_PARAM, EPSILON);
+		syntacticTable[ARRAY_PARAM][getTokenId("<")] = ARRAY_PARAM;
+		
+		fillRow(ARRAY_INDEXES_OPT, EPSILON);
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("+")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("-")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("(")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("nao")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("<")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("verdadeiro")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][getTokenId("falso")] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][TokenFactory.IDENT] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][TokenFactory.CHAR_CONST] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][TokenFactory.NUM_CONST] = ARRAY_INDEXES_OPT;
+		syntacticTable[ARRAY_INDEXES_OPT][TokenFactory.STRING_CONST] = ARRAY_INDEXES_OPT;
+		
+		fillRow(ARRAY_PARAM_I, EPSILON);
+		syntacticTable[ARRAY_PARAM_I][getTokenId(",")] = ARRAY_PARAM_I;
+		
+		
+		//TYPE GRAMAR
 		syntacticTable[TYPE][getTokenId("inteiro")] 	= INTEGER_CONSUME;
 		syntacticTable[TYPE][getTokenId("real")] 		= FLOAT_CONSUME;
 		syntacticTable[TYPE][getTokenId("caractere")]	= CHAR_CONSUME;
@@ -186,8 +225,13 @@ public class SyntacticAnalizer extends SyntacticUtil {
 				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
-					//TODO: Handle syntactic errors here
+					while (!stack.isEmpty() && stack.peek() == null)
+						stack.pop();
+					if (!stack.isEmpty())
+						Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
+					else
+						Debug.println("EOF");
+					
 					return;
 				}
 					
@@ -225,6 +269,22 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			_Decl_Const_I();
 		else if (production == DECL_CONST_II)
 			_Decl_Const_II();
+		else if (production == DECL_FUNC)
+			_Decl_Func();
+		else if (production == DECL_FUNC_I_V)
+			__Decl_Func_I_Void();
+		else if (production == DECL_FUNC_I_R)
+			__Decl_Func_I_Retr();
+		else if (production == PARAMETROS)
+			_Parametros();
+		else if (production == PARAMETROS_I)
+			_Parametros_I();
+		else if (production == ARRAY_PARAM)
+			_Array_Param();
+		else if (production == ARRAY_INDEXES_OPT)
+			_Array_Indexes_Opt();
+		else if (production == ARRAY_PARAM_I)
+			_Array_Param_I();
 		else if (production == VALOR)
 			_Valor();
 		else if (production == EXPRESSAO_CONJUNTA)
@@ -333,18 +393,18 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	}
 	
 	private void _Decl_Const_Continuo() {
-		stack.push(DECL_CONST_II); //TODO Somente para testes
+		stack.push(DECL_CONST_II);
 		stack.push(getTokenId(";"));
-		stack.push(DECL_CONST_I); //TODO Somente para testes
-		stack.push(VALOR); //TODO correto é valor, para testes, numero 
+		stack.push(DECL_CONST_I);
+		stack.push(VALOR); 
 		stack.push(getTokenId("="));
 		stack.push(TokenFactory.IDENT);
-		stack.push(TYPE); //TODO Correto é tipo, mas para testes, será int
+		stack.push(TYPE);
 	}
 	
 	private void _Decl_Const_I() {
 		stack.push(DECL_CONST_I);
-		stack.push(VALOR); //TODO correto é valor, para testes, numero 
+		stack.push(VALOR);
 		stack.push(getTokenId("="));
 		stack.push(TokenFactory.IDENT);
 		stack.push(getTokenId(","));
@@ -396,6 +456,49 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(TokenFactory.IDENT);
 		stack.push(ARRAY);
 		stack.push(TYPE);
+	}
+	
+	private void _Decl_Func() {
+		stack.push(DECL_FUNC);
+		stack.push(DECL_FUNC_I);
+		stack.push(getTokenId("funcao"));
+	}
+	
+	private void __Decl_Func_I_Void() {
+		stack.push(getTokenId("fim"));
+		//stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId(")"));
+		stack.push(PARAMETROS);
+		stack.push(getTokenId("("));
+		stack.push(TokenFactory.IDENT);
+	}
+	
+	private void __Decl_Func_I_Retr() {
+		stack.push(getTokenId("fim"));
+		//stack.push(RETORNO_FUNC);
+		//stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId(")"));
+		stack.push(PARAMETROS);
+		stack.push(getTokenId("("));
+		stack.push(TokenFactory.IDENT);
+		stack.push(TYPE);
+	}
+	
+	private void _Parametros() {
+		stack.push(PARAMETROS_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY_PARAM);
+		stack.push(TYPE);
+	}
+	
+	private void _Parametros_I() {
+		stack.push(PARAMETROS_I);
+		stack.push(TokenFactory.IDENT);
+		stack.push(ARRAY_PARAM);
+		stack.push(TYPE);
+		stack.push(getTokenId(","));
 	}
 	
 	private void _Valor() {
@@ -498,6 +601,25 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	private void _Array_I() {
 		stack.push(ARRAY_I);
 		stack.push(EXPR_SIMPLES);
+		stack.push(getTokenId(","));
+	}
+	
+	private void _Array_Param() {
+		stack.push(getTokenId(">"));
+		stack.push(getTokenId(">"));
+		stack.push(ARRAY_PARAM_I);
+		stack.push(ARRAY_INDEXES_OPT);
+		stack.push(getTokenId("<"));
+		stack.push(getTokenId("<"));
+	}
+	
+	private void _Array_Indexes_Opt() {
+		stack.push(EXPR_SIMPLES);
+	}
+	
+	private void _Array_Param_I() {
+		stack.push(ARRAY_PARAM_I);
+		stack.push(ARRAY_INDEXES_OPT);
 		stack.push(getTokenId(","));
 	}
 	

@@ -12,7 +12,7 @@ fim
 
 funcao inteiro zuera (inteiro a, inteiro b, caractere c)
 inicio
-    var inicio
+    {var inicio
         inteiro a, b, c;
         real <<3,4,3,3>> isolado;
     fim
@@ -23,12 +23,12 @@ inicio
     inicio
         i = i - 4;
     fim
-    => algo(1,2,3,4) =>;
+    => algo(1,2,3,4) =>;}
 fim
 
 funcao zuera2 (inteiro a, inteiro b, caractere c)
 inicio
-    b = b + 3;
+    {b = b + 3;}
 fim
 
 programa
