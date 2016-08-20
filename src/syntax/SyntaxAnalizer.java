@@ -86,7 +86,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(RETORNO_FUNC, RETORNO_FUNC);
 		
 		//INICIO DECL_MAIN
-		syntaxTable[DECL_MAIN][getTokenId("programa")] = DECL_MAIN;
+		fillRow(DECL_MAIN, DECL_MAIN);
+		//syntaxTable[DECL_MAIN][getTokenId("programa")] = DECL_MAIN;
 		
 		
 		//GRAMATICA PARAMETROS
@@ -222,7 +223,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	public void startAnalysis() {
 		Token token = currentToken();
 		while (!stack.isEmpty()) {
-			System.out.println("Stack: " + stack);
+			//System.out.println("Stack: " + stack);
 			if (token.getId() == stack.peek()) {
 				Debug.println("Token consumed: " + token.getLexem());
 				stack.pop();
@@ -231,17 +232,20 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			} else {
 				
 				int production = syntaxTable[stack.peek()][token.getId()];
-				//Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
+				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
+					if (stack.peek() == 400)
+						System.out.println("Expected: End-Of-File but was: " + token.getLexem());
+					else
+						System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
 					return;
 				}
 					
 			}
 		}
 		
-		Debug.println("Success!");
+		System.out.println("Success!");
 	}
 
 	private boolean generateProduction(int production) {
