@@ -80,6 +80,9 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(PARAMETROS_I, EPSILON);
 		syntacticTable[PARAMETROS_I][getTokenId(",")] = PARAMETROS_I;
 		
+		//INICIO DECL_MAIN
+		fillRow(DECL_MAIN, DECL_MAIN);
+		
 		//GRAMATICA PARAMETROS
 		fillRow(PARAMETROS, EPSILON);
 		syntacticTable[PARAMETROS][getTokenId("inteiro")] 	= PARAMETROS;//Correto é tipo
@@ -214,7 +217,6 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	public void startAnalysis() {
 		Token token = currentToken();
 		while (!stack.isEmpty()) {
-			
 			if (token.getId() == stack.peek()) {
 				Debug.println("Token identified: " + token.getLexem());
 				stack.pop();
@@ -225,18 +227,14 @@ public class SyntacticAnalizer extends SyntacticUtil {
 				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					while (!stack.isEmpty() && stack.peek() == null)
-						stack.pop();
-					if (!stack.isEmpty())
-						Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
-					else
-						Debug.println("EOF");
-					
+					Debug.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem());
 					return;
 				}
 					
 			}
 		}
+		
+		Debug.println("Success!");
 	}
 
 	private boolean generateProduction(int production) {
@@ -253,6 +251,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			_Inicio_Func();
 		else if (production == DECL_CONST)
 			_Decl_Const();
+		else if (production == DECL_MAIN)
+			_Decl_Main();
 		else if (production == DECL_CONST_CONTINUO)
 			_Decl_Const_Continuo();
 		else if (production == DECL_VAR)
@@ -385,6 +385,13 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(DECL_FUNC);
 	}
 	
+	private void _Decl_Main() {
+		stack.push(getTokenId("fim"));
+		//stack.push(CORPO);
+		stack.push(getTokenId("inicio"));
+		stack.push(getTokenId("programa"));
+	}
+	
 	private void _Decl_Const() {
 		stack.push(getTokenId("fim"));
 		stack.push(DECL_CONST_CONTINUO);
@@ -466,7 +473,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	
 	private void __Decl_Func_I_Void() {
 		stack.push(getTokenId("fim"));
-		//stack.push(CORPO);
+		//stack.push(CORPO); //TODO Corpo
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
 		stack.push(PARAMETROS);
@@ -476,8 +483,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	
 	private void __Decl_Func_I_Retr() {
 		stack.push(getTokenId("fim"));
-		//stack.push(RETORNO_FUNC);
-		//stack.push(CORPO);
+		//stack.push(RETORNO_FUNC); //TODO Retorno Func
+		//stack.push(CORPO); //TODO Corpo
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
 		stack.push(PARAMETROS);
@@ -720,7 +727,9 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	}
 
 	public Token currentToken() {
-		return tokens.get(currentToken);
+		if (currentToken < tokens.size())
+			return tokens.get(currentToken);
+		return new Token(END);
 	}
 
 }
