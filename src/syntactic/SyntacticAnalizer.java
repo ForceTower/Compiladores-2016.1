@@ -80,6 +80,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(PARAMETROS_I, EPSILON);
 		syntacticTable[PARAMETROS_I][getTokenId(",")] = PARAMETROS_I;
 		
+		fillRow(RETORNO_FUNC, RETORNO_FUNC);
+		
 		//INICIO DECL_MAIN
 		fillRow(DECL_MAIN, DECL_MAIN);
 		
@@ -218,7 +220,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		Token token = currentToken();
 		while (!stack.isEmpty()) {
 			if (token.getId() == stack.peek()) {
-				Debug.println("Token identified: " + token.getLexem());
+				Debug.println("Token consumed: " + token.getLexem());
 				stack.pop();
 				currentToken++;
 				token = currentToken();
@@ -275,6 +277,8 @@ public class SyntacticAnalizer extends SyntacticUtil {
 			__Decl_Func_I_Void();
 		else if (production == DECL_FUNC_I_R)
 			__Decl_Func_I_Retr();
+		else if (production == RETORNO_FUNC)
+			_Retorno_Func();
 		else if (production == PARAMETROS)
 			_Parametros();
 		else if (production == PARAMETROS_I)
@@ -483,7 +487,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	
 	private void __Decl_Func_I_Retr() {
 		stack.push(getTokenId("fim"));
-		//stack.push(RETORNO_FUNC); //TODO Retorno Func
+		stack.push(RETORNO_FUNC);
 		//stack.push(CORPO); //TODO Corpo
 		stack.push(getTokenId("inicio"));
 		stack.push(getTokenId(")"));
@@ -491,6 +495,15 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		stack.push(getTokenId("("));
 		stack.push(TokenFactory.IDENT);
 		stack.push(TYPE);
+	}
+	
+	private void _Retorno_Func() {
+		stack.push(getTokenId(";"));
+		stack.push(getTokenId(">"));
+		stack.push(getTokenId("="));
+		stack.push(VALOR);
+		stack.push(getTokenId(">"));
+		stack.push(getTokenId("="));
 	}
 	
 	private void _Parametros() {

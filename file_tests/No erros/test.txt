@@ -22,8 +22,8 @@ inicio
     a = (b + c);
     inicio
         i = i - 4;
-    fim
-    => algo(1,2,3,4) =>;}
+    fim}
+    => algo(1,2,3,4) =>;
 fim
 
 funcao zuera2 (inteiro a, inteiro b, caractere c)
