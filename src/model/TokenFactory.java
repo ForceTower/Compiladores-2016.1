@@ -64,6 +64,17 @@ public class TokenFactory implements TokenConstants{
 		addReservedWord("cadeia", "cadeia - tipo", 0);
 		addReservedWord("caractere", "caractere - palavra_reservada", 0);
 		
+		addReservedWord("+", "Operador Aritmetico (+)", 2);
+		addReservedWord("-", "Operador Aritmetico (-)", 2);
+		addReservedWord("*", "Operador Aritmetico (*)", 2);
+		addReservedWord("/", "Operador Aritmetico (/)", 2);
+		addReservedWord("<>", "Operador Logico (<>)", 3);
+		addReservedWord("=", "Atribuicao (=)", 3);
+		addReservedWord("<", "Operador Logico (<)", 3);
+		addReservedWord("<=", "Operador Logico (<=)", 3);
+		addReservedWord(">", "Operador Logico (>)", 3);
+		addReservedWord(">=", "Operador Logico (>=)", 3);
+		addReservedWord("nao", "Operador Logico (nao)", 4);
 		addReservedWord("e", "Operador Logico", 4);
 		addReservedWord("ou", "Operador Logico", 4);
 		addReservedWord(";", "Ponto-e-Virgula (;)", 5);

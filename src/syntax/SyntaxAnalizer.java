@@ -101,6 +101,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(RETORNO_FUNC, RETORNO_FUNC);
 		
 		//INICIO DECL_MAIN
+		fillRow(DECL_MAIN, DECL_MAIN);
 		syntaxTable[DECL_MAIN][getTokenId("programa")] = DECL_MAIN;
 		
 		
