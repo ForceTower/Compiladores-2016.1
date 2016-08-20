@@ -1,6 +1,6 @@
 const
 inicio
-    inteiro a = k, b = 2 * 3 + 7 * 5;
+    inteiro a = k, b = 2 * 3 + 7 * 5
     caractere c = 'k', b = hehe;
     inteiro d = kappa();
 fim

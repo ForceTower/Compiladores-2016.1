@@ -14,7 +14,6 @@
 3 7 nro
 3 * operador
 3 5 nro
-3 ; delimitador
 4 caractere palavra_reservada
 4 c id
 4 = operador

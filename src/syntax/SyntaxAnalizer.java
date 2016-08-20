@@ -1,5 +1,6 @@
 package syntax;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -10,6 +11,7 @@ import syntax_util.SyntaxUtil;
 
 public class SyntaxAnalizer extends SyntaxUtil {
 	private List<Token> tokens;
+	private List<Integer> syncSymbols;
 	private Stack<Integer> stack;
 	int[][] syntaxTable;
 	private int currentToken;
@@ -18,12 +20,23 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		super();
 		this.tokens = tokens;
 		this.stack = new Stack<>();
+		this.syncSymbols = new ArrayList<>();
 		syntaxTable = new int[800][800];
 		currentToken = 0;
 		
+		initializeSyncSymbols();
 		initializeTable();
 		prepareTable();
 		prepareStack();
+	}
+
+	public void initializeSyncSymbols() {
+		syncSymbols.add(getTokenId(";"));
+		syncSymbols.add(getTokenId(","));
+		syncSymbols.add(getTokenId("("));
+		syncSymbols.add(getTokenId(")"));
+		syncSymbols.add(getTokenId("inicio"));
+		syncSymbols.add(getTokenId("fim"));
 	}
 
 	public void initializeTable() {
@@ -242,8 +255,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 	
 	public void startAnalysis() {
-		Token token = currentToken();
+		
 		while (!stack.isEmpty()) {
+			Token token = currentToken();
 			//System.out.println("Stack: " + stack);
 			//System.out.println("Token is: " + token.getId());
 			if (token.getId() == stack.peek()) {
@@ -257,12 +271,21 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				
 				if (!generateProduction(production)) {
 					System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
-					return;
+					token = errorRecovery();
+					
+					//return;
 				}
 					
 			}
 		}
 		System.out.println("Success!");
+	}
+
+	private Token errorRecovery() {
+		//TODO Fazer calculos para descobrir qual o melhor token de fill neste caso...
+		System.out.println("Returned from error: " + syncSymbols.get(0));
+		tokens.add(currentToken, new Token(syncSymbols.get(0)));
+		return new Token(syncSymbols.get(0));
 	}
 
 	private boolean generateProduction(int production) {
