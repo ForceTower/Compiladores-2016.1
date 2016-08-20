@@ -33,7 +33,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 	}
 	
 	public void prepareTable() {
-		//INICIO GRAMATICA KAPPA
+		//INICIO GRAMATICA
 		syntacticTable[START][getTokenId("const")]		= INICIO_CONST_K_FUNC;
 		syntacticTable[START][getTokenId("var")] 		= INICIO_VAR_FUNC;
 		syntacticTable[START][getTokenId("funcao")] 	= INICIO_FUNC;
@@ -46,7 +46,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		syntacticTable[DECL_CONST_I][getTokenId(",")] 	= DECL_CONST_I;
 		syntacticTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
-		syntacticTable[DECL_CONST_II][getTokenId("inteiro")] 	= DECL_CONST_II;//Correto é tipo
+		syntacticTable[DECL_CONST_II][getTokenId("inteiro")] 	= DECL_CONST_II;
 		syntacticTable[DECL_CONST_II][getTokenId("real")] 	= DECL_CONST_II;
 		syntacticTable[DECL_CONST_II][getTokenId("caractere")] 	= DECL_CONST_II;
 		syntacticTable[DECL_CONST_II][getTokenId("cadeia")] 	= DECL_CONST_II;
@@ -64,7 +64,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		fillRow(DECL_VAR_I, EPSILON);
 		syntacticTable[DECL_VAR_I][getTokenId(",")] = DECL_VAR_I;
 		fillRow(DECL_VAR_II, EPSILON);
-		syntacticTable[DECL_VAR_II][getTokenId("inteiro")] 	= DECL_VAR_II;//Correto é tipo
+		syntacticTable[DECL_VAR_II][getTokenId("inteiro")] 	= DECL_VAR_II;
 		syntacticTable[DECL_VAR_II][getTokenId("real")] 	= DECL_VAR_II;
 		syntacticTable[DECL_VAR_II][getTokenId("caractere")] 	= DECL_VAR_II;
 		syntacticTable[DECL_VAR_II][getTokenId("cadeia")] 	= DECL_VAR_II;
@@ -87,7 +87,7 @@ public class SyntacticAnalizer extends SyntacticUtil {
 		
 		//GRAMATICA PARAMETROS
 		fillRow(PARAMETROS, EPSILON);
-		syntacticTable[PARAMETROS][getTokenId("inteiro")] 	= PARAMETROS;//Correto é tipo
+		syntacticTable[PARAMETROS][getTokenId("inteiro")] 	= PARAMETROS;
 		syntacticTable[PARAMETROS][getTokenId("real")] 		= PARAMETROS;
 		syntacticTable[PARAMETROS][getTokenId("caractere")] = PARAMETROS;
 		syntacticTable[PARAMETROS][getTokenId("cadeia")] 	= PARAMETROS;
