@@ -119,6 +119,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			}
 		}
 		System.out.println("Success!");
+		
+		syntaxTree = syntaxTree.normalize();
+		//ats.print();
 		syntaxTree.print();
 	}
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import model.Token;
 
-public class Node {
+public class Node implements Cloneable{
 	private List<Node> children;
 	private Node father;
 	private int info;
@@ -28,6 +28,10 @@ public class Node {
 	
 	public Node(int info) {
 		this(null, info, null, new ArrayList<>());
+	}
+	
+	public Node(int info, Token saved) {
+		this(null, info, saved, new ArrayList<>());
 	}
 	
 	public Node() {
@@ -70,6 +74,10 @@ public class Node {
 		this.info = type;
 	}
 	
+	public List<Node> getChildren() {
+		return children;
+	}
+	
 	public void print(String prefix, boolean isTail) {
 		System.out.println(prefix + (isTail ? " --- " : "|--- ") + " " + info + "  " + (isTerminal() ? saved.getLexem() : " "));
 		
@@ -79,6 +87,10 @@ public class Node {
         if (children.size() > 0) {
             children.get(children.size() - 1).print(prefix + (isTail ?"    " : "|   "), true);
         }
+	}
+	
+	public Node clone() {
+		return new Node(info, saved);
 	}
 
 }
