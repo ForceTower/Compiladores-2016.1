@@ -59,6 +59,20 @@ public class SyntaxUtil {
 				PARAMETROS_I = 257,
 				ARRAY_INDEXES_OPT = 258,
 				ARRAY_PARAM_I = 259,
+				CMD_LEIA = 260,
+				CMD_ESCREVA = 261,
+				CMD_SE = 262,
+				CMD_ENQUANTO = 263,
+				CMD_VAR = 264,
+				CMD_ESCOPO = 265,
+				CMD_ATTRIB_CHAMA_IDEN = 266,
+				CMD_ATTRIB_CHAMA_MATRIZ = 267,
+				LEITURA_I = 268,
+				ESCREVIVEL_I = 269,
+				ELSE_OPC = 270,
+				WHOS_NEXT = 271,
+				WHOS_NEXT_ATTRIB = 272,
+				WHOS_NEXT_FUNC = 273,
 				CONSUME_DIF = 376,
 				CONSUME_GT = 377,
 				CONSUME_GE = 378,
@@ -82,7 +96,8 @@ public class SyntaxUtil {
 				BOOL_CONSUME = 397,
 				TYPE = 398,
 				EPSILON = 399,
-				END = 400;
+				END = 400,
+				FATHER_RETURN = 401;
 	
 	public static int getTokenId(String lexeme) {
 		Token t = TokenFactory.findToken(lexeme);

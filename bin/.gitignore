@@ -8,3 +8,10 @@
 /syntax/
 /syntax_util/
 /debug/
+<<<<<<< HEAD
+/syntax_tree/
+=======
+>>>>>>> Syntactic
+/exception/
+/view_event/
+/view_gui/
