@@ -79,7 +79,7 @@ public class Node implements Cloneable{
 	}
 	
 	public void print(String prefix, boolean isTail) {
-		System.out.println(prefix + (isTail ? " --- " : "|--- ") + " " + info + "  " + (isTerminal() ? saved.getLexem() : " "));
+		System.out.println(prefix + (isTail ? " --- " : "|--- ") + (isTerminal() ? saved.getLexem() : "<" + info + ">"));
 		
 		for (int i = 0; i < children.size() - 1; i++) {
             children.get(i).print(prefix + (isTail ? "    " : "|   "), false);
