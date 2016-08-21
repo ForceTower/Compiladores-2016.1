@@ -104,7 +104,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				token = currentToken();
 			} else {
 				int production = syntaxTable[stack.peek()][token.getId()];
-				//Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
+				Debug.println("Shift-> Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
 					if (stack.peek() == 400)
@@ -124,6 +124,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	private void errorRecovery() {		
+		//TODO Error recovery - Isso nao funciona =/ Ou pelo menos nao achei bom
 		while (currentTokenId() != 400) {
 			if (stack.peek() == 229 && (currentTokenId() == 70 || currentTokenId() == 71 || currentTokenId() == 72 || currentTokenId() == 73 || currentTokenId() == getTokenId("verdadeiro") || currentTokenId() == getTokenId("falso") || currentTokenId() == getTokenId("<")))
 				return;
@@ -139,8 +140,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					break;
 			stack.pop();
 		}
-		System.out.println("Stack peek: " + stack.peek());
-		
 		
 	}
 
