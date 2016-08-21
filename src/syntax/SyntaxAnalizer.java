@@ -56,6 +56,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				syntaxTable[i][j] = -1;
 	}
 	
+	
 	public void fillRow(int row, int value) {
 		for (int i = 0; i < 800; i++)
 			syntaxTable[row][i] = value;
@@ -112,7 +113,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 						System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 					
 					errorRecovery();
-
+					//return;
 				}
 					
 			}
@@ -139,7 +140,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					break;
 			stack.pop();
 		}
-
+		
 	}
 
 	private boolean generateProduction(int production) {
