@@ -97,12 +97,12 @@ public class TokenFactory implements TokenConstants{
 		init = true;
 	}
 
-	private static void addMeaning(int i, String string) {
+	private static synchronized void addMeaning(int i, String string) {
 		meaning_messages.put(i, string);
 		types.put(string, i);
 	}
 
-	private static void addReservedWord(String string, String meaning_message, int type) {
+	private static synchronized void addReservedWord(String string, String meaning_message, int type) {
 		reserved_words.add(string);
 		meaning_messages.put(reserved_words.size() - 1, meaning_message);
 		types.put(string, type);
