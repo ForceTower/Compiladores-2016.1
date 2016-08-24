@@ -10,7 +10,7 @@ import debug.Debug;
 public class TokenFactory implements TokenConstants{
 	private static boolean init = false;
 	
-	public static Token findToken(String lexem) {
+	public static synchronized Token findToken(String lexem) {
 		if (!init)
 			init();
 		
@@ -42,7 +42,7 @@ public class TokenFactory implements TokenConstants{
 		return k;
 	}
 
-	public static void init() {
+	public static synchronized void init() {
 		addReservedWord("programa", "programa - palavra_reservada", 0);
 		addReservedWord("const", "const - palavra_reservada", 0);
 		addReservedWord("var", "var - palavra_reservada", 0);
