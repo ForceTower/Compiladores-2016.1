@@ -1,17 +1,3 @@
-/lexical/
-/syntactic/
-/syntactic_model/
-/syntactic_util/
-/controller/
-/view_command_line/
-/model/
 /syntax/
 /syntax_util/
 /debug/
-<<<<<<< HEAD
-/syntax_tree/
-=======
->>>>>>> Syntactic
-/exception/
-/view_event/
-/view_gui/
