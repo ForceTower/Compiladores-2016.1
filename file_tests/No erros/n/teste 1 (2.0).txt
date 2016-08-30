@@ -51,7 +51,7 @@ inicio
        
        senao 
        inicio 
-            se (k <> 3) entao
+            se (k <> ) entao
             inicio
                 k = 45;
             fim 

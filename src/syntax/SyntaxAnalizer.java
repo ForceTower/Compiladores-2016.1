@@ -107,10 +107,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				Debug.println("Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					if (stack.peek() == 400)
-						System.out.println("Expected: \"End-Of-File\" but was: " + token.getLexem() + " on line: " + token.getLine());
-					else
-						System.out.println("Expected: " + TokenFactory.meaning_messages.get(stack.peek()) + " but was: " + token.getLexem() + " on line: " + token.getLine());
+					showError(stack.peek(), token);
 					
 					errorRecovery();
 					//return;
@@ -121,6 +118,19 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		System.out.println("Success!");
 		syntaxTree = syntaxTree.normalize();
 		syntaxTree.print();
+	}
+
+	private void showError(Integer peek, Token token) {
+		if (peek == 400)
+			System.out.println("Expected: \"End-Of-File\" but was: " + token.getLexem() + " on line: " + token.getLine());
+		else if (peek > 200) {
+			System.out.println("-> Expected one of the Following: ");
+			for (int k = 0; k < syntaxTable[peek].length; k++)
+				if (syntaxTable[peek][k] != -1)
+					showError(k, token);
+			System.out.println(" ----- \n");
+		} else
+			System.out.println("Expected: " + TokenFactory.meaning_messages.get(peek) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 	}
 
 	private void errorRecovery() {		

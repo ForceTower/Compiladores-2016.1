@@ -250,7 +250,6 @@
 54 ( Abre Parenteses
 54 k Identificador
 54 <> Operador Logico (<>)
-54 3 Numero
 54 ) Fecha Parenteses
 54 entao entao - palavra_reservada
 55 inicio inicio - palavra_reservada
