@@ -51,6 +51,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syncTokens.add(getTokenId("inicio"));
 		syncTokens.add(getTokenId("fim"));
 		syncTokens.add(getTokenId("entao"));
+		syncTokens.add(TokenFactory.IDENT);
 	}
 
 	public void initializeTable() {
@@ -1099,7 +1100,10 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		
 		//INICIO CORPO
-		fillRow(CORPO, EPSILON);
+		
+		//fillRow(CORPO, EPSILON);
+		syntaxTable[CORPO][getTokenId("=")] = EPSILON;
+		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("leia")] = CMD_LEIA;
 		syntaxTable[CORPO][getTokenId("escreva")] = CMD_ESCREVA;
 		syntaxTable[CORPO][getTokenId("se")] = CMD_SE;
