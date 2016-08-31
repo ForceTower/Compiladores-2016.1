@@ -19,14 +19,16 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private int currentToken;
 	private AbstractSyntaxTree syntaxTree;
 	private Node currentNode;
+	private int syntaxErrors;
 	
 	public SyntaxAnalizer(List<Token> tokens) {
 		super();
 		this.tokens = tokens;
 		this.stack = new Stack<>();
 		this.syncTokens = new ArrayList<>();
-		syntaxTable = new int[800][800];
+		syntaxTable = new int[450][450];
 		currentToken = 0;
+		syntaxErrors = 0;
 		syntaxTree = new AbstractSyntaxTree();
 		
 		initializeSyncSymbols();
@@ -48,17 +50,18 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syncTokens.add(getTokenId(")"));
 		syncTokens.add(getTokenId("inicio"));
 		syncTokens.add(getTokenId("fim"));
+		syncTokens.add(getTokenId("entao"));
 	}
 
 	public void initializeTable() {
-		for (int i = 0; i < 800; i++)
-			for (int j = 0; j < 800; j++)
+		for (int i = 0; i < syntaxTable.length; i++)
+			for (int j = 0; j < syntaxTable[i].length; j++)
 				syntaxTable[i][j] = -1;
 	}
 	
 	
 	public void fillRow(int row, int value) {
-		for (int i = 0; i < 800; i++)
+		for (int i = 0; i < syntaxTable[row].length; i++)
 			syntaxTable[row][i] = value;
 	}
 	
@@ -108,14 +111,17 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				
 				if (!generateProduction(production)) {
 					showError(stack.peek(), token);
-					
+					syntaxErrors++;
 					errorRecovery();
-					//return;
 				}
 					
 			}
 		}
-		System.out.println("Success!");
+		
+		if (syntaxErrors == 0)
+			System.out.println("Success!");
+		else
+			System.out.println("Found " + syntaxErrors + (syntaxErrors == 1 ? " error" : " errors"));
 		syntaxTree = syntaxTree.normalize();
 		syntaxTree.print();
 	}
@@ -124,18 +130,32 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		if (peek == 400)
 			System.out.println("Expected: \"End-Of-File\" but was: " + token.getLexem() + " on line: " + token.getLine());
 		else if (peek > 200) {
-			System.out.println("-> Expected one of the Following: ");
+			System.out.println("--> Expected one of the Following: ");
 			for (int k = 0; k < syntaxTable[peek].length; k++)
 				if (syntaxTable[peek][k] != -1)
-					showError(k, token);
-			System.out.println(" ----- \n");
+					showError2(k, token);
+			System.out.println("--> But was: " + token.getLexem() + " on line: " + token.getLine());
 		} else
 			System.out.println("Expected: " + TokenFactory.meaning_messages.get(peek) + " but was: " + token.getLexem() + " on line: " + token.getLine());
 	}
 
+	private void showError2(int peek, Token token) {
+		if (peek > 200) {
+			for (int k = 0; k < syntaxTable[peek].length; k++)
+				if (syntaxTable[peek][k] != -1)
+					showError2(k, token);
+		} else
+			System.out.println("-> " + TokenFactory.meaning_messages.get(peek));
+	}
+
 	private void errorRecovery() {		
 		//TODO Error recovery - Isso nao funciona =/ Ou pelo menos nao achei bom
-		while (currentTokenId() != 400) {
+		stack.pop();
+		
+		while (!syncTokens.contains(currentTokenId()))
+			currentToken++;
+		
+		/*while (currentTokenId() != 400) {
 			if (stack.peek() == 229 && (currentTokenId() == 70 || currentTokenId() == 71 || currentTokenId() == 72 || currentTokenId() == 73 || currentTokenId() == getTokenId("verdadeiro") || currentTokenId() == getTokenId("falso") || currentTokenId() == getTokenId("<")))
 				return;
 				
@@ -149,7 +169,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				if (i == stack.peek())
 					break;
 			stack.pop();
-		}
+		}*/
 		
 	}
 

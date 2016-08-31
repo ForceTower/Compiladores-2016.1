@@ -51,7 +51,7 @@ inicio
        
        senao 
        inicio 
-            se (k <> ) entao
+            se (k <>
             inicio
                 k = 45;
             fim 
@@ -59,7 +59,7 @@ inicio
             senao
             inicio
                 var
-                inicio
+                
                     inteiro <<4,4>> kappa, i, j;
                 fim
                 j = 0;

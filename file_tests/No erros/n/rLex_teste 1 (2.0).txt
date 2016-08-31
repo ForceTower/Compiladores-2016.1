@@ -250,8 +250,6 @@
 54 ( Abre Parenteses
 54 k Identificador
 54 <> Operador Logico (<>)
-54 ) Fecha Parenteses
-54 entao entao - palavra_reservada
 55 inicio inicio - palavra_reservada
 56 k Identificador
 56 = Atribuicao (=)
@@ -261,7 +259,6 @@
 59 senao senao - palavra_reservada
 60 inicio inicio - palavra_reservada
 61 var var - palavra_reservada
-62 inicio inicio - palavra_reservada
 63 inteiro inteiro - tipo
 63 < Operador Logico (<)
 63 < Operador Logico (<)
