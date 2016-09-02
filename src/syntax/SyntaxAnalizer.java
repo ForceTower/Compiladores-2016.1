@@ -1104,7 +1104,18 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId("<=")] = CONSUME_LE;
 		syntaxTable[OPERAR_RELACIONALMENTE_CONSUME][getTokenId("<>")] = CONSUME_DIF;
 		
-		fillRow(NOT_OPC, EPSILON);
+		//fillRow(NOT_OPC, EPSILON);
+		syntaxTable[NOT_OPC][TokenFactory.IDENT] = EPSILON;
+		syntaxTable[NOT_OPC][getTokenId("<")] = EPSILON;
+		syntaxTable[NOT_OPC][TokenFactory.NUM_CONST] = EPSILON;
+		syntaxTable[NOT_OPC][getTokenId("verdadeiro")] = EPSILON;
+		syntaxTable[NOT_OPC][getTokenId("falso")] = EPSILON;
+		syntaxTable[NOT_OPC][TokenFactory.CHAR_CONST] = EPSILON;
+		syntaxTable[NOT_OPC][TokenFactory.STRING_CONST] = EPSILON;
+		syntaxTable[NOT_OPC][getTokenId("(")] = EPSILON;
+		syntaxTable[NOT_OPC][getTokenId("+")] = EPSILON;
+		syntaxTable[NOT_OPC][getTokenId("-")] = EPSILON;
+		
 		syntaxTable[NOT_OPC][getTokenId("nao")] = NOT_OPC;
 		
 		//INICIO DA GRAMATICA DE EXPR_SIMPLES
@@ -1120,7 +1131,16 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[EXPR_SIMPLES][getTokenId("+")] = EXPR_SIMPLES;
 		syntaxTable[EXPR_SIMPLES][getTokenId("-")] = EXPR_SIMPLES;
 		
-		fillRow(OPERADOR_MAIS_MENOS, EPSILON);
+		//fillRow(OPERADOR_MAIS_MENOS, EPSILON);
+		syntaxTable[OPERADOR_MAIS_MENOS][TokenFactory.IDENT] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("<")] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][TokenFactory.NUM_CONST] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("verdadeiro")] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("falso")] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][TokenFactory.CHAR_CONST] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][TokenFactory.STRING_CONST] = EPSILON;
+		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("(")] = EPSILON;
+		
 		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("+")] = PLUS_CONSUME;
 		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("-")] = MINUS_CONSUME;
 		
@@ -1134,7 +1154,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[TERMO][TokenFactory.STRING_CONST] = TERMO;
 		syntaxTable[TERMO][getTokenId("(")] = TERMO;
 		
-		fillRow(TERMO_I, EPSILON);
+		fillRow(TERMO_I, EPSILON); //Tooooooo much
 		syntaxTable[TERMO_I][getTokenId("+")] = TERMO_I;
 		syntaxTable[TERMO_I][getTokenId("-")] = TERMO_I;
 		
@@ -1147,16 +1167,18 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[FATOR][TokenFactory.STRING_CONST] = CONSUME_STRING_CONST;
 		syntaxTable[FATOR][getTokenId("(")] = PAR_VALOR_PAR; 
 		
-		fillRow(FATOR_I, EPSILON);
+		fillRow(FATOR_I, EPSILON); //Too much
 		syntaxTable[FATOR_I][getTokenId("*")] = FATOR_I;
 		syntaxTable[FATOR_I][getTokenId("/")] = FATOR_I;
 		syntaxTable[FATOR_I_MD][getTokenId("*")] = CONSUME_MULT;
 		syntaxTable[FATOR_I_MD][getTokenId("/")] = CONSUME_DIV;
 		
-		fillRow(POSSIBLE_FUNC, EPSILON);
+		fillRow(POSSIBLE_FUNC, EPSILON); //Too much things can come after this
 		syntaxTable[POSSIBLE_FUNC][getTokenId("(")] = POSSIBLE_FUNC;
 		
-		fillRow(PASSA_PARAM, EPSILON);
+		//fillRow(PASSA_PARAM, EPSILON);
+		syntaxTable[PASSA_PARAM][getTokenId(")")] = EPSILON;
+		
 		syntaxTable[PASSA_PARAM][getTokenId("+")] = PASSA_PARAM;
 		syntaxTable[PASSA_PARAM][getTokenId("-")] = PASSA_PARAM;
 		syntaxTable[PASSA_PARAM][getTokenId("(")] = PASSA_PARAM;
@@ -1169,20 +1191,24 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[PASSA_PARAM][TokenFactory.NUM_CONST] = PASSA_PARAM;
 		syntaxTable[PASSA_PARAM][TokenFactory.STRING_CONST] = PASSA_PARAM;
 		
-		fillRow(PASSA_PARAM_I, EPSILON);
+		//fillRow(PASSA_PARAM_I, EPSILON);
+		syntaxTable[PASSA_PARAM_I][getTokenId(")")] = EPSILON;
 		syntaxTable[PASSA_PARAM_I][getTokenId(",")] = PASSA_PARAM_I;
 		
-		fillRow(ARRAY, EPSILON);
+		//fillRow(ARRAY, EPSILON);
+		syntaxTable[ARRAY][TokenFactory.IDENT] = EPSILON;
 		syntaxTable[ARRAY][getTokenId("<")] = ARRAY;
 		
-		fillRow(ARRAY_I, EPSILON);
+		//fillRow(ARRAY_I, EPSILON);
+		syntaxTable[ARRAY_I][getTokenId(">")] = EPSILON;
 		syntaxTable[ARRAY_I][getTokenId(",")] = ARRAY_I;
 		
 		//ARRAY_PARAM
-		fillRow(ARRAY_PARAM, EPSILON);
+		//fillRow(ARRAY_PARAM, EPSILON);
+		syntaxTable[ARRAY_PARAM][TokenFactory.IDENT] = EPSILON;
 		syntaxTable[ARRAY_PARAM][getTokenId("<")] = ARRAY_PARAM;
 		
-		fillRow(ARRAY_INDEXES_OPT, EPSILON);
+		fillRow(ARRAY_INDEXES_OPT, EPSILON); // Would it be > and , ?
 		syntaxTable[ARRAY_INDEXES_OPT][getTokenId("+")] = ARRAY_INDEXES_OPT;
 		syntaxTable[ARRAY_INDEXES_OPT][getTokenId("-")] = ARRAY_INDEXES_OPT;
 		syntaxTable[ARRAY_INDEXES_OPT][getTokenId("(")] = ARRAY_INDEXES_OPT;
@@ -1195,7 +1221,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[ARRAY_INDEXES_OPT][TokenFactory.NUM_CONST] = ARRAY_INDEXES_OPT;
 		syntaxTable[ARRAY_INDEXES_OPT][TokenFactory.STRING_CONST] = ARRAY_INDEXES_OPT;
 		
-		fillRow(ARRAY_PARAM_I, EPSILON);
+		//fillRow(ARRAY_PARAM_I, EPSILON);
+		syntaxTable[ARRAY_PARAM_I][getTokenId(">")] = EPSILON;
 		syntaxTable[ARRAY_PARAM_I][getTokenId(",")] = ARRAY_PARAM_I;
 		
 		
@@ -1213,11 +1240,13 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[CORPO][getTokenId("var")] = CMD_VAR;
 		syntaxTable[CORPO][getTokenId("inicio")] = CMD_ESCOPO;
 		
-		fillRow(LEITURA_I, EPSILON);
+		//fillRow(LEITURA_I, EPSILON);
+		syntaxTable[LEITURA_I][getTokenId(")")] = EPSILON;
 		syntaxTable[LEITURA_I][getTokenId(",")] = LEITURA_I;
 
 		//ESCRITA
-		fillRow(ESCREVIVEL_I, EPSILON);
+		//fillRow(ESCREVIVEL_I, EPSILON);
+		syntaxTable[ESCREVIVEL_I][getTokenId(")")] = EPSILON;
 		syntaxTable[ESCREVIVEL_I][getTokenId(",")] = ESCREVIVEL_I;
 		
 		fillRow(ESCREVIVEL, ESCREVIVEL);

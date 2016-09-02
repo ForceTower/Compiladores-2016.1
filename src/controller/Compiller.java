@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import debug.Debug;
 import exception.IOErrorException;
 import exception.LexicalErrorException;
 import lexical.LexicalAnalyzer;
