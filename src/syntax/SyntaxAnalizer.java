@@ -115,8 +115,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					showError(stack.peek(), token);
 					syntaxErrors++;
 					errorRecovery();
-					System.out.println("-----");
-					
+					System.out.println("-----");	
 				}
 					
 			}
@@ -128,7 +127,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			System.out.println("Found " + syntaxErrors + (syntaxErrors == 1 ? " error" : " errors"));
 		
 		syntaxTree = syntaxTree.normalize();
-		//syntaxTree.print();
+		syntaxTree.print();
 	}
 
 	private void showError(Integer peek, Token token) {
@@ -278,6 +277,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			_Expressao_Relacional_I();
 		else if (production == EXPRESSAO_CONJUNTA_I)
 			_Expressao_Conjunta_I();
+		else if (production == CORPO)
+			_Corpo();
 		else if (production == CMD_LEIA)
 			_Comando_Leia();
 		else if (production == LEITURA_I)
@@ -684,9 +685,15 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		stack.push(FATOR_I_MD);
 	}
 	
-	private void _Comando_Leia() {
+	private void _Corpo() {
 		stack.push(FATHER_RETURN);
 		stack.push(CORPO);
+		stack.push(COMANDOS);
+	}
+	
+	private void _Comando_Leia() {
+		stack.push(FATHER_RETURN);
+		//stack.push(CORPO);
 		stack.push(getTokenId(";"));
 		stack.push(getTokenId(")"));
 		stack.push(LEITURA_I);
@@ -706,7 +713,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Comando_Escreva() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(getTokenId(";"));
 		stack.push(getTokenId(")"));
 		stack.push(ESCREVIVEL_I);
@@ -758,7 +765,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Comando_Se() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(ELSE_OPC);
 		stack.push(getTokenId("fim"));
 		stack.push(CORPO);
@@ -780,7 +787,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Comando_Enquanto() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(getTokenId("fim"));
 		stack.push(CORPO);
 		stack.push(getTokenId("inicio"));
@@ -793,13 +800,13 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Comando_Var() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(DECL_VAR);
 	}
 	
 	private void _Comando_Novo_Escopo() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(getTokenId("fim"));
 		stack.push(CORPO);
 		stack.push(getTokenId("inicio"));
@@ -807,7 +814,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Comando_Attri_To_Ident() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(WHOS_NEXT);
 		stack.push(TokenFactory.IDENT);
 	}
@@ -829,7 +836,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	private void _Comando_Attri_To_Vect() {
 		stack.push(FATHER_RETURN);
-		stack.push(CORPO);
+		//stack.push(CORPO);
 		stack.push(getTokenId(";"));
 		stack.push(VALOR);
 		stack.push(getTokenId("="));
@@ -1233,8 +1240,21 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		//INICIO CORPO
 		
-		//fillRow(CORPO, EPSILON);
+		fillRow(CORPO, CORPO);
 		syntaxTable[CORPO][getTokenId("=")] = EPSILON;
+		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
+		
+		syntaxTable[COMANDOS][getTokenId("leia")] = CMD_LEIA;
+		syntaxTable[COMANDOS][getTokenId("escreva")] = CMD_ESCREVA;
+		syntaxTable[COMANDOS][getTokenId("se")] = CMD_SE;
+		syntaxTable[COMANDOS][getTokenId("enquanto")] = CMD_ENQUANTO;
+		syntaxTable[COMANDOS][TokenFactory.IDENT] = CMD_ATTRIB_CHAMA_IDEN;
+		syntaxTable[COMANDOS][getTokenId("<")] = CMD_ATTRIB_CHAMA_MATRIZ;
+		syntaxTable[COMANDOS][getTokenId("var")] = CMD_VAR;
+		syntaxTable[COMANDOS][getTokenId("inicio")] = CMD_ESCOPO;
+		
+		
+		/*syntaxTable[CORPO][getTokenId("=")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("leia")] = CMD_LEIA;
 		syntaxTable[CORPO][getTokenId("escreva")] = CMD_ESCREVA;
@@ -1243,7 +1263,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[CORPO][TokenFactory.IDENT] = CMD_ATTRIB_CHAMA_IDEN;
 		syntaxTable[CORPO][getTokenId("<")] = CMD_ATTRIB_CHAMA_MATRIZ;
 		syntaxTable[CORPO][getTokenId("var")] = CMD_VAR;
-		syntaxTable[CORPO][getTokenId("inicio")] = CMD_ESCOPO;
+		syntaxTable[CORPO][getTokenId("inicio")] = CMD_ESCOPO;*/
 		
 		//fillRow(LEITURA_I, EPSILON);
 		syntaxTable[LEITURA_I][getTokenId(")")] = EPSILON;

@@ -86,6 +86,7 @@ public class SyntaxUtil {
 				FATOR_E = 280,
 				FATOR_I_E = 281,
 				PAR_ESC_PAR = 282,
+				COMANDOS = 283,
 				CONSUME_DIF = 376,
 				CONSUME_GT = 377,
 				CONSUME_GE = 378,
@@ -129,10 +130,10 @@ public class SyntaxUtil {
 	
 	public SyntaxUtil() throws IOException {
 		follows = new Hashtable<>();
-		//initFollows();
+		initFollows();
 	}
 	
-	private void initFollows() throws IOException {
+	public void initFollows() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("follows.txt"));
 		
 		String line = null;
