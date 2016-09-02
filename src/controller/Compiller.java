@@ -53,7 +53,7 @@ public class Compiller {
 	}
 	
 	public void completeAnalysis(File arq) {
-		Debug.println("Currently Analyzing: " + arq.getName());
+		System.out.println("Currently Analyzing: " + arq.getName());
 		File result = new File(arq.getParentFile() + "\\rLex_" + arq.getName());
 		
 		//List<Token> allTokens;

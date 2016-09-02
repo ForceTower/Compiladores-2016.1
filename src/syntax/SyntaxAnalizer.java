@@ -113,6 +113,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				if (!generateProduction(production)) {
 					showError(stack.peek(), token);
 					syntaxErrors++;
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					errorRecovery();
 				}
 					
@@ -123,8 +129,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			System.out.println("Success!");
 		else
 			System.out.println("Found " + syntaxErrors + (syntaxErrors == 1 ? " error" : " errors"));
+		
 		syntaxTree = syntaxTree.normalize();
-		syntaxTree.print();
+		//syntaxTree.print();
 	}
 
 	private void showError(Integer peek, Token token) {
@@ -956,28 +963,47 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		
 		//INICIO GRAMATICA DECL_CONST
-		fillRow(DECL_CONST, DECL_CONST);
-		fillRow(DECL_CONST_I, EPSILON);
+		//fillRow(DECL_CONST, DECL_CONST);
+		syntaxTable[DECL_CONST][getTokenId("const")] = DECL_CONST;
+		//fillRow(DECL_CONST_I, EPSILON);
+		syntaxTable[DECL_CONST_I][getTokenId(";")] = EPSILON;
 		syntaxTable[DECL_CONST_I][getTokenId(",")] = DECL_CONST_I;
 		//syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
-		fillRow(DECL_CONST_II, EPSILON);
+		//fillRow(DECL_CONST_II, EPSILON);
+		syntaxTable[DECL_CONST_II][getTokenId("fim")] = EPSILON;
 		syntaxTable[DECL_CONST_II][getTokenId("inteiro")] = DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("real")] = DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("caractere")] = DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("cadeia")] = DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("booleano")] = DECL_CONST_II;
-		syntaxTable[DECL_CONST_II][getTokenId("fim")] = EPSILON;
 		
-		fillRow(DECL_CONST_CONTINUO, DECL_CONST_CONTINUO);
+		//fillRow(DECL_CONST_CONTINUO, DECL_CONST_CONTINUO);
+		syntaxTable[DECL_CONST_CONTINUO][getTokenId("inteiro")] = DECL_CONST_CONTINUO;
+		syntaxTable[DECL_CONST_CONTINUO][getTokenId("real")] = DECL_CONST_CONTINUO;
+		syntaxTable[DECL_CONST_CONTINUO][getTokenId("caractere")] = DECL_CONST_CONTINUO;
+		syntaxTable[DECL_CONST_CONTINUO][getTokenId("cadeia")] = DECL_CONST_CONTINUO;
+		syntaxTable[DECL_CONST_CONTINUO][getTokenId("booleano")] = DECL_CONST_CONTINUO;
+		
 		
 		//INICIO GRAMATICA DECL_VAR
-		fillRow(DECL_VAR, DECL_VAR);
-		fillRow(DECL_VAR_CONTINUO, DECL_VAR_CONTINUO);
+		//fillRow(DECL_VAR, DECL_VAR);
+		syntaxTable[DECL_VAR][getTokenId("var")] = DECL_VAR;
 		
-		fillRow(DECL_VAR_I, EPSILON);
+		//fillRow(DECL_VAR_CONTINUO, DECL_VAR_CONTINUO);
+		syntaxTable[DECL_VAR_CONTINUO][getTokenId("inteiro")] = DECL_VAR_CONTINUO;
+		syntaxTable[DECL_VAR_CONTINUO][getTokenId("real")] = DECL_VAR_CONTINUO;
+		syntaxTable[DECL_VAR_CONTINUO][getTokenId("caractere")] = DECL_VAR_CONTINUO;
+		syntaxTable[DECL_VAR_CONTINUO][getTokenId("cadeia")] = DECL_VAR_CONTINUO;
+		syntaxTable[DECL_VAR_CONTINUO][getTokenId("booleano")] = DECL_VAR_CONTINUO;
+		
+		//fillRow(DECL_VAR_I, EPSILON);
+		syntaxTable[DECL_VAR_I][getTokenId(";")] = EPSILON;
 		syntaxTable[DECL_VAR_I][getTokenId(",")] = DECL_VAR_I;
-		fillRow(DECL_VAR_II, EPSILON);
+		
+		
+		//fillRow(DECL_VAR_II, EPSILON);
+		syntaxTable[DECL_VAR_II][getTokenId("fim")] = EPSILON;
 		syntaxTable[DECL_VAR_II][getTokenId("inteiro")] = DECL_VAR_II;
 		syntaxTable[DECL_VAR_II][getTokenId("real")] = DECL_VAR_II;
 		syntaxTable[DECL_VAR_II][getTokenId("caractere")] = DECL_VAR_II;
@@ -985,16 +1011,25 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_VAR_II][getTokenId("booleano")] = DECL_VAR_II;
 		
 		//INICIO GRAMATIC DECL_FUNC
-		fillRow(DECL_FUNC, EPSILON);
+		//fillRow(DECL_FUNC, EPSILON);
+		syntaxTable[DECL_FUNC][getTokenId("programa")] = EPSILON;
 		syntaxTable[DECL_FUNC][getTokenId("funcao")] = DECL_FUNC;
 		
-		fillRow(DECL_FUNC_I, DECL_FUNC_I_R);
+		//fillRow(DECL_FUNC_I, DECL_FUNC_I_R);
+		syntaxTable[DECL_FUNC_I][getTokenId("inteiro")] = DECL_FUNC_I_R;
+		syntaxTable[DECL_FUNC_I][getTokenId("real")] = DECL_FUNC_I_R;
+		syntaxTable[DECL_FUNC_I][getTokenId("caractere")] = DECL_FUNC_I_R;
+		syntaxTable[DECL_FUNC_I][getTokenId("cadeia")] = DECL_FUNC_I_R;
+		syntaxTable[DECL_FUNC_I][getTokenId("booleano")] = DECL_FUNC_I_R;
+		
 		syntaxTable[DECL_FUNC_I][TokenFactory.IDENT] = DECL_FUNC_I_V;
 		
-		fillRow(PARAMETROS_I, EPSILON);
+		//fillRow(PARAMETROS_I, EPSILON);
+		syntaxTable[PARAMETROS_I][getTokenId(")")] = EPSILON;
 		syntaxTable[PARAMETROS_I][getTokenId(",")] = PARAMETROS_I;
 		
-		fillRow(RETORNO_FUNC, RETORNO_FUNC);
+		//fillRow(RETORNO_FUNC, RETORNO_FUNC);
+		syntaxTable[RETORNO_FUNC][getTokenId("=")] = RETORNO_FUNC;
 		
 		//INICIO DECL_MAIN
 		//fillRow(DECL_MAIN, DECL_MAIN);
@@ -1002,7 +1037,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		
 		//GRAMATICA PARAMETROS
-		fillRow(PARAMETROS, EPSILON);
+		//fillRow(PARAMETROS, EPSILON);
+		syntaxTable[PARAMETROS][getTokenId(")")] = EPSILON;
 		syntaxTable[PARAMETROS][getTokenId("inteiro")] = PARAMETROS;
 		syntaxTable[PARAMETROS][getTokenId("real")] = PARAMETROS;
 		syntaxTable[PARAMETROS][getTokenId("caractere")] = PARAMETROS;
@@ -1019,6 +1055,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[VALOR][TokenFactory.CHAR_CONST] = VALOR;
 		syntaxTable[VALOR][TokenFactory.STRING_CONST] = VALOR;
 		syntaxTable[VALOR][getTokenId("(")] = VALOR;
+		syntaxTable[VALOR][getTokenId("nao")] = VALOR;
+		syntaxTable[VALOR][getTokenId("+")] = VALOR;
+		syntaxTable[VALOR][getTokenId("-")] = VALOR;
 		
 		//fillRow(EXPRESSAO_CONJUNTA, EXPRESSAO_CONJUNTA);
 		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.IDENT] = EXPRESSAO_CONJUNTA;
@@ -1029,6 +1068,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.CHAR_CONST] = EXPRESSAO_CONJUNTA;
 		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.STRING_CONST] = EXPRESSAO_CONJUNTA;
 		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("(")] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("nao")] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("+")] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("-")] = EXPRESSAO_CONJUNTA;
 		
 		fillRow(EXPRESSAO_CONJUNTA_I, EPSILON);
 		syntaxTable[EXPRESSAO_CONJUNTA_I][getTokenId("ou")] = EXPRESSAO_CONJUNTA_I;
@@ -1042,7 +1084,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[EXPRESSAO_RELACIONAL][TokenFactory.CHAR_CONST] = EXPRESSAO_RELACIONAL;
 		syntaxTable[EXPRESSAO_RELACIONAL][TokenFactory.STRING_CONST] = EXPRESSAO_RELACIONAL;
 		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("(")] = EXPRESSAO_RELACIONAL;
-		
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("nao")] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("+")] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("-")] = EXPRESSAO_RELACIONAL;
 		
 		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
 		syntaxTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
@@ -1073,6 +1117,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[EXPR_SIMPLES][TokenFactory.CHAR_CONST] = EXPR_SIMPLES;
 		syntaxTable[EXPR_SIMPLES][TokenFactory.STRING_CONST] = EXPR_SIMPLES;
 		syntaxTable[EXPR_SIMPLES][getTokenId("(")] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][getTokenId("+")] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][getTokenId("-")] = EXPR_SIMPLES;
 		
 		fillRow(OPERADOR_MAIS_MENOS, EPSILON);
 		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("+")] = PLUS_CONSUME;
