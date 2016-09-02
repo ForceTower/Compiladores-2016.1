@@ -1249,7 +1249,15 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[ESCREVIVEL_I][getTokenId(")")] = EPSILON;
 		syntaxTable[ESCREVIVEL_I][getTokenId(",")] = ESCREVIVEL_I;
 		
-		fillRow(ESCREVIVEL, ESCREVIVEL);
+		//fillRow(ESCREVIVEL, ESCREVIVEL);
+		syntaxTable[ESCREVIVEL][getTokenId("+")] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][getTokenId("-")] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][getTokenId("(")] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][getTokenId("<")] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][TokenFactory.IDENT] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][TokenFactory.CHAR_CONST] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][TokenFactory.NUM_CONST] = ESCREVIVEL;
+		syntaxTable[ESCREVIVEL][TokenFactory.STRING_CONST] = ESCREVIVEL;
 		
 		//ESCREVIVEL
 		fillRow(TERMO_E, TERMO_E);
@@ -1271,7 +1279,17 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		
 		//ELSE
-		fillRow(ELSE_OPC, EPSILON);
+		//fillRow(ELSE_OPC, EPSILON);
+		syntaxTable[ELSE_OPC][getTokenId("leia")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("escreva")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("se")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("<")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("inicio")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("var")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("enquanto")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("fim")] = EPSILON;
+		syntaxTable[ELSE_OPC][getTokenId("=")] = EPSILON;
+		syntaxTable[ELSE_OPC][TokenFactory.IDENT] = EPSILON;
 		syntaxTable[ELSE_OPC][getTokenId("senao")] = ELSE_OPC;
 		
 		syntaxTable[WHOS_NEXT][getTokenId("=")] = WHOS_NEXT_ATTRIB;
