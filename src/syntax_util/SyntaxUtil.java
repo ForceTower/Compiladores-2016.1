@@ -176,6 +176,7 @@ public class SyntaxUtil {
 
 	public List<Integer> getFollowsOfState(int state) {
 		ArrayList<Integer> temp = follows.get(state);
+		System.out.println("Follows: " + temp);
 		//if (!temp.contains(getTokenId(";"))) //Would this be acceptable?
 			//temp.add(getTokenId(";"));
 		return temp;

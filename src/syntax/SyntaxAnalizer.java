@@ -1097,7 +1097,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
 		syntaxTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
 		
-		fillRow(OPERAR_RELACIONALMENTE, EPSILON);
+		//fillRow(OPERAR_RELACIONALMENTE, EPSILON);
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("e")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("ou")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(",")] = EPSILON;
