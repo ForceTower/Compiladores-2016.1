@@ -250,15 +250,18 @@
 54 ( (
 54 k Identificador
 54 <> <>
+54 3 Numero
+54 ) )
+54 entao entao
 55 inicio inicio
 56 k Identificador
 56 = =
-56 45 Numero
 56 ; ;
 57 fim fim
 59 senao senao
 60 inicio inicio
 61 var var
+62 inicio inicio
 63 inteiro inteiro (tipo)
 63 < <
 63 < <
@@ -277,6 +280,7 @@
 65 j Identificador
 65 = =
 65 0 Numero
+65 ; ;
 66 i Identificador
 66 = =
 66 j Identificador

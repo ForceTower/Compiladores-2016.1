@@ -128,50 +128,59 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	private void showError(Integer peek, Token token) {
+		StringBuilder sb = new StringBuilder();
+		
 		if (peek == 400)
-			System.out.println("Expected: \"End-Of-File\" but was: " + token.getLexem() + " on line: " + token.getLine());
-		else if (peek > 200) {
-			System.out.println("--> Expected one of the Following: ");
+			sb.append("Esperado: \"Fim de Arquivo\" mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+		
+		else if (peek >= 200) {
+			sb.append("Esperado um dos seguintes: ");
+			
+			boolean b = false;
 			for (int k = 0; k < syntaxTable[peek].length; k++)
-				if (syntaxTable[peek][k] != -1)
-					showError2(k, token);
-			System.out.println("--> But was: " + token.getLexem() + " on line: " + token.getLine());
-		} else
-			System.out.println("Expected: " + TokenFactory.meaning_messages.get(peek) + " but was: " + token.getLexem() + " on line: " + token.getLine());
+				if (syntaxTable[peek][k] != -1) {
+					showError2(k, token, sb, b);
+					b = true;
+				}
+			
+			sb.append(". Mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+		} 
+		
+		else 
+			sb.append("Esperado: " + TokenFactory.meaning_messages.get(peek) + " mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+		
+		System.out.println(sb.toString());
 	}
 
-	private void showError2(int peek, Token token) {
-		if (peek > 200) {
+	private void showError2(int peek, Token token, StringBuilder sb, boolean b) {
+		if (peek == 400) {
+			if (b)
+				sb.append(", ");
+			sb.append("Fim de Arquivo");
+		} 
+		
+		else if (peek >= 200) {
 			for (int k = 0; k < syntaxTable[peek].length; k++)
 				if (syntaxTable[peek][k] != -1)
-					showError2(k, token);
-		} else
-			System.out.println("-> " + TokenFactory.meaning_messages.get(peek));
+					showError2(k, token, sb, true);
+		} 
+		
+		else {
+			if (b)
+				sb.append(", ");
+			sb.append(TokenFactory.meaning_messages.get(peek));
+		}
 	}
 
 	private void errorRecovery() {		
-		//TODO Error recovery - Isso nao funciona =/ Ou pelo menos nao achei bom
-		stack.pop();
+		Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
+		int state = currentNode.getType();
+		stack.pop(); //Removes a production that does not exists
 		
-		while (!syncTokens.contains(currentTokenId()))
-			currentToken++;
+		List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
 		
-		/*while (currentTokenId() != 400) {
-			if (stack.peek() == 229 && (currentTokenId() == 70 || currentTokenId() == 71 || currentTokenId() == 72 || currentTokenId() == 73 || currentTokenId() == getTokenId("verdadeiro") || currentTokenId() == getTokenId("falso") || currentTokenId() == getTokenId("<")))
-				return;
-				
-			if (stack.peek() == currentTokenId())
-				return;
-			currentToken++;
-		}
-		
-		while (stack.peek() != 400) {
-			for (Integer i : syncTokens)
-				if (i == stack.peek())
-					break;
-			stack.pop();
-		}*/
-		
+		while (!follows.contains(currentTokenId())) //Ignore Tokens util we get to a follow of the current state
+			currentToken++; 
 	}
 
 	private boolean generateProduction(int production) {
@@ -934,12 +943,13 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	public void prepareTable() {
 		//INICIO GRAMATICA
-		fillRow(START, INICIO_FUNC);
+		//fillRow(START, INICIO_FUNC);
 		syntaxTable[START][getTokenId("const")]	= INICIO_CONST_K_FUNC;
 		syntaxTable[START][getTokenId("var")] = INICIO_VAR_FUNC;
 		syntaxTable[START][getTokenId("funcao")] = INICIO_FUNC;
+		syntaxTable[START][getTokenId("programa")] = INICIO_FUNC;
 		
-		fillRow(DECL_CONST_VAR_DERIVA, INICIO_FUNC);
+		//fillRow(DECL_CONST_VAR_DERIVA, INICIO_FUNC);
 		syntaxTable[DECL_CONST_VAR_DERIVA][getTokenId("funcao")] = INICIO_FUNC;
 		syntaxTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] = INICIO_VAR_FUNC;
 		
@@ -987,7 +997,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(RETORNO_FUNC, RETORNO_FUNC);
 		
 		//INICIO DECL_MAIN
-		fillRow(DECL_MAIN, DECL_MAIN);
+		//fillRow(DECL_MAIN, DECL_MAIN);
 		syntaxTable[DECL_MAIN][getTokenId("programa")] = DECL_MAIN;
 		
 		
@@ -1000,13 +1010,40 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[PARAMETROS][getTokenId("booleano")] = PARAMETROS;
 		
 		//INICIO DA GRAMATICA DE VALOR
-		fillRow(VALOR, VALOR);
+		//fillRow(VALOR, VALOR);
+		syntaxTable[VALOR][TokenFactory.IDENT] = VALOR;
+		syntaxTable[VALOR][getTokenId("<")] = VALOR;
+		syntaxTable[VALOR][TokenFactory.NUM_CONST] = VALOR;
+		syntaxTable[VALOR][getTokenId("verdadeiro")] = VALOR;
+		syntaxTable[VALOR][getTokenId("falso")] = VALOR;
+		syntaxTable[VALOR][TokenFactory.CHAR_CONST] = VALOR;
+		syntaxTable[VALOR][TokenFactory.STRING_CONST] = VALOR;
+		syntaxTable[VALOR][getTokenId("(")] = VALOR;
 		
-		fillRow(EXPRESSAO_CONJUNTA, EXPRESSAO_CONJUNTA);
+		//fillRow(EXPRESSAO_CONJUNTA, EXPRESSAO_CONJUNTA);
+		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.IDENT] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("<")] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.NUM_CONST] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("verdadeiro")] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("falso")] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.CHAR_CONST] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][TokenFactory.STRING_CONST] = EXPRESSAO_CONJUNTA;
+		syntaxTable[EXPRESSAO_CONJUNTA][getTokenId("(")] = EXPRESSAO_CONJUNTA;
+		
 		fillRow(EXPRESSAO_CONJUNTA_I, EPSILON);
 		syntaxTable[EXPRESSAO_CONJUNTA_I][getTokenId("ou")] = EXPRESSAO_CONJUNTA_I;
 		
-		fillRow(EXPRESSAO_RELACIONAL, EXPRESSAO_RELACIONAL);
+		//fillRow(EXPRESSAO_RELACIONAL, EXPRESSAO_RELACIONAL);
+		syntaxTable[EXPRESSAO_RELACIONAL][TokenFactory.IDENT] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("<")] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][TokenFactory.NUM_CONST] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("verdadeiro")] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("falso")] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][TokenFactory.CHAR_CONST] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][TokenFactory.STRING_CONST] = EXPRESSAO_RELACIONAL;
+		syntaxTable[EXPRESSAO_RELACIONAL][getTokenId("(")] = EXPRESSAO_RELACIONAL;
+		
+		
 		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
 		syntaxTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
 		
@@ -1027,12 +1064,29 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[NOT_OPC][getTokenId("nao")] = NOT_OPC;
 		
 		//INICIO DA GRAMATICA DE EXPR_SIMPLES
-		fillRow(EXPR_SIMPLES, EXPR_SIMPLES);
+		//fillRow(EXPR_SIMPLES, EXPR_SIMPLES);
+		syntaxTable[EXPR_SIMPLES][TokenFactory.IDENT] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][getTokenId("<")] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][TokenFactory.NUM_CONST] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][getTokenId("verdadeiro")] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][getTokenId("falso")] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][TokenFactory.CHAR_CONST] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][TokenFactory.STRING_CONST] = EXPR_SIMPLES;
+		syntaxTable[EXPR_SIMPLES][getTokenId("(")] = EXPR_SIMPLES;
+		
 		fillRow(OPERADOR_MAIS_MENOS, EPSILON);
 		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("+")] = PLUS_CONSUME;
 		syntaxTable[OPERADOR_MAIS_MENOS][getTokenId("-")] = MINUS_CONSUME;
 		
-		fillRow(TERMO, TERMO);
+		//fillRow(TERMO, TERMO);
+		syntaxTable[TERMO][TokenFactory.IDENT] = TERMO;
+		syntaxTable[TERMO][getTokenId("<")] = TERMO;
+		syntaxTable[TERMO][TokenFactory.NUM_CONST] = TERMO;
+		syntaxTable[TERMO][getTokenId("verdadeiro")] = TERMO;
+		syntaxTable[TERMO][getTokenId("falso")] = TERMO;
+		syntaxTable[TERMO][TokenFactory.CHAR_CONST] = TERMO;
+		syntaxTable[TERMO][TokenFactory.STRING_CONST] = TERMO;
+		syntaxTable[TERMO][getTokenId("(")] = TERMO;
 		
 		fillRow(TERMO_I, EPSILON);
 		syntaxTable[TERMO_I][getTokenId("+")] = TERMO_I;

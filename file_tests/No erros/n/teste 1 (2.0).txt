@@ -51,18 +51,18 @@ inicio
        
        senao 
        inicio 
-            se (k <>
+            se (k <> 3) entao
             inicio
-                k = 45;
+                k = ;
             fim 
        
             senao
             inicio
                 var
-                
+                inicio
                     inteiro <<4,4>> kappa, i, j;
                 fim
-                j = 0
+                j = 0;
                 i = j;
                 enquanto (i < 4) faca
                 inicio

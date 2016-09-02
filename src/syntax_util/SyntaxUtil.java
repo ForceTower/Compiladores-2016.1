@@ -1,5 +1,8 @@
 package syntax_util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Token;
 import model.TokenFactory;
 
@@ -116,6 +119,13 @@ public class SyntaxUtil {
 		
 		return -1;
 		
+	}
+	
+	public static List<Integer> getFollowsOfState(int state) {
+		List<Integer> follows = new ArrayList<>();
+		follows.add(getTokenId(";"));
+		
+		return follows;
 	}
 	
 
