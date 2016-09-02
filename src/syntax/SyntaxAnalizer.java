@@ -1,5 +1,6 @@
 package syntax;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -21,7 +22,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private Node currentNode;
 	private int syntaxErrors;
 	
-	public SyntaxAnalizer(List<Token> tokens) {
+	public SyntaxAnalizer(List<Token> tokens) throws IOException {
 		super();
 		this.tokens = tokens;
 		this.stack = new Stack<>();
@@ -113,13 +114,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				if (!generateProduction(production)) {
 					showError(stack.peek(), token);
 					syntaxErrors++;
-					try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					errorRecovery();
+					System.out.println("-----");
+					
 				}
 					
 			}
@@ -180,14 +177,16 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	private void errorRecovery() {		
-		Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
+		System.out.println("Error Recovery: Find follows of state number: " + currentNode.getType());
 		int state = currentNode.getType();
 		stack.pop(); //Removes a production that does not exists
 		
 		List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
 		
-		while (!follows.contains(currentTokenId())) //Ignore Tokens util we get to a follow of the current state
+		while (!follows.contains(currentTokenId())) { //Ignore Tokens util we get to a follow of the current state
+			System.out.println("Token ignored: " + currentToken());
 			currentToken++; 
+		}
 	}
 
 	private boolean generateProduction(int production) {
@@ -1092,6 +1091,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
 		
 		fillRow(OPERAR_RELACIONALMENTE, EPSILON);
+		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("e")] = EPSILON;
+		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("ou")] = EPSILON;
+		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(",")] = EPSILON;
+		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(")")] = EPSILON;
+		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("=")] = EPSILON;
+		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(";")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(">")] = OPERAR_RELACIONALMENTE;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(">=")] = OPERAR_RELACIONALMENTE;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("<")] = OPERAR_RELACIONALMENTE;

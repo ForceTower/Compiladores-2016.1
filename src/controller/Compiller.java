@@ -71,7 +71,7 @@ public class Compiller {
 		return lexicalAnalyzer.getAllTokens();
 	}
 	
-	public void startSyntactic(List<Token> allValidTokens) {
+	public void startSyntactic(List<Token> allValidTokens) throws IOException {
 		//if (lexicalAnalyzer.lexicalErrors == 0) {
 			syntacticAnalyzer = new SyntaxAnalizer(allValidTokens);
 			syntacticAnalyzer.startAnalysis();

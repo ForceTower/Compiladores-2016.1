@@ -1,6 +1,10 @@
 package syntax_util;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import model.Token;
@@ -13,13 +17,13 @@ public class SyntaxUtil {
 				INICIO_CONST_FUNC = 203,
 				INICIO_VAR_FUNC = 204,
 				INICIO_FUNC = 205,
-				PROGRAM = 206,
+				//PROGRAM = 206, //Unused
 				DECL_CONST = 207,
 				DECL_VAR = 208,
 				DECL_FUNC = 209,
 				DECL_MAIN = 210,
 				DECL_CONST_CONTINUO = 211,
-				_CONST_VAR_FUNC = 212,
+				_CONST_VAR_FUNC = 212, //Unused
 				DECL_CONST_I = 213,
 				DECL_CONST_II = 214,
 				VALOR = 215,
@@ -121,11 +125,59 @@ public class SyntaxUtil {
 		
 	}
 	
-	public static List<Integer> getFollowsOfState(int state) {
-		List<Integer> follows = new ArrayList<>();
-		follows.add(getTokenId(";"));
+	private Hashtable<Integer, ArrayList<Integer>> follows;
+	
+	public SyntaxUtil() throws IOException {
+		follows = new Hashtable<>();
+		//initFollows();
+	}
+	
+	private void initFollows() throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader("follows.txt"));
 		
-		return follows;
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			ArrayList<Integer> list = new ArrayList<>();
+			
+			String[] lineSplit = line.split(" # ");
+			int state = Integer.parseInt(lineSplit[0]);
+			
+			for (int i = 1; i < lineSplit.length; i++) {
+				String follow = lineSplit[i];
+				Integer integer = null;
+				
+				if (follow.equals("Num"))
+					integer = TokenFactory.NUM_CONST;
+				else if (follow.equals("Caractere"))
+					integer = TokenFactory.CHAR_CONST;
+				else if (follow.equals("Cadeia"))
+					integer = TokenFactory.STRING_CONST;
+				else if (follow.equals("Identificador"))
+					integer = TokenFactory.IDENT;
+				else if (follow.equals("$"))
+					integer = END;
+				else
+					integer = getTokenId(follow.trim());
+				
+				if (integer == -1) {
+					System.err.println(follow);
+					System.err.println("Invalid File");
+				}
+				
+				list.add(integer);
+			}
+			
+			follows.put(state, list);
+		}
+		
+		reader.close();
+	}
+
+	public List<Integer> getFollowsOfState(int state) {
+		ArrayList<Integer> temp = follows.get(state);
+		//if (!temp.contains(getTokenId(";"))) //Would this be acceptable?
+			//temp.add(getTokenId(";"));
+		return temp;
 	}
 	
 
