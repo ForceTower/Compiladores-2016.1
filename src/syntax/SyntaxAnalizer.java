@@ -98,9 +98,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				stack.pop();
 				continue;
 			}
-				
-			//System.out.println("Stack: " + stack);
-			//System.out.println("Token is: " + token.getId());
+			
 			if (token.getId() == stack.peek()) {
 				Debug.println("Token consumed: " + token.getLexem());
 				stack.pop();
@@ -112,29 +110,33 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				Debug.println("Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					showError(stack.peek(), token);
+					if (stack.peek() == 253)
+						showError(271, token);
+					else
+						showError(stack.peek(), token);
 					syntaxErrors++;
+					
 					errorRecovery();
-					System.out.println("-----");	
+					Debug.println("-----");
 				}
 					
 			}
 		}
 		
 		if (syntaxErrors == 0)
-			System.out.println("Success!");
+			System.out.println("Successo!");
 		else
-			System.out.println("Found " + syntaxErrors + (syntaxErrors == 1 ? " error" : " errors"));
+			System.out.println("Encontrado " + syntaxErrors + (syntaxErrors == 1 ? " erro" : " erros"));
 		
 		syntaxTree = syntaxTree.normalize();
-		syntaxTree.print();
+		//syntaxTree.print();
 	}
 
 	private void showError(Integer peek, Token token) {
 		StringBuilder sb = new StringBuilder();
 		
 		if (peek == 400)
-			sb.append("Esperado: \"Fim de Arquivo\" mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+			sb.append("Esperado: Fim de Arquivo mas foi: " + token.getLexem() + " na linha: " + token.getLine());
 		
 		else if (peek >= 200) {
 			sb.append("Esperado um dos seguintes: ");
@@ -176,16 +178,27 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	private void errorRecovery() {		
-		System.out.println("Error Recovery: Find follows of state number: " + currentNode.getType());
+		Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
 		int state = currentNode.getType();
-		stack.pop(); //Removes a production that does not exists
-		
+		/*int it_was = */stack.pop(); //Removes a production that does not exists
+
 		List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
 		
 		while (!follows.contains(currentTokenId())) { //Ignore Tokens util we get to a follow of the current state
-			System.out.println("Token ignored: " + currentToken());
+			if (currentTokenId() == END)
+				break;
+			
+			Debug.println("Token ignorado: " + currentToken());
 			currentToken++; 
 		}
+		
+		//if (it_was < 200) { //it generated a production and inserted it into the stack, we should remove this production because it didn't match =/
+			while (stack.peek() < 400) {
+				Debug.println("pop off: " + stack.peek());;
+				stack.pop();
+			}
+		//}
+			
 	}
 
 	private boolean generateProduction(int production) {
@@ -963,6 +976,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[START][getTokenId("programa")] = INICIO_FUNC;
 		
 		//fillRow(DECL_CONST_VAR_DERIVA, INICIO_FUNC);
+		syntaxTable[DECL_CONST_VAR_DERIVA][getTokenId("programa")] = INICIO_FUNC;
 		syntaxTable[DECL_CONST_VAR_DERIVA][getTokenId("funcao")] = INICIO_FUNC;
 		syntaxTable[DECL_CONST_VAR_DERIVA][getTokenId("var")] = INICIO_VAR_FUNC;
 		
@@ -1097,7 +1111,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
 		syntaxTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
 		
-		//fillRow(OPERAR_RELACIONALMENTE, EPSILON);
+		fillRow(OPERAR_RELACIONALMENTE, EPSILON);
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("e")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("ou")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(",")] = EPSILON;
@@ -1241,6 +1255,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		//INICIO CORPO
 		
 		fillRow(CORPO, CORPO);
+		
+		syntaxTable[CORPO][END] = -1;
 		syntaxTable[CORPO][getTokenId("=")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
 		
@@ -1337,7 +1353,13 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	public Token currentToken() {
 		if (currentToken < tokens.size())
 			return tokens.get(currentToken);
-		return new Token(END);
+		
+		Token tok = new Token(400);
+		tok.setLine(0);
+		tok.setLexem("$");
+		if (tokens.size() > 1)
+			tok.setLine(tokens.get(tokens.size() - 1).getLine() + 1);
+		return tok;
 	}
 
 }

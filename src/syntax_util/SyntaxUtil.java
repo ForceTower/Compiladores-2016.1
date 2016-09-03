@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import debug.Debug;
 import model.Token;
 import model.TokenFactory;
 
@@ -175,10 +176,18 @@ public class SyntaxUtil {
 	}
 
 	public List<Integer> getFollowsOfState(int state) {
+		System.out.println("Follow State: " + state);
 		ArrayList<Integer> temp = follows.get(state);
-		System.out.println("Follows: " + temp);
-		//if (!temp.contains(getTokenId(";"))) //Would this be acceptable?
-			//temp.add(getTokenId(";"));
+		StringBuilder sb = new StringBuilder();
+		sb.append("Follows: ");
+		boolean n = false;
+		for (Integer e : temp) {
+			if (n)
+				sb.append(", ");
+			sb.append(TokenFactory.meaning_messages.get(e));	
+			n = true;
+		}
+		Debug.println(sb.toString());
 		return temp;
 	}
 	
