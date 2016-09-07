@@ -12,6 +12,7 @@ import syntax_tree.AbstractSyntaxTree;
 import syntax_tree.Node;
 import syntax_util.SyntaxUtil;
 
+@SuppressWarnings("unused")
 public class SyntaxAnalizer extends SyntaxUtil {
 	private List<Token> tokens;
 	private List<Integer> syncTokens;
@@ -21,6 +22,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private AbstractSyntaxTree syntaxTree;
 	private Node currentNode;
 	private int syntaxErrors;
+	private int ignoredTokens;
+	private int consumedTokens;
+	private boolean errorRecovered;
 	
 	public SyntaxAnalizer(List<Token> tokens) throws IOException {
 		super();
@@ -30,6 +34,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable = new int[450][450];
 		currentToken = 0;
 		syntaxErrors = 0;
+		ignoredTokens = 0;
+		consumedTokens = 0;
+		errorRecovered = true;
 		syntaxTree = new AbstractSyntaxTree();
 		
 		initializeSyncSymbols();
@@ -45,14 +52,11 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	public void initializeSyncSymbols() {
-		syncTokens.add(getTokenId(";"));
-		syncTokens.add(END);
-		syncTokens.add(getTokenId("("));
-		syncTokens.add(getTokenId(")"));
-		syncTokens.add(getTokenId("inicio"));
-		syncTokens.add(getTokenId("fim"));
-		syncTokens.add(getTokenId("entao"));
-		syncTokens.add(TokenFactory.IDENT);
+		//syncTokens.add(getTokenId(";"));
+		//syncTokens.add(getTokenId("("));
+		//syncTokens.add(getTokenId(")"));
+		//syncTokens.add(getTokenId("inicio"));
+		//syncTokens.add(getTokenId("fim"));
 	}
 
 	public void initializeTable() {
@@ -73,19 +77,16 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 	
 	private void childNode(Token token) {
-		//System.out.println("Terminal Added to Node: " + currentNode.getType());
 		currentNode.addChild(new Node(currentNode, token.getId(), token));
 	}
 	
 	private void createNode(int state) {
-		//System.out.println("New Node from state: " + state);
 		Node node = new Node(currentNode, state);
 		currentNode.addChild(node);
 		currentNode = node;
 	}
 	
 	private void returnToFather() {
-		//System.out.println("Return to Father Node: " + currentNode.getFather().getType());
 		currentNode = currentNode.getFather();
 	}
 	
@@ -104,17 +105,23 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				stack.pop();
 				childNode(token);
 				currentToken++;
+				consumedTokens++;
 				token = currentToken();
+				errorRecovered = true;
 			} else {
 				int production = syntaxTable[stack.peek()][token.getId()];
 				Debug.println("Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					if (stack.peek() == 253)
-						showError(271, token);
-					else
-						showError(stack.peek(), token);
-					syntaxErrors++;
+					if (errorRecovered) {
+						if (stack.peek() == 253)
+							showError(271, token);
+						else
+							showError(stack.peek(), token);
+						
+							syntaxErrors++;
+							errorRecovered = false;
+					}
 					
 					errorRecovery();
 					Debug.println("-----");
@@ -125,11 +132,68 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		if (syntaxErrors == 0)
 			System.out.println("Successo!");
-		else
+		else {
 			System.out.println("Encontrado " + syntaxErrors + (syntaxErrors == 1 ? " erro" : " erros"));
+			System.out.println("Quantidade de tokens ignorados: " + ignoredTokens);
+			System.out.println("Quantidade de tokens consumidos: " + (consumedTokens-1));
+			System.out.println("Total: " + tokens.size() + ". Percentual ignorado: " + (float)ignoredTokens/tokens.size()*100 + "%.");
+		}
 		
 		syntaxTree = syntaxTree.normalize();
 		//syntaxTree.print();
+	}
+	
+	private void errorRecovery() {
+		System.out.println("---------------------");
+		Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
+		System.out.println("Stack was:    " + stack);
+		System.out.println("Token were: " + currentToken());
+		int state = currentNode.getType();
+		
+		if (stack.peek() != 400) {
+			int k = stack.pop();
+			System.out.println("Default pop: " + k);
+			if (k < 200) { //if we didn't match a terminal, it means that the hole production is wrong, we should take everything out.
+				System.out.println("\n----------");
+				while (stack.peek() != 401 && stack.peek() != 400) {
+					System.out.println("Production out: " + stack.pop());
+				}
+				
+				if (stack.peek() == 400)
+					System.out.println("We got to the end of the stack..");
+				System.out.println("----------\n");
+			}
+		}
+
+		List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
+		System.out.println("Follows: " + follows);
+		
+		while (follows != null && !follows.contains(currentTokenId()) && hasNextToken()) {
+			System.out.println("Token Ignored: " + currentToken());
+			ignoredTokens++;
+			currentToken++;
+		}
+		
+		//System.out.println("Stack now is: " + stack);
+		System.out.println("Token now is: " + currentToken());
+		System.out.println("---------------------\n");
+		
+	/*	
+		while (!follows.contains(currentTokenId())) { //Ignore Tokens util we get to a follow of the current state
+			if (currentTokenId() == END)
+				break;
+			
+			Debug.println("Token ignorado: " + currentToken());
+			currentToken++; 
+		}
+		
+		//if (it_was < 200) { //it generated a production and inserted it into the stack, we should remove this production because it didn't match =/
+			while (stack.peek() < 400) {
+				Debug.println("pop off: " + stack.peek());;
+				stack.pop();
+			}
+		//}
+			*/
 	}
 
 	private void showError(Integer peek, Token token) {
@@ -175,30 +239,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				sb.append(", ");
 			sb.append(TokenFactory.meaning_messages.get(peek));
 		}
-	}
-
-	private void errorRecovery() {		
-		Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
-		int state = currentNode.getType();
-		/*int it_was = */stack.pop(); //Removes a production that does not exists
-
-		List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
-		
-		while (!follows.contains(currentTokenId())) { //Ignore Tokens util we get to a follow of the current state
-			if (currentTokenId() == END)
-				break;
-			
-			Debug.println("Token ignorado: " + currentToken());
-			currentToken++; 
-		}
-		
-		//if (it_was < 200) { //it generated a production and inserted it into the stack, we should remove this production because it didn't match =/
-			while (stack.peek() < 400) {
-				Debug.println("pop off: " + stack.peek());;
-				stack.pop();
-			}
-		//}
-			
 	}
 
 	private boolean generateProduction(int production) {
@@ -1257,6 +1297,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(CORPO, CORPO);
 		
 		syntaxTable[CORPO][END] = -1;
+		syntaxTable[CORPO][getTokenId(")")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("=")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
 		
@@ -1356,10 +1397,14 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		Token tok = new Token(400);
 		tok.setLine(0);
-		tok.setLexem("$");
+		tok.setLexem("$ - Fim de Arquivo");
 		if (tokens.size() > 1)
 			tok.setLine(tokens.get(tokens.size() - 1).getLine() + 1);
 		return tok;
+	}
+	
+	public boolean hasNextToken() {
+		return tokens.size() > currentToken;
 	}
 
 }

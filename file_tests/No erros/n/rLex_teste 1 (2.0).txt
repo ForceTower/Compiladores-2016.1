@@ -227,7 +227,6 @@
 47 j Identificador
 47 < <
 47 5 Numero
-47 ou ou
 47 j Identificador
 47 > >
 47 10 Numero
@@ -245,7 +244,6 @@
 49 ; ;
 50 fim fim
 52 senao senao
-53 inicio inicio
 54 se se
 54 ( (
 54 k Identificador
@@ -256,6 +254,7 @@
 55 inicio inicio
 56 k Identificador
 56 = =
+56 3 Numero
 56 ; ;
 57 fim fim
 59 senao senao

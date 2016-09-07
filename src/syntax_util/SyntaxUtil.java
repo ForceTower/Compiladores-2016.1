@@ -178,17 +178,22 @@ public class SyntaxUtil {
 	public List<Integer> getFollowsOfState(int state) {
 		System.out.println("Follow State: " + state);
 		ArrayList<Integer> temp = follows.get(state);
-		StringBuilder sb = new StringBuilder();
-		sb.append("Follows: ");
-		boolean n = false;
-		for (Integer e : temp) {
-			if (n)
-				sb.append(", ");
-			sb.append(TokenFactory.meaning_messages.get(e));	
-			n = true;
+		if (temp != null) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("Follows: ");
+			boolean n = false;
+			for (Integer e : temp) {
+				if (n)
+					sb.append(", ");
+				sb.append(TokenFactory.meaning_messages.get(e));	
+				n = true;
+			}
+			Debug.println(sb.toString());
+			return temp;
+		} else {
+			System.out.println("Has no follow...");
+			return new ArrayList<Integer>();
 		}
-		Debug.println(sb.toString());
-		return temp;
 	}
 	
 

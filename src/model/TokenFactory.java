@@ -38,6 +38,8 @@ public class TokenFactory implements TokenConstants{
 		
 		if (k != null && k.getId() < 70) 
 			k.setType(types.get(k.getLexem()));
+		else if (k != null && k.getId() >= 70  && k.getId() <= 73)
+			k.setType(k.getId());
 		
 		return k;
 	}

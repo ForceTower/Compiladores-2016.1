@@ -1,59 +1,48 @@
-const
+const 
 inicio
     inteiro a = k, b = 2 * 3 + 7 * 5;
     caractere c = 'k', b = hehe;
-    inteiro d = kappa();
+    real isRealLife = 0;
+    cadeia cadeira = "cadeira", not = "niet";
 fim
 
-var
-inicio
-    inteiro <<12>>a, <<56, 67, 87>>b, c;
-fim
-
-funcao inteiro zuera (inteiro a, inteiro b, caractere c)
+funcao inteiro zuera (inteiro a, inteiro b, caractere c) 
 inicio
     var inicio
         inteiro a, b, c;
-        real <<3,4,3,3>> isolado;
-    fim
+        real <<3,true,3,true> isolado;
+
     b = b * b - c + a;
     leia(b);
     leia(c);    
     a = (b + c);
-    inicio
-        i = i - 4;
-    fim
-    => algo(1,2,3,4) =>;
+    => a =>;
 fim
 
-funcao zuera2 (inteiro a, inteiro b, caractere c)
+funcao zuera2 (inteiro a, inteiro b, caractere c) 
 inicio
     b = b + 3;
 fim
 
-programa
+programa 
 inicio
-    z = zuera2();
-    b = a > kappa(1, 2, 3) e c <> t;
-    enquanto (2 > 3) faca
-    inicio
+    zuera2();
+    enquanto (2 > 3) faca inicio
        kappa = 2;
-       se (kappa <> 3) entao
-       inicio
+       se (kappa <> 3) entao inicio
            escreva("nao ligo");
            leia (ue);
        fim
        
-       se (j < 5  j > 10) entao
-       inicio
+       se (j < 5 ou j > 10) entao inicio
            escreva("Valor muito alto ", j, "Menos please");
        fim
        
        senao 
-       
+       inicio 
             se (k <> 3) entao
             inicio
-                k = 3;
+                k = 45;
             fim 
        
             senao
