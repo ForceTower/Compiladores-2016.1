@@ -85,7 +85,6 @@
 17 3 Numero
 17 , ,
 17 4 Numero
-17 , ,
 17 3 Numero
 17 , ,
 17 3 Numero

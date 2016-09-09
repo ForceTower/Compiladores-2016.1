@@ -52,11 +52,11 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 
 	public void initializeSyncSymbols() {
-		//syncTokens.add(getTokenId(";"));
-		//syncTokens.add(getTokenId("("));
-		//syncTokens.add(getTokenId(")"));
-		//syncTokens.add(getTokenId("inicio"));
-		//syncTokens.add(getTokenId("fim"));
+		syncTokens.add(getTokenId(";"));
+		syncTokens.add(getTokenId("("));
+		syncTokens.add(getTokenId(")"));
+		syncTokens.add(getTokenId("inicio"));
+		syncTokens.add(getTokenId("fim"));
 	}
 
 	public void initializeTable() {
@@ -101,7 +101,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			}
 			
 			if (token.getId() == stack.peek()) {
+				Debug.setDebugOn();
 				Debug.println("Token consumed: " + token.getLexem());
+				Debug.setDebugOff();
 				stack.pop();
 				childNode(token);
 				currentToken++;
@@ -113,15 +115,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				Debug.println("Generates production: " + production + "\tState: " + stack.peek());
 				
 				if (!generateProduction(production)) {
-					if (errorRecovered) {
-						if (stack.peek() == 253)
-							showError(271, token);
-						else
-							showError(stack.peek(), token);
-						
-							syntaxErrors++;
-							errorRecovered = false;
-					}
+					if (stack.peek() == 253)
+						showError(271, token);
+					else
+						showError(stack.peek(), token);
+					
+						syntaxErrors++;
 					
 					errorRecovery();
 					Debug.println("-----");
@@ -139,17 +138,47 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			System.out.println("Total: " + tokens.size() + ". Percentual ignorado: " + (float)ignoredTokens/tokens.size()*100 + "%.");
 		}
 		
-		syntaxTree = syntaxTree.normalize();
+		//syntaxTree = syntaxTree.normalize();
 		//syntaxTree.print();
 	}
 	
 	private void errorRecovery() {
 		System.out.println("---------------------");
-		Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
+		//Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
 		System.out.println("Stack was:    " + stack);
 		System.out.println("Token were: " + currentToken());
-		int state = currentNode.getType();
 		
+		if (stack.peek() < 200) {
+			System.out.println("It were a terminal, default pop");
+			int k = stack.pop();
+			System.out.println("Pop: " + k);
+			return;
+		} else {
+			System.out.println("It were a non terminal");
+			System.out.println("Find follows of this current non-terminal");
+			List<Integer> follows = getFollowsOfState(stack.peek());
+			System.out.println("Follows: " + stack.peek());
+			System.out.println("Using sync tokens: " + syncTokens);
+			
+			while ((follows != null || syncTokens != null) && !(follows.contains(currentTokenId()) || syncTokens.contains(currentTokenId())) && hasNextToken()) {
+				System.out.println("Token Ignored: " + currentToken());
+				ignoredTokens++;
+				currentToken++;
+			}
+			
+			if (syncTokens.contains(currentTokenId())) {
+				System.out.println("Token Ignored: " + currentToken());
+				ignoredTokens++;
+				currentToken++;
+			}
+			
+			if (syntaxTable[stack.peek()][currentTokenId()] == -1)
+				System.out.println("Pop erroneous production from stack: " + stack.pop());
+			else
+				System.out.println("It seems like we got where we were supposed to");
+				
+		}
+		/*
 		if (stack.peek() != 400) {
 			int k = stack.pop();
 			System.out.println("Default pop: " + k);
@@ -163,9 +192,9 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					System.out.println("We got to the end of the stack..");
 				System.out.println("----------\n");
 			}
-		}
+		}*/
 
-		List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
+		/*List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
 		System.out.println("Follows: " + follows);
 		
 		while (follows != null && !follows.contains(currentTokenId()) && hasNextToken()) {
@@ -173,27 +202,10 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			ignoredTokens++;
 			currentToken++;
 		}
-		
+		*/
 		//System.out.println("Stack now is: " + stack);
 		System.out.println("Token now is: " + currentToken());
 		System.out.println("---------------------\n");
-		
-	/*	
-		while (!follows.contains(currentTokenId())) { //Ignore Tokens util we get to a follow of the current state
-			if (currentTokenId() == END)
-				break;
-			
-			Debug.println("Token ignorado: " + currentToken());
-			currentToken++; 
-		}
-		
-		//if (it_was < 200) { //it generated a production and inserted it into the stack, we should remove this production because it didn't match =/
-			while (stack.peek() < 400) {
-				Debug.println("pop off: " + stack.peek());;
-				stack.pop();
-			}
-		//}
-			*/
 	}
 
 	private void showError(Integer peek, Token token) {
@@ -1025,12 +1037,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		//INICIO GRAMATICA DECL_CONST
 		//fillRow(DECL_CONST, DECL_CONST);
 		syntaxTable[DECL_CONST][getTokenId("const")] = DECL_CONST;
-		//fillRow(DECL_CONST_I, EPSILON);
+		fillRow(DECL_CONST_I, EPSILON);
 		syntaxTable[DECL_CONST_I][getTokenId(";")] = EPSILON;
 		syntaxTable[DECL_CONST_I][getTokenId(",")] = DECL_CONST_I;
 		//syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
-		//fillRow(DECL_CONST_II, EPSILON);
+		fillRow(DECL_CONST_II, EPSILON);
 		syntaxTable[DECL_CONST_II][getTokenId("fim")] = EPSILON;
 		syntaxTable[DECL_CONST_II][getTokenId("inteiro")] = DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("real")] = DECL_CONST_II;
@@ -1057,12 +1069,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_VAR_CONTINUO][getTokenId("cadeia")] = DECL_VAR_CONTINUO;
 		syntaxTable[DECL_VAR_CONTINUO][getTokenId("booleano")] = DECL_VAR_CONTINUO;
 		
-		//fillRow(DECL_VAR_I, EPSILON);
+		fillRow(DECL_VAR_I, EPSILON);
 		syntaxTable[DECL_VAR_I][getTokenId(";")] = EPSILON;
 		syntaxTable[DECL_VAR_I][getTokenId(",")] = DECL_VAR_I;
 		
 		
-		//fillRow(DECL_VAR_II, EPSILON);
+		fillRow(DECL_VAR_II, EPSILON);
 		syntaxTable[DECL_VAR_II][getTokenId("fim")] = EPSILON;
 		syntaxTable[DECL_VAR_II][getTokenId("inteiro")] = DECL_VAR_II;
 		syntaxTable[DECL_VAR_II][getTokenId("real")] = DECL_VAR_II;
@@ -1071,7 +1083,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_VAR_II][getTokenId("booleano")] = DECL_VAR_II;
 		
 		//INICIO GRAMATIC DECL_FUNC
-		//fillRow(DECL_FUNC, EPSILON);
+		fillRow(DECL_FUNC, EPSILON);
 		syntaxTable[DECL_FUNC][getTokenId("programa")] = EPSILON;
 		syntaxTable[DECL_FUNC][getTokenId("funcao")] = DECL_FUNC;
 		
@@ -1097,7 +1109,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		
 		//GRAMATICA PARAMETROS
-		//fillRow(PARAMETROS, EPSILON);
+		fillRow(PARAMETROS, EPSILON);
 		syntaxTable[PARAMETROS][getTokenId(")")] = EPSILON;
 		syntaxTable[PARAMETROS][getTokenId("inteiro")] = PARAMETROS;
 		syntaxTable[PARAMETROS][getTokenId("real")] = PARAMETROS;
