@@ -1,26 +1,49 @@
-1 funcao funcao
-1 a Identificador
-1 ( (
-1 ) )
+1 const const
 1 inicio inicio
-1 fim fim
-2 funcao funcao
-2 b Identificador
 2 a Identificador
-2 e e
-2 inicio inicio
-2 fim fim
-3 funcao funcao
+2 = =
+2 3 Numero
+2 ; ;
 3 a Identificador
-3 ( (
-3 ) )
-3 inicio inicio
-3 a Identificador
-3 = =
-3 4 Numero
-3 ; ;
-3 fim fim
-5 programa programa
-5 inicio inicio
-5 fim fim
+4 inteiro inteiro (tipo)
+4 a Identificador
+4 = =
+4 2 Numero
+4 ; ;
+5 inteiro inteiro (tipo)
+5 a Identificador
+6 terceiro Identificador
+6 t Identificador
+7 inteiro inteiro (tipo)
+7 a Identificador
+7 ; ;
+8 booleano booleano (tipo)
+8 t Identificador
+8 = =
+8 verdadeiro verdadeiro
+8 ; ;
+9 inteiro inteiro (tipo)
+9 a Identificador
+9 = =
+10 real real (tipo)
+10 2 Numero
+10 a Identificador
+10 = =
+10 2 Numero
+10 ; ;
+11 real real (tipo)
+11 real real (tipo)
+11 = =
+11 real real (tipo)
+11 real real (tipo)
+11 ; ;
+12 inteiro inteiro (tipo)
+12 a Identificador
+12 = =
+12 3 Numero
+12 ; ;
+13 fim fim
+15 programa programa
+15 inicio inicio
+15 fim fim
 Sucesso!
