@@ -1,0 +1,129 @@
+1 const const
+1 inicio inicio
+2 inteiro inteiro (tipo)
+2 a Identificador
+2 = =
+2 k Identificador
+2 , ,
+2 b Identificador
+2 = =
+2 2 Numero
+2 * *
+2 3 Numero
+2 + +
+2 7 Numero
+2 * *
+2 5 Numero
+2 ; ;
+3 caractere caractere (tipo)
+3 c Identificador
+3 = =
+3 'k' Caractere (Constante)
+3 , ,
+3 b Identificador
+3 = =
+3 hehe Identificador
+3 ; ;
+4 real real (tipo)
+4 isRealLife Identificador
+4 = =
+4 0 Numero
+4 ; ;
+5 cadeia cadeia (tipo)
+5 cadeira Identificador
+5 = =
+5 "cadeira" Cadeia de Caracteres (Constante)
+5 , ,
+5 not Identificador
+5 = =
+5 "niet" Cadeia de Caracteres (Constante)
+5 ; ;
+6 fim fim
+8 funcao funcao
+8 inteiro inteiro (tipo)
+8 zuera Identificador
+8 ( (
+8 inteiro inteiro (tipo)
+8 a Identificador
+8 , ,
+8 inteiro inteiro (tipo)
+8 b Identificador
+8 , ,
+8 caractere caractere (tipo)
+8 c Identificador
+8 , ,
+8 real real (tipo)
+8 k Identificador
+8 ) )
+8 inicio inicio
+9 var var
+9 inicio inicio
+10 inteiro inteiro (tipo)
+10 a Identificador
+10 , ,
+10 b Identificador
+10 , ,
+10 c Identificador
+10 ; ;
+11 real real (tipo)
+11 < <
+11 < <
+11 3 Numero
+11 , ,
+11 true Identificador
+11 , ,
+11 3 Numero
+11 , ,
+11 true Identificador
+11 > >
+11 > >
+11 isolado Identificador
+11 ; ;
+12 fim fim
+14 b Identificador
+14 = =
+14 b Identificador
+14 * *
+14 b Identificador
+14 - -
+14 c Identificador
+14 + +
+14 a Identificador
+14 ; ;
+15 leia leia
+15 ( (
+15 b Identificador
+15 ) )
+15 ; ;
+16 leia leia
+16 ( (
+16 c Identificador
+16 ) )
+16 ; ;
+17 a Identificador
+17 = =
+17 ( (
+17 b Identificador
+17 + +
+17 c Identificador
+17 ) )
+17 ; ;
+18 inicio inicio
+19 a Identificador
+19 = =
+19 a Identificador
+19 + +
+19 4 Numero
+19 ; ;
+20 fim fim
+21 = =
+21 > >
+21 a Identificador
+21 = =
+21 > >
+21 ; ;
+22 fim fim
+24 programa programa
+24 inicio inicio
+25 fim fim
+Sucesso!

@@ -88,6 +88,8 @@ public class SyntaxUtil {
 				FATOR_I_E = 281,
 				PAR_ESC_PAR = 282,
 				COMANDOS = 283,
+				EXPR_SIMPLES_A = 284,
+				ESCREVIVEL_A = 285,
 				CONSUME_DIF = 376,
 				CONSUME_GT = 377,
 				CONSUME_GE = 378,
