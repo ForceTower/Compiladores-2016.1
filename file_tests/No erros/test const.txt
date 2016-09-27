@@ -12,8 +12,4 @@ const inicio
 	inteiro a = 3;
 fim
 
-funcao a() inicio fim
-funcao b a e inicio fim
-funcao a() inicio a = 4; fim
-
 programa inicio fim

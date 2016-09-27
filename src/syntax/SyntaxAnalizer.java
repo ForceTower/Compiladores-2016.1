@@ -118,8 +118,10 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					
 						syntaxErrors++;
 					
+					//Debug.setDebugOn();
 					errorRecovery();
 					Debug.println("-----");
+					//Debug.setDebugOff();
 				}
 					
 			}
@@ -1029,7 +1031,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		//INICIO GRAMATICA DECL_CONST
 		//fillRow(DECL_CONST, DECL_CONST);
 		syntaxTable[DECL_CONST][getTokenId("const")] = DECL_CONST;
-		fillRow(DECL_CONST_I, EPSILON);
+		//fillRow(DECL_CONST_I, EPSILON);
 		syntaxTable[DECL_CONST_I][getTokenId(";")] = EPSILON;
 		syntaxTable[DECL_CONST_I][getTokenId(",")] = DECL_CONST_I;
 		//syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
@@ -1061,7 +1063,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_VAR_CONTINUO][getTokenId("cadeia")] = DECL_VAR_CONTINUO;
 		syntaxTable[DECL_VAR_CONTINUO][getTokenId("booleano")] = DECL_VAR_CONTINUO;
 		
-		fillRow(DECL_VAR_I, EPSILON);
+		//fillRow(DECL_VAR_I, EPSILON);
 		syntaxTable[DECL_VAR_I][getTokenId(";")] = EPSILON;
 		syntaxTable[DECL_VAR_I][getTokenId(",")] = DECL_VAR_I;
 		
@@ -1075,7 +1077,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_VAR_II][getTokenId("booleano")] = DECL_VAR_II;
 		
 		//INICIO GRAMATIC DECL_FUNC
-		fillRow(DECL_FUNC, EPSILON);
+		//fillRow(DECL_FUNC, EPSILON);
 		syntaxTable[DECL_FUNC][getTokenId("programa")] = EPSILON;
 		syntaxTable[DECL_FUNC][getTokenId("funcao")] = DECL_FUNC;
 		
@@ -1101,7 +1103,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		
 		//GRAMATICA PARAMETROS
-		fillRow(PARAMETROS, EPSILON);
+		//fillRow(PARAMETROS, EPSILON);
 		syntaxTable[PARAMETROS][getTokenId(")")] = EPSILON;
 		syntaxTable[PARAMETROS][getTokenId("inteiro")] = PARAMETROS;
 		syntaxTable[PARAMETROS][getTokenId("real")] = PARAMETROS;
@@ -1155,7 +1157,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		fillRow(EXPRESSAO_RELACIONAL_I, EPSILON);
 		syntaxTable[EXPRESSAO_RELACIONAL_I][getTokenId("e")] = EXPRESSAO_RELACIONAL_I;
 		
-		fillRow(OPERAR_RELACIONALMENTE, EPSILON);
+		//fillRow(OPERAR_RELACIONALMENTE, EPSILON);
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("e")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId("ou")] = EPSILON;
 		syntaxTable[OPERAR_RELACIONALMENTE][getTokenId(",")] = EPSILON;
@@ -1298,12 +1300,20 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		//INICIO CORPO
 		
-		fillRow(CORPO, CORPO);
+		//fillRow(CORPO, CORPO);
 		
-		syntaxTable[CORPO][END] = -1;
-		syntaxTable[CORPO][getTokenId(")")] = EPSILON;
+		//[CORPO][END] = -1;
+		//syntaxTable[CORPO][getTokenId(")")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("=")] = EPSILON;
 		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
+		syntaxTable[CORPO][getTokenId("leia")] = COMANDOS;
+		syntaxTable[CORPO][getTokenId("escreva")] = COMANDOS;
+		syntaxTable[CORPO][getTokenId("se")] = COMANDOS;
+		syntaxTable[CORPO][getTokenId("enquanto")] = COMANDOS;
+		syntaxTable[CORPO][TokenFactory.IDENT] = COMANDOS;
+		syntaxTable[CORPO][getTokenId("<")] = COMANDOS;
+		syntaxTable[CORPO][getTokenId("var")] = COMANDOS;
+		syntaxTable[CORPO][getTokenId("inicio")] = COMANDOS;
 		
 		syntaxTable[COMANDOS][getTokenId("leia")] = CMD_LEIA;
 		syntaxTable[COMANDOS][getTokenId("escreva")] = CMD_ESCREVA;
@@ -1315,16 +1325,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[COMANDOS][getTokenId("inicio")] = CMD_ESCOPO;
 		
 		
-		/*syntaxTable[CORPO][getTokenId("=")] = EPSILON;
-		syntaxTable[CORPO][getTokenId("fim")] = EPSILON;
-		syntaxTable[CORPO][getTokenId("leia")] = CMD_LEIA;
-		syntaxTable[CORPO][getTokenId("escreva")] = CMD_ESCREVA;
-		syntaxTable[CORPO][getTokenId("se")] = CMD_SE;
-		syntaxTable[CORPO][getTokenId("enquanto")] = CMD_ENQUANTO;
-		syntaxTable[CORPO][TokenFactory.IDENT] = CMD_ATTRIB_CHAMA_IDEN;
-		syntaxTable[CORPO][getTokenId("<")] = CMD_ATTRIB_CHAMA_MATRIZ;
-		syntaxTable[CORPO][getTokenId("var")] = CMD_VAR;
-		syntaxTable[CORPO][getTokenId("inicio")] = CMD_ESCOPO;*/
 		
 		//fillRow(LEITURA_I, EPSILON);
 		syntaxTable[LEITURA_I][getTokenId(")")] = EPSILON;
