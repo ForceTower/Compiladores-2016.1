@@ -5,72 +5,72 @@
 204 # $
 205 # $
 206 # $
-207 # var # programa # funcao
-208 # programa # funcao # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # = # booleano # inteiro # real # cadeia # caractere
+207 # funcao # programa # var
+208 # funcao # programa # var # leia # inicio # < # escreva # = # se # enquanto # fim # Identificador
 209 # programa
 210 # $
 211 # fim
-212 # $
+212 # funcao # programa # var
 213 # ;
 214 # fim
-215 # , # ) # ; # =
-216 # , # ) # ; # =
-217 # ou # , # ) # ; # =
-218 # , # ) # ; # = # fim
-219 # e # ou # , # ) # ; # = # fim
-220 # ou # , # ) # ; # =
-221 # + # - # Num # verdadeiro # falso # Cadeia # Caractere # ( # < # Identificador
-222 # > # >= # < # <= # <> # , # + # - # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-223 # e # ou # , # ) # ; # = # fim
-224 # Identificador # Num # Cadeia # Caractere # ( # < # verdadeiro # falso
-225 # Identificador # Num # Cadeia # Caractere # ( # < # verdadeiro # falso
-226 # Identificador # Num # Cadeia # Caractere # ( # < # verdadeiro # falso
-227 # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-228 # > # >= # < # <= # <> # , # + # - # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-229 # * # / # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-230 # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-231 # * # / # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-232 # * # / # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-233 # * # / # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-234 # * # / # + # - # > # >= # < # <= # <> # , # Num # verdadeiro # falso # Cadeia # Caractere # ( # Identificador # e # ou # ) # ; # =
-235 # , # + # - # Num # verdadeiro # falso # Cadeia # Caractere # ( # < # Identificador # >
+215 # ; # ) # = # ,
+216 # ; # ) # = # ,
+217 # ou # ; # ) # = # ,
+218 # ; # ) # = # ,
+219 # ou # ; # e # ) # = # ,
+220 # ou # ; # ) # = # ,
+221 # Numero # verdadeiro # falso # - # < # Cadeia # + # Caractere # ( # Identificador
+222 # >= # <> # ou # ; # < # e # > # = # <= # ,
+223 # ou # ; # e # ) # = # ,
+224 # Num # verdadeiro # falso # < # Cadeia # Caractere # ( # Identificador
+225 # Num # verdadeiro # falso # < # Cadeia # Caractere # ( # Identificador
+226 # Num # verdadeiro # falso # < # Cadeia # Caractere # ( # Identificador
+227 # >= # <> # ou # ; # < # > # ) # = # - # e # <= # , # +
+228 # >= # <> # ou # ; # < # e # > # ) # = # <= # ,
+229 # >= # <> # ou # ; # < # * # > # ) # = # / # - # e # <= # , # +
+230 # >= # <> # ou # ; # < # > # ) # = # - # e # <= # , # +
+231 # >= # <> # ou # ; # < # * # > # ) # = # / # - # e # <= # , # +
+232 # >= # <> # ou # ; # < # * # > # ) # = # / # - # e # <= # , # +
+233 # >= # <> # ou # ; # < # * # > # ) # = # / # - # e # <= # , # +
+234 # >= # <> # ou # ; # < # * # > # ) # = # / # - # e # <= # , # +
+235 # > # ,
 236 # Identificador
 237 # >
 238 # )
 239 # )
-240 # Identificador # Num # Cadeia # Caractere # ( # < # verdadeiro # falso
-241 # e # ou # , # ) # ; # =
+240 # Num # verdadeiro # falso # < # Cadeia # Caractere # Identificador # (
+241 # ou # ; # e # ) # = # ,
 242 # fim
 243 # ;
 244 # fim
-250 # programa # funcao
-251 # programa # funcao
-252 # programa # funcao
-253 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # = 
+250 # funcao # programa
+251 # funcao # programa
+252 # funcao # programa
+253 # = # fim
 254 # )
 255 # fim
 256 # Identificador
 257 # )
-258 # , # + # - # Num # verdadeiro # falso # Cadeia # Caractere # ( # < # Identificador # >
+258 # > # ,
 259 # >
-260 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-261 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-262 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-263 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-264 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-265 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-266 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-267 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
+260 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+261 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+262 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+263 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+264 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+265 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+266 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+267 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
 268 # )
-269 # ) # fim # inicio
-270 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-271 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-272 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-273 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
-274 # ) # , # + # - # Identificador # Num # Cadeia # Caractere # ( # <
-278 # + # - # ) # , # Identificador # Num # Cadeia # Caractere # ( # <
-279 # + # - # ) # , # Identificador # Num # Cadeia # Caractere # ( # <
-280 # * # / # + # - # ) # , # Identificador # Num # Cadeia # Caractere # ( # <
-281 # + # - # ) # , # Identificador # Num # Cadeia # Caractere # ( # <
-282 # * # / # + # - # ) # , # Identificador # Num # Cadeia # Caractere # ( # <
-283 # leia # se # Identificador # < # inicio # escreva # var # enquanto # fim # =
+269 # )
+270 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+271 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+272 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+273 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador
+274 # ) # ,
+278 # - # ) # , # +
+279 # ) # ,
+280 # / # - # * # ) # , # +
+281 # - # ) # , # +
+282 # / # - # * # ) # , # +
+283 # leia # inicio # var # < # escreva # = # se # enquanto # fim # Identificador

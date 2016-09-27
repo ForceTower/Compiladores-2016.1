@@ -157,7 +157,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 			System.out.println("It were a non terminal");
 			System.out.println("Find follows of this current non-terminal");
 			List<Integer> follows = getFollowsOfState(stack.peek());
-			System.out.println("Follows: " + stack.peek());
+			System.out.println("Follows of: " + stack.peek());
+			System.out.println("These are the follows: " + follows);
 			System.out.println("Using sync tokens: " + syncTokens);
 			
 			while ((follows != null || syncTokens != null) && !(follows.contains(currentTokenId()) || syncTokens.contains(currentTokenId())) && hasNextToken()) {
