@@ -1,0 +1,15 @@
+200 # const # var # funcao # programa
+201 # const # var # funcao # programa
+202 # var # funcao # programa
+203 # var # funcao # programa
+204 # funcao # programa
+205 # funcao # programa
+207 # inteiro # real # cadeia # caractere # booleano
+208 # inteiro # real # cadeia # caractere # booleano
+209 # inteiro # real # cadeia # caractere # booleano # funcao # identificador
+210 # fim
+211 # inteiro # real # cadeia # caractere # booleano # , # ; # fim # identificador
+212 # var # funcao # programa
+213 # , # ; # identificador
+214 # inteiro # real # cadeia # caractere # booleano # , # ; # fim # identificador
+215 # ou # e # > # >= # < # <= # <>

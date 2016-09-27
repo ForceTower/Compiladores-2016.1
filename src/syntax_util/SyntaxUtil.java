@@ -15,9 +15,9 @@ public class SyntaxUtil {
 	public int 	START = 200,
 				INICIO_CONST_K_FUNC = 201,
 				DECL_CONST_VAR_DERIVA = 202,
-				INICIO_CONST_FUNC = 203,
-				INICIO_VAR_FUNC = 204,
-				INICIO_FUNC = 205,
+				INICIO_CONST_FUNC = 203, //Unused
+				INICIO_VAR_FUNC = 204, //Unused
+				INICIO_FUNC = 205, //Unused
 				//PROGRAM = 206, //Unused
 				DECL_CONST = 207,
 				DECL_VAR = 208,
