@@ -1,0 +1,19 @@
+const inicio
+	a = 3;
+	a
+	inteiro a = 2;
+	inteiro a
+	terceiro t
+	inteiro a;
+	booleano t = verdadeiro;
+	inteiro a =
+	real 2 a = 2;
+	real real = real real;
+	inteiro a = 3;
+fim
+
+funcao a() inicio fim
+funcao b a e inicio fim
+funcao a() inicio a = 4; fim
+
+programa inicio fim

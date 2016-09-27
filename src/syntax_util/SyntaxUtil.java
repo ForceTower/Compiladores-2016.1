@@ -176,7 +176,7 @@ public class SyntaxUtil {
 	}
 
 	public List<Integer> getFollowsOfState(int state) {
-		System.out.println("Follow State: " + state);
+		Debug.println("Follow State: " + state);
 		ArrayList<Integer> temp = follows.get(state);
 		if (temp != null) {
 			StringBuilder sb = new StringBuilder();
@@ -191,7 +191,7 @@ public class SyntaxUtil {
 			Debug.println(sb.toString());
 			return temp;
 		} else {
-			System.out.println("Has no follow...");
+			Debug.println("Has no follow...");
 			return new ArrayList<Integer>();
 		}
 	}

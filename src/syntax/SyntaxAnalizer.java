@@ -12,7 +12,6 @@ import syntax_tree.AbstractSyntaxTree;
 import syntax_tree.Node;
 import syntax_util.SyntaxUtil;
 
-@SuppressWarnings("unused")
 public class SyntaxAnalizer extends SyntaxUtil {
 	private List<Token> tokens;
 	private List<Integer> syncTokens;
@@ -24,7 +23,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private int syntaxErrors;
 	private int ignoredTokens;
 	private int consumedTokens;
-	private boolean errorRecovered;
 	
 	public SyntaxAnalizer(List<Token> tokens) throws IOException {
 		super();
@@ -36,7 +34,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxErrors = 0;
 		ignoredTokens = 0;
 		consumedTokens = 0;
-		errorRecovered = true;
 		syntaxTree = new AbstractSyntaxTree();
 		
 		initializeSyncSymbols();
@@ -109,7 +106,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				currentToken++;
 				consumedTokens++;
 				token = currentToken();
-				errorRecovered = true;
 			} else {
 				int production = syntaxTable[stack.peek()][token.getId()];
 				Debug.println("Generates production: " + production + "\tState: " + stack.peek());
@@ -143,80 +139,75 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	}
 	
 	private void errorRecovery() {
-		System.out.println("---------------------");
-		//Debug.println("Error Recovery: Find follows of state number: " + currentNode.getType());
-		System.out.println("Stack was:    " + stack);
-		System.out.println("Token were: " + currentToken());
+		Debug.println("---------------------");
+		System.out.println("-Error Recovery-");
+		Debug.println("Stack was:    " + stack);
+		Debug.println("Token were: " + currentToken());
 		
 		if (stack.peek() < 200) {
 			System.out.println("It were a terminal, default pop");
 			int k = stack.pop();
-			System.out.println("Pop: " + k);
+			Debug.println("Pop: " + k);
+			System.out.println("");
 			return;
-		} else {
-			System.out.println("It were a non terminal");
-			System.out.println("Find follows of this current non-terminal");
-			List<Integer> follows = getFollowsOfState(stack.peek());
-			System.out.println("Follows of: " + stack.peek());
-			System.out.println("These are the follows: " + follows);
-			System.out.println("Using sync tokens: " + syncTokens);
-			
-			while ((follows != null || syncTokens != null) && !(follows.contains(currentTokenId()) || syncTokens.contains(currentTokenId())) && hasNextToken()) {
-				System.out.println("Token Ignored: " + currentToken());
-				ignoredTokens++;
-				currentToken++;
-			}
-			
-			if (syncTokens.contains(currentTokenId())) {
-				System.out.println("Token Ignored: " + currentToken());
-				ignoredTokens++;
-				currentToken++;
-			}
-			
-			if (syntaxTable[stack.peek()][currentTokenId()] == -1)
-				System.out.println("Pop erroneous production from stack: " + stack.pop());
-			else
-				System.out.println("It seems like we got where we were supposed to");
-				
-		}
-		/*
-		if (stack.peek() != 400) {
-			int k = stack.pop();
-			System.out.println("Default pop: " + k);
-			if (k < 200) { //if we didn't match a terminal, it means that the hole production is wrong, we should take everything out.
-				System.out.println("\n----------");
-				while (stack.peek() != 401 && stack.peek() != 400) {
-					System.out.println("Production out: " + stack.pop());
-				}
-				
-				if (stack.peek() == 400)
-					System.out.println("We got to the end of the stack..");
-				System.out.println("----------\n");
-			}
-		}*/
-
-		/*List<Integer> follows = getFollowsOfState(state); //Get the follows of the current state
-		System.out.println("Follows: " + follows);
+		} 
 		
-		while (follows != null && !follows.contains(currentTokenId()) && hasNextToken()) {
-			System.out.println("Token Ignored: " + currentToken());
-			ignoredTokens++;
-			currentToken++;
+		else {
+			System.out.println("It were a non terminal");
+			Debug.println("Find Firsts of: " + stack.peek());
+			
+			List<Integer> firsts = new ArrayList<>();
+			int peek = stack.peek();
+			for (int k = 0; k < syntaxTable[peek].length; k++) {
+				if (syntaxTable[peek][k] != -1) {
+					firsts.add(k);
+				}
+			}
+			
+			System.out.println("Using Firsts: " + firsts);
+			
+			Debug.println("Find follows of this current non-terminal and the ones before him");
+			List<Integer> follows = new ArrayList<>();
+			List<Integer> actual = getFollowsOfState(stack.peek());
+			if (actual != null)
+				follows.addAll(actual);
+			
+			Node aux = currentNode;
+			while (aux != null) {
+				List<Integer> temp = getFollowsOfState(aux.getType());
+				if (temp != null)
+					follows.addAll(temp);
+				aux = aux.getFather();
+			}
+			
+			System.out.println("Using follows: " + follows);
+			
+			while ((follows != null || firsts != null) && !(follows.contains(currentTokenId()) || firsts.contains(currentTokenId())) && hasNextToken()) {
+				System.out.println("Token Ignored: " + currentToken());
+				ignoredTokens++;
+				currentToken++;
+			}
+			
+			if (!firsts.contains(currentTokenId())) {
+				System.out.println("Firsts does not contains first token, pop erroneous production from stack");
+				int pop = stack.pop();
+				System.out.println("Pop non terminal: " + pop);
+			}
+				
 		}
-		*/
-		//System.out.println("Stack now is: " + stack);
 		System.out.println("Token now is: " + currentToken());
-		System.out.println("---------------------\n");
+		System.out.println("");
+		Debug.println("---------------------\n");
 	}
 
 	private void showError(Integer peek, Token token) {
 		StringBuilder sb = new StringBuilder();
 		
 		if (peek == 400)
-			sb.append("Esperado: Fim de Arquivo mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+			sb.append("\n-> Esperado: Fim de Arquivo mas foi: " + token.getLexem() + " na linha: " + token.getLine());
 		
 		else if (peek >= 200) {
-			sb.append("Esperado um dos seguintes: ");
+			sb.append("\n-> Esperado um dos seguintes: ");
 			
 			boolean b = false;
 			for (int k = 0; k < syntaxTable[peek].length; k++)
@@ -229,7 +220,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		} 
 		
 		else 
-			sb.append("Esperado: " + TokenFactory.meaning_messages.get(peek) + " mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+			sb.append("\n-> Esperado: " + TokenFactory.meaning_messages.get(peek) + " mas foi: " + token.getLexem() + " na linha: " + token.getLine());
 		
 		System.out.println(sb.toString());
 	}
@@ -1043,7 +1034,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_CONST_I][getTokenId(",")] = DECL_CONST_I;
 		//syntaxTable[DECL_CONST_I][getTokenId(";")] 	= EPSILON;
 		
-		fillRow(DECL_CONST_II, EPSILON);
+		//fillRow(DECL_CONST_II, EPSILON);
 		syntaxTable[DECL_CONST_II][getTokenId("fim")] = EPSILON;
 		syntaxTable[DECL_CONST_II][getTokenId("inteiro")] = DECL_CONST_II;
 		syntaxTable[DECL_CONST_II][getTokenId("real")] = DECL_CONST_II;
@@ -1075,7 +1066,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[DECL_VAR_I][getTokenId(",")] = DECL_VAR_I;
 		
 		
-		fillRow(DECL_VAR_II, EPSILON);
+		//fillRow(DECL_VAR_II, EPSILON);
 		syntaxTable[DECL_VAR_II][getTokenId("fim")] = EPSILON;
 		syntaxTable[DECL_VAR_II][getTokenId("inteiro")] = DECL_VAR_II;
 		syntaxTable[DECL_VAR_II][getTokenId("real")] = DECL_VAR_II;
