@@ -1,0 +1,7 @@
+funcao funcao a()
+funcao b() inicio fim
+funcao inicio fim
+funcao inicio 
+funcao inteiro c(inteiro a, inteiro b, booleano d) inicio fim
+
+programa inicio fim

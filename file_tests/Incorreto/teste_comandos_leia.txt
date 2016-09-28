@@ -1,0 +1,16 @@
+programa inicio
+	leia(a);
+	leia(a+b);
+	leia(c, d, eke);
+	leia(<<m, n>> l);
+	leia(
+	leia
+	le
+	leia)
+	leia b
+	escreva
+	var
+	inicio
+		real a;
+	fim
+fim

@@ -1,0 +1,45 @@
+1 funcao funcao
+1 a Identificador
+1 ( (
+1 inteiro inteiro (tipo)
+1 t Identificador
+1 , ,
+1 cadeia cadeia (tipo)
+1 l Identificador
+1 ) )
+2 inicio inicio
+3 fim fim
+5 funcao funcao
+5 b Identificador
+5 ( (
+5 ) )
+6 inicio inicio
+6 fim fim
+8 funcao funcao
+8 real real (tipo)
+8 c Identificador
+8 ( (
+8 inteiro inteiro (tipo)
+8 < <
+8 < <
+8 2 Numero
+8 , ,
+8 2 Numero
+8 , ,
+8 2 Numero
+8 > >
+8 > >
+8 matriz Identificador
+8 ) )
+9 inicio inicio
+10 = =
+10 > >
+10 realidade Identificador
+10 = =
+10 > >
+10 ; ;
+11 fim fim
+13 programa programa
+14 inicio inicio
+15 fim fim
+Sucesso!

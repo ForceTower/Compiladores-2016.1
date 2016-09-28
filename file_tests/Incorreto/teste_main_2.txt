@@ -1,0 +1,5 @@
+programa 
+inicio 
+	a = 5 + programa
+	inicio fim
+fim

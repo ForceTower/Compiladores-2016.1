@@ -1,11 +1,13 @@
 package syntax;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 import debug.Debug;
+import file_io_utils.FileUtils;
 import model.Token;
 import model.TokenFactory;
 import syntax_tree.AbstractSyntaxTree;
@@ -14,7 +16,8 @@ import syntax_util.SyntaxUtil;
 
 public class SyntaxAnalizer extends SyntaxUtil {
 	private List<Token> tokens;
-	private List<Integer> syncTokens;
+	private File result;
+	private List<String> errors;
 	private Stack<Integer> stack;
 	int[][] syntaxTable;
 	private int currentToken;
@@ -24,11 +27,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private int ignoredTokens;
 	private int consumedTokens;
 	
-	public SyntaxAnalizer(List<Token> tokens) throws IOException {
+	public SyntaxAnalizer(List<Token> tokens, File result) throws IOException {
 		super();
 		this.tokens = tokens;
+		this.result = result;
+		this.errors = new ArrayList<>();
 		this.stack = new Stack<>();
-		this.syncTokens = new ArrayList<>();
 		syntaxTable = new int[450][450];
 		currentToken = 0;
 		syntaxErrors = 0;
@@ -36,7 +40,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		consumedTokens = 0;
 		syntaxTree = new AbstractSyntaxTree();
 		
-		initializeSyncSymbols();
 		initializeTable();
 		prepareTree();
 		prepareTable();
@@ -46,14 +49,6 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	public void prepareTree() {
 		currentNode = new Node();
 		syntaxTree.setRoot(currentNode);
-	}
-
-	public void initializeSyncSymbols() {
-		syncTokens.add(getTokenId(";"));
-		syncTokens.add(getTokenId("("));
-		syncTokens.add(getTokenId(")"));
-		syncTokens.add(getTokenId("inicio"));
-		syncTokens.add(getTokenId("fim"));
 	}
 
 	public void initializeTable() {
@@ -114,46 +109,64 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					else
 						showError(stack.peek(), token);
 					
-						syntaxErrors++;
-					
-					//Debug.setDebugOn();
+					syntaxErrors++;
 					errorRecovery();
 					Debug.println("-----");
-					//Debug.setDebugOff();
 				}
 					
 			}
 		}
 		
-		if (syntaxErrors == 0)
+		if (syntaxErrors == 0){
 			System.out.println("Successo!");
-		else {
+			try{
+				FileUtils fu = new FileUtils(result);
+				fu.writeString("Sucesso!");
+				fu.finish();
+			} catch (IOException e) {
+				System.out.println("Nao foi possivel criar o arquivo de saida!! Motivo: " + e.getMessage());
+			}
+		} else {
 			System.out.println("Encontrado " + syntaxErrors + (syntaxErrors == 1 ? " erro" : " erros"));
 			System.out.println("Quantidade de tokens ignorados: " + ignoredTokens);
 			System.out.println("Quantidade de tokens consumidos: " + (consumedTokens-1));
 			System.out.println("Total: " + tokens.size() + ". Percentual ignorado: " + (float)ignoredTokens/tokens.size()*100 + "%.");
+			System.out.println("Escrevendo no arquivo...");
+			
+			try {
+				FileUtils fu = new FileUtils(result);
+				for (String str : errors) {
+					fu.writeString(str);
+				}
+				
+				fu.finish();
+				
+			} catch (IOException e) {
+				System.out.println("Erro durante a gravação do arquivo: " + e.getMessage());
+			}
 		}
 		
+		System.out.println("Fim do Sintatico!\n\n");
 		//syntaxTree = syntaxTree.normalize();
 		//syntaxTree.print();
 	}
 	
 	private void errorRecovery() {
 		Debug.println("---------------------");
-		System.out.println("-Error Recovery-");
-		System.out.println("Stack was:    " + stack);
+		Debug.println("-Error Recovery-");
+		Debug.println("Stack was:    " + stack);
 		Debug.println("Token were: " + currentToken());
 		
 		if (stack.peek() < 200) {
-			System.out.println("It were a terminal, default pop");
+			Debug.println("It were a terminal, default pop");
 			int k = stack.pop();
 			Debug.println("Pop: " + k);
-			System.out.println("");
+			Debug.println("");
 			return;
 		} 
 		
 		else {
-			System.out.println("It were a non terminal: " + stack.peek());
+			Debug.println("It were a non terminal: " + stack.peek());
 			Debug.println("Find Firsts of: " + stack.peek());
 			
 			List<Integer> firsts = new ArrayList<>();
@@ -164,7 +177,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				}
 			}
 			
-			System.out.println("Using Firsts: " + firsts);
+			Debug.println("Using Firsts: " + firsts);
 			
 			Debug.println("Find follows of this current non-terminal and the ones before him");
 			List<Integer> follows = new ArrayList<>();
@@ -180,23 +193,23 @@ public class SyntaxAnalizer extends SyntaxUtil {
 				aux = aux.getFather();
 			}
 			
-			System.out.println("Using follows: " + follows);
+			Debug.println("Using follows: " + follows);
 			
 			while ((follows != null || firsts != null) && !(follows.contains(currentTokenId()) || firsts.contains(currentTokenId())) && hasNextToken()) {
-				System.out.println("Token Ignored: " + currentToken());
+				Debug.println("Token Ignored: " + currentToken());
 				ignoredTokens++;
 				currentToken++;
 			}
 			
 			if (!firsts.contains(currentTokenId())) {
-				System.out.println("Firsts does not contains first token, pop erroneous production from stack");
+				Debug.println("Firsts does not contains token, pop erroneous production from stack");
 				int pop = stack.pop();
-				System.out.println("Pop non terminal: " + pop);
+				Debug.println("Pop non terminal: " + pop);
 			}
 				
 		}
-		System.out.println("Token now is: " + currentToken());
-		System.out.println("");
+		Debug.println("Token now is: " + currentToken());
+		Debug.println("");
 		Debug.println("---------------------\n");
 	}
 
@@ -204,10 +217,10 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		StringBuilder sb = new StringBuilder();
 		
 		if (peek == 400)
-			sb.append("\n-> Esperado: Fim de Arquivo mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+			sb.append("Na linha: " + token.getLine() + ". Esperado: Fim de Arquivo mas foi: " + token.getLexem() + " na linha: " + token.getLine());
 		
 		else if (peek >= 200) {
-			sb.append("\n-> Esperado um dos seguintes: ");
+			sb.append("Na linha: " + token.getLine() + ". Esperado um dos seguintes: ");
 			
 			boolean b = false;
 			for (int k = 0; k < syntaxTable[peek].length; k++)
@@ -216,19 +229,21 @@ public class SyntaxAnalizer extends SyntaxUtil {
 					b = true;
 				}
 			
-			sb.append(". Mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+			sb.append(". Mas foi: " + token.getLexem() + ".");
 		} 
 		
 		else 
-			sb.append("\n-> Esperado: " + TokenFactory.meaning_messages.get(peek) + " mas foi: " + token.getLexem() + " na linha: " + token.getLine());
+			sb.append("Na linha: " + token.getLine() + ". Esperado: " + TokenFactory.meaning_messages.get(peek) + " mas foi: " + token.getLexem() + ".");
 		
 		System.out.println(sb.toString());
+		errors.add(sb.toString());
+		
 	}
 
 	private void showError2(int peek, Token token, StringBuilder sb, boolean b) {
 		if (peek == 400) {
 			if (b)
-				sb.append(", ");
+				sb.append(" | ");
 			sb.append("Fim de Arquivo");
 		} 
 		
@@ -240,7 +255,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		else {
 			if (b)
-				sb.append(", ");
+				sb.append(" | ");
 			sb.append(TokenFactory.meaning_messages.get(peek));
 		}
 	}

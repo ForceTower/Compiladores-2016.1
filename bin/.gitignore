@@ -1,8 +1,7 @@
-/syntax/
-/syntax_util/
-/debug/
-/model/
-/view_command_line/
 /controller/
-/lexical/
-/symbols/
+/syntax/
+/view_command_line/
+/file_io_utils/
+/view_event/
+/view_gui_dont_use/
+/view_event_dont_use/

@@ -1,0 +1,9 @@
+var
+	inteiro 3;
+	x 4;
+	real 3 9;
+	booleano k;
+	<<ll, kappa, parser>> mini; 
+fim
+
+programa inicio fim

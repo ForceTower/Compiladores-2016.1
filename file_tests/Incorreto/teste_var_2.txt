@@ -1,0 +1,10 @@
+var
+	cadeia a, b, c;
+	real n = 7.4;
+	cadeia d, e, f;
+	++;
+	programa keppo;
+	leia (a);
+fim
+
+programa inicio fim

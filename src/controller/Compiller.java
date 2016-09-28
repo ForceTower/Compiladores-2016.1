@@ -46,20 +46,27 @@ public class Compiller {
 			throw new IOErrorException("You must set a valid directory before starting");
 		
 		for (File file : directory.listFiles())
-			if (file.isFile() && !file.getName().startsWith("rLex_"))
+			if (file.isFile() && (!file.getName().startsWith("rLex_") && !file.getName().startsWith("rSin_")) && !file.getName().endsWith(".jar"))
 				completeAnalysis(file);
 			
 	}
 	
 	public void completeAnalysis(File arq) {
 		System.out.println("Currently Analyzing: " + arq.getName());
-		File result = new File(arq.getParentFile() + "\\rLex_" + arq.getName());
+		File folderLex = new File(arq.getParentFile() + "\\Saida_Lexico");
+		File folderSyn = new File(arq.getParentFile() + "\\Saida_Sintatico");
+		folderLex.mkdirs();
+		folderSyn.mkdirs();
+		
+		File resultLex = new File(folderLex.getPath() + "\\rLex_" + arq.getName());
+		File resultSyn = new File(folderSyn.getPath() + "\\rSin_" + arq.getName());
 		
 		//List<Token> allTokens;
 		try {
-			result.createNewFile();
-			startLexical(arq, result);
-			startSyntactic(lexicalAnalyzer.allValidTokens);
+			resultLex.createNewFile();
+			resultSyn.createNewFile();
+			startLexical(arq, resultLex);
+			startSyntactic(lexicalAnalyzer.allValidTokens, resultSyn);
 		} catch (IOErrorException | IOException | LexicalErrorException e) {
 			e.printStackTrace();
 		}
@@ -71,13 +78,13 @@ public class Compiller {
 		return lexicalAnalyzer.getAllTokens();
 	}
 	
-	public void startSyntactic(List<Token> allValidTokens) throws IOException {
-		//if (lexicalAnalyzer.lexicalErrors == 0) {
-			syntacticAnalyzer = new SyntaxAnalizer(allValidTokens);
+	public void startSyntactic(List<Token> allValidTokens, File result) throws IOException {
+		if (lexicalAnalyzer.lexicalErrors == 0) {
+			syntacticAnalyzer = new SyntaxAnalizer(allValidTokens, result);
 			syntacticAnalyzer.startAnalysis();
-		//} else {
-			//Debug.println("Has lex erros");
-		//}
+		} else {
+			System.out.println("Has lex erros, fix lex errors first!");
+		}
 	}
 
 }
