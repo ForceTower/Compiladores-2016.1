@@ -1297,7 +1297,22 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[FATOR_I_MD][getTokenId("*")] = CONSUME_MULT;
 		syntaxTable[FATOR_I_MD][getTokenId("/")] = CONSUME_DIV;
 		
-		fillRow(POSSIBLE_FUNC, EPSILON); //Too much things can come after this
+		//fillRow(POSSIBLE_FUNC, EPSILON); //Too much things can come after this
+		syntaxTable[POSSIBLE_FUNC][getTokenId(">=")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("<>")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("ou")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId(";")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("<")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("*")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId(">")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId(")")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("=")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("/")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("-")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("e")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("<=")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId(",")] = EPSILON;
+		syntaxTable[POSSIBLE_FUNC][getTokenId("+")] = EPSILON;
 		syntaxTable[POSSIBLE_FUNC][getTokenId("(")] = POSSIBLE_FUNC;
 		
 		//fillRow(PASSA_PARAM, EPSILON);
@@ -1332,7 +1347,10 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[ARRAY_PARAM][TokenFactory.IDENT] = EPSILON;
 		syntaxTable[ARRAY_PARAM][getTokenId("<")] = ARRAY_PARAM;
 		
-		fillRow(ARRAY_INDEXES_OPT, EPSILON); // Would it be > and , ?
+		//fillRow(ARRAY_INDEXES_OPT, EPSILON); // Would it be > and , ?
+		syntaxTable[ARRAY_INDEXES_OPT][getTokenId(">")] = EPSILON;
+		syntaxTable[ARRAY_INDEXES_OPT][getTokenId(",")] = EPSILON;
+		
 		syntaxTable[ARRAY_INDEXES_OPT][getTokenId("+")] = ARRAY_INDEXES_OPT;
 		syntaxTable[ARRAY_INDEXES_OPT][getTokenId("-")] = ARRAY_INDEXES_OPT;
 		syntaxTable[ARRAY_INDEXES_OPT][getTokenId("(")] = ARRAY_INDEXES_OPT;
@@ -1399,9 +1417,19 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[ESCREVIVEL][TokenFactory.STRING_CONST] = ESCREVIVEL;
 		
 		//ESCREVIVEL
-		fillRow(TERMO_E, TERMO_E);
+		//fillRow(TERMO_E, TERMO_E);
+		syntaxTable[TERMO_E][getTokenId("<")] = TERMO_E;
+		syntaxTable[TERMO_E][getTokenId("(")] = TERMO_E;
+		syntaxTable[TERMO_E][TokenFactory.IDENT] = TERMO_E;
+		syntaxTable[TERMO_E][TokenFactory.NUM_CONST] = TERMO_E;
+		syntaxTable[TERMO_E][TokenFactory.STRING_CONST] = TERMO_E;
+		syntaxTable[TERMO_E][TokenFactory.CHAR_CONST] = TERMO_E;
 		
-		fillRow(TERMO_I_E, EPSILON);
+		
+		//fillRow(TERMO_I_E, EPSILON);
+		syntaxTable[TERMO_I_E][getTokenId(")")] = EPSILON;
+		syntaxTable[TERMO_I_E][getTokenId(",")] = EPSILON;
+		
 		syntaxTable[TERMO_I_E][getTokenId("+")] = TERMO_I_E;
 		syntaxTable[TERMO_I_E][getTokenId("-")] = TERMO_I_E;
 		
@@ -1412,7 +1440,12 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		syntaxTable[FATOR_E][TokenFactory.NUM_CONST] = CONSUME_NUM_CONST;
 		syntaxTable[FATOR_E][TokenFactory.STRING_CONST] = CONSUME_STRING_CONST;
 		
-		fillRow(FATOR_I_E, EPSILON);
+		//fillRow(FATOR_I_E, EPSILON);
+		syntaxTable[FATOR_I_E][getTokenId("-")] = EPSILON;
+		syntaxTable[FATOR_I_E][getTokenId(")")] = EPSILON;
+		syntaxTable[FATOR_I_E][getTokenId(",")] = EPSILON;
+		syntaxTable[FATOR_I_E][getTokenId("+")] = EPSILON;
+		
 		syntaxTable[FATOR_I_E][getTokenId("*")] = FATOR_I_E;
 		syntaxTable[FATOR_I_E][getTokenId("/")] = FATOR_I_E;
 		
