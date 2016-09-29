@@ -2,8 +2,8 @@
 Building a Compiler
 
 * Lexical: Stable
-* Syntax: Stable/Nightly
-* Semanthic: Next Step
+* Syntax: Stable
+* Semanthic: Alpha Version
 
 Usage:
 java -jar "program name.jar" directory
