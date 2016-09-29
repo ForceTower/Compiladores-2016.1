@@ -11,7 +11,7 @@ import exception.IOErrorException;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		String dir = ".\\Entrada";
+		String dir = ".\\";
 		if (args.length == 1)
 			dir = args[0];
 		

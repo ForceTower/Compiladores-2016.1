@@ -1,0 +1,35 @@
+1 funcao funcao
+1 funcao funcao
+1 a Identificador
+1 ( (
+1 ) )
+2 funcao funcao
+2 b Identificador
+2 ( (
+2 ) )
+2 inicio inicio
+2 fim fim
+3 funcao funcao
+3 inicio inicio
+3 fim fim
+4 funcao funcao
+4 inicio inicio
+5 funcao funcao
+5 inteiro inteiro (tipo)
+5 c Identificador
+5 ( (
+5 inteiro inteiro (tipo)
+5 a Identificador
+5 , ,
+5 inteiro inteiro (tipo)
+5 b Identificador
+5 , ,
+5 booleano booleano (tipo)
+5 d Identificador
+5 ) )
+5 inicio inicio
+5 fim fim
+7 programa programa
+7 inicio inicio
+7 fim fim
+Sucesso!

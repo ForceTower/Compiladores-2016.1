@@ -1,0 +1,47 @@
+1 const const
+2 inicio inicio
+3 inteiro inteiro (tipo)
+3 a Identificador
+3 = =
+3 6 Numero
+3 ; ;
+4 fim fim
+6 programa programa
+7 inicio inicio
+8 escreva escreva
+8 ( (
+8 "Hello World" Cadeia de Caracteres (Constante)
+8 ) )
+8 ; ;
+9 inteiro inteiro (tipo)
+9 alfa Identificador
+9 = =
+9 12 Numero
+9 ; ;
+10 inteiro inteiro (tipo)
+10 beta Identificador
+10 ; ;
+11 real real (tipo)
+11 kappa Identificador
+11 ; ;
+12 leia leia
+12 ( (
+12 beta Identificador
+12 ) )
+12 ; ;
+13 leia leia
+13 ( (
+13 kappa Identificador
+13 ) )
+13 ; ;
+14 escreva escreva
+14 ( (
+14 alfa Identificador
+14 + +
+14 beta Identificador
+14 - -
+14 kappa Identificador
+14 ) )
+14 ; ;
+15 fim fim
+Sucesso!

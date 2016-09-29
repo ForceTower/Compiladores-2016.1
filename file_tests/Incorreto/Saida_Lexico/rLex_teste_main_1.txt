@@ -1,0 +1,172 @@
+1 programa programa
+2 inicio inicio
+3 inteiro inteiro (tipo)
+3 valor Identificador
+3 ; ;
+4 real real (tipo)
+4 quantidade Identificador
+4 ; ;
+5 cadeia cadeia (tipo)
+5 nome Identificador
+5 , ,
+5 produto Identificador
+5 ; ;
+6 leia leia
+6 ( (
+6 valor Identificador
+6 ) )
+6 ; ;
+7 enquanto enquanto
+7 ( (
+7 valor Identificador
+7 > >
+7 - -
+7 20 Numero
+7 ) )
+8 inicio inicio
+9 leia leia
+9 ( (
+9 nome Identificador
+9 , ,
+9 produto Identificador
+9 , ,
+9 quantidade Identificador
+9 ) )
+9 ; ;
+10 estoque Identificador
+10 = =
+10 quantidade Identificador
+10 - -
+10 12 Numero
+10 ; ;
+11 fim fim
+13 para Identificador
+13 ( (
+13 valor Identificador
+13 = =
+13 - -
+13 8 Numero
+13 ; ;
+13 valor Identificador
+13 <= <=
+13 23 Numero
+13 ; ;
+13 valor Identificador
+13 = =
+13 valor Identificador
+13 - -
+13 1 Numero
+13 ) )
+14 inicio inicio
+15 escreva escreva
+15 ( (
+15 quantidade Identificador
+15 - -
+15 valor Identificador
+15 ) )
+15 ; ;
+16 fim fim
+18 real real (tipo)
+18 media_menos_60 Identificador
+18 = =
+18 calcular_media Identificador
+18 ( (
+18 a Identificador
+18 , ,
+18 b Identificador
+18 , ,
+18 c Identificador
+18 , ,
+18 d Identificador
+18 ) )
+18 - -
+18 60 Numero
+18 ; ;
+19 fim fim
+21 funcao funcao
+21 calcular_media Identificador
+21 ( (
+21 inteiro inteiro (tipo)
+21 a Identificador
+21 , ,
+21 inteiro inteiro (tipo)
+21 b Identificador
+21 , ,
+21 booleano booleano (tipo)
+21 c Identificador
+21 , ,
+21 real real (tipo)
+21 d Identificador
+21 ) )
+22 inicio inicio
+23 se se
+23 ( (
+23 nao nao
+23 ( (
+23 c Identificador
+23 <> <>
+23 verdadeiro verdadeiro
+23 ) )
+23 ) )
+23 entao entao
+24 inicio inicio
+25 var var
+25 variavel Identificador
+25 = =
+25 "isso eh interessante" Cadeia de Caracteres (Constante)
+25 ; ;
+26 fim fim
+28 senao senao
+28 entao entao
+29 inicio inicio
+30 var var
+30 variavel Identificador
+30 = =
+30 "hu3hu3hu3 brbrbr" Cadeia de Caracteres (Constante)
+30 ; ;
+31 inteiro inteiro (tipo)
+31 kappa Identificador
+31 = =
+31 variavel Identificador
+31 - -
+31 30 Numero
+31 ; ;
+32 real real (tipo)
+32 keepo Identificador
+32 = =
+32 - -
+32 30 Numero
+32 - -
+32 30 Numero
+32 ; ;
+33 const const
+33 lol Identificador
+33 = =
+33 constante Identificador
+33 ; ;
+34 enquanto enquanto
+34 ( (
+34 verdadeiro verdadeiro
+34 ) )
+35 inicio inicio
+36 enquanto enquanto
+36 ( (
+36 verdadeiro verdadeiro
+36 ) )
+37 inicio inicio
+38 INICIO Identificador
+39 FIM Identificador
+40 fim fim
+41 fim fim
+42 fim fim
+44 caractere caractere (tipo)
+44 opa Identificador
+44 = =
+44 'o' Caractere (Constante)
+44 ; ;
+45 opa Identificador
+45 = =
+45 'o' Caractere (Constante)
+45 ; ;
+46 fim fim
+Sucesso!

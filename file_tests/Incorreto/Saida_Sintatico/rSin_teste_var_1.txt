@@ -1,0 +1,6 @@
+Na linha: 2. Esperado: inicio mas foi: inteiro.
+Na linha: 2. Esperado um dos seguintes: ; | ,. Mas foi: c.
+Na linha: 2. Esperado: ; mas foi: c.
+Na linha: 2. Esperado um dos seguintes: fim | inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: c.
+Na linha: 2. Esperado: fim mas foi: c.
+Na linha: 2. Esperado um dos seguintes: programa | funcao. Mas foi: c.

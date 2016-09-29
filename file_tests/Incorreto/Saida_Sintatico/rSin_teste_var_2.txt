@@ -1,0 +1,9 @@
+Na linha: 2. Esperado: inicio mas foi: cadeia.
+Na linha: 3. Esperado um dos seguintes: ; | ,. Mas foi: =.
+Na linha: 3. Esperado: ; mas foi: =.
+Na linha: 3. Esperado um dos seguintes: fim | inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: =.
+Na linha: 3. Esperado: fim mas foi: =.
+Na linha: 3. Esperado um dos seguintes: programa | funcao. Mas foi: =.
+Na linha: 6. Esperado: inicio mas foi: keppo.
+Na linha: 6. Esperado um dos seguintes: = | (. Mas foi: ;.
+Na linha: 10. Esperado: Fim de Arquivo mas foi: programa na linha: 10

@@ -1,0 +1,7 @@
+Na linha: 1. Esperado um dos seguintes: inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo) | Identificador. Mas foi: funcao.
+Na linha: 2. Esperado: inicio mas foi: funcao.
+Na linha: 2. Esperado um dos seguintes: = | (. Mas foi: funcao.
+Na linha: 2. Esperado: fim mas foi: funcao.
+Na linha: 3. Esperado um dos seguintes: inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo) | Identificador. Mas foi: inicio.
+Na linha: 4. Esperado um dos seguintes: inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo) | Identificador. Mas foi: inicio.
+Na linha: 5. Esperado um dos seguintes: =. Mas foi: fim.

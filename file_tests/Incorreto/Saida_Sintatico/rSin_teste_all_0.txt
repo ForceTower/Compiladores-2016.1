@@ -1,0 +1,11 @@
+Na linha: 3. Esperado um dos seguintes: + | - | * | / | <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: 7.
+Na linha: 17. Esperado um dos seguintes: + | - | * | / | <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: 3.
+Na linha: 47. Esperado um dos seguintes: + | - | * | / | <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: j.
+Na linha: 47. Esperado um dos seguintes: + | - | <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: j.
+Na linha: 47. Esperado um dos seguintes: = | e | ou | ; | , | ). Mas foi: j.
+Na linha: 47. Esperado um dos seguintes: = | ou | ; | , | ). Mas foi: j.
+Na linha: 47. Esperado: ) mas foi: j.
+Na linha: 47. Esperado: entao mas foi: j.
+Na linha: 47. Esperado: inicio mas foi: j.
+Na linha: 47. Esperado um dos seguintes: = | (. Mas foi: >.
+Na linha: 52. Esperado um dos seguintes: = | (. Mas foi: senao.

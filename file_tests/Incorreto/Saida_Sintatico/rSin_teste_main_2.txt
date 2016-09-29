@@ -1,0 +1,6 @@
+Na linha: 3. Esperado um dos seguintes: verdadeiro | falso | < | ( | Identificador | Numero | Caractere (Constante) | Cadeia de Caracteres (Constante). Mas foi: programa.
+Na linha: 4. Esperado um dos seguintes: + | - | <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: inicio.
+Na linha: 4. Esperado um dos seguintes: <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: inicio.
+Na linha: 4. Esperado um dos seguintes: = | e | ou | ; | , | ). Mas foi: inicio.
+Na linha: 4. Esperado um dos seguintes: = | ou | ; | , | ). Mas foi: inicio.
+Na linha: 4. Esperado: ; mas foi: inicio.

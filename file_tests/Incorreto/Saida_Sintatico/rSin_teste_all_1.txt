@@ -1,0 +1,7 @@
+Na linha: 1. Esperado: inicio mas foi: tratamento.
+Na linha: 1. Esperado um dos seguintes: inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: tratamento.
+Na linha: 8. Esperado um dos seguintes: fim | inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: funcao.
+Na linha: 8. Esperado: fim mas foi: funcao.
+Na linha: 12. Esperado: > mas foi: isolado.
+Na linha: 14. Esperado um dos seguintes: fim | inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: b.
+Na linha: 14. Esperado: fim mas foi: b.

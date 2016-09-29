@@ -1,0 +1,37 @@
+1 funcao funcao
+1 b Identificador
+1 a Identificador
+1 e e
+1 inicio inicio
+1 fim fim
+3 funcao funcao
+3 a Identificador
+3 ( (
+3 ) )
+3 inicio inicio
+4 var var
+5 inicio inicio
+6 inteiro inteiro (tipo)
+6 a Identificador
+6 ; ;
+7 fim fim
+8 leia leia
+8 ( (
+8 a Identificador
+8 ) )
+8 ; ;
+9 fim fim
+11 funcao funcao
+11 c Identificador
+11 ( (
+11 ) )
+11 inicio inicio
+11 a Identificador
+11 = =
+11 4 Numero
+11 ; ;
+11 fim fim
+13 programa programa
+13 inicio inicio
+13 fim fim
+Sucesso!
