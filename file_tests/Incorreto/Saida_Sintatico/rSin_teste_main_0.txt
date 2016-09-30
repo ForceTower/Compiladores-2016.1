@@ -1,0 +1,4 @@
+Na linha: 9. Esperado um dos seguintes: = | (. Mas foi: inteiro.
+Na linha: 10. Esperado um dos seguintes: = | (. Mas foi: inteiro.
+Na linha: 10. Esperado um dos seguintes: = | (. Mas foi: ;.
+Na linha: 11. Esperado um dos seguintes: = | (. Mas foi: ;.

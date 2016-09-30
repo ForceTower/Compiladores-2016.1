@@ -1,0 +1,11 @@
+Na linha: 3. Esperado um dos seguintes: = | (. Mas foi: inteiro.
+Na linha: 3. Esperado um dos seguintes: = | (. Mas foi: ;.
+Na linha: 4. Esperado um dos seguintes: = | (. Mas foi: ;.
+Na linha: 5. Esperado um dos seguintes: = | (. Mas foi: ,.
+Na linha: 5. Esperado um dos seguintes: = | (. Mas foi: ;.
+Na linha: 8. Esperado: faca mas foi: inicio.
+Na linha: 13. Esperado um dos seguintes: , | ). Mas foi: =.
+Na linha: 13. Esperado: ) mas foi: =.
+Na linha: 13. Esperado: ; mas foi: =.
+Na linha: 13. Esperado: fim mas foi: =.
+Na linha: 13. Esperado: Fim de Arquivo mas foi: = na linha: 13

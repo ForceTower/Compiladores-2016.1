@@ -1,0 +1,11 @@
+1 programa programa
+2 inicio inicio
+3 a Identificador
+3 = =
+3 5 Numero
+3 + +
+3 programa programa
+4 inicio inicio
+4 fim fim
+5 fim fim
+Sucesso!

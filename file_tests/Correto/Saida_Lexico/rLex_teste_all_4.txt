@@ -1,0 +1,161 @@
+1 funcao funcao
+1 calcular_media Identificador
+1 ( (
+1 inteiro inteiro (tipo)
+1 a Identificador
+1 , ,
+1 inteiro inteiro (tipo)
+1 b Identificador
+1 , ,
+1 booleano booleano (tipo)
+1 c Identificador
+1 , ,
+1 real real (tipo)
+1 d Identificador
+1 ) )
+2 inicio inicio
+3 se se
+3 ( (
+3 nao nao
+3 ( (
+3 c Identificador
+3 <> <>
+3 verdadeiro verdadeiro
+3 ) )
+3 ) )
+3 entao entao
+4 inicio inicio
+5 variavel Identificador
+5 = =
+5 "Isso eh interessante" Cadeia de Caracteres (Constante)
+5 ; ;
+6 fim fim
+8 senao senao
+9 inicio inicio
+10 variavel Identificador
+10 = =
+10 "hu3hu3hu3 brbrbr" Cadeia de Caracteres (Constante)
+10 ; ;
+11 var var
+12 inicio inicio
+13 inteiro inteiro (tipo)
+13 kappa Identificador
+13 ; ;
+14 real real (tipo)
+14 keepo Identificador
+14 ; ;
+15 inteiro inteiro (tipo)
+15 pq Identificador
+15 ; ;
+16 fim fim
+17 t Identificador
+17 = =
+17 - -
+17 2 Numero
+17 ; ;
+18 kappa Identificador
+18 = =
+18 variavel Identificador
+18 - -
+18 30 Numero
+18 ; ;
+19 keepo Identificador
+19 = =
+19 - -
+19 30 Numero
+19 - -
+19 30 Numero
+19 ; ;
+20 pq Identificador
+20 = =
+20 constante Identificador
+20 ; ;
+22 enquanto enquanto
+22 ( (
+22 verdadeiro verdadeiro
+22 ) )
+22 faca faca
+23 inicio inicio
+24 enquanto enquanto
+24 ( (
+24 verdadeiro verdadeiro
+24 ) )
+24 faca faca
+25 inicio inicio
+27 fim fim
+28 fim fim
+29 fim fim
+31 var var
+32 inicio inicio
+33 caractere caractere (tipo)
+33 opa Identificador
+33 ; ;
+34 fim fim
+35 opa Identificador
+35 = =
+35 'o' Caractere (Constante)
+35 ; ;
+36 fim fim
+38 programa programa
+39 inicio inicio
+40 var var
+41 inicio inicio
+42 inteiro inteiro (tipo)
+42 valor Identificador
+42 ; ;
+43 real real (tipo)
+43 quantidade Identificador
+43 ; ;
+44 cadeia cadeia (tipo)
+44 nome Identificador
+44 , ,
+44 produto Identificador
+44 ; ;
+45 fim fim
+47 leia leia
+47 ( (
+47 valor Identificador
+47 ) )
+47 ; ;
+48 enquanto enquanto
+48 ( (
+48 valor Identificador
+48 > >
+48 - -
+48 20 Numero
+48 ) )
+48 faca faca
+49 inicio inicio
+50 leia leia
+50 ( (
+50 nome Identificador
+50 , ,
+50 produto Identificador
+50 , ,
+50 quantidade Identificador
+50 ) )
+50 ; ;
+51 estoque Identificador
+51 = =
+51 quantidade Identificador
+51 - -
+51 12 Numero
+51 ; ;
+52 fim fim
+54 media_menos_60 Identificador
+54 = =
+54 calcular_media Identificador
+54 ( (
+54 a Identificador
+54 , ,
+54 b Identificador
+54 , ,
+54 c Identificador
+54 , ,
+54 d Identificador
+54 ) )
+54 - -
+54 60 Numero
+54 ; ;
+55 fim fim
+Sucesso!

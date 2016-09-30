@@ -1,0 +1,36 @@
+1 var var
+2 cadeia cadeia (tipo)
+2 a Identificador
+2 , ,
+2 b Identificador
+2 , ,
+2 c Identificador
+2 ; ;
+3 real real (tipo)
+3 n Identificador
+3 = =
+3 7.4 Numero
+3 ; ;
+4 cadeia cadeia (tipo)
+4 d Identificador
+4 , ,
+4 e e
+4 , ,
+4 f Identificador
+4 ; ;
+5 + +
+5 + +
+5 ; ;
+6 programa programa
+6 keppo Identificador
+6 ; ;
+7 leia leia
+7 ( (
+7 a Identificador
+7 ) )
+7 ; ;
+8 fim fim
+10 programa programa
+10 inicio inicio
+10 fim fim
+Sucesso!

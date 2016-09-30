@@ -1,0 +1,10 @@
+Na linha: 2. Esperado um dos seguintes: inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: a.
+Na linha: 6. Esperado: = mas foi: terceiro.
+Na linha: 6. Esperado um dos seguintes: + | - | * | / | <> | = | < | <= | > | >= | e | ou | ; | , | ( | ). Mas foi: t.
+Na linha: 10. Esperado um dos seguintes: verdadeiro | falso | + | - | < | nao | ( | Identificador | Numero | Caractere (Constante) | Cadeia de Caracteres (Constante). Mas foi: real.
+Na linha: 10. Esperado um dos seguintes: + | - | * | / | <> | = | < | <= | > | >= | e | ou | ; | , | ). Mas foi: a.
+Na linha: 10. Esperado um dos seguintes: ; | ,. Mas foi: =.
+Na linha: 11. Esperado: Identificador mas foi: real.
+Na linha: 11. Esperado: = mas foi: real.
+Na linha: 11. Esperado um dos seguintes: verdadeiro | falso | + | - | < | nao | ( | Identificador | Numero | Caractere (Constante) | Cadeia de Caracteres (Constante). Mas foi: real.
+Na linha: 11. Esperado um dos seguintes: ; | ,. Mas foi: =.

@@ -1,0 +1,30 @@
+1 var var
+2 inteiro inteiro (tipo)
+2 3 Numero
+2 ; ;
+3 x Identificador
+3 4 Numero
+3 ; ;
+4 real real (tipo)
+4 3 Numero
+4 9 Numero
+4 ; ;
+5 booleano booleano (tipo)
+5 k Identificador
+5 ; ;
+6 < <
+6 < <
+6 ll Identificador
+6 , ,
+6 kappa Identificador
+6 , ,
+6 parser Identificador
+6 > >
+6 > >
+6 mini Identificador
+6 ; ;
+7 fim fim
+9 programa programa
+9 inicio inicio
+9 fim fim
+Sucesso!

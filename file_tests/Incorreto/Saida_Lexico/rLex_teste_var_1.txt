@@ -1,0 +1,29 @@
+1 var var
+2 inteiro inteiro (tipo)
+2 d Identificador
+2 , ,
+2 b Identificador
+2 c Identificador
+2 k Identificador
+2 , ,
+2 a Identificador
+2 2.4 Numero
+2 ; ;
+3 inteiro inteiro (tipo)
+3 a Identificador
+3 , ,
+3 b Identificador
+4 booleano booleano (tipo)
+4 bool Identificador
+4 , ,
+4 c Identificador
+5 a Identificador
+5 b Identificador
+5 c Identificador
+6 inteiro inteiro (tipo)
+6 ; ;
+7 fim fim
+9 programa programa
+9 inicio inicio
+9 fim fim
+Sucesso!

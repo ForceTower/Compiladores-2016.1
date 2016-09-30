@@ -1,0 +1,7 @@
+Na linha: 2. Esperado: inicio mas foi: inteiro.
+Na linha: 2. Esperado um dos seguintes: < | Identificador. Mas foi: 3.
+Na linha: 3. Esperado um dos seguintes: ; | ,. Mas foi: 4.
+Na linha: 4. Esperado um dos seguintes: < | Identificador. Mas foi: 3.
+Na linha: 6. Esperado um dos seguintes: fim | inteiro (tipo) | real (tipo) | booleano (tipo) | cadeia (tipo) | caractere (tipo). Mas foi: <.
+Na linha: 6. Esperado: fim mas foi: <.
+Na linha: 6. Esperado um dos seguintes: programa | funcao. Mas foi: <.

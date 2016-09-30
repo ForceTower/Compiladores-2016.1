@@ -1,0 +1,28 @@
+Na linha: 3. Esperado um dos seguintes: , | ). Mas foi: +.
+Na linha: 3. Esperado: ) mas foi: b.
+Na linha: 3. Esperado: ; mas foi: b.
+Na linha: 3. Esperado um dos seguintes: = | (. Mas foi: ).
+Na linha: 7. Esperado um dos seguintes: < | Identificador. Mas foi: leia.
+Na linha: 7. Esperado: Identificador mas foi: leia.
+Na linha: 7. Esperado um dos seguintes: , | ). Mas foi: leia.
+Na linha: 7. Esperado: ) mas foi: leia.
+Na linha: 7. Esperado: ; mas foi: leia.
+Na linha: 8. Esperado: ( mas foi: le.
+Na linha: 9. Esperado um dos seguintes: , | ). Mas foi: leia.
+Na linha: 9. Esperado: ) mas foi: leia.
+Na linha: 9. Esperado: ; mas foi: leia.
+Na linha: 9. Esperado: ( mas foi: ).
+Na linha: 9. Esperado um dos seguintes: < | Identificador. Mas foi: ).
+Na linha: 10. Esperado: Identificador mas foi: leia.
+Na linha: 10. Esperado um dos seguintes: , | ). Mas foi: leia.
+Na linha: 10. Esperado: ) mas foi: leia.
+Na linha: 10. Esperado: ; mas foi: leia.
+Na linha: 10. Esperado: ( mas foi: b.
+Na linha: 11. Esperado um dos seguintes: , | ). Mas foi: escreva.
+Na linha: 11. Esperado: ) mas foi: escreva.
+Na linha: 11. Esperado: ; mas foi: escreva.
+Na linha: 12. Esperado: ( mas foi: var.
+Na linha: 12. Esperado um dos seguintes: + | - | < | ( | Identificador | Numero | Caractere (Constante) | Cadeia de Caracteres (Constante). Mas foi: var.
+Na linha: 12. Esperado um dos seguintes: , | ). Mas foi: var.
+Na linha: 12. Esperado: ) mas foi: var.
+Na linha: 12. Esperado: ; mas foi: var.

@@ -4,15 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import debug.Debug;
 import exception.IOErrorException;
 import exception.LexicalErrorException;
 import lexical.LexicalAnalyzer;
 import model.Token;
+import syntax.SyntaxAnalizer;
 
 public class Compiller {
 	private File directory;
 	private LexicalAnalyzer lexicalAnalyzer;
+	private SyntaxAnalizer syntacticAnalyzer;
 	
 	public Compiller () {
 		
@@ -45,19 +46,27 @@ public class Compiller {
 			throw new IOErrorException("You must set a valid directory before starting");
 		
 		for (File file : directory.listFiles())
-			if (file.isFile() && !file.getName().startsWith("rLex_"))
+			if (file.isFile() && (!file.getName().startsWith("rLex_") && !file.getName().startsWith("rSin_")) && !file.getName().endsWith(".jar"))
 				completeAnalysis(file);
 			
 	}
 	
 	public void completeAnalysis(File arq) {
-		Debug.println("Currently Analyzing: " + arq.getName());
-		File result = new File(arq.getParentFile() + "\\rLex_" + arq.getName());
+		System.out.println("Currently Analyzing: " + arq.getName());
+		File folderLex = new File(arq.getParentFile() + "\\Saida_Lexico");
+		File folderSyn = new File(arq.getParentFile() + "\\Saida_Sintatico");
+		folderLex.mkdirs();
+		folderSyn.mkdirs();
+		
+		File resultLex = new File(folderLex.getPath() + "\\rLex_" + arq.getName());
+		File resultSyn = new File(folderSyn.getPath() + "\\rSin_" + arq.getName());
 		
 		//List<Token> allTokens;
 		try {
-			result.createNewFile();
-			startLexical(arq, result);
+			resultLex.createNewFile();
+			resultSyn.createNewFile();
+			startLexical(arq, resultLex);
+			startSyntactic(lexicalAnalyzer.allValidTokens, resultSyn);
 		} catch (IOErrorException | IOException | LexicalErrorException e) {
 			e.printStackTrace();
 		}
@@ -67,6 +76,15 @@ public class Compiller {
 		lexicalAnalyzer = new LexicalAnalyzer(arq, result);
 		lexicalAnalyzer.startAnalysis();
 		return lexicalAnalyzer.getAllTokens();
+	}
+	
+	public void startSyntactic(List<Token> allValidTokens, File result) throws IOException {
+		if (lexicalAnalyzer.lexicalErrors == 0) {
+			syntacticAnalyzer = new SyntaxAnalizer(allValidTokens, result);
+			syntacticAnalyzer.startAnalysis();
+		} else {
+			System.out.println("Has lex erros, fix lex errors first!");
+		}
 	}
 
 }

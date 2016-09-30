@@ -6,8 +6,7 @@ import controller.Compiller;
 import exception.IOErrorException;
 /**
  * 
- * @author João Paulo e Marcelo
- *
+ * @author Joao Paulo e Marcelo
  */
 public class Main {
 

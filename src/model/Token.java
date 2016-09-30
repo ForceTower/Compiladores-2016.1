@@ -10,6 +10,7 @@ public class Token {
 	private boolean detailed;
 	private boolean malformed;
 	private boolean errorToken;
+	private int type;
 	
 	public Token() {
 		this(-1, "");
@@ -104,6 +105,14 @@ public class Token {
 
 	public void errorToken(boolean b) {
 		errorToken = b;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+	
+	public int getType() {
+		return type;
 	}
 
 }

@@ -1,0 +1,9 @@
+var
+	inteiro d, b c k, a 2.4;
+	inteiro a, b
+	booleano bool, c
+	a b c
+	inteiro ;
+fim
+
+programa inicio fim

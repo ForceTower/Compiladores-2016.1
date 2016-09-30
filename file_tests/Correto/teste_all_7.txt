@@ -1,0 +1,17 @@
+const
+inicio
+	inteiro a = 5;
+	real b = 6, i = 9;
+	booleano t = 4;
+	real re = l+b-50, o = <<1,2,3>>k;
+fim
+
+var
+inicio
+	inteiro a;
+	real re, be, qe, le;
+fim
+
+programa
+inicio
+fim

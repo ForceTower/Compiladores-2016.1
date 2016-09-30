@@ -1,0 +1,13 @@
+funcao b a e inicio fim
+
+funcao a() inicio 
+	var
+	inicio
+		inteiro a;
+	fim
+	leia (a);
+fim
+
+funcao c() inicio a = 4; fim
+
+programa inicio fim
