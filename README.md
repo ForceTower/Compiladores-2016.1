@@ -15,5 +15,5 @@ Every single file fron the directory will get under analysis unless it starts wi
 
 Folders are going to be created to save the output files.
 
-* A syntax analysis will only occur when there is no such lexical error.
+* A syntax analysis will only occur when there is no lexical error.
 * A semanthic analysis will only occur if the syntax finishes with no errors
