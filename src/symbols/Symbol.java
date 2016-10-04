@@ -5,6 +5,7 @@ import model.Token;
 public class Symbol {
 	private Token identifierToken;
 	private int type;
+	private SymbolTable table;
 	
 	public Symbol() {
 		type = -1;
@@ -28,6 +29,14 @@ public class Symbol {
 	
 	public Token getToken() {
 		return identifierToken;
+	}
+	
+	public void setTable(SymbolTable table) {
+		this.table = table;
+	}
+	
+	public SymbolTable getTable() {
+		return table;
 	}
 	
 	public String getTypeLiteral() {

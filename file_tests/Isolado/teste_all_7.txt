@@ -2,7 +2,7 @@ const
 inicio
 	inteiro a = 5.3;
 	real b = 6, i = 9;
-	booleano t = 4, mi = ('l');
+	booleano t = 4, mi = ('l' - 'l');
 	real re = a+b-50>3+2-3 ou nao (1>2), o = <<1,2,3,4,5,6>>le;
 	caractere a = 9;
 fim

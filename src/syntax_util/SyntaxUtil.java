@@ -47,7 +47,7 @@ public class SyntaxUtil {
 				ARRAY_IDENTIFICADOR = 232,
 				PAR_VALOR_PAR = 233,
 				POSSIBLE_FUNC = 234,
-				ARRAY_INDEXES = 235,
+				//ARRAY_INDEXES = 235,
 				ARRAY = 236,
 				ARRAY_I = 237,
 				PASSA_PARAM = 238,

@@ -54,6 +54,7 @@ public class FunctionsSemanthicAnalyzer extends SemanthicUtil {
 		
 		symbol.setToken(identifier);
 		symbol.setType(type);
+		symbol.setTable(globalTable);
 		
 		index++;
 		if (node.getChildren().get(index).isTerminal()) {
@@ -134,7 +135,7 @@ public class FunctionsSemanthicAnalyzer extends SemanthicUtil {
 		Symbol s = globalTable.getSymbols().get(identifier.getLexem());
 		if (s instanceof FunctionSymbol) exists = true;
 		
-		if (exists) createSemanthicError("Semanthic error on line " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
+		if (exists) createSemanthicError("Semanthic error on line: " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
 		else table.addSymbol(symbol);
 		
 		function.addParam(symbol);
@@ -179,7 +180,7 @@ public class FunctionsSemanthicAnalyzer extends SemanthicUtil {
 		Symbol s = globalTable.getSymbols().get(identifier.getLexem());
 		if (s instanceof FunctionSymbol) exists = true;
 		
-		if (exists) createSemanthicError("Semanthic error on line " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
+		if (exists) createSemanthicError("Semanthic error on line: " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
 		else table.addSymbol(symbol);
 		
 		function.addParam(symbol);

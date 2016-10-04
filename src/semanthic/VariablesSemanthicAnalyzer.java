@@ -1,5 +1,6 @@
 package semanthic;
 
+import model.Pair;
 import model.Token;
 import symbols.FunctionSymbol;
 import symbols.Symbol;
@@ -46,6 +47,7 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 		symbol.setToken(identifier);
 		symbol.setArray(isArray);
 		symbol.setIndexMark(indexMark);
+		symbol.setTable(table);
 		if (isArray) {
 			indexArrayCheck(symbol);
 			indexArrayCount(symbol);
@@ -99,6 +101,7 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 		symbol.setToken(identifier);
 		symbol.setArray(isArray);
 		symbol.setIndexMark(indexMark);
+		symbol.setTable(table);
 		if (isArray) {
 			indexArrayCheck(symbol);
 			indexArrayCount(symbol);
@@ -125,11 +128,93 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 	}
 
 	public static void indexArrayCheck(VariableSymbol symbol) {
+		Node node = symbol.getIndexMark();
+		if (node == null) return;
 		
+		if (node.getChildren().contains(new Node(SyntaxUtil.ARRAY_INDEXES_OPT)) || node.getChildren().contains(new Node(SyntaxUtil.EXPR_SIMPLES))) {
+			Node exp_simp = null;
+			
+			int index = node.getChildren().indexOf(new Node(SyntaxUtil.EXPR_SIMPLES));
+			if (index == -1) {
+				index = node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_INDEXES_OPT));
+				exp_simp = node.getChildren().get(index);
+			} else {
+				exp_simp = node.getChildren().get(index);
+			}
+			
+			Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(exp_simp, symbol.getTable());
+			if (type.f != INTEGER) {
+				if (type.f > 0)
+					createSemanthicError("Semanthic error on line: " + symbol.getToken().getLine() + ". The expression at index number " + 1 + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an integer to be an index");
+				else
+					createProperError(symbol, type);
+			}
+		}
+		
+		if (node.getChildren().contains(new Node(SyntaxUtil.ARRAY_I)) || node.getChildren().contains(new Node(SyntaxUtil.ARRAY_PARAM_I))) {
+			int index = node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_I));
+			if (index == -1)
+				index = node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_PARAM_I));
+			
+			indexArrayCheckMiddle(symbol, node.getChildren().get(index), 2);
+		}
 	}
 	
-	public static void indexArrayCount(VariableSymbol symbol) {
+	private static void indexArrayCheckMiddle(VariableSymbol symbol, Node node, int i) {
+		if (node.getChildren().contains(new Node(SyntaxUtil.ARRAY_INDEXES_OPT)) || node.getChildren().contains(new Node(SyntaxUtil.EXPR_SIMPLES))) {
+			Node exp_simp = null;
+			
+			int index = node.getChildren().indexOf(new Node(SyntaxUtil.EXPR_SIMPLES));
+			if (index == -1) {
+				index = node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_INDEXES_OPT));
+				exp_simp = node.getChildren().get(index);
+			} else {
+				exp_simp = node.getChildren().get(index);
+			}
+			
+			Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(exp_simp, symbol.getTable());
+			if (type.f != INTEGER) {
+				if (type.f > 0)
+					createSemanthicError("Semanthic error on line: " + symbol.getToken().getLine() + ". The expression at index number " + i + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an Integer to become an index");
+				else
+					createProperError(symbol, type);
+			}
+		}
 		
+		if (node.getChildren().contains(new Node(SyntaxUtil.ARRAY_I)) || node.getChildren().contains(new Node(SyntaxUtil.ARRAY_PARAM_I))) {
+			int index = node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_I));
+			if (index == -1)
+				index = node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_PARAM_I));
+			
+			indexArrayCheckMiddle(symbol, node.getChildren().get(index), i + 1);
+		}
+	}
+
+	public static int indexArrayCount(VariableSymbol symbol) {
+		Node node = symbol.getIndexMark();
+		if (node == null) return 0;
+		
+		if (!node.getChildren().contains(new Node(SyntaxUtil.ARRAY_I)) && !node.getChildren().contains(new Node(SyntaxUtil.ARRAY_PARAM_I))) {
+			symbol.setDimensionQuantity(1);
+			return 1;
+		}
+		
+		for (Node n : node.getChildren())
+			if (n.getType() == SyntaxUtil.ARRAY_I || n.getType() == SyntaxUtil.ARRAY_PARAM_I)
+				return indexArrayCountMiddle(symbol, 1, n);
+		
+		symbol.setDimensionQuantity(1);
+		return 1;
+	}
+
+	private static int indexArrayCountMiddle(VariableSymbol symbol, int i, Node node) {
+		if (node.getChildren().contains(new Node(SyntaxUtil.ARRAY_I)) || node.getChildren().contains(new Node(SyntaxUtil.ARRAY_PARAM_I)))
+			for (Node n : node.getChildren())
+				if (n.getType() == SyntaxUtil.ARRAY_I || n.getType() == SyntaxUtil.ARRAY_PARAM_I)
+					return indexArrayCountMiddle(symbol, i + 1, n);
+		
+		symbol.setDimensionQuantity(i + 1);
+		return i + 1;
 	}
 
 }

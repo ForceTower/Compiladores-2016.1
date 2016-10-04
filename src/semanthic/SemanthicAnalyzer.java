@@ -43,7 +43,7 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 		declareMain();
 		bodyBuilder();
 		writeErrors();
-		showAll();
+		//showAll();
 	}
 	
 	public Symbol lookup(String id, String table) {

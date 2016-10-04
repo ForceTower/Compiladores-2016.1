@@ -1,8 +1,8 @@
 package semanthic;
 
+import model.Pair;
 import model.Token;
 import symbols.ConstantSymbol;
-import symbols.Symbol;
 import symbols.SymbolTable;
 import syntax_tree.Node;
 import syntax_util.SyntaxUtil;
@@ -32,6 +32,7 @@ public class ConstantsSemanthicAnalyzer extends SemanthicUtil{
 		symbol.setToken(identifer);
 		symbol.setType(type);
 		symbol.setMarkValue(node.getChildren().get(3));
+		symbol.setTable(globalTable);
 		globalTable.addSymbol(symbol);
 		markValueCheck(symbol);
 		
@@ -55,15 +56,25 @@ public class ConstantsSemanthicAnalyzer extends SemanthicUtil{
 		symbol.setToken(identifer);
 		symbol.setType(type);
 		symbol.setMarkValue(node.getChildren().get(3));
+		symbol.setTable(globalTable);
 		globalTable.addSymbol(symbol);
-		markValueCheck(symbol);
+		markValueCheck(symbol); //Trocar para a variavel não existir durante a verificação de valor
 		
 		if (node.getChildren().size() == 5)
 			middle(node.getChildren().get(4), type);
 	}
 	
-	public void markValueCheck(Symbol symbol) {
-		//TODO Check
+	public static void markValueCheck(ConstantSymbol symbol) {
+		Node value = symbol.getValueNode();
+		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(value, symbol.getTable());
+		
+		if (type.f >= 0){
+			if (type.f != symbol.getType())
+				if (!(type.f == INTEGER && symbol.getType() == FLOAT))
+					createSemanthicError("Semanthic error on line: " + symbol.getToken().getLine() + ". Incompatible Types, the type of constant " + symbol.getIdentifier() + " is " + getTypeLiteral(symbol.getType()) + " but expression returns " + getTypeLiteral(type.f));
+		}
+		else
+			createProperError(symbol, type);
 	}
 
 }
