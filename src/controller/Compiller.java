@@ -8,12 +8,15 @@ import exception.IOErrorException;
 import exception.LexicalErrorException;
 import lexical.LexicalAnalyzer;
 import model.Token;
+import semanthic.SemanthicAnalyzer;
 import syntax.SyntaxAnalizer;
+import syntax_tree.AbstractSyntaxTree;
 
 public class Compiller {
 	private File directory;
 	private LexicalAnalyzer lexicalAnalyzer;
 	private SyntaxAnalizer syntacticAnalyzer;
+	private SemanthicAnalyzer semanthicAnalyzer;
 	
 	public Compiller () {
 		
@@ -55,18 +58,24 @@ public class Compiller {
 		System.out.println("Currently Analyzing: " + arq.getName());
 		File folderLex = new File(arq.getParentFile() + "\\Saida_Lexico");
 		File folderSyn = new File(arq.getParentFile() + "\\Saida_Sintatico");
+		File folderSem = new File(arq.getParentFile() + "\\Saida_Semantico");
+		
 		folderLex.mkdirs();
 		folderSyn.mkdirs();
+		folderSem.mkdirs();
 		
 		File resultLex = new File(folderLex.getPath() + "\\rLex_" + arq.getName());
 		File resultSyn = new File(folderSyn.getPath() + "\\rSin_" + arq.getName());
+		File resultSem = new File(folderSem.getPath() + "\\rSem_" + arq.getName());
 		
-		//List<Token> allTokens;
 		try {
 			resultLex.createNewFile();
 			resultSyn.createNewFile();
+			resultSem.createNewFile();
+			
 			startLexical(arq, resultLex);
 			startSyntactic(lexicalAnalyzer.allValidTokens, resultSyn);
+			if (syntacticAnalyzer != null) startSemanthic(syntacticAnalyzer.getAST(), resultSem);
 		} catch (IOErrorException | IOException | LexicalErrorException e) {
 			e.printStackTrace();
 		}
@@ -78,13 +87,24 @@ public class Compiller {
 		return lexicalAnalyzer.getAllTokens();
 	}
 	
-	public void startSyntactic(List<Token> allValidTokens, File result) throws IOException {
+	public AbstractSyntaxTree startSyntactic(List<Token> allValidTokens, File result) throws IOException {
 		if (lexicalAnalyzer.lexicalErrors == 0) {
 			syntacticAnalyzer = new SyntaxAnalizer(allValidTokens, result);
-			syntacticAnalyzer.startAnalysis();
+			return syntacticAnalyzer.startAnalysis();
 		} else {
-			System.out.println("Has lex erros, fix lex errors first!");
+			System.out.println("Has lex errors, fix lex errors first!");
+			return null;
 		}
+	}
+	
+	public void startSemanthic(AbstractSyntaxTree ast, File result) {
+		if (syntacticAnalyzer.syntaxErrors == 0) {
+			semanthicAnalyzer = new SemanthicAnalyzer(ast, result);
+			semanthicAnalyzer.startAnalysis();
+		} else {
+			System.out.println("Has syntax errors, fix syntax errors first");
+		}
+		
 	}
 
 }

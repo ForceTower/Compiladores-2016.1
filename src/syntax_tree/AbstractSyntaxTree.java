@@ -32,16 +32,16 @@ public class AbstractSyntaxTree {
 	public AbstractSyntaxTree normalize() {
 		Node nRoot = root;
 		norms(nRoot);
-		AbstractSyntaxTree ast = new AbstractSyntaxTree();
+		/*AbstractSyntaxTree ast = new AbstractSyntaxTree();
 		ast.setRoot(new Node());
 		norms2(ast.getRoot(), root);
 		Node root2 = ast.getRoot().getChildren().get(0).getChildren().get(0);
 		root2.setFather(null);
-		ast.setRoot(root2);
-		return ast;
+		ast.setRoot(root2);*/
+		return this;
 	}
 
-	private void norms(Node node) {
+	public void norms(Node node) {
 		if (node.isTerminal())
 			return;
 		List<Node> remove = new ArrayList<>();
@@ -55,7 +55,7 @@ public class AbstractSyntaxTree {
 		node.getChildren().removeAll(remove);
 	}
 	
-	private void norms2(Node cur, Node prin) {
+	public void norms2(Node cur, Node prin) {
 		while (prin.getChildren().size() == 1)
 			prin = prin.getChildren().get(0);
 		

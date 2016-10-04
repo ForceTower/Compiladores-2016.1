@@ -23,7 +23,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	private int currentToken;
 	private AbstractSyntaxTree syntaxTree;
 	private Node currentNode;
-	private int syntaxErrors;
+	public int syntaxErrors;
 	private int ignoredTokens;
 	private int consumedTokens;
 	
@@ -82,7 +82,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		currentNode = currentNode.getFather();
 	}
 	
-	public void startAnalysis() {
+	public AbstractSyntaxTree startAnalysis() {
 		while (!stack.isEmpty()) {
 			Token token = currentToken();
 			
@@ -147,7 +147,8 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		}
 		
 		System.out.println("Fim do Sintatico!\n\n");
-		//syntaxTree = syntaxTree.normalize();
+		syntaxTree = syntaxTree.normalize();
+		return syntaxTree;
 		//syntaxTree.print();
 	}
 	
@@ -1510,6 +1511,10 @@ public class SyntaxAnalizer extends SyntaxUtil {
 	
 	public boolean hasNextToken() {
 		return tokens.size() > currentToken;
+	}
+
+	public AbstractSyntaxTree getAST() {
+		return syntaxTree;
 	}
 
 }
