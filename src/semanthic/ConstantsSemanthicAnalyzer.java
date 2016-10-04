@@ -71,7 +71,7 @@ public class ConstantsSemanthicAnalyzer extends SemanthicUtil{
 		if (type.f >= 0){
 			if (type.f != symbol.getType())
 				if (!(type.f == INTEGER && symbol.getType() == FLOAT))
-					createSemanthicError("Semanthic error on line: " + symbol.getToken().getLine() + ". Incompatible Types, the type of constant " + symbol.getIdentifier() + " is " + getTypeLiteral(symbol.getType()) + " but expression returns " + getTypeLiteral(type.f));
+					createSemanthicError("On line: " + symbol.getToken().getLine() + ". Incompatible Types, the type of constant " + symbol.getIdentifier() + " is " + getTypeLiteral(symbol.getType()) + " but expression returns " + getTypeLiteral(type.f));
 		}
 		else
 			createProperError(symbol, type);

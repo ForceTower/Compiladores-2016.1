@@ -1,18 +1,18 @@
-Semanthic error on line: 3. Incompatible Types, the type of constant a is Integer but expression returns Float
-Semanthic error on line: 5. Incompatible Types, the type of constant t is Boolean but expression returns Integer
-Semanthic error on line: 5. Incompatible types on expression for identifier: mi
-Semanthic error on line: 6. Incompatible Types, the type of constant re is Float but expression returns Boolean
-Semanthic error on line: 6. Identifier le was not declared
-Semanthic error on line: 7. Identifier a already declared
-Semanthic error on line: 7. Incompatible Types, the type of constant a is Character but expression returns Integer
-Semanthic error on line: 12. Identifier t already declared
-Semanthic error on line: 13. The expression at index number 2 of array xe is a Float, but it must be an Integer to become an index
-Semanthic error on line: 13. Identifier c was not declared
-Semanthic error on line: 13. Identifier d was not declared
-Semanthic error on line: 13. Identifier c was not declared
-Semanthic error on line: 13. Identifier r was not declared
-Semanthic error on line: 13. The expression at index number 7 of array xe is a Boolean, but it must be an Integer to become an index
-Semanthic error on line: 16. Identifier mi already declared
-Semanthic error on line: 17. Identifier a already declared
-Semanthic error on line: 31. The identifier ab was already declared as a function
-Semanthic error on line: 31. Identifier li already declared
+On line: 3. Incompatible Types, the type of constant a is Integer but expression returns Float
+On line: 5. Incompatible Types, the type of constant t is Boolean but expression returns Integer
+On line: 5. Incompatible types on expression for identifier: mi
+On line: 6. Incompatible Types, the type of constant re is Float but expression returns Boolean
+On line: 6. Identifier le was not declared
+On line: 7. Identifier a already declared
+On line: 7. Incompatible Types, the type of constant a is Character but expression returns Integer
+On line: 12. Identifier t already declared
+On line: 13. The expression at index number 2 of array xe is a Float, but it must be an Integer to become an index
+On line: 13. Identifier c was not declared
+On line: 13. Identifier d was not declared
+On line: 13. Identifier c was not declared
+On line: 13. Identifier r was not declared
+On line: 13. The expression at index number 7 of array xe is a Boolean, but it must be an Integer to become an index
+On line: 16. Identifier mi already declared
+On line: 17. Identifier a already declared
+On line: 31. The identifier ab was already declared as a function
+On line: 31. Identifier li already declared

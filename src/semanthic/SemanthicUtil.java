@@ -56,13 +56,13 @@ public class SemanthicUtil {
 	
 	public static void createProperError(Symbol symbol, Pair<Integer, Token> type) {
 		if (type.f == ERROR_EXP_UNDECLARED)
-			createSemanthicError("Semanthic error on line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " was not declared");
+			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " was not declared");
 		else if (type.f == ERROR_EXP_ARRAY_AS_COMMON)
-			createSemanthicError("Semanthic error on line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " is a array, but are used as non-array");
+			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " is a array, but are used as non-array");
 		else if (type.f == ERROR_EXP_DIFFERENT_DIMENSIONS)
-			createSemanthicError("Semanthic error on line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " has different dimension than the originally declared");
+			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " has different dimension than the originally declared");
 		else if (type.f == TYPE_MISMATCH)
-			createSemanthicError("Semanthic error on line: " + type.s.getLine() + ". Incompatible types on expression for identifier: " + symbol.getIdentifier());
+			createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types on expression for identifier: " + symbol.getIdentifier());
 	}
 
 }

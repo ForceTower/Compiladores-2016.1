@@ -20,7 +20,7 @@ public class SymbolTable {
 	
 	public boolean addSymbol(Symbol sym) {
 		if (symbols.get(sym.getIdentifier()) != null) {
-			SemanthicUtil.createSemanthicError("Semanthic error on line: " + sym.getToken().getLine() + ". Identifier " + sym.getIdentifier() + " already declared");
+			SemanthicUtil.createSemanthicError("On line: " + sym.getToken().getLine() + ". Identifier " + sym.getIdentifier() + " already declared");
 			return false;
 		}
 		
