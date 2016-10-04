@@ -1,0 +1,6 @@
+Semanthic error on line: 7. Identifier a already declared
+Semanthic error on line: 12. Identifier t already declared
+Semanthic error on line: 16. Identifier mi already declared
+Semanthic error on line: 17. Identifier a already declared
+Semanthic error on line 31. The identifier ab was already declared as a function
+Semanthic error on line: 31. Identifier li already declared

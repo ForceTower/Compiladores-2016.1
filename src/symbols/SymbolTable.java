@@ -2,6 +2,7 @@ package symbols;
 
 import java.util.Hashtable;
 
+import semanthic.SemanthicUtil;
 import symbols.Symbol;
 
 public class SymbolTable {
@@ -19,7 +20,7 @@ public class SymbolTable {
 	
 	public boolean addSymbol(Symbol sym) {
 		if (symbols.get(sym.getIdentifier()) != null) {
-			System.out.println("Semanthic error on line: " + sym.getToken().getLine() + ". Identifier " + sym.getIdentifier() + " already declared");
+			SemanthicUtil.createSemanthicError("Semanthic error on line: " + sym.getToken().getLine() + ". Identifier " + sym.getIdentifier() + " already declared");
 			return false;
 		}
 		

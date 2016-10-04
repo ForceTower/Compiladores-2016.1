@@ -7,13 +7,14 @@ import java.util.Hashtable;
 import java.util.List;
 
 import file_io_utils.FileUtils;
+import symbols.FunctionSymbol;
 import symbols.Symbol;
 import symbols.SymbolTable;
 import syntax_tree.AbstractSyntaxTree;
 import syntax_tree.Node;
 import syntax_util.SyntaxUtil;
 
-public class SemanthicAnalyzer extends SemanthicConstants{
+public class SemanthicAnalyzer extends SemanthicUtil{
 	private static SemanthicAnalyzer instance;
 	private Hashtable<String, SymbolTable> scopes;
 	private AbstractSyntaxTree ast;
@@ -42,6 +43,7 @@ public class SemanthicAnalyzer extends SemanthicConstants{
 		declareMain();
 		bodyBuilder();
 		writeErrors();
+		showAll();
 	}
 	
 	public Symbol lookup(String id, String table) {
@@ -72,25 +74,50 @@ public class SemanthicAnalyzer extends SemanthicConstants{
 	
 	private void declareConstants() {
 		Node constant = ast.getNode(SyntaxUtil.DECL_CONST_CONTINUO);
-		if (constant == null)
-			return;
-		//TODO Continuar daqui
+		if (constant == null) return;
+		
+		ConstantsSemanthicAnalyzer csa = new ConstantsSemanthicAnalyzer(this, constant);
+		csa.analyze();
 	}
 
 	private void declareVariables() {
+		Node variable = ast.getNode(SyntaxUtil.DECL_VAR_CONTINUO);
+		if (variable == null || variable.getFather().getFather().getType() == SyntaxUtil.COMANDOS) return;
 		
+		VariablesSemanthicAnalyzer vsa = new VariablesSemanthicAnalyzer(this, variable, scopes.get("global-0"));
+		vsa.analyze();
 	}
 
 	private void declareFunctions() {
+		Node function = ast.getNode(SyntaxUtil.DECL_FUNC);
+		if (function == null) return;
 		
+		FunctionsSemanthicAnalyzer fsa = new FunctionsSemanthicAnalyzer(this, function);
+		fsa.analyze();
 	}
 	
 	private void declareMain() {
+		Node main = ast.getNode(SyntaxUtil.DECL_MAIN);
+		SymbolTable globalTable = scopes.get("global-0");
+		FunctionSymbol symbol = new FunctionSymbol();
+		symbol.setBodyMark(main.getChildren().get(2));
+		symbol.setType(VOID);
+		symbol.setToken(main.getChildren().get(0).getToken());
+		globalTable.addSymbol(symbol);
 		
+		scopes.put(symbol.getIdentifier(), new SymbolTable(symbol.getIdentifier()));
 	}
 
 	private void bodyBuilder() {
 		
+	}
+	
+	public void showAll() {
+		for (SymbolTable table : scopes.values()) {
+			System.out.println("\nTable: - " + table.getName() + " -");
+			for (Symbol symbol : table.getSymbols().values())
+				System.out.println(symbol);
+		}
 	}
 
 }
