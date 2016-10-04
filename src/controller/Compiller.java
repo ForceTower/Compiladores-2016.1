@@ -97,7 +97,7 @@ public class Compiller {
 		}
 	}
 	
-	public void startSemanthic(AbstractSyntaxTree ast, File result) {
+	public void startSemanthic(AbstractSyntaxTree ast, File result) throws IOException {
 		if (syntacticAnalyzer.syntaxErrors == 0) {
 			semanthicAnalyzer = new SemanthicAnalyzer(ast, result);
 			semanthicAnalyzer.startAnalysis();

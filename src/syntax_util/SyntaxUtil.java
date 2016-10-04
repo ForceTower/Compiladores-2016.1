@@ -12,7 +12,7 @@ import model.Token;
 import model.TokenFactory;
 
 public class SyntaxUtil {
-	public int 	START = 200,
+	public static int 	START = 200,
 				INICIO_CONST_K_FUNC = 201,
 				DECL_CONST_VAR_DERIVA = 202,
 				INICIO_CONST_FUNC = 203, //Unused
