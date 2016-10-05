@@ -29,14 +29,12 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			if (id == TokenFactory.IDENT) {
 				Symbol sym = SemanthicAnalyzer.get().lookup(node.getToken().getLexem(), table.getName());
 				if (sym == null || sym instanceof FunctionSymbol) {
-					//System.out.println("Semanthic error on line: " + node.getToken().getLine() + ". Variable: " + node.getToken().getLexem() + " was not declared");
 					return new Pair<Integer, Token>(ERROR_EXP_UNDECLARED, node.getToken());
 				}
 				
 				if (sym instanceof VariableSymbol) {
 					VariableSymbol var = (VariableSymbol)sym;
 					if (var.isArray()) {
-						//System.out.println("Semanthic error on line: " + sym.getToken().getLine() + ". Variable: " + node.getToken().getLexem() + " is an array and can not be used this way");
 						return new Pair<Integer, Token>(ERROR_EXP_ARRAY_AS_COMMON, node.getToken());
 					}
 				}
@@ -57,11 +55,18 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 				return new Pair<Integer, Token>(BOOLEAN, node.getToken());;
 			
 		} else if (node.getChildren().size() == 3) {
-			return valueOfExpBool(node.getChildren().get(1), table);
+			if (node.getChildren().get(0).getToken().getId() == TokenFactory.IDENT) {
+				return functionCallInExp(node, table);
+			} else {
+				return valueOfExpBool(node.getChildren().get(1), table);
+			}
 		} else if (node.getChildren().size() == 7) {
+			if (node.getChildren().get(0).getToken().getId() == TokenFactory.IDENT) {
+				return functionCallInExp(node, table);
+			}
+			
 			Symbol sym = SemanthicAnalyzer.get().lookup(node.getChildren().get(6).getToken().getLexem(), table.getName());
 			if (sym == null || !(sym instanceof VariableSymbol)) {
-				//System.out.println("Semanthic error on line: " + node.getChildren().get(6).getToken().getLine() + ". Variable: " + node.getChildren().get(6).getToken().getLexem() + " was not declared");
 				return new Pair<Integer, Token>(ERROR_EXP_UNDECLARED, node.getChildren().get(6).getToken());
 			}
 			
@@ -71,15 +76,27 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 				if (var.getDimensionQuantity() == getQuantityOf(node.getChildren().get(3), 1)) {
 					return new Pair<Integer, Token>(var.getType(), node.getChildren().get(6).getToken());
 				} else {
-					//System.out.println("Semanthic error on line: " + node.getChildren().get(6).getToken().getLine() + ". " + node.getChildren().get(6).getToken().getLexem() + " has " + var.getDimensionQuantity() + " dimensions, but you informed " + getQuantityOf(node.getChildren().get(3), 1));
 					return new Pair<Integer, Token>(ERROR_EXP_DIFFERENT_DIMENSIONS, node.getChildren().get(6).getToken());
 				}
 			}
+		} else {
+			if (node.getChildren().get(0).getToken().getId() == TokenFactory.IDENT) {
+				return functionCallInExp(node, table);
+			}
 		}
 		
-		return new Pair<Integer, Token>(ERROR_UNKNOWN, new Token(9999, "Unknown", 99999, 99999));
+		return new Pair<Integer, Token>(ERROR_UNKNOWN, new Token(9999, "Not a thing", 99999, 99999));
 	}
 	
+	private static Pair<Integer, Token> functionCallInExp(Node node, SymbolTable table) {
+		Token tk = node.getChildren().get(0).getToken();
+		FunctionSymbol sym = BodySemanthicAnalyzer.funcCall(node, table);
+		if (sym == null) {
+			return new Pair<Integer, Token> (ERROR_EXP_UNDECLARED, tk);
+		}
+		return new Pair<Integer, Token>(sym.getType(), tk);
+	}
+
 	public static Pair<Integer, Token> typeOfTerm(Node exp, SymbolTable table) {
 		if (exp.getType() == SyntaxUtil.FATOR || exp.getType() == SyntaxUtil.FATOR_E)
 			return factorization(exp, table);

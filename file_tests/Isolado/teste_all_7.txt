@@ -54,7 +54,12 @@ inicio
 	senao 
 	inicio
 		d = c;
-	fim	
+	fim
+	
+	var
+	inicio
+		inteiro <<kappa(), a>> best;
+	fim
 	=> t =>; 
 fim
 

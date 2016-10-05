@@ -8,6 +8,7 @@ import model.Token;
 import model.TokenFactory;
 import symbols.FunctionSymbol;
 import symbols.Symbol;
+import symbols.SymbolTable;
 import symbols.VariableSymbol;
 import syntax_tree.Node;
 import syntax_util.SyntaxUtil;
@@ -62,7 +63,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		if (work.getChildren().get(1).getChildren().get(0).getToken().getId() == SyntaxUtil.getTokenId("=")) {
 			attribuition(work);
 		} else {
-			funcCall(work);
+			funcCall(work, function.getFunctionScope());
 		}
 	}
 
@@ -216,12 +217,12 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		}
 	}
 	
-	private void funcCall(Node work) {
+	public static FunctionSymbol funcCall(Node work, SymbolTable functionScope) {
 		System.out.println("call");
 		Token id = work.getChildren().get(0).getToken();
 		work = work.getChildren().get(1);
 		
-		Symbol symbol = semanthic.lookup(id.getLexem(), "global-0");
+		Symbol symbol = SemanthicAnalyzer.get().lookup(id.getLexem(), "global-0");
 		if (symbol != null) {
 			if (symbol instanceof FunctionSymbol) {
 				FunctionSymbol func = (FunctionSymbol)symbol;
@@ -234,7 +235,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				if (prm.isTerminal())
 					qtdO = 0;
 				else {
-					paramsO = parametersResolver(prm, function.getFunctionScope());
+					paramsO = parametersResolver(prm, functionScope);
 					qtdO = paramsO.size();
 				}
 				
@@ -249,7 +250,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 								else{
 									createProperError(symbol, paramsO.get(i));
 								}
-									//createSemanthicError("On line: " + id.getLine() + ". Expression of parameter cannot be resolved into a type");
 							}
 						}
 					}
@@ -261,13 +261,14 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 						}
 					}
 				}
-				
+				return func;
 			} else {
 				createSemanthicError("On line: " + id.getLine() + " the identifier " + id.getLexem() + " is not a function");
 			}
 		} else {
 			createSemanthicError("On line: " + id.getLine() + " the identifier " + id.getLexem() + " was not declared");
 		}
+		return null;
 	}
 
 	private void funcReturn(Node returnMark) {

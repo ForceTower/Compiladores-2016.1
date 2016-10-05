@@ -278,30 +278,21 @@
 56 c Identificador
 56 ; ;
 57 fim fim
-58 = =
-58 > >
-58 t Identificador
-58 = =
-58 > >
-58 ; ;
-59 fim fim
-61 funcao funcao
-61 real real (tipo)
+59 var var
+60 inicio inicio
+61 inteiro inteiro (tipo)
+61 < <
+61 < <
 61 kappa Identificador
 61 ( (
-61 inteiro inteiro (tipo)
-61 a Identificador
-61 , ,
-61 inteiro inteiro (tipo)
-61 ab Identificador
-61 , ,
-61 inteiro inteiro (tipo)
-61 li Identificador
-61 , ,
-61 real real (tipo)
-61 li Identificador
 61 ) )
-62 inicio inicio
+61 , ,
+61 a Identificador
+61 > >
+61 > >
+61 best Identificador
+61 ; ;
+62 fim fim
 63 = =
 63 > >
 63 t Identificador
@@ -309,7 +300,31 @@
 63 > >
 63 ; ;
 64 fim fim
-66 programa programa
+66 funcao funcao
+66 real real (tipo)
+66 kappa Identificador
+66 ( (
+66 inteiro inteiro (tipo)
+66 a Identificador
+66 , ,
+66 inteiro inteiro (tipo)
+66 ab Identificador
+66 , ,
+66 inteiro inteiro (tipo)
+66 li Identificador
+66 , ,
+66 real real (tipo)
+66 li Identificador
+66 ) )
 67 inicio inicio
-68 fim fim
+68 = =
+68 > >
+68 t Identificador
+68 = =
+68 > >
+68 ; ;
+69 fim fim
+71 programa programa
+72 inicio inicio
+73 fim fim
 Sucesso!

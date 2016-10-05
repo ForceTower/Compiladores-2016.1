@@ -14,9 +14,9 @@ On line: 13. Identifier r was not declared
 On line: 13. The expression at index number 7 of array xe is a Boolean, but it must be an Integer to become an index
 On line: 16. Identifier mi already declared
 On line: 17. Identifier a already declared
-On line: 61. The identifier ab was already declared as a function
-On line: 61. Identifier li already declared
-On line: 63. Incompatible Types, function kappa type is Float but it's returning Boolean
+On line: 66. The identifier ab was already declared as a function
+On line: 66. Identifier li already declared
+On line: 68. Incompatible Types, function kappa type is Float but it's returning Boolean
 On line: 27. The value of identifier a can not be changed
 On line: 28. The value of identifier b can not be changed
 On line: 32. The expression at index number 1 of array pop is a Boolean, but it must be an integer to be an index
@@ -37,4 +37,6 @@ On line: 52. The variable c was not declared
 On line: 52. Identifier d was not declared
 On line: 56. The value of identifier d can not be changed
 On line: 56. Identifier c was not declared
-On line: 58. Incompatible Types, function d type is Integer but it's returning Boolean
+On line: 61. The function kappa is defined with 4 params, but you sent 0
+On line: 61. The expression at index number 1 of array best is a Float, but it must be an integer to be an index
+On line: 63. Incompatible Types, function d type is Integer but it's returning Boolean
