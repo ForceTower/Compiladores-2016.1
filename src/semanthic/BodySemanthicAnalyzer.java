@@ -132,6 +132,23 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 	
 	private void ifed(Node work) {
 		System.out.println("if");
+		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(2), function.getFunctionScope());
+		if (type.f >= 0) {
+			if (type.f != BOOLEAN) {
+				createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types, the type of expression is not a Boolean, it is: " + getTypeLiteral(type.f));
+			}
+		} else {
+			createProperError(function, type);
+		}
+		body(work.getChildren().get(6));
+		
+		int index = work.getChildren().indexOf(new Node(SyntaxUtil.ELSE_OPC));
+		if (index != -1) {
+			System.out.println("else");
+			work = work.getChildren().get(index);
+			if (!work.getChildren().get(2).isTerminal())
+				body(work.getChildren().get(2));
+		}
 	}
 	
 	private void funcCall(Node work) {

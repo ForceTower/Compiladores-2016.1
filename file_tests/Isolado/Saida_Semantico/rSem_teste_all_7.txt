@@ -21,4 +21,8 @@ On line: 27. The value of identifier a can not be changed
 On line: 28. The value of identifier b can not be changed
 On line: 35. The function kappa is defined with 4 params, but you sent 3
 On line: 44. Incompatible types, the type of expression is not a Boolean, it is: Integer
+On line: 51. The variable c was not declared
+On line: 51. Identifier d was not declared
+On line: 55. The value of identifier d can not be changed
+On line: 55. Identifier c was not declared
 On line: 57. Incompatible Types, function d type is Integer but it's returning Boolean
