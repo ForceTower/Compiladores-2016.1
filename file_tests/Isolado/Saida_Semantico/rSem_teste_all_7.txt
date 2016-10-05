@@ -29,7 +29,7 @@ On line: 41. The value of b cannot be changed, the identifier is declared as fun
 On line: 41. The variable c was not declared
 On line: 41. The value of t cannot be changed, the identifier is declared as function or constant
 On line: 41. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
-On line: pop. The variable pop has 2 dimensions and you informed 1
+On line: 41. The variable pop has 2 dimensions and you informed 1
 On line: 43. Identifier xxx was not declared
 On line: 43. Identifier bbb was not declared
 On line: 45. Incompatible types, the type of expression is not a Boolean, it is: Integer

@@ -68,7 +68,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 	}
 
 	private void attribuition(Node work) {
-		System.out.println("attr");
 		boolean allright = false;
 		Token id = work.getChildren().get(0).getToken();
 		work = work.getChildren().get(1);
@@ -80,7 +79,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				createSemanthicError("On line: " + id.getLine() + ". The value of identifier " + id.getLexem() + " can not be changed");
 			} else {
 				allright = true;
-				System.out.println("ok");
 			}
 		} else {
 			createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " was not declared");
@@ -97,7 +95,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 	}
 
 	private void read(Node work) {
-		System.out.println("read");
 		int index = work.getChildren().indexOf(new Node(TokenFactory.IDENT));
 		Token tk = work.getChildren().get(index).getToken();
 		
@@ -136,15 +133,15 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		if (exists) {
 			VariableSymbol var = (VariableSymbol)symbol;
 			if (var.isArray() && qttIndex == 0) {
-				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " is an array, but dimensions were not informed");
+				createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " is an array, but dimensions were not informed");
 			} else if (var.isArray() && var.getDimensionQuantity() != qttIndex) {
-				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " has " + var.getDimensionQuantity() + " dimensions and you informed " + qttIndex);
+				createSemanthicError("On line: " + tk.getLine()  + ". The variable " + tk.getLexem() + " has " + var.getDimensionQuantity() + " dimensions and you informed " + qttIndex);
 			} else if (var.getType() == BOOLEAN) {
-				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " type is Boolean. Can't read a boolean");
+				createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " type is Boolean. Can't read a boolean");
 			} else if (!var.isArray() && qttIndex > 0) {
-				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " is not an array");
+				createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " is not an array");
 			} else {
-				System.out.println("ok");
+
 			}
 		}
 		
@@ -155,13 +152,11 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 	}
 
 	private void write(Node work) {
-		System.out.println("write");
 		int index = work.getChildren().indexOf(new Node(SyntaxUtil.ESCREVIVEL));
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(work.getChildren().get(index), function.getFunctionScope());
 		if (type.f < 0) {
 			createProperError(function, type);
 		} else {
-			System.out.println("ok");
 		}
 		
 		index = work.getChildren().indexOf(new Node(SyntaxUtil.ESCREVIVEL_I));
@@ -170,7 +165,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 	}
 
 	private void whiled(Node work) {
-		System.out.println("while");
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(2), function.getFunctionScope());
 		if (type.f >= 0) {
 			if (type.f != BOOLEAN) {
@@ -180,24 +174,18 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 			createProperError(function, type);
 		}
 		body(work.getChildren().get(6));
-		System.out.println("ok");
 	}
 
 	private void scope(Node work) {
-		System.out.println("scope");
 		body(work.getChildren().get(1));
-		System.out.println("ok");
 	}
 
 	private void var(Node work) {
-		System.out.println("var");
 		VariablesSemanthicAnalyzer vsa = new VariablesSemanthicAnalyzer(semanthic, work.getChildren().get(2), function.getFunctionScope());
 		vsa.analyze();
-		System.out.println("ok");
 	}
 	
 	private void ifed(Node work) {
-		System.out.println("if");
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(2), function.getFunctionScope());
 		if (type.f >= 0) {
 			if (type.f != BOOLEAN) {
@@ -210,7 +198,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		
 		int index = work.getChildren().indexOf(new Node(SyntaxUtil.ELSE_OPC));
 		if (index != -1) {
-			System.out.println("else");
 			work = work.getChildren().get(index);
 			if (!work.getChildren().get(2).isTerminal())
 				body(work.getChildren().get(2));
@@ -218,7 +205,6 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 	}
 	
 	public static FunctionSymbol funcCall(Node work, SymbolTable functionScope) {
-		System.out.println("call");
 		Token id = work.getChildren().get(0).getToken();
 		work = work.getChildren().get(1);
 		
@@ -280,7 +266,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				if (!(function.getType() == FLOAT && type.f == INTEGER))
 					createSemanthicError("On line: " + type.s.getLine() + ". Incompatible Types, function " + function.getIdentifier() + " type is " + getTypeLiteral(function.getType()) + " but it's returning " + getTypeLiteral(type.f));
 			} else {
-				System.out.println("ret ok");
+				
 			}
 		} else {
 			createProperError(function, type);
