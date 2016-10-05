@@ -36,9 +36,9 @@ public class SemanthicError implements Comparable<SemanthicError>{
 		if (o.getFactor() == factor)
 			return 0;
 		if (o.getFactor() > factor)
-			return 1;
+			return -1;
 		
-		return -1;
+		return 1;
 	}
 
 }
