@@ -32,14 +32,14 @@ inicio
 		inteiro a;
 	fim
 	
-	kappa(1, 2, 3);
+	kappa(v, x, xx+2);
 	
 	inicio
 		a = 9;
 	fim
 	leia(b);
 	
-	escreva(a);
+	escreva(xxx, a, bbb, "kappa");
 	
 	enquanto (a) faca 
 	inicio 

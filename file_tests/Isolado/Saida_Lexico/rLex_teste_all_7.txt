@@ -177,11 +177,13 @@
 33 fim fim
 35 kappa Identificador
 35 ( (
-35 1 Numero
+35 v Identificador
 35 , ,
+35 x Identificador
+35 , ,
+35 xx Identificador
+35 + +
 35 2 Numero
-35 , ,
-35 3 Numero
 35 ) )
 35 ; ;
 37 inicio inicio
@@ -197,7 +199,13 @@
 40 ; ;
 42 escreva escreva
 42 ( (
+42 xxx Identificador
+42 , ,
 42 a Identificador
+42 , ,
+42 bbb Identificador
+42 , ,
+42 "kappa" Cadeia de Caracteres (Constante)
 42 ) )
 42 ; ;
 44 enquanto enquanto

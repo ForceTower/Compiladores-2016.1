@@ -101,6 +101,17 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 
 	private void write(Node work) {
 		System.out.println("write");
+		int index = work.getChildren().indexOf(new Node(SyntaxUtil.ESCREVIVEL));
+		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(work.getChildren().get(index), function.getFunctionScope());
+		if (type.f < 0) {
+			createProperError(function, type);
+		} else {
+			System.out.println("ok");
+		}
+		
+		index = work.getChildren().indexOf(new Node(SyntaxUtil.ESCREVIVEL_I));
+		if (index != -1)
+			write(work.getChildren().get(index));
 	}
 
 	private void whiled(Node work) {
@@ -164,7 +175,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				
 				int qtdO = -1;
 				int qtdF = paramsF.size();
-				List<Integer> paramsO = new ArrayList<>();
+				List<Pair<Integer, Token>> paramsO = new ArrayList<>();
 				Node prm = work.getChildren().get(1);
 				if (prm.isTerminal())
 					qtdO = 0;
@@ -178,16 +189,23 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 						System.out.println("ok");
 					} else {
 						for (int i = 0; i < paramsF.size(); i++) {
-							if (paramsF.get(i).getType() != paramsO.get(i).intValue()) {
-								if (paramsO.get(i) >= 0)
-									createSemanthicError("On line: "+ id.getLine() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " is a " + getTypeLiteral(paramsO.get(i).intValue()) + " but function requires " + getTypeLiteral(paramsF.get(i).getType()));
-								else
-									createSemanthicError("On line: " + id.getLine() + ". Expression of parameter cannot be resolved into a type");
+							if (paramsF.get(i).getType() != paramsO.get(i).f.intValue()) {
+								if (paramsO.get(i).f >= 0)
+									createSemanthicError("On line: "+ id.getLine() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " is a " + getTypeLiteral(paramsO.get(i).f.intValue()) + " but function requires " + getTypeLiteral(paramsF.get(i).getType()));
+								else{
+									createProperError(symbol, paramsO.get(i));
+								}
+									//createSemanthicError("On line: " + id.getLine() + ". Expression of parameter cannot be resolved into a type");
 							}
 						}
 					}
 				} else {
 					createSemanthicError("On line: " + id.getLine() + ". The function " + id.getLexem() + " is defined with " + qtdF + " params, but you sent " + qtdO);
+					for (Pair<Integer, Token> in : paramsO) {
+						if (in.f <= 0) {
+							createProperError(symbol, in);
+						}
+					}
 				}
 				
 			} else {

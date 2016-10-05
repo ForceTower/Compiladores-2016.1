@@ -1,6 +1,6 @@
 On line: 3. Incompatible Types, the type of constant a is Integer but expression returns Float
 On line: 5. Incompatible Types, the type of constant t is Boolean but expression returns Integer
-On line: 5. Incompatible types on expression for identifier: mi
+On line: 5. Incompatible types on expression
 On line: 6. Incompatible Types, the type of constant re is Float but expression returns Boolean
 On line: 6. Identifier le was not declared
 On line: 7. Identifier a already declared
@@ -20,6 +20,11 @@ On line: 62. Incompatible Types, function kappa type is Float but it's returning
 On line: 27. The value of identifier a can not be changed
 On line: 28. The value of identifier b can not be changed
 On line: 35. The function kappa is defined with 4 params, but you sent 3
+On line: 35. Identifier v was not declared
+On line: 35. Identifier x was not declared
+On line: 35. Identifier xx was not declared
+On line: 42. Identifier xxx was not declared
+On line: 42. Identifier bbb was not declared
 On line: 44. Incompatible types, the type of expression is not a Boolean, it is: Integer
 On line: 51. The variable c was not declared
 On line: 51. Identifier d was not declared

@@ -67,22 +67,22 @@ public class SemanthicUtil {
 		else if (type.f == ERROR_EXP_DIFFERENT_DIMENSIONS)
 			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " has different dimension than the originally declared");
 		else if (type.f == TYPE_MISMATCH)
-			createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types on expression for identifier: " + symbol.getIdentifier());
+			createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types on expression");
 	}
 	
-	public static List<Integer> parametersResolver(Node node, SymbolTable table) {
-		List<Integer> ret = new ArrayList<>();
+	public static List<Pair<Integer, Token>> parametersResolver(Node node, SymbolTable table) {
+		List<Pair<Integer, Token>> ret = new ArrayList<>();
 		
 		parametersResolver(node, ret, table);
 		
 		return ret;
 	}
 
-	private static void parametersResolver(Node node, List<Integer> ret, SymbolTable table) {
+	private static void parametersResolver(Node node, List<Pair<Integer, Token>> ret, SymbolTable table) {
 		int index = node.getChildren().indexOf(new Node(SyntaxUtil.VALOR));
 		
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(node.getChildren().get(index), table);
-		ret.add(type.f);
+		ret.add(type);
 		
 		index = node.getChildren().indexOf(new Node(SyntaxUtil.PASSA_PARAM_I));
 		if (index != -1)
