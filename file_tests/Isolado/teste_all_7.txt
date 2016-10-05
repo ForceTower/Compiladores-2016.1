@@ -29,7 +29,8 @@ inicio
 	s = 98;
 	
 	var inicio
-		inteiro a;
+		inteiro a, <<verdadeiro,2>>pop;
+		inteiro << <<'l',1>>pop, 3>> kek;
 	fim
 	
 	kappa(v, x, xx+2);
@@ -37,7 +38,7 @@ inicio
 	inicio
 		a = 9;
 	fim
-	leia(b);
+	leia(b, c, t, a, <<'l'>>pop);
 	
 	escreva(xxx, a, bbb, "kappa");
 	

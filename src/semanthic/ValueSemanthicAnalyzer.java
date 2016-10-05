@@ -227,7 +227,7 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(index, table);
 		if (type.f != INTEGER) {
 			if (type.f > 0)
-				createSemanthicError("On line: " + symbol.getToken().getLine() + ". The expression at index number " + 1 + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an integer to be an index");
+				createSemanthicError("On line: " + type.s.getLine() + ". The expression at index number " + 1 + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an integer to be an index");
 			else
 				createProperError(symbol, type);
 		}

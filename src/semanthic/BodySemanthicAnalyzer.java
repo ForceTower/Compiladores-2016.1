@@ -97,6 +97,60 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 
 	private void read(Node work) {
 		System.out.println("read");
+		int index = work.getChildren().indexOf(new Node(TokenFactory.IDENT));
+		Token tk = work.getChildren().get(index).getToken();
+		
+		Symbol symbol = semanthic.lookup(tk.getLexem(), function.getFunctionScope().getName());
+		boolean exists = false;
+		if (symbol != null) {
+			if (symbol instanceof VariableSymbol) {
+				exists = true;
+			} else {
+				createSemanthicError("On line: " + tk.getLine() + ". The value of " + tk.getLexem() + " cannot be changed, the identifier is declared as function or constant");
+			}
+		} else {
+			createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " was not declared");
+		}
+		int qttIndex = 0;
+		index = work.getChildren().indexOf(new Node(SyntaxUtil.ARRAY));
+		if (index != -1) {
+			VariableSymbol var;
+			if (exists) {
+				var = (VariableSymbol)symbol;
+			} else {
+				var = new VariableSymbol();
+				var.setToken(tk);
+			}
+			
+			Node array = work.getChildren().get(index);
+			ValueSemanthicAnalyzer.checkIndexes(array, function.getFunctionScope(), var);
+			qttIndex = 1;
+			int nIndex = array.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_I));
+			if (nIndex != -1) {
+				Node array_i = array.getChildren().get(nIndex);
+				qttIndex = ValueSemanthicAnalyzer.getQuantityOf(array_i, qttIndex);
+			}
+		}
+		
+		if (exists) {
+			VariableSymbol var = (VariableSymbol)symbol;
+			if (var.isArray() && qttIndex == 0) {
+				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " is an array, but dimensions were not informed");
+			} else if (var.isArray() && var.getDimensionQuantity() != qttIndex) {
+				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " has " + var.getDimensionQuantity() + " dimensions and you informed " + qttIndex);
+			} else if (var.getType() == BOOLEAN) {
+				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " type is Boolean. Can't read a boolean");
+			} else if (!var.isArray() && qttIndex > 0) {
+				createSemanthicError("On line: " + tk.getLexem() + ". The variable " + tk.getLexem() + " is not an array");
+			} else {
+				System.out.println("ok");
+			}
+		}
+		
+		index = work.getChildren().indexOf(new Node(SyntaxUtil.LEITURA_I));
+		if (index != -1) {
+			read(work.getChildren().get(index));
+		}
 	}
 
 	private void write(Node work) {
