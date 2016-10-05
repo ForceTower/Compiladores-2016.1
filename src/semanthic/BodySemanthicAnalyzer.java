@@ -69,16 +69,47 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 
 	private void attribuition(Node work) {
 		boolean allright = false;
-		Token id = work.getChildren().get(0).getToken();
-		work = work.getChildren().get(1);
-		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(1), function.getFunctionScope());
+		int index = 0;
+		int indexQtt = 0;
+		boolean arrayAccess = false;
+		Pair<Integer, Token> type;
+		
+		int continuation = work.getChildren().indexOf(new Node(TokenFactory.IDENT));
+		Token id = work.getChildren().get(continuation).getToken();
+		if (work.getChildren().get(0).getToken().getId() == SyntaxUtil.getTokenId("<")) {
+			arrayAccess = true;
+			indexQtt = 1;
+			index++;
+			index++;
+			VariableSymbol vs = new VariableSymbol();
+			vs.setToken(id);
+			ValueSemanthicAnalyzer.checkIndexes(work, function.getFunctionScope(), vs);
+			
+			index = work.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_I));
+			if (index != -1)
+				indexQtt = ValueSemanthicAnalyzer.getQuantityOf(work.getChildren().get(index), 1);
+			
+			type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(continuation+2), function.getFunctionScope());
+			
+		} else {
+			work = work.getChildren().get(continuation+1);
+			type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(1), function.getFunctionScope());
+		}
 		
 		Symbol symbol = semanthic.lookup(id.getLexem(), function.getFunctionScope().getName());
 		if (symbol != null) {
 			if (!(symbol instanceof VariableSymbol)) {
 				createSemanthicError("On line: " + id.getLine() + ". The value of identifier " + id.getLexem() + " can not be changed");
 			} else {
+				VariableSymbol var = (VariableSymbol)symbol;
 				allright = true;
+				if (arrayAccess && !var.isArray()) {
+					createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " is not an array");
+				} else if (arrayAccess && var.isArray()) {
+					if (indexQtt != var.getDimensionQuantity()) {
+						createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " has " + var.getDimensionQuantity() + " dimensions, but you informed " + indexQtt);
+					}
+				}
 			}
 		} else {
 			createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " was not declared");

@@ -1,0 +1,3 @@
+On line: 11. Identifier vetor is a array, but are used as non-array
+On line: 12. Identifier vetor is a array, but are used as non-array
+On line: 87. Identifier vetor is a array, but are used as non-array

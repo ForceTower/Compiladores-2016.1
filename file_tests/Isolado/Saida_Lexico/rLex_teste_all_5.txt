@@ -1,0 +1,44 @@
+1 programa programa
+2 inicio inicio
+3 escreva escreva
+3 ( (
+3 "Hello World" Cadeia de Caracteres (Constante)
+3 ) )
+3 ; ;
+4 var var
+5 inicio inicio
+6 inteiro inteiro (tipo)
+6 alfa Identificador
+6 ; ;
+7 inteiro inteiro (tipo)
+7 beta Identificador
+7 ; ;
+8 real real (tipo)
+8 kappa Identificador
+8 ; ;
+9 fim fim
+10 alfa Identificador
+10 = =
+10 23 Numero
+10 ; ;
+11 leia leia
+11 ( (
+11 beta Identificador
+11 ) )
+11 ; ;
+12 leia leia
+12 ( (
+12 kappa Identificador
+12 ) )
+12 ; ;
+13 escreva escreva
+13 ( (
+13 alfa Identificador
+13 + +
+13 beta Identificador
+13 - -
+13 kappa Identificador
+13 ) )
+13 ; ;
+14 fim fim
+Sucesso!

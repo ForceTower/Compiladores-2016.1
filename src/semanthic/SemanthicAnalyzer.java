@@ -110,8 +110,10 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 		symbol.setType(VOID);
 		symbol.setToken(main.getChildren().get(0).getToken());
 		globalTable.addSymbol(symbol);
+		SymbolTable mTable = new SymbolTable(symbol.getIdentifier());
+		symbol.setScope(mTable);
 		
-		scopes.put(symbol.getIdentifier(), new SymbolTable(symbol.getIdentifier()));
+		scopes.put(symbol.getIdentifier(), mTable);
 	}
 
 	private void bodyBuilder() {

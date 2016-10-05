@@ -1,0 +1,10 @@
+On line: 2. Identifier k was not declared
+On line: 3. Identifier b already declared
+On line: 3. Identifier hehe was not declared
+On line: 10. Identifier a already declared
+On line: 10. Identifier b already declared
+On line: 10. Identifier c already declared
+On line: 11. Identifier true was not declared
+On line: 11. Identifier true was not declared
+On line: 14. Incompatible types on expression
+On line: 17. Incompatible types on expression

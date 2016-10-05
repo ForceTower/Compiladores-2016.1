@@ -1,0 +1,15 @@
+funcao a (inteiro t, cadeia l)
+inicio
+fim
+
+funcao b ()
+inicio fim
+
+funcao real c (inteiro <<2,2,2>>matriz)
+inicio
+	=> realidade =>;
+fim
+
+programa
+inicio
+fim
