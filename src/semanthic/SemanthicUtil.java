@@ -55,8 +55,9 @@ public class SemanthicUtil {
 	}
 	
 	public static void createSemanthicError(String error) {
-		System.out.println(error);
-		SemanthicAnalyzer.get().getErrorsList().add(error);
+		SemanthicError se = new SemanthicError(error);
+		System.out.println(se);
+		SemanthicAnalyzer.get().getErrorsList().add(se);
 	}
 	
 	public static void createProperError(Symbol symbol, Pair<Integer, Token> type) {

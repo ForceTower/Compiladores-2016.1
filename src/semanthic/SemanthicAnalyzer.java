@@ -3,6 +3,7 @@ package semanthic;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 	private Hashtable<String, SymbolTable> scopes;
 	private AbstractSyntaxTree ast;
 	private File result;
-	private List<String> errors;
+	private List<SemanthicError> errors;
 	
 	public static SemanthicAnalyzer get() {
 		return instance;
@@ -61,14 +62,15 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 		return scopes;
 	}
 	
-	public List<String> getErrorsList() {
+	public List<SemanthicError> getErrorsList() {
 		return errors;
 	}
 	
 	public void writeErrors() throws IOException {
+		Collections.sort(errors);
 		FileUtils fu = new FileUtils(result);
 		if (errors.size() == 0) fu.writeString("Sucesso!");
-		else for (String str : errors) fu.writeString(str);
+		else for (SemanthicError str : errors) fu.writeString(str.toString());
 	}
 	
 	private void declareConstants() {

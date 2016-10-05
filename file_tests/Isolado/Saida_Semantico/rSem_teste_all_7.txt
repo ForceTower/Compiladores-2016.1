@@ -1,42 +1,42 @@
-On line: 3. Incompatible Types, the type of constant a is Integer but expression returns Float
-On line: 5. Incompatible Types, the type of constant t is Boolean but expression returns Integer
-On line: 5. Incompatible types on expression
-On line: 6. Incompatible Types, the type of constant re is Float but expression returns Boolean
-On line: 6. Identifier le was not declared
-On line: 7. Identifier a already declared
-On line: 7. Incompatible Types, the type of constant a is Character but expression returns Integer
-On line: 12. Identifier t already declared
+On line: 68. Incompatible Types, function kappa type is Float but it's returning Boolean
+On line: 66. The identifier ab was already declared as a function
+On line: 66. Identifier li already declared
+On line: 63. Incompatible Types, function d type is Integer but it's returning Boolean
+On line: 61. The function kappa is defined with 4 params, but you sent 0
+On line: 61. The expression at index number 1 of array best is a Float, but it must be an integer to be an index
+On line: 56. The value of identifier d can not be changed
+On line: 56. Identifier c was not declared
+On line: 52. The variable c was not declared
+On line: 52. Identifier d was not declared
+On line: 45. Incompatible types, the type of expression is not a Boolean, it is: Integer
+On line: 43. Identifier xxx was not declared
+On line: 43. Identifier bbb was not declared
+On line: 41. The value of b cannot be changed, the identifier is declared as function or constant
+On line: 41. The variable c was not declared
+On line: 41. The value of t cannot be changed, the identifier is declared as function or constant
+On line: 41. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
+On line: 41. The variable pop has 2 dimensions and you informed 1
+On line: 36. The function kappa is defined with 4 params, but you sent 3
+On line: 36. Identifier v was not declared
+On line: 36. Identifier x was not declared
+On line: 36. Identifier xx was not declared
+On line: 33. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
+On line: 32. The expression at index number 1 of array pop is a Boolean, but it must be an integer to be an index
+On line: 28. The value of identifier b can not be changed
+On line: 27. The value of identifier a can not be changed
+On line: 17. Identifier a already declared
+On line: 16. Identifier mi already declared
 On line: 13. The expression at index number 2 of array xe is a Float, but it must be an Integer to become an index
 On line: 13. Identifier c was not declared
 On line: 13. Identifier d was not declared
 On line: 13. Identifier c was not declared
 On line: 13. Identifier r was not declared
 On line: 13. The expression at index number 7 of array xe is a Boolean, but it must be an Integer to become an index
-On line: 16. Identifier mi already declared
-On line: 17. Identifier a already declared
-On line: 66. The identifier ab was already declared as a function
-On line: 66. Identifier li already declared
-On line: 68. Incompatible Types, function kappa type is Float but it's returning Boolean
-On line: 27. The value of identifier a can not be changed
-On line: 28. The value of identifier b can not be changed
-On line: 32. The expression at index number 1 of array pop is a Boolean, but it must be an integer to be an index
-On line: 33. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
-On line: 36. The function kappa is defined with 4 params, but you sent 3
-On line: 36. Identifier v was not declared
-On line: 36. Identifier x was not declared
-On line: 36. Identifier xx was not declared
-On line: 41. The value of b cannot be changed, the identifier is declared as function or constant
-On line: 41. The variable c was not declared
-On line: 41. The value of t cannot be changed, the identifier is declared as function or constant
-On line: 41. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
-On line: 41. The variable pop has 2 dimensions and you informed 1
-On line: 43. Identifier xxx was not declared
-On line: 43. Identifier bbb was not declared
-On line: 45. Incompatible types, the type of expression is not a Boolean, it is: Integer
-On line: 52. The variable c was not declared
-On line: 52. Identifier d was not declared
-On line: 56. The value of identifier d can not be changed
-On line: 56. Identifier c was not declared
-On line: 61. The function kappa is defined with 4 params, but you sent 0
-On line: 61. The expression at index number 1 of array best is a Float, but it must be an integer to be an index
-On line: 63. Incompatible Types, function d type is Integer but it's returning Boolean
+On line: 12. Identifier t already declared
+On line: 7. Identifier a already declared
+On line: 7. Incompatible Types, the type of constant a is Character but expression returns Integer
+On line: 6. Incompatible Types, the type of constant re is Float but expression returns Boolean
+On line: 6. Identifier le was not declared
+On line: 5. Incompatible Types, the type of constant t is Boolean but expression returns Integer
+On line: 5. Incompatible types on expression
+On line: 3. Incompatible Types, the type of constant a is Integer but expression returns Float
