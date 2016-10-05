@@ -86,6 +86,7 @@ public class FunctionsSemanthicAnalyzer extends SemanthicUtil {
 		if (globalTable.addSymbol(symbol)) { //if this is false.. we have a incorrect function , what should we do with it?
 			SymbolTable mTable = new SymbolTable(symbol.getIdentifier());
 			semanthic.getScopes().put(symbol.getIdentifier(), mTable);
+			symbol.setScope(mTable);
 			if (symbol.getParamMark() != null) 
 				paramMarkCheck(symbol);
 		}

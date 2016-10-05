@@ -1,8 +1,13 @@
 package semanthic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Pair;
 import model.Token;
 import symbols.Symbol;
+import symbols.SymbolTable;
+import syntax_tree.Node;
 import syntax_util.SyntaxUtil;
 
 public class SemanthicUtil {
@@ -63,6 +68,25 @@ public class SemanthicUtil {
 			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " has different dimension than the originally declared");
 		else if (type.f == TYPE_MISMATCH)
 			createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types on expression for identifier: " + symbol.getIdentifier());
+	}
+	
+	public static List<Integer> parametersResolver(Node node, SymbolTable table) {
+		List<Integer> ret = new ArrayList<>();
+		
+		parametersResolver(node, ret, table);
+		
+		return ret;
+	}
+
+	private static void parametersResolver(Node node, List<Integer> ret, SymbolTable table) {
+		int index = node.getChildren().indexOf(new Node(SyntaxUtil.VALOR));
+		
+		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(node.getChildren().get(index), table);
+		ret.add(type.f);
+		
+		index = node.getChildren().indexOf(new Node(SyntaxUtil.PASSA_PARAM_I));
+		if (index != -1)
+			parametersResolver(node.getChildren().get(index), ret, table);
 	}
 
 }

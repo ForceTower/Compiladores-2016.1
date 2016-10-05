@@ -14,5 +14,11 @@ On line: 13. Identifier r was not declared
 On line: 13. The expression at index number 7 of array xe is a Boolean, but it must be an Integer to become an index
 On line: 16. Identifier mi already declared
 On line: 17. Identifier a already declared
-On line: 31. The identifier ab was already declared as a function
-On line: 31. Identifier li already declared
+On line: 60. The identifier ab was already declared as a function
+On line: 60. Identifier li already declared
+On line: 62. Incompatible Types, function kappa type is Float but it's returning Boolean
+On line: 27. The value of identifier a can not be changed
+On line: 28. The value of identifier b can not be changed
+On line: 35. The function kappa is defined with 4 params, but you sent 3
+On line: 44. Incompatible types, the type of expression is not a Boolean, it is: Integer
+On line: 57. Incompatible Types, function d type is Integer but it's returning Boolean

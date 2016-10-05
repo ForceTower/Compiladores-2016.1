@@ -25,6 +25,35 @@ fim
 funcao inteiro d() 
 inicio 
 	a = 5; 
+	b = 6;
+	s = 98;
+	
+	var inicio
+		inteiro a;
+	fim
+	
+	kappa(1, 2, 3);
+	
+	inicio
+		a = 9;
+	fim
+	leia(b);
+	
+	escreva(a);
+	
+	enquanto (a) faca 
+	inicio 
+		a = 0; 
+	fim
+	
+	se (a > b) entao
+	inicio
+		c = d;
+	fim
+	senao 
+	inicio
+		d = c;
+	fim	
 	=> t =>; 
 fim
 

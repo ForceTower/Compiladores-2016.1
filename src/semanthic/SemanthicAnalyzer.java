@@ -50,7 +50,6 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 		if (!table.equals("global-0")) {
 			SymbolTable tab = scopes.get(table);
 			if (tab == null) return null;
-			
 			Symbol sbl = tab.getSymbols().get(id);
 			if (sbl != null) return sbl;
 		}
@@ -100,7 +99,12 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 		Node main = ast.getNode(SyntaxUtil.DECL_MAIN);
 		SymbolTable globalTable = scopes.get("global-0");
 		FunctionSymbol symbol = new FunctionSymbol();
-		symbol.setBodyMark(main.getChildren().get(2));
+		
+		if (main.getChildren().get(2).isTerminal())
+			symbol.setBodyMark(null);
+		else
+			symbol.setBodyMark(main.getChildren().get(2));
+		
 		symbol.setType(VOID);
 		symbol.setToken(main.getChildren().get(0).getToken());
 		globalTable.addSymbol(symbol);
@@ -109,7 +113,14 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 	}
 
 	private void bodyBuilder() {
-		
+		SymbolTable global = scopes.get("global-0");
+		for (Symbol sym : global.getSymbols().values()) {
+			if (sym instanceof FunctionSymbol) {
+				BodySemanthicAnalyzer bsa = new BodySemanthicAnalyzer(this, (FunctionSymbol)sym);
+				bsa.analyze();
+			}
+				
+		}
 	}
 	
 	public void showAll() {

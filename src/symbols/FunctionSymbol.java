@@ -10,6 +10,7 @@ public class FunctionSymbol extends Symbol{
 	private Node bodyMark;
 	private Node returnMark;
 	private List<Symbol> params;
+	private SymbolTable functionScope;
 	
 	public FunctionSymbol() {
 		super();
@@ -50,6 +51,14 @@ public class FunctionSymbol extends Symbol{
 
 	public int getParamQuantity() {
 		return params.size();
+	}
+	
+	public void setScope(SymbolTable table) {
+		this.functionScope = table;
+	}
+	
+	public SymbolTable getFunctionScope() {
+		return functionScope;
 	}
 	
 	public String toString() {

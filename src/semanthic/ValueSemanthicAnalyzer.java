@@ -37,11 +37,11 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 					VariableSymbol var = (VariableSymbol)sym;
 					if (var.isArray()) {
 						//System.out.println("Semanthic error on line: " + sym.getToken().getLine() + ". Variable: " + node.getToken().getLexem() + " is an array and can not be used this way");
-						return new Pair<Integer, Token>(ERROR_EXP_ARRAY_AS_COMMON, sym.getToken());
+						return new Pair<Integer, Token>(ERROR_EXP_ARRAY_AS_COMMON, node.getToken());
 					}
 				}
 				
-				return new Pair<Integer, Token>(sym.getType(), sym.getToken());
+				return new Pair<Integer, Token>(sym.getType(), node.getToken());
 			} 
 			else if (id == TokenFactory.CHAR_CONST)
 				return new Pair<Integer, Token>(CHAR, node.getToken());
@@ -67,8 +67,9 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			
 			VariableSymbol var = (VariableSymbol)sym;
 			if (var.isArray()) {
+				checkIndexes(node, table, var);
 				if (var.getDimensionQuantity() == getQuantityOf(node.getChildren().get(3), 1)) {
-					return new Pair<Integer, Token>(var.getType(), var.getToken());
+					return new Pair<Integer, Token>(var.getType(), node.getChildren().get(6).getToken());
 				} else {
 					//System.out.println("Semanthic error on line: " + node.getChildren().get(6).getToken().getLine() + ". " + node.getChildren().get(6).getToken().getLexem() + " has " + var.getDimensionQuantity() + " dimensions, but you informed " + getQuantityOf(node.getChildren().get(3), 1));
 					return new Pair<Integer, Token>(ERROR_EXP_DIFFERENT_DIMENSIONS, node.getChildren().get(6).getToken());
@@ -209,8 +210,32 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 		return new Pair<Integer, Token>(TYPE_MISMATCH, two.s);
 	}
 
-	private static int getQuantityOf(Node node, int i) {
-		return 0;
+	public static int getQuantityOf(Node array_i, int i) {
+		if (array_i.isTerminal())
+			return i;
+		else {
+			List<Node> list = array_i.getChildren();
+			if (list.size() == 3)
+				return getQuantityOf(list.get(2), i+1);
+			return i+1;
+		}
+	}
+	
+	public static void checkIndexes(Node node, SymbolTable table, VariableSymbol symbol) {
+		int p = node.getChildren().indexOf(new Node(SyntaxUtil.EXPR_SIMPLES));
+		Node index = node.getChildren().get(p);
+		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(index, table);
+		if (type.f != INTEGER) {
+			if (type.f > 0)
+				createSemanthicError("On line: " + symbol.getToken().getLine() + ". The expression at index number " + 1 + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an integer to be an index");
+			else
+				createProperError(symbol, type);
+		}
+		
+		if (node.getChildren().contains(new Node(SyntaxUtil.ARRAY_I))) {
+			Node n = node.getChildren().get(node.getChildren().indexOf(new Node(SyntaxUtil.ARRAY_I)));
+			checkIndexes(n, table, symbol);
+		}
 	}
 
 }
