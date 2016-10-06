@@ -269,7 +269,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 										VariableSymbol vf = (VariableSymbol)paramsF.get(i);
 										VariableSymbol vo = paramsO.get(i).v;
 										if (vf.getDimensionQuantity() != vo.getDimensionQuantity()) {
-											createSemanthicError("On line: " + id.getLexem() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " requires an arry with " + vf.getDimensionQuantity() + " dimensions");
+											createSemanthicError("On line: " + id.getLine() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " requires an array with " + vf.getDimensionQuantity() + " dimensions");
 										} else {
 											
 										}
@@ -298,10 +298,10 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				}
 				return func;
 			} else {
-				createSemanthicError("On line: " + id.getLine() + " the identifier " + id.getLexem() + " is not a function");
+				createSemanthicError("On line: " + id.getLine() + ". The identifier " + id.getLexem() + " is not a function");
 			}
 		} else {
-			createSemanthicError("On line: " + id.getLine() + " the identifier " + id.getLexem() + " was not declared");
+			createSemanthicError("On line: " + id.getLine() + ". The identifier " + id.getLexem() + " was not declared");
 		}
 		return null;
 	}

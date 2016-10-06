@@ -62,24 +62,28 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			} else {
 				return valueOfExpBool(node.getChildren().get(1), table);
 			}
-		} else if (node.getChildren().size() == 7) {
+		} else if (node.getChildren().size() == 7 || node.getChildren().size() == 6) {
 			if (node.getChildren().get(0).getToken().getId() == TokenFactory.IDENT) {
 				return functionCallInExp(node, table);
 			}
 			
-			Symbol sym = SemanthicAnalyzer.get().lookup(node.getChildren().get(6).getToken().getLexem(), table.getName());
+			int max = node.getChildren().size() == 7 ? 6 : 5;
+			
+			Symbol sym = SemanthicAnalyzer.get().lookup(node.getChildren().get(max).getToken().getLexem(), table.getName());
 			if (sym == null || !(sym instanceof VariableSymbol)) {
-				return new Pair<Integer, Token>(ERROR_EXP_UNDECLARED, node.getChildren().get(6).getToken());
+				return new Pair<Integer, Token>(ERROR_EXP_UNDECLARED, node.getChildren().get(max).getToken());
 			}
 			
 			VariableSymbol var = (VariableSymbol)sym;
 			if (var.isArray()) {
 				checkIndexes(node, table, var);
 				if (var.getDimensionQuantity() == getQuantityOf(node.getChildren().get(3), 1)) {
-					return new Pair<Integer, Token>(var.getType(), node.getChildren().get(6).getToken());
+					return new Pair<Integer, Token>(var.getType(), node.getChildren().get(max).getToken());
 				} else {
-					return new Pair<Integer, Token>(ERROR_EXP_DIFFERENT_DIMENSIONS, node.getChildren().get(6).getToken());
+					return new Pair<Integer, Token>(ERROR_EXP_DIFFERENT_DIMENSIONS, node.getChildren().get(max).getToken());
 				}
+			} else {
+				return new Pair<Integer, Token>(ERROR_EXP_ACCESSING_COMMON_AS_ARRAY, node.getChildren().get(max).getToken());
 			}
 		} else {
 			if (node.getChildren().get(0).getToken().getId() == TokenFactory.IDENT) {

@@ -45,6 +45,11 @@ public class SemanthicAnalyzer extends SemanthicUtil{
 		bodyBuilder();
 		writeErrors();
 		//showAll();
+		if (errors.size() > 0)
+			System.out.println("Quantidade de erros: " + errors.size());
+		else
+			System.out.println("Sucesso!");
+		System.out.println("Fim do Semântico");
 	}
 	
 	public Symbol lookup(String id, String table) {

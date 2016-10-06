@@ -22,7 +22,8 @@ public class SemanthicUtil {
 						ERROR_EXP_UNDECLARED = -11,
 						ERROR_EXP_ARRAY_AS_COMMON = -12,
 						ERROR_EXP_DIFFERENT_DIMENSIONS = -13,
-						ERROR_UNKNOWN = -14;
+						ERROR_UNKNOWN = -14,
+						ERROR_EXP_ACCESSING_COMMON_AS_ARRAY = -15;
 	
 	public static int getTypeToken(Token token) {
 		int type = -1;
@@ -69,6 +70,8 @@ public class SemanthicUtil {
 			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " has different dimension than the originally declared");
 		else if (type.f == TYPE_MISMATCH)
 			createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types on expression");
+		else if (type.f == ERROR_EXP_ACCESSING_COMMON_AS_ARRAY)
+			createSemanthicError("On line: " + type.s.getLine() + ". Variable " + type.s.getLexem() + " is not an array");
 	}
 	
 	public static List<Pair<Integer, Token>> parametersResolver(Node node, SymbolTable table) {
