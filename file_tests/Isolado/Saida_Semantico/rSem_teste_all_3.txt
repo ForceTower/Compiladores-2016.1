@@ -1,3 +1,1 @@
-On line: 34. Identifier vet is a array, but is used as non-array
-On line: 39. Identifier vet is a array, but is used as non-array
-On line: 68. Identifier vetor is a array, but is used as non-array
+Sucesso!

@@ -262,10 +262,28 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 					} else {
 						for (int i = 0; i < paramsF.size(); i++) {
 							if (paramsF.get(i).getType() != paramsO.get(i).f.intValue()) {
-								if (paramsO.get(i).f >= 0)
+								if (paramsO.get(i).f >= 0){
 									createSemanthicError("On line: "+ id.getLine() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " is a " + getTypeLiteral(paramsO.get(i).f.intValue()) + " but function requires " + getTypeLiteral(paramsF.get(i).getType()));
+								}else if (paramsO.get(i).f == ERROR_EXP_ARRAY_AS_COMMON) {
+									if (paramsF.get(i).getType() == paramsO.get(i).v.getType()) {
+										VariableSymbol vf = (VariableSymbol)paramsF.get(i);
+										VariableSymbol vo = paramsO.get(i).v;
+										if (vf.getDimensionQuantity() != vo.getDimensionQuantity()) {
+											createSemanthicError("On line: " + id.getLexem() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " requires an arry with " + vf.getDimensionQuantity() + " dimensions");
+										} else {
+											
+										}
+									} else {
+										createSemanthicError("On line: "+ id.getLine() + ". For the function " + id.getLexem() + ", the array has a different type of function param");
+									}
+								}
 								else{
 									createProperError(symbol, paramsO.get(i));
+								}
+							} else {
+								VariableSymbol var = (VariableSymbol)paramsF.get(i);
+								if (var.isArray()) {
+									createSemanthicError("On line: " + id.getLine() + ". Function requires an array, but you sent a common variable");
 								}
 							}
 						}

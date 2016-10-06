@@ -35,7 +35,9 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 				if (sym instanceof VariableSymbol) {
 					VariableSymbol var = (VariableSymbol)sym;
 					if (var.isArray()) {
-						return new Pair<Integer, Token>(ERROR_EXP_ARRAY_AS_COMMON, node.getToken());
+						Pair<Integer, Token> pp = new Pair<Integer, Token>(ERROR_EXP_ARRAY_AS_COMMON, node.getToken());
+						pp.v = var;
+						return pp;
 					}
 				}
 				
