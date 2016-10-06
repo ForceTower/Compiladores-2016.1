@@ -201,6 +201,10 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 	public static Pair<Integer, Token> resultOf(Pair<Integer, Token> pair, Pair<Integer, Token> pair2) {
 		if (pair.f == ANY_TYPE)
 			return pair2;
+		if (pair.f < 0 && pair2.f < 0){
+			createProperError(null, pair);
+			return new Pair<Integer, Token>(pair2.f, pair2.s);
+		}
 		if (pair.f < 0)
 			return pair;
 		if (pair2.f < 0)
