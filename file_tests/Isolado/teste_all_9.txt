@@ -1,4 +1,4 @@
-funcao a (inteiro t, cadeia l)
+funcao a (inteiro <<2,2,2>>t, cadeia l)
 inicio
 fim
 
@@ -7,6 +7,12 @@ inicio fim
 
 funcao real c (inteiro <<2,2,2>>matriz)
 inicio
+	var
+	inicio
+		inteiro l, <<2,2,2>> k, v;
+	fim
+	
+	v = a(k, l);
 	=> realidade =>;
 fim
 

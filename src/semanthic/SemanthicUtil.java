@@ -52,6 +52,8 @@ public class SemanthicUtil {
 			return "String";
 		else if (type == 4)
 			return "Boolean";
+		else if (type == 5)
+			return "Void";
 		return "No type assigned";
 	}
 	
