@@ -1,0 +1,3 @@
+On line: 15. For the function a, the parameter 2 is a Integer but function requires String
+On line: 15. Incompatible types, identifier is Integer and expression is Void
+On line: 16. Identifier realidade was not declared

@@ -1,0 +1,73 @@
+const
+inicio
+	inteiro a = 5.3;
+	real b = 6, i = 9;
+	booleano t = 4, mi = ('l' - 'l');
+	real re = a+b-50>3+2-3 ou nao (1>2), o = <<1,2,3,4,5,6>>le;
+	caractere a = 9;
+fim
+
+var
+inicio
+	inteiro s, t, y, z, m;
+	real <<a,b,c,d,c,r,t>>xe, be, qe, le;
+fim
+
+funcao mi(inteiro << >>lel) inicio fim
+funcao a() inicio fim
+funcao ab() inicio fim
+
+funcao inteiro la() 
+inicio 
+	=> 4 =>; 
+fim
+
+funcao inteiro d() 
+inicio 
+	a = 5; 
+	b = 6;
+	s = 98;
+	
+	var inicio
+		inteiro a, <<verdadeiro,2>>pop;
+		inteiro << <<'l',1>>pop, 3>> kek;
+	fim
+	
+	kappa(v, x, xx+2);
+	
+	inicio
+		a = 9;
+	fim
+	leia(b, c, t, a, <<'l'>>pop);
+	
+	escreva(xxx, a, bbb, "kappa");
+	
+	enquanto (a) faca 
+	inicio 
+		a = 0; 
+	fim
+	
+	se (a > b) entao
+	inicio
+		c = d;
+	fim
+	senao 
+	inicio
+		d = c;
+	fim
+	
+	var
+	inicio
+		inteiro <<kappa(), a>> best;
+	fim
+	=> t =>; 
+fim
+
+funcao real kappa(inteiro a, inteiro ab, inteiro li, real li) 
+inicio 
+	=> t =>; 
+fim
+
+programa
+inicio
+fim

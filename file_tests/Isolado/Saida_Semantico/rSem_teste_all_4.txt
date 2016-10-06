@@ -1,0 +1,12 @@
+On line: 5. The variable variavel was not declared
+On line: 10. The variable variavel was not declared
+On line: 17. The variable t was not declared
+On line: 18. Identifier variavel was not declared
+On line: 20. Identifier constante was not declared
+On line: 51. The variable estoque was not declared
+On line: 54. Identifier a was not declared
+On line: 54. Identifier b was not declared
+On line: 54. Identifier c was not declared
+On line: 54. Identifier d was not declared
+On line: 54. The variable media_menos_60 was not declared
+On line: 54. Incompatible types on expression

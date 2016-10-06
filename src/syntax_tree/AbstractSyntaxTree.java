@@ -71,4 +71,42 @@ public class AbstractSyntaxTree {
 				norms2(nt, n);
 		}
 	}
+
+	public Node getNode(int nTerminal) {
+		Node n = root;
+		return getNodeRec(n, nTerminal);
+	}
+	
+	private Node getNodeRec(Node n, int nTerminal) {
+		if (n.getType() == nTerminal)
+			return n;
+		else {
+			for (Node k : n.getChildren()) {
+				Node l = getNodeRec(k, nTerminal);
+				if (l != null)
+					return l;
+			}
+			
+			return null;
+		}
+	}
+	
+	public List<Node> getAllNodes(int nTerminal) {
+		List<Node> ret = new ArrayList<>();
+		
+		getAllNodes(root, nTerminal, ret);
+		
+		return ret;
+	}
+	
+	private void getAllNodes(Node node, int nTerminal, List<Node> ret) {
+		if (node.getType() == nTerminal) {
+			ret.add(node);
+			return;
+		}
+		
+		for (Node t : node.getChildren()) {
+			getAllNodes(t, nTerminal, ret);
+		}
+	}
 }

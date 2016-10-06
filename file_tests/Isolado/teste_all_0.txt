@@ -1,0 +1,70 @@
+const inicio
+    inteiro a = k, b = 2 * 3 + 7 * 5;
+    caractere c = 'k', b = hehe;
+    real isRealLife = 0;
+    cadeia cadeira = "cadeira", not = "niet";
+fim
+
+funcao inteiro zuera (inteiro a, inteiro b, caractere c) inicio
+    var inicio
+        inteiro a, b, c;
+        real <<3,true,3,true>> isolado;
+    fim
+
+    b = b * b - c + a;
+    leia(b);
+    leia(c);    
+    a = (b + c);
+    => a =>;
+fim
+
+funcao zuera2 (inteiro a, inteiro b, caractere c) inicio
+    b = b + 3;
+fim
+
+programa inicio
+    zuera2();
+    enquanto (2 > 3) faca inicio
+       kappa = 2;
+       se (kappa <> 3) entao inicio
+           escreva("nao ligo");
+           leia (ue);
+       fim
+       
+       se (j < 5 ou j > 10) entao inicio
+           escreva("Valor muito alto ", j, "Menos please");
+       fim
+       
+       senao 
+       inicio 
+            se (k <> 3) entao
+            inicio
+                k = 45;
+            fim 
+       
+            senao
+            inicio
+                var
+                inicio
+                    inteiro <<4,4>> kappa, i, j;
+                fim
+                j = 0;
+                i = j;
+                enquanto (i < 4) faca
+                inicio
+                    enquanto (j < 4) faca
+                    inicio
+                        <<i, j>>kappa = 0;
+                        j = j + 1;
+                    fim
+                    i = i + 1;
+                fim
+            
+                escreva("HEHEHEHE");
+                escreva("N Enquantos maior que todos");
+           fim
+        fim
+    fim
+    escreva(teste, "teste", hehehe);
+    leia(itsreal);
+fim

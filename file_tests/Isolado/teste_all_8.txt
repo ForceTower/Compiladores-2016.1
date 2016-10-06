@@ -1,0 +1,12 @@
+programa
+inicio
+	var
+	inicio
+		caractere d;
+	fim
+	
+	enquanto (t <= 8 + (b-45)) faca
+	inicio
+		escreva (nada);
+	fim
+fim

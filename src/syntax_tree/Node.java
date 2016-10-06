@@ -92,5 +92,13 @@ public class Node implements Cloneable{
 	public Node clone() {
 		return new Node(info, saved);
 	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Node) {
+			if (((Node)o).getType() == info)
+				return true;
+		}
+		return false;
+	}
 
 }

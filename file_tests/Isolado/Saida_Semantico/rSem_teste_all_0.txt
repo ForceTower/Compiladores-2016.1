@@ -1,0 +1,21 @@
+On line: 2. Identifier k was not declared
+On line: 3. Identifier b already declared
+On line: 3. Identifier hehe was not declared
+On line: 10. Identifier a already declared
+On line: 10. Identifier b already declared
+On line: 10. Identifier c already declared
+On line: 11. Identifier true was not declared
+On line: 11. Identifier true was not declared
+On line: 14. Incompatible types on expression
+On line: 17. Incompatible types on expression
+On line: 26. The function zuera2 is defined with 3 params, but you sent 0
+On line: 28. The variable kappa was not declared
+On line: 29. Identifier kappa was not declared
+On line: 31. The variable ue was not declared
+On line: 34. Identifier j was not declared
+On line: 35. Identifier j was not declared
+On line: 40. Identifier k was not declared
+On line: 42. The variable k was not declared
+On line: 68. Identifier teste was not declared
+On line: 68. Identifier hehehe was not declared
+On line: 69. The variable itsreal was not declared
