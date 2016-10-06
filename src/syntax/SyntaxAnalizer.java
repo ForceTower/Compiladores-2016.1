@@ -148,7 +148,7 @@ public class SyntaxAnalizer extends SyntaxUtil {
 		
 		System.out.println("Fim do Sintatico!\n\n");
 		syntaxTree = syntaxTree.normalize();
-		syntaxTree.print();
+		//syntaxTree.print();
 		return syntaxTree;
 		
 	}
