@@ -254,7 +254,7 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(index, table);
 		if (type.f != INTEGER) {
 			if (type.f > 0)
-				createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". A expressão na dimensão numero " + 1 + " do vetor " + symbol.getIdentifier() + " é um " + getTypeLiteral(type.f) + ", mas deve ser um Inteiro para se tornar uma dimensão");
+				createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Uma expressão na dimensão do vetor " + symbol.getIdentifier() + " é um " + getTypeLiteral(type.f) + ", mas deve ser um Inteiro para se tornar uma dimensão");
 			else
 				createProperError(symbol, type);
 		}
