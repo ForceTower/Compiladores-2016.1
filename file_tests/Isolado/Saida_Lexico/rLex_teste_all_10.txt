@@ -26,6 +26,20 @@
 19 inteiro inteiro (tipo)
 19 b Identificador
 19 ; ;
-20 fim fim
+20 inteiro inteiro (tipo)
+20 c Identificador
+20 ; ;
 21 fim fim
+23 se se
+23 ( (
+23 1 Numero
+23 + +
+23 1 Numero
+23 ou ou
+23 verdadeiro verdadeiro
+23 ) )
+23 entao entao
+24 inicio inicio
+25 fim fim
+26 fim fim
 Sucesso!

@@ -17,5 +17,10 @@ inicio
 	inicio
 		inteiro a;
 		inteiro b;
+		inteiro c;
+	fim
+	
+	se (1+1 ou verdadeiro) entao
+	inicio
 	fim
 fim

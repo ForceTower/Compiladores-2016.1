@@ -144,7 +144,7 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			Pair<Integer, Token> p = expectsEquals(BOOLEAN, typeOfConjOne(conj.getChildren().get(2), table));
 			return expectsEquals(l, p);
 		}
-		return typeOfConj(conj.getChildren().get(1), table);
+		return typeOfConj(conj.getChildren().get(1), table); //TODO Talvez aqui
 	}
 	
 	public static Pair<Integer, Token> typeOfRel(Node rel, SymbolTable table) {
@@ -180,7 +180,7 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			return expectsEquals(l, p);
 		}
 		
-		return typeOfOpRel(rel.getChildren().get(1), table);
+		return typeOfOpRel(rel.getChildren().get(1), table); //TODO talvez aqui
 	}
 	
 	public static Pair<Integer, Token> typeOfOpRel(Node op, SymbolTable table) {
@@ -190,7 +190,10 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			return l;
 		}
 		
-		return typeOfTerm(op.getChildren().get(1), table);
+		if (op.getChildren().size() == 2)
+			return typeOfTerm(op.getChildren().get(1), table); //TODO Aqui 1 -> 0
+		
+		return typeOfTerm(op.getChildren().get(0), table); //TODO Aqui 1 -> 0
 	}
 
 	public static Pair<Integer, Token> resultOfFields(int type, Pair<Integer, Token> pair, Pair<Integer, Token> pair2) {

@@ -100,5 +100,9 @@ public class Node implements Cloneable{
 		}
 		return false;
 	}
+	
+	public String toString() {
+		return info + ": " + saved;
+	}
 
 }
