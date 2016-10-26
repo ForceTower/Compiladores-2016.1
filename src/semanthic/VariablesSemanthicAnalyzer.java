@@ -58,7 +58,7 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 		if (s instanceof FunctionSymbol) exists = true;
 		
 		if (!exists) table.addSymbol(symbol);
-		else createSemanthicError("On line " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
+		else createSemanthicError(identifier.getLine(), "Na linha: " + identifier.getLine() + ". O identificador " + symbol.getIdentifier() + " já foi declarado como uma função");
 		
 		int index;
 		if (isArray)
@@ -112,7 +112,7 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 		if (s instanceof FunctionSymbol) exists = true;
 		
 		if (!exists) table.addSymbol(symbol);
-		else createSemanthicError("On line " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
+		else createSemanthicError(identifier.getLine(), "Na linha: " + identifier.getLine() + ". O identificador " + symbol.getIdentifier() + " já foi declarado como uma função");
 		
 		int index;
 		if (isArray)
@@ -145,7 +145,7 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 			Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(exp_simp, symbol.getTable());
 			if (type.f != INTEGER) {
 				if (type.f > 0)
-					createSemanthicError("On line: " + symbol.getToken().getLine() + ". The expression at index number " + 1 + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an integer to be an index");
+					createSemanthicError(symbol.getToken().getLine(), "Na linha: " + symbol.getToken().getLine() + ". A expressão na dimensão numero " + 1 + " do vetor " + symbol.getIdentifier() + " é um " + getTypeLiteral(type.f) + ", mas deve ser um Inteiro para se tornar uma dimensão");
 				else
 					createProperError(symbol, type);
 			}
@@ -175,7 +175,7 @@ public class VariablesSemanthicAnalyzer extends SemanthicUtil{
 			Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpSimple(exp_simp, symbol.getTable());
 			if (type.f != INTEGER) {
 				if (type.f > 0)
-					createSemanthicError("On line: " + symbol.getToken().getLine() + ". The expression at index number " + i + " of array " + symbol.getIdentifier() + " is a " + getTypeLiteral(type.f) + ", but it must be an Integer to become an index");
+					createSemanthicError(symbol.getToken().getLine(), "Na linha: " + symbol.getToken().getLine() + ". A expressão na dimensão " + i + " do vetor " + symbol.getIdentifier() + " é um " + getTypeLiteral(type.f) + ", mas deve ser um Inteiro para se tornar uma dimensão");
 				else
 					createProperError(symbol, type);
 			}

@@ -43,37 +43,37 @@ public class SemanthicUtil {
 	
 	public static String getTypeLiteral(int type) {
 		if (type == 0)
-			return "Integer";
+			return "Inteiro";
 		else if (type == 1)
-			return "Float";
+			return "Real";
 		else if (type == 2)
-			return "Character";
+			return "Caractere";
 		else if (type == 3)
-			return "String";
+			return "Cadeia";
 		else if (type == 4)
-			return "Boolean";
+			return "Booleano";
 		else if (type == 5)
-			return "Void";
-		return "No type assigned";
+			return "Vazio";
+		return "Nenhum tipo anexado";
 	}
 	
-	public static void createSemanthicError(String error) {
-		SemanthicError se = new SemanthicError(error);
+	public static void createSemanthicError(int line, String error) {
+		SemanthicError se = new SemanthicError(line, error);
 		System.out.println(se);
 		SemanthicAnalyzer.get().getErrorsList().add(se);
 	}
 	
 	public static void createProperError(Symbol symbol, Pair<Integer, Token> type) {
 		if (type.f == ERROR_EXP_UNDECLARED)
-			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " was not declared");
+			createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Identificador " + type.s.getLexem() + " não foi declarado");
 		else if (type.f == ERROR_EXP_ARRAY_AS_COMMON)
-			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " is a array, but is used as non-array");
+			createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Identificador " + type.s.getLexem() + " é um vetor mas é usado como um não-vetor");
 		else if (type.f == ERROR_EXP_DIFFERENT_DIMENSIONS)
-			createSemanthicError("On line: " + type.s.getLine() + ". Identifier " + type.s.getLexem() + " has different dimension than the originally declared");
+			createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Identificador " + type.s.getLexem() + " tem dimensões diferentes do que foi originalmente declarado");
 		else if (type.f == TYPE_MISMATCH)
-			createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types on expression");
+			createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Tipos incompativeis na expressão");
 		else if (type.f == ERROR_EXP_ACCESSING_COMMON_AS_ARRAY)
-			createSemanthicError("On line: " + type.s.getLine() + ". Variable " + type.s.getLexem() + " is not an array");
+			createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Variavel " + type.s.getLexem() + " não é um vetor");
 	}
 	
 	public static List<Pair<Integer, Token>> parametersResolver(Node node, SymbolTable table) {

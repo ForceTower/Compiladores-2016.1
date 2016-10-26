@@ -55,7 +55,7 @@ public class Compiller {
 	}
 	
 	public void completeAnalysis(File arq) {
-		System.out.println("Currently Analyzing: " + arq.getName());
+		System.out.println("\n\nCurrently Analyzing: " + arq.getName());
 		File folderLex = new File(arq.getParentFile() + "\\Saida_Lexico");
 		File folderSyn = new File(arq.getParentFile() + "\\Saida_Sintatico");
 		File folderSem = new File(arq.getParentFile() + "\\Saida_Semantico");

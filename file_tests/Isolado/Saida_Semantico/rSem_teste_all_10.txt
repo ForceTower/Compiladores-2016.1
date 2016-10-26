@@ -1,0 +1,2 @@
+Na linha: 6. Identificador a já foi declarado
+Na linha: 19. O identificador b já foi declarado como uma função

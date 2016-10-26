@@ -136,7 +136,7 @@ public class FunctionsSemanthicAnalyzer extends SemanthicUtil {
 		Symbol s = globalTable.getSymbols().get(identifier.getLexem());
 		if (s instanceof FunctionSymbol) exists = true;
 		
-		if (exists) createSemanthicError("On line: " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
+		if (exists) createSemanthicError(identifier.getLine(), "Na linha: " + identifier.getLine() + ". O identificador " + symbol.getIdentifier() + " já foi declarado como uma função");
 		else table.addSymbol(symbol);
 		
 		function.addParam(symbol);
@@ -181,7 +181,7 @@ public class FunctionsSemanthicAnalyzer extends SemanthicUtil {
 		Symbol s = globalTable.getSymbols().get(identifier.getLexem());
 		if (s instanceof FunctionSymbol) exists = true;
 		
-		if (exists) createSemanthicError("On line: " + identifier.getLine() + ". The identifier " + symbol.getIdentifier() + " was already declared as a function");
+		if (exists) createSemanthicError(identifier.getLine(), "Na linha: " + identifier.getLine() + ". O identificador " + symbol.getIdentifier() + " já foi declarado como uma função");
 		else table.addSymbol(symbol);
 		
 		function.addParam(symbol);

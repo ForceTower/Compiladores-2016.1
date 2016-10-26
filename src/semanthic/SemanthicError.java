@@ -4,9 +4,10 @@ public class SemanthicError implements Comparable<SemanthicError>{
 	private String error;
 	private int factor;
 	
-	public SemanthicError(String error) {
+	public SemanthicError(int line, String error) {
 		this.error = error;
-		calcFactor();
+		this.factor = line;
+		//calcFactor();
 	}
 	
 	public String getError() {

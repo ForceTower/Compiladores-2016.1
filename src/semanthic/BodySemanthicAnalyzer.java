@@ -99,26 +99,26 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		Symbol symbol = semanthic.lookup(id.getLexem(), function.getFunctionScope().getName());
 		if (symbol != null) {
 			if (!(symbol instanceof VariableSymbol)) {
-				createSemanthicError("On line: " + id.getLine() + ". The value of identifier " + id.getLexem() + " can not be changed");
+				createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". O valor do identificador " + id.getLexem() + " não pode ser alterado");
 			} else {
 				VariableSymbol var = (VariableSymbol)symbol;
 				allright = true;
 				if (arrayAccess && !var.isArray()) {
-					createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " is not an array");
+					createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". A variável " + id.getLexem() + " não é um vetor");
 				} else if (arrayAccess && var.isArray()) {
 					if (indexQtt != var.getDimensionQuantity()) {
-						createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " has " + var.getDimensionQuantity() + " dimensions, but you informed " + indexQtt);
+						createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". A variável " + id.getLexem() + " tem " + var.getDimensionQuantity() + " dimensões, mas você usou " + indexQtt);
 					}
 				}
 			}
 		} else {
-			createSemanthicError("On line: " + id.getLine() + ". The variable " + id.getLexem() + " was not declared");
+			createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". A variável " + id.getLexem() + " não foi declarada");
 		}
 		
 		if (allright && type.f >= 0) {
 			if (symbol.getType() != type.f) {
 				if (!(symbol.getType() == FLOAT && type.f == INTEGER))
-					createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types, identifier is " + getTypeLiteral(symbol.getType()) + " and expression is " + getTypeLiteral(type.f));
+					createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Tipos incompatíveis, identificador é " + getTypeLiteral(symbol.getType()) + " e a expressão retorna um " + getTypeLiteral(type.f));
 			}
 		} else if (type.f < 0) {
 			createProperError(function, type);
@@ -135,10 +135,10 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 			if (symbol instanceof VariableSymbol) {
 				exists = true;
 			} else {
-				createSemanthicError("On line: " + tk.getLine() + ". The value of " + tk.getLexem() + " cannot be changed, the identifier is declared as function or constant");
+				createSemanthicError(tk.getLine(), "Na linha: " + tk.getLine() + ". O valor de " + tk.getLexem() + " não pode ser alterado, este identificador foi declarado como Função ou Constante");
 			}
 		} else {
-			createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " was not declared");
+			createSemanthicError(tk.getLine(), "Na linha: " + tk.getLine() + ". A variável " + tk.getLexem() + " não foi declarada");
 		}
 		int qttIndex = 0;
 		index = work.getChildren().indexOf(new Node(SyntaxUtil.ARRAY));
@@ -164,13 +164,13 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		if (exists) {
 			VariableSymbol var = (VariableSymbol)symbol;
 			if (var.isArray() && qttIndex == 0) {
-				createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " is an array, but dimensions were not informed");
+				createSemanthicError(tk.getLine(), "Na linha: " + tk.getLine() + ". A variável " + tk.getLexem() + " é um vetor, mas nenhuma dimensão foi informada");
 			} else if (var.isArray() && var.getDimensionQuantity() != qttIndex) {
-				createSemanthicError("On line: " + tk.getLine()  + ". The variable " + tk.getLexem() + " has " + var.getDimensionQuantity() + " dimensions and you informed " + qttIndex);
+				createSemanthicError(tk.getLine(), "Na linha: " + tk.getLine()  + ". A variável " + tk.getLexem() + " possui " + var.getDimensionQuantity() + " dimensões, mas você usou " + qttIndex + " dimensões");
 			} else if (var.getType() == BOOLEAN) {
-				createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " type is Boolean. Can't read a boolean");
+				createSemanthicError(tk.getLine(), "Na linha: " + tk.getLine() + ". O tipo da variável " + tk.getLexem() + " é booleana. Não é possivel ler uma booleana");
 			} else if (!var.isArray() && qttIndex > 0) {
-				createSemanthicError("On line: " + tk.getLine() + ". The variable " + tk.getLexem() + " is not an array");
+				createSemanthicError(tk.getLine(), "Na linha: " + tk.getLine() + ". A variável " + tk.getLexem() + " não é um vetor");
 			} else {
 
 			}
@@ -199,7 +199,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(2), function.getFunctionScope());
 		if (type.f >= 0) {
 			if (type.f != BOOLEAN) {
-				createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types, the type of expression is not a Boolean, it is: " + getTypeLiteral(type.f));
+				createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Tipos incompatíveis, o tipo da expressão não é um Booleano, ela é: " + getTypeLiteral(type.f));
 			}
 		} else {
 			createProperError(function, type);
@@ -220,7 +220,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		Pair<Integer, Token> type = ValueSemanthicAnalyzer.valueOfExpBool(work.getChildren().get(2), function.getFunctionScope());
 		if (type.f >= 0) {
 			if (type.f != BOOLEAN) {
-				createSemanthicError("On line: " + type.s.getLine() + ". Incompatible types, the type of expression is not a Boolean, it is: " + getTypeLiteral(type.f));
+				createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Tipos incompatíveis, O tipo da expressão não é um Booleano, ela é: " + getTypeLiteral(type.f));
 			}
 		} else {
 			createProperError(function, type);
@@ -263,18 +263,18 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 						for (int i = 0; i < paramsF.size(); i++) {
 							if (paramsF.get(i).getType() != paramsO.get(i).f.intValue()) {
 								if (paramsO.get(i).f >= 0){
-									createSemanthicError("On line: "+ id.getLine() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " is a " + getTypeLiteral(paramsO.get(i).f.intValue()) + " but function requires " + getTypeLiteral(paramsF.get(i).getType()));
+									createSemanthicError(id.getLine(), "Na linha: "+ id.getLine() + ". Na função " + id.getLexem() + ", o " + (i+1) + " parâmetro é um " + getTypeLiteral(paramsO.get(i).f.intValue()) + " mas a função requer " + getTypeLiteral(paramsF.get(i).getType()));
 								}else if (paramsO.get(i).f == ERROR_EXP_ARRAY_AS_COMMON) {
 									if (paramsF.get(i).getType() == paramsO.get(i).v.getType()) {
 										VariableSymbol vf = (VariableSymbol)paramsF.get(i);
 										VariableSymbol vo = paramsO.get(i).v;
 										if (vf.getDimensionQuantity() != vo.getDimensionQuantity()) {
-											createSemanthicError("On line: " + id.getLine() + ". For the function " + id.getLexem() + ", the parameter " + (i+1) + " requires an array with " + vf.getDimensionQuantity() + " dimensions");
+											createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". Na função " + id.getLexem() + ", o " + (i+1) + " parâmetro requer um vetor com " + vf.getDimensionQuantity() + " dimensões");
 										} else {
-											
+											//Sucesso!!!!!!
 										}
 									} else {
-										createSemanthicError("On line: "+ id.getLine() + ". For the function " + id.getLexem() + ", the array has a different type of function param");
+										createSemanthicError(id.getLine(), "Na linha: "+ id.getLine() + ". Na função " + id.getLexem() + ", o vetor possui dimensões diferentes do que a assinatura da função");
 									}
 								}
 								else{
@@ -283,13 +283,13 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 							} else {
 								VariableSymbol var = (VariableSymbol)paramsF.get(i);
 								if (var.isArray()) {
-									createSemanthicError("On line: " + id.getLine() + ". Function requires an array, but you sent a common variable");
+									createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". A função requer um vetor, mas você tentou enviar uma variável comum");
 								}
 							}
 						}
 					}
 				} else {
-					createSemanthicError("On line: " + id.getLine() + ". The function " + id.getLexem() + " is defined with " + qtdF + " params, but you sent " + qtdO);
+					createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". A função " + id.getLexem() + " foi definida com " + qtdF + " parâmetros, mas você está usando " + qtdO + " parâmetros");
 					for (Pair<Integer, Token> in : paramsO) {
 						if (in.f <= 0) {
 							createProperError(symbol, in);
@@ -298,10 +298,10 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				}
 				return func;
 			} else {
-				createSemanthicError("On line: " + id.getLine() + ". The identifier " + id.getLexem() + " is not a function");
+				createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". O identificador " + id.getLexem() + " não é uma função");
 			}
 		} else {
-			createSemanthicError("On line: " + id.getLine() + ". The identifier " + id.getLexem() + " was not declared");
+			createSemanthicError(id.getLine(), "Na linha: " + id.getLine() + ". O identificador " + id.getLexem() + " não foi declarado");
 		}
 		return null;
 	}
@@ -313,7 +313,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 		if (type.f >= 0) {
 			if (function.getType() != type.f) {
 				if (!(function.getType() == FLOAT && type.f == INTEGER))
-					createSemanthicError("On line: " + type.s.getLine() + ". Incompatible Types, function " + function.getIdentifier() + " type is " + getTypeLiteral(function.getType()) + " but it's returning " + getTypeLiteral(type.f));
+					createSemanthicError(type.s.getLine(), "Na linha: " + type.s.getLine() + ". Tipos incompatíveis, o tipo da função " + function.getIdentifier() + " é " + getTypeLiteral(function.getType()) + " mas está retornando " + getTypeLiteral(type.f));
 			} else {
 				
 			}

@@ -1,42 +1,42 @@
-On line: 3. Incompatible Types, the type of constant a is Integer but expression returns Float
-On line: 5. Incompatible Types, the type of constant t is Boolean but expression returns Integer
-On line: 5. Incompatible types on expression
-On line: 6. Incompatible Types, the type of constant re is Float but expression returns Boolean
-On line: 6. Identifier le was not declared
-On line: 7. Identifier a already declared
-On line: 7. Incompatible Types, the type of constant a is Character but expression returns Integer
-On line: 12. Identifier t already declared
-On line: 13. The expression at index number 2 of array xe is a Float, but it must be an Integer to become an index
-On line: 13. Identifier c was not declared
-On line: 13. Identifier d was not declared
-On line: 13. Identifier c was not declared
-On line: 13. Identifier r was not declared
-On line: 13. The expression at index number 7 of array xe is a Boolean, but it must be an Integer to become an index
-On line: 16. Identifier mi already declared
-On line: 17. Identifier a already declared
-On line: 27. The value of identifier a can not be changed
-On line: 28. The value of identifier b can not be changed
-On line: 32. The expression at index number 1 of array pop is a Boolean, but it must be an integer to be an index
-On line: 33. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
-On line: 36. The function kappa is defined with 4 params, but you sent 3
-On line: 36. Identifier v was not declared
-On line: 36. Identifier x was not declared
-On line: 36. Identifier xx was not declared
-On line: 41. The value of b cannot be changed, the identifier is declared as function or constant
-On line: 41. The variable c was not declared
-On line: 41. The value of t cannot be changed, the identifier is declared as function or constant
-On line: 41. The expression at index number 1 of array pop is a Character, but it must be an integer to be an index
-On line: 41. The variable pop has 2 dimensions and you informed 1
-On line: 43. Identifier xxx was not declared
-On line: 43. Identifier bbb was not declared
-On line: 45. Incompatible types, the type of expression is not a Boolean, it is: Integer
-On line: 52. The variable c was not declared
-On line: 52. Identifier d was not declared
-On line: 56. The value of identifier d can not be changed
-On line: 56. Identifier c was not declared
-On line: 61. The function kappa is defined with 4 params, but you sent 0
-On line: 61. The expression at index number 1 of array best is a Float, but it must be an integer to be an index
-On line: 63. Incompatible Types, function d type is Integer but it's returning Boolean
-On line: 66. The identifier ab was already declared as a function
-On line: 66. Identifier li already declared
-On line: 68. Incompatible Types, function kappa type is Float but it's returning Boolean
+Na linha: 3. Tipos incompatíveis, o tipo da constante a é Inteiro mas o tipo da expressão é Real
+Na linha: 5. Tipos incompatíveis, o tipo da constante t é Booleano mas o tipo da expressão é Inteiro
+Na linha: 5. Tipos incompativeis na expressão
+Na linha: 6. Tipos incompatíveis, o tipo da constante re é Real mas o tipo da expressão é Booleano
+Na linha: 6. Identificador le não foi declarado
+Na linha: 7. Identificador a já foi declarado
+Na linha: 7. Tipos incompatíveis, o tipo da constante a é Caractere mas o tipo da expressão é Inteiro
+Na linha: 12. Identificador t já foi declarado
+Na linha: 13. A expressão na dimensão 2 do vetor xe é um Real, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 13. Identificador c não foi declarado
+Na linha: 13. Identificador d não foi declarado
+Na linha: 13. Identificador c não foi declarado
+Na linha: 13. Identificador r não foi declarado
+Na linha: 13. A expressão na dimensão 7 do vetor xe é um Booleano, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 16. Identificador mi já foi declarado
+Na linha: 17. Identificador a já foi declarado
+Na linha: 27. O valor do identificador a não pode ser alterado
+Na linha: 28. O valor do identificador b não pode ser alterado
+Na linha: 32. A expressão na dimensão numero 1 do vetor pop é um Booleano, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 33. A expressão na dimensão numero 1 do vetor pop é um Caractere, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 36. A função kappa foi definida com 4 parâmetros, mas você está usando 3 parâmetros
+Na linha: 36. Identificador v não foi declarado
+Na linha: 36. Identificador x não foi declarado
+Na linha: 36. Identificador xx não foi declarado
+Na linha: 41. O valor de b não pode ser alterado, este identificador foi declarado como Função ou Constante
+Na linha: 41. A variável c não foi declarada
+Na linha: 41. O valor de t não pode ser alterado, este identificador foi declarado como Função ou Constante
+Na linha: 41. A expressão na dimensão numero 1 do vetor pop é um Caractere, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 41. A variável pop possui 2 dimensões, mas você usou 1 dimensões
+Na linha: 43. Identificador xxx não foi declarado
+Na linha: 43. Identificador bbb não foi declarado
+Na linha: 45. Tipos incompatíveis, o tipo da expressão não é um Booleano, ela é: Inteiro
+Na linha: 52. A variável c não foi declarada
+Na linha: 52. Identificador d não foi declarado
+Na linha: 56. O valor do identificador d não pode ser alterado
+Na linha: 56. Identificador c não foi declarado
+Na linha: 61. A função kappa foi definida com 4 parâmetros, mas você está usando 0 parâmetros
+Na linha: 61. A expressão na dimensão numero 1 do vetor best é um Real, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 63. Tipos incompatíveis, o tipo da função d é Inteiro mas está retornando Booleano
+Na linha: 66. O identificador ab já foi declarado como uma função
+Na linha: 66. Identificador li já foi declarado
+Na linha: 68. Tipos incompatíveis, o tipo da função kappa é Real mas está retornando Booleano

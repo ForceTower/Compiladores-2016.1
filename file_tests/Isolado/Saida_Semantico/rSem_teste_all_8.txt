@@ -1,3 +1,3 @@
-On line: 8. Identifier b was not declared
-On line: 8. Identifier t was not declared
-On line: 10. Identifier nada was not declared
+Na linha: 8. Identificador b não foi declarado
+Na linha: 8. Identificador t não foi declarado
+Na linha: 10. Identificador nada não foi declarado

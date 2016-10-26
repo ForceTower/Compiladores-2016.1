@@ -1,0 +1,21 @@
+var
+inicio
+	inteiro a;
+fim
+
+funcao a()
+inicio
+fim
+
+funcao b()
+inicio
+fim
+
+programa
+inicio
+	var
+	inicio
+		inteiro a;
+		inteiro b;
+	fim
+fim

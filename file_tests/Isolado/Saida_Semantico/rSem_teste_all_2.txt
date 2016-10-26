@@ -1,10 +1,10 @@
-On line: 2. Identifier k was not declared
-On line: 3. Identifier b already declared
-On line: 3. Identifier hehe was not declared
-On line: 10. Identifier a already declared
-On line: 10. Identifier b already declared
-On line: 10. Identifier c already declared
-On line: 11. Identifier true was not declared
-On line: 11. Identifier true was not declared
-On line: 14. Incompatible types on expression
-On line: 17. Incompatible types on expression
+Na linha: 2. Identificador k não foi declarado
+Na linha: 3. Identificador b já foi declarado
+Na linha: 3. Identificador hehe não foi declarado
+Na linha: 10. Identificador a já foi declarado
+Na linha: 10. Identificador b já foi declarado
+Na linha: 10. Identificador c já foi declarado
+Na linha: 11. Identificador true não foi declarado
+Na linha: 11. Identificador true não foi declarado
+Na linha: 14. Tipos incompativeis na expressão
+Na linha: 17. Tipos incompativeis na expressão

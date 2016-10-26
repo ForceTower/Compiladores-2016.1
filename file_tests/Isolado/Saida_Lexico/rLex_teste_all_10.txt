@@ -1,0 +1,31 @@
+1 var var
+2 inicio inicio
+3 inteiro inteiro (tipo)
+3 a Identificador
+3 ; ;
+4 fim fim
+6 funcao funcao
+6 a Identificador
+6 ( (
+6 ) )
+7 inicio inicio
+8 fim fim
+10 funcao funcao
+10 b Identificador
+10 ( (
+10 ) )
+11 inicio inicio
+12 fim fim
+14 programa programa
+15 inicio inicio
+16 var var
+17 inicio inicio
+18 inteiro inteiro (tipo)
+18 a Identificador
+18 ; ;
+19 inteiro inteiro (tipo)
+19 b Identificador
+19 ; ;
+20 fim fim
+21 fim fim
+Sucesso!
