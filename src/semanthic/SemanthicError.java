@@ -22,7 +22,8 @@ public class SemanthicError implements Comparable<SemanthicError>{
 		return factor;
 	}
 	
-	private void calcFactor() {
+	@Deprecated
+	public void calcFactor() {
 		int beginIndex = 9;
 		int endIndex = beginIndex;
 		
