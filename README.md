@@ -9,9 +9,9 @@ Usage:
 java -jar "program name.jar" directory
 
 Use directory to determine which directory will be set to the analysis.
-If the directory is not set, it will try to use the files inside a folder called "Entrada" at program's root folder.
+If no directory is set, it will try to use the files within program's root folder.
 
-Every single file fron the directory will get under analysis unless it starts with "r_Lex" or "r_Sin", it will also ignore files thar ends with ".jar"
+Every single file from the directory will get under analysis unless it starts with "r_Lex_", "r_Sin_" or "r_Sem_", it will also ignore files thar ends with ".jar"
 
 Folders are going to be created to save the output files.
 
