@@ -49,7 +49,7 @@ public class Compiller {
 			throw new IOErrorException("You must set a valid directory before starting");
 		
 		for (File file : directory.listFiles())
-			if (file.isFile() && (!file.getName().startsWith("rLex_") && !file.getName().startsWith("rSin_")) && !file.getName().endsWith(".jar"))
+			if (file.isFile() && (!file.getName().startsWith("rLex_") && !file.getName().startsWith("rSin_") && !file.getName().startsWith("rSem_")) && !file.getName().endsWith(".jar"))
 				completeAnalysis(file);
 			
 	}

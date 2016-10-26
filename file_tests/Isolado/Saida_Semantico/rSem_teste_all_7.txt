@@ -17,7 +17,7 @@ Na linha: 17. Identificador a já foi declarado
 Na linha: 27. O valor do identificador a não pode ser alterado
 Na linha: 28. O valor do identificador b não pode ser alterado
 Na linha: 32. A expressão na dimensão numero 1 do vetor pop é um Booleano, mas deve ser um Inteiro para se tornar uma dimensão
-Na linha: 33. A expressão na dimensão numero 1 do vetor pop é um Caractere, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 33. Uma expressão na dimensão do vetor pop é um Caractere, mas deve ser um Inteiro para se tornar uma dimensão
 Na linha: 36. A função kappa foi definida com 4 parâmetros, mas você está usando 3 parâmetros
 Na linha: 36. Identificador v não foi declarado
 Na linha: 36. Identificador x não foi declarado
@@ -25,7 +25,7 @@ Na linha: 36. Identificador xx não foi declarado
 Na linha: 41. O valor de b não pode ser alterado, este identificador foi declarado como Função ou Constante
 Na linha: 41. A variável c não foi declarada
 Na linha: 41. O valor de t não pode ser alterado, este identificador foi declarado como Função ou Constante
-Na linha: 41. A expressão na dimensão numero 1 do vetor pop é um Caractere, mas deve ser um Inteiro para se tornar uma dimensão
+Na linha: 41. Uma expressão na dimensão do vetor pop é um Caractere, mas deve ser um Inteiro para se tornar uma dimensão
 Na linha: 41. A variável pop possui 2 dimensões, mas você usou 1 dimensões
 Na linha: 43. Identificador xxx não foi declarado
 Na linha: 43. Identificador bbb não foi declarado
