@@ -114,6 +114,7 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			return resultOfFields(INTEGER, typeOfTerm(exp.getChildren().get(1), table), typeOfTerm(exp.getChildren().get(2), table));
 		
 		List<Node> l = exp.getChildren();
+		
 		if (l.get(0).getType() == SyntaxUtil.OPERADOR_MAIS_MENOS || l.get(0).getType() == SyntaxUtil.FATOR_I_MD)
 			return resultOf(new Pair<Integer, Token>(INTEGER, new Token()), typeOfTerm(l.get(1), table));
 		else
@@ -121,37 +122,39 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 	}
 	
 	public static Pair<Integer, Token> typeOfValue(Node val, SymbolTable table) {
-		if (val.getChildren().size() == 1)
+		if (val.getChildren().size() == 1) //<Expr_Conjunta>
 			return typeOfConj(val.getChildren().get(0), table);
 		
+		//<Expr_Conjunta> <Expr_Conjunta_I>
 		Pair<Integer, Token> l = expectsEquals(BOOLEAN, typeOfConj(val.getChildren().get(0), table));
 		Pair<Integer, Token> p = expectsEquals(BOOLEAN, typeOfConjOne(val.getChildren().get(1), table));
 		return expectsEquals(l, p);
 	}
 	
 	public static Pair<Integer, Token> typeOfConj(Node conj, SymbolTable table) {
-		if (conj.getChildren().size() == 1)
+		if (conj.getChildren().size() == 1) //<Expr_Relacional>
 			return typeOfRel(conj.getChildren().get(0), table);
 		
+		//<Expr_Relacional> <Expr_Relacional_I> 
 		Pair<Integer, Token> l = expectsEquals(BOOLEAN, typeOfRel(conj.getChildren().get(0), table));
 		Pair<Integer, Token> p = expectsEquals(BOOLEAN, typeOfRelOne(conj.getChildren().get(1), table));
 		return expectsEquals(l, p);
 	}
 	
 	public static Pair<Integer, Token> typeOfConjOne(Node conj, SymbolTable table) {
-		if (conj.getChildren().size() == 3) {
+		if (conj.getChildren().size() == 3) { //'ou' <Expr_Conjunta> <Expr_Conjunta_I>
 			Pair<Integer, Token> l = expectsEquals(BOOLEAN, typeOfConj(conj.getChildren().get(1), table));
 			Pair<Integer, Token> p = expectsEquals(BOOLEAN, typeOfConjOne(conj.getChildren().get(2), table));
 			return expectsEquals(l, p);
 		}
-		return typeOfConj(conj.getChildren().get(1), table); //TODO Talvez aqui
+		return typeOfConj(conj.getChildren().get(1), table); // 'ou' <Expr_Conjunta>
 	}
 	
 	public static Pair<Integer, Token> typeOfRel(Node rel, SymbolTable table) {
-		if (rel.getChildren().size() == 1)
+		if (rel.getChildren().size() == 1) //<Expr_Simples>
 			return typeOfTerm(rel.getChildren().get(0), table);
 		
-		if (rel.getChildren().size() == 3) {
+		if (rel.getChildren().size() == 3) { //<Not_Opc> <Expr_Simples> <Operar_Relacionalmente>
 			Pair<Integer, Token> l = typeOfTerm(rel.getChildren().get(1), table);
 			l = expectsEquals(BOOLEAN, l);
 			Pair<Integer, Token> p = typeOfOpRel(rel.getChildren().get(2), table);
@@ -159,9 +162,10 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			return expectsEquals(l, p);
 		}
 		
-		if (rel.getChildren().get(0).getType() == SyntaxUtil.NOT_OPC)
+		if (rel.getChildren().get(0).getType() == SyntaxUtil.NOT_OPC) // <Not_Opc> <Expr_Simples>
 			return expectsEquals(BOOLEAN, typeOfTerm(rel.getChildren().get(1), table));
 		
+		//<Expr_Simples> <Operar_Relacionalmente>
 		Pair<Integer, Token> l = typeOfTerm(rel.getChildren().get(0), table);
 		Pair<Integer, Token> p = typeOfOpRel(rel.getChildren().get(1), table);
 		
@@ -174,26 +178,30 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 	
 	
 	public static Pair<Integer, Token> typeOfRelOne(Node rel, SymbolTable table) {
-		if (rel.getChildren().size() == 3) {
+		if (rel.getChildren().size() == 3) { //'e' <Expr_Relacional> <Expr_Relacional_I>
 			Pair<Integer, Token> l = expectsEquals(BOOLEAN, typeOfRel(rel.getChildren().get(1), table));
 			Pair<Integer, Token> p = expectsEquals(BOOLEAN, typeOfRelOne(rel.getChildren().get(2), table));
 			return expectsEquals(l, p);
 		}
 		
-		return typeOfOpRel(rel.getChildren().get(1), table); //TODO talvez aqui
+		//'e' <Expr_Relacional>
+		return typeOfRel(rel.getChildren().get(1), table);
 	}
 	
 	public static Pair<Integer, Token> typeOfOpRel(Node op, SymbolTable table) {
-		if (op.getChildren().size() == 3) {
+		if (op.getChildren().size() == 3) { //<Operador_Relacional> <Not_Opc> <Expr_Simples>
 			Pair<Integer, Token> l = typeOfTerm(op.getChildren().get(2), table);
 			l = expectsEquals(BOOLEAN, l);
 			return l;
 		}
 		
-		if (op.getChildren().size() == 2)
-			return typeOfTerm(op.getChildren().get(1), table); //TODO Aqui 1 -> 0
+		if (op.getChildren().size() == 2) { //<Operador_Relacional> <Expr_Simples>
+			return typeOfTerm(op.getChildren().get(1), table); 
+		}
 		
-		return typeOfTerm(op.getChildren().get(0), table); //TODO Aqui 1 -> 0
+		//this is a bug
+		System.out.println("Possivel dando ruim aqui");
+		return typeOfTerm(op.getChildren().get(0), table);
 	}
 
 	public static Pair<Integer, Token> resultOfFields(int type, Pair<Integer, Token> pair, Pair<Integer, Token> pair2) {

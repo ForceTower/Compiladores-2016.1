@@ -7,8 +7,14 @@ funcao a()
 inicio
 fim
 
-funcao b()
+funcao inteiro b()
 inicio
+	var
+	inicio
+		inteiro << 5 >>vetor;
+	fim
+	
+	=> 5 > vetor =>;
 fim
 
 programa
@@ -20,7 +26,7 @@ inicio
 		inteiro c;
 	fim
 	
-	se (1+1 ou verdadeiro) entao
+	se ((1+1>3 ou verdadeiro) e (2+2 > 4 + 4.4) ou verdadeiro e (8*5)/4+2 > (45*a*verdadeiro) + b() - 9) entao
 	inicio
 	fim
 fim
