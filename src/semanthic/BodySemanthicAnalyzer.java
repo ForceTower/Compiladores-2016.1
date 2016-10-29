@@ -258,7 +258,7 @@ public class BodySemanthicAnalyzer extends SemanthicUtil{
 				
 				if (qtdO == qtdF) {
 					if (qtdO == 0) {
-						System.out.println("ok");
+						//System.out.println("ok");
 					} else {
 						for (int i = 0; i < paramsF.size(); i++) {
 							if (paramsF.get(i).getType() != paramsO.get(i).f.intValue()) {

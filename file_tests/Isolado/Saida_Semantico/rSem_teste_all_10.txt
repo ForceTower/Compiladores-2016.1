@@ -1,4 +1,4 @@
 Na linha: 6. Identificador a já foi declarado
-Na linha: 17. Identificador vetor é um vetor mas é usado como um não-vetor
-Na linha: 25. O identificador b já foi declarado como uma função
-Na linha: 29. Tipos incompativeis na expressão
+Na linha: 19. Identificador vetor é um vetor mas é usado como um não-vetor
+Na linha: 27. O identificador b já foi declarado como uma função
+Na linha: 31. Tipos incompativeis na expressão

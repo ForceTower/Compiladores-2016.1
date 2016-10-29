@@ -14,6 +14,8 @@ inicio
 		inteiro << 5 >>vetor;
 	fim
 	
+	escreva(<<3>>vetor + (<<2>> vetor - <<1>> vetor));
+	
 	=> 5 > vetor =>;
 fim
 

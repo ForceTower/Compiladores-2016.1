@@ -60,6 +60,9 @@ public class ValueSemanthicAnalyzer extends SemanthicUtil{
 			if (node.getChildren().get(0).getToken().getId() == TokenFactory.IDENT) {
 				return functionCallInExp(node, table);
 			} else {
+				if (node.getChildren().get(1).getType() == SyntaxUtil.ESCREVIVEL)
+					return valueOfExpSimple(node.getChildren().get(1), table);
+				
 				return valueOfExpBool(node.getChildren().get(1), table);
 			}
 		} else if (node.getChildren().size() == 7 || node.getChildren().size() == 6) {
