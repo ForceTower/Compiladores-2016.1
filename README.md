@@ -3,7 +3,7 @@ Building a Compiler
 
 * Lexical: Stable
 * Syntax: Stable
-* Semanthic: Beta
+* Semanthic: Stable
 
 Usage:
 java -jar "program name.jar" directory
